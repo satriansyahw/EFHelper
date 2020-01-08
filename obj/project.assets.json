@@ -3987,11 +3987,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PROJECTS\\EFHelper\\EFHelper\\EFHelper.csproj",
+      "projectUniqueName": "D:\\ProjectResearch\\EFHelper\\EFHelper\\EFHelper.csproj",
       "projectName": "EFHelper",
-      "projectPath": "D:\\PROJECTS\\EFHelper\\EFHelper\\EFHelper.csproj",
+      "projectPath": "D:\\ProjectResearch\\EFHelper\\EFHelper\\EFHelper.csproj",
       "packagesPath": "C:\\Users\\peb2080223\\.nuget\\packages\\",
-      "outputPath": "D:\\PROJECTS\\EFHelper\\EFHelper\\obj\\",
+      "outputPath": "D:\\ProjectResearch\\EFHelper\\EFHelper\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

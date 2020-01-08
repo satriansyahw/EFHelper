@@ -10,24 +10,51 @@ namespace EFHelper.Filtering
 {
     public class WhereClause : InterfaceWhere
     {
-        private static WhereClause instance;
-        public WhereClause()
-        {
-
-        }
-        public static WhereClause GetInstance
-        {
-            get
-            {
-                if (instance == null)
-                    instance = new WhereClause();
-                return instance;
-            }
-        }
+       
         public Expression<Func<T, bool>> GetWhereClause<T>(List<SearchField> SearchFieldList) 
         {
-            ParameterExpression pe = Expression.Parameter(typeof(T), typeof(T).Name);
-           var sss =Activator.CreateInstance<T>();
+            Expression<Func<T, bool>> resultExpr = null;
+            if (SearchFieldList != null)
+            {
+                ParameterExpression pe = Expression.Parameter(typeof(T), typeof(T).Name);
+                var sss = Activator.CreateInstance<T>();
+                SearchFieldList.RemoveAll(a => a.Name == null);//clearingSearchFieldList
+
+                /*trying to add activebool*/
+                var activeBoolProp = ColumnPropGet.GetInstance.GetColumnProps(typeof(T), "activebool");
+                if(activeBoolProp == null)
+                    activeBoolProp = ColumnPropGet.GetInstance.GetColumnProps(typeof(T), "boolactive");
+                if(activeBoolProp !=null)
+                {
+                    SearchFieldList.Add(new SearchField { Name = activeBoolProp.Name, Operator = "=", Value = "true" });
+                }
+
+                Expression combinedExpr = GetWhereClauseProses<T>(pe, SearchFieldList);
+                if (combinedExpr != null)
+                {
+                    resultExpr = Expression.Lambda<Func<T, Boolean>>(combinedExpr, new ParameterExpression[] { pe });
+                }
+            }
+            return resultExpr;
+        }
+        public Expression<Func<T, bool>> GetWhereClauseDirty<T>(List<SearchField> SearchFieldList)
+        {
+            Expression<Func<T, bool>> resultExpr = null;
+            if (SearchFieldList != null)
+            {
+                ParameterExpression pe = Expression.Parameter(typeof(T), typeof(T).Name);
+                var sss = Activator.CreateInstance<T>();
+                SearchFieldList.RemoveAll(a => a.Name == null);//clearingSearchFieldList
+                Expression combinedExpr = GetWhereClauseProses<T>(pe, SearchFieldList);
+                if (combinedExpr != null)
+                {
+                    resultExpr = Expression.Lambda<Func<T, Boolean>>(combinedExpr, new ParameterExpression[] { pe });
+                }
+            }
+            return resultExpr;
+        }
+        private Expression GetWhereClauseProses<T>(ParameterExpression pe, List<SearchField> SearchFieldList)
+        {
             Expression combinedExpr = null;
             Expression e1 = null;
             Expression columnNameExpr = null;
@@ -39,8 +66,6 @@ namespace EFHelper.Filtering
             string colOperator = string.Empty;
             object colValue = null;
             bool isNull = false;
-
-            SearchFieldList.RemoveAll(a => a.Name == null);//clearingSearchFieldList
             foreach (SearchField itemSearch in SearchFieldList)
             {
                 e1 = null;
@@ -51,17 +76,17 @@ namespace EFHelper.Filtering
                 fullName = string.Empty;
                 isNull = false;
                 colName = itemSearch.Name;
-                colOperator = itemSearch.Operator;              
-                if(!string.IsNullOrEmpty(colName) & !string.IsNullOrEmpty(colOperator) & !string.IsNullOrEmpty(itemSearch.Value))
+                colOperator = itemSearch.Operator;
+                if (!string.IsNullOrEmpty(colName) & !string.IsNullOrEmpty(colOperator) & !string.IsNullOrEmpty(itemSearch.Value))
                 {
                     colName = colName.Trim().ToLower();
                     colOperator = colOperator.Trim().ToLower();
                     colValue = itemSearch.Value.Trim().ToLower();
 
-                    var colProp =ColumnPropGet.GetInstance.GetColumnProps(typeof(T),colName);
+                    var colProp = ColumnPropGet.GetInstance.GetColumnProps(typeof(T), colName);
                     if (colProp != null)//Check if colname exists in Table
                     {
-                        columnNameExpr = Expression.Property(pe, colName);                                          
+                        columnNameExpr = Expression.Property(pe, colName);
                         fieldType = colProp.PropertyType.Name.ToLower();
                         fullName = colProp.PropertyType.FullName.ToLower().Split(',')[0].ToString();
                         fieldName = ColumnProperties.GetInstance.GetClearFieldName(colProp.Name);
@@ -86,15 +111,7 @@ namespace EFHelper.Filtering
                 }
             }
 
-
-            if (combinedExpr != null)
-            {
-                return Expression.Lambda<Func<T, Boolean>>(combinedExpr, new ParameterExpression[] { pe });
-            }
-            else
-            {
-                return null;
-            }
+            return combinedExpr;
         }
     }
 }
