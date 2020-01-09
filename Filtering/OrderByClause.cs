@@ -10,19 +10,19 @@ namespace EFHelper.Filtering
 {
     public class OrderByClause : InterfaceOrderBy
     {
-        public IQueryable<T> OrderByDynamic<T>(IQueryable<T> query, string sortColumn, bool ascending)
+        public IQueryable<T> OrderByDynamic<T>(IQueryable<T> query, string sortColumn, bool isAscending)
         {
             if (query != null)
             {
                 var parameter = Expression.Parameter(typeof(T), "p");
                 var colProp = ColumnPropGet.GetInstance.GetColumnProps(typeof(T), sortColumn);
-
+                colProp = colProp != null ? colProp : ColumnPropGet.GetInstance.GetIdentityColumnProps(typeof(T));//jika tidak ada sort column, coba sort by identity atau column order ke 0
 
                 if (colProp != null)
                 {
                     /*Jika kolom sortcolumn ada di table T nya*/
                     string command = "OrderBy";
-                    if (!ascending)
+                    if (!isAscending)
                     {
                         command = "OrderByDescending";
                     }

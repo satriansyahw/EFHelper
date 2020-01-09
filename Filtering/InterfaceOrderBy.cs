@@ -7,6 +7,6 @@ namespace EFHelper.Filtering
 {
     public interface InterfaceOrderBy
     {
-        IQueryable<T> OrderByDynamic<T>(IQueryable<T> query, string sortColumn, bool ascending);
+        IQueryable<T> OrderByDynamic<T>(IQueryable<T> query, string sortColumn, bool isAscending);
     }
 }
