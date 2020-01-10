@@ -5,8 +5,8 @@ using System.Text;
 
 namespace EFHelper.Context
 {
-    public interface InterfaceDBContext
+    public class DBContextInfo
     {
-        DbContext CreateConnectionContext();        
+        public static DbContext MyDbContext { get; set; }
     }
 }

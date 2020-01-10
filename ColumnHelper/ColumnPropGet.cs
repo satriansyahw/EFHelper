@@ -207,6 +207,15 @@ namespace EFHelper.ColumnHelper
             pi = pi != null ? pi : entity.GetType().GetRuntimeProperties().ToList()[0];// jika null ambil property yang ke 0
             return pi;
         }
+        public string GetColumnType(PropertyInfo property)
+        {
+            string fullName = property.PropertyType.FullName.ToLower().Split(',')[0].ToString();
+            string myFieldName = ColumnProperties.GetInstance.GetClearFieldName(property.Name);
+            string myFieldType = property.PropertyType.Name.ToLower();
+            bool isnullData = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? true : false;
+            myFieldType = isnullData ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
+            return myFieldType;
+        }
         public Expression<Func<TSource, TResult>> GetSelectedColumnExpression<TSource, TResult>() where TSource : class where TResult : class
         {
             Expression<Func<TSource, TResult>> result = null;

@@ -10,7 +10,7 @@ using EFHelper.TypeHelper;
 
 namespace EFHelper.EntityPreparation
 {
-    public class EntityUpdate : InterfaceEntityPreparation
+    public class EntityDelete : InterfaceEntityPreparation
     {
         public T SetPreparationEntity<T>(T entity) where T : class
         {
@@ -35,12 +35,21 @@ namespace EFHelper.EntityPreparation
                     TypeBantuan tipe = new TypeBantuan();
                     var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>("updatedate");
                     propUpdateDate = propUpdateDate != null ? propUpdateDate : ColumnPropGet.GetInstance.GetColumnProps<T>("updatetime");
+                    var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>("activebool");
+                    propActiveBool = propActiveBool != null ? propActiveBool : ColumnPropGet.GetInstance.GetColumnProps<T>("boolactive");
                     if (propUpdateDate != null)
                     {
                         if (propUpdateDate.GetValue(entity) == null)
                         {
                             object objUpdateDate = tipe.DictTypes[ColumnPropGet.GetInstance.GetColumnType(propUpdateDate)].GetDefaultValue(false);
                             propUpdateDate.SetValue(entity, objUpdateDate);
+                        }
+                    }
+                    if (propActiveBool != null)
+                    {
+                        if (propActiveBool.GetValue(entity) == null)
+                        {
+                            propActiveBool.SetValue(entity, false);
                         }
                     }
 
