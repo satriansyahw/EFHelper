@@ -1,6 +1,6 @@
 ﻿using EFHelper.ColumnHelper;
 using EFHelper.Filtering;
-using EFHelper.Repository;
+using EFHelper.RepositoryList;
 using System;
 using System.Collections.Generic;
 using System.Text;

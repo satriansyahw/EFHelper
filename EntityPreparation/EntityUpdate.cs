@@ -1,13 +1,12 @@
 ﻿using EFHelper.ColumnHelper;
-using EFHelper.Filtering;
-using EFHelper.Repository;
-using System;
+
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Reflection;
 using EFHelper.TypeHelper;
-
+using EFHelper.Filtering;
+using EFHelper.RepositoryList;
 namespace EFHelper.EntityPreparation
 {
     public class EntityUpdate : InterfaceEntityPreparation
