@@ -1,5 +1,6 @@
 ﻿using EFHelper.ColumnHelper;
 using EFHelper.MiscClass;
+using EFHelper.RepositoryDelete;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace EFHelper.RepositorySave
 {
-    public class RepoSaveHeaderDetailAsync : InterfaceRepoSaveHeaderDetailAsync
+    public  class RepoSaveHeaderDetailAsync : InterfaceRepoSaveHeaderDetailAsync
     {
-        public async Task<EFReturnValue<T>> SaveHeaderDetail<T, T1>(T tblHeader, string idReferenceColName, T1 tblDetail1)
+        public virtual async Task<EFReturnValue<T>> SaveHeaderDetail<T, T1>(T tblHeader, string idReferenceColName, T1 tblDetail1)
             where T : class
             where T1 : class
         {
@@ -38,7 +39,9 @@ namespace EFHelper.RepositorySave
                         else
                         {
                             result.Result = false;
-                            // Hapus disini ya Headernya
+                            RepoDeleteAsync repoDelete = new RepoDeleteAsync();
+                            await repoDelete.DeleteAsync<T>(tblHeader);
+
                         }
                     }
 
@@ -49,7 +52,7 @@ namespace EFHelper.RepositorySave
             return result;
         }
 
-        public async Task<EFReturnValue<T>> SaveHeaderDetail<T, T1, T2>(T tblHeader, string idReferenceColName, T1 tblDetail1, T2 tblDetail2)
+        public virtual async Task<EFReturnValue<T>> SaveHeaderDetail<T, T1, T2>(T tblHeader, string idReferenceColName, T1 tblDetail1, T2 tblDetail2)
             where T : class
             where T1 : class where T2 : class
         {
@@ -88,7 +91,7 @@ namespace EFHelper.RepositorySave
             return result;
         }
 
-        public async Task<EFReturnValue<T>> SaveHeaderDetail<T, T1, T2, T3>(T tblHeader, string idReferenceColName, T1 tblDetail1, T2 tblDetail2, T3 tblDetail3)
+        public virtual async Task<EFReturnValue<T>> SaveHeaderDetail<T, T1, T2, T3>(T tblHeader, string idReferenceColName, T1 tblDetail1, T2 tblDetail2, T3 tblDetail3)
             where T : class
             where T1 : class
             where T2 : class
@@ -130,7 +133,7 @@ namespace EFHelper.RepositorySave
             return result;
         }
 
-        public async Task<EFReturnValue<T>> SaveHeaderDetail<T, T1, T2, T3, T4>(T tblHeader, string idReferenceColName, T1 tblDetail1, T2 tblDetail2, T3 tblDetail3, T4 tblDetail4)
+        public virtual async Task<EFReturnValue<T>> SaveHeaderDetail<T, T1, T2, T3, T4>(T tblHeader, string idReferenceColName, T1 tblDetail1, T2 tblDetail2, T3 tblDetail3, T4 tblDetail4)
             where T : class
             where T1 : class
             where T2 : class
@@ -174,7 +177,7 @@ namespace EFHelper.RepositorySave
             return result;
         }
 
-        public async Task<EFReturnValue<T>> SaveHeaderDetail<T, T1, T2, T3, T4, T5>(T tblHeader, string idReferenceColName, T1 tblDetail1, T2 tblDetail2, T3 tblDetail3, T4 tblDetail4, T5 tblDetail5)
+        public virtual async Task<EFReturnValue<T>> SaveHeaderDetail<T, T1, T2, T3, T4, T5>(T tblHeader, string idReferenceColName, T1 tblDetail1, T2 tblDetail2, T3 tblDetail3, T4 tblDetail4, T5 tblDetail5)
             where T : class
             where T1 : class
             where T2 : class

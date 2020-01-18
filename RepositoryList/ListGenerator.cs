@@ -7,9 +7,9 @@ using EFHelper.Filtering;
 
 namespace EFHelper.RepositoryList
 {
-    public class ListGenerator : InterfaceListQueryable
+    public  class ListGenerator : InterfaceListQueryable
     {
-        public IQueryable<T> QueryListGenerator<T>(List<SearchField> SearchFieldList, string sortColumn, bool isAscending, int topTake) where T : class
+        public virtual IQueryable<T> QueryListGenerator<T>(List<SearchField> SearchFieldList, string sortColumn, bool isAscending, int topTake) where T : class
         {
             IQueryable<T> result = null;
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -23,7 +23,7 @@ namespace EFHelper.RepositoryList
 
         }
 
-        public IQueryable<TResult> QueryListGenerator<TSource, TResult>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
+        public virtual IQueryable<TResult> QueryListGenerator<TSource, TResult>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
             where TSource : class
             where TResult : class
         {

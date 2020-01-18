@@ -57,5 +57,21 @@ namespace EFHelper.ColumnHelper
             }
             return entity;
         }
+        public T SetColValueIdentityColumn<T>(T entity, object value) where T : class
+        {
+            string idcolname = string.Empty;
+            PropertyInfo pi= ColumnPropGet.GetInstance.GetIdentityColumnProps<T>();
+            
+            if (pi != null)
+            {
+                if (pi.CanWrite)
+                {
+
+                    pi.SetValue(entity, value);
+
+                }
+            }
+            return entity;
+        }
     }
 }

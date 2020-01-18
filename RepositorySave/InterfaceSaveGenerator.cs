@@ -42,7 +42,7 @@ namespace EFHelper.RepositorySave
     }
 
     public interface InterfaceRepoSaveAsync
-    {
+    {      
         Task<T> SaveAsync<T>(T entity) where T : class;
         Task<bool> SaveAsync<T1, T2>(T1 entity1, T2 entity2) where T1 : class where T2 : class;
         Task<bool> SaveAsync<T1, T2, T3>(T1 entity1, T2 entity2, T3 entity3) where T1 : class where T2 : class where T3 : class;

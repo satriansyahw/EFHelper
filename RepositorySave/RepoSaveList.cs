@@ -6,9 +6,9 @@ using System.Text;
 
 namespace EFHelper.RepositorySave
 {
-    public class RepoSaveList : InterfaceRepoSaveList
+    public  class RepoSaveList : InterfaceRepoSaveList
     {
-        public IEnumerable<T> SaveList<T>(List<T> listEntity) where T : class
+        public virtual IEnumerable<T> SaveList<T>(List<T> listEntity) where T : class
         {
             var entityResult = Activator.CreateInstance<T>();
             int hasil = 0;
@@ -38,7 +38,7 @@ namespace EFHelper.RepositorySave
             return listEntity;
         }
 
-        public bool SaveList<T1, T2>(List<T1> listEntity1, List<T2> listEntity2)
+        public virtual bool SaveList<T1, T2>(List<T1> listEntity1, List<T2> listEntity2)
             where T1 : class
             where T2 : class
         {
@@ -75,7 +75,7 @@ namespace EFHelper.RepositorySave
             return hasil > 0 ? true : false;
         }
 
-        public bool SaveList<T1, T2, T3>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3)
+        public virtual bool SaveList<T1, T2, T3>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -118,7 +118,7 @@ namespace EFHelper.RepositorySave
             return hasil > 0 ? true : false;
         }
 
-        public bool SaveList<T1, T2, T3, T4>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3, List<T4> listEntity4)
+        public virtual bool SaveList<T1, T2, T3, T4>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3, List<T4> listEntity4)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -166,7 +166,7 @@ namespace EFHelper.RepositorySave
             return hasil > 0 ? true : false;
         }
 
-        public bool SaveList<T1, T2, T3, T4, T5>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3, List<T4> listEntity4, List<T5> listEntity5)
+        public virtual bool SaveList<T1, T2, T3, T4, T5>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3, List<T4> listEntity4, List<T5> listEntity5)
             where T1 : class
             where T2 : class
             where T3 : class
