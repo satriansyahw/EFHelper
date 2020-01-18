@@ -21,8 +21,8 @@ namespace EFHelper.RepositorySave
                     {
                         try
                         {
-                            EntitySave saveEnt = new EntitySave();
-                            listEntity = saveEnt.SetPreparationEntity<T>(listEntity);
+                            
+                            listEntity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T>(listEntity);
                             foreach (var entity in listEntity)
                             {
                                 context.Set<T>().Add(entity);
@@ -52,9 +52,9 @@ namespace EFHelper.RepositorySave
                     {
                         try
                         {
-                            EntitySave saveEnt = new EntitySave();
-                            listEntity1 = saveEnt.SetPreparationEntity<T1>(listEntity1);
-                            listEntity2 = saveEnt.SetPreparationEntity<T2>(listEntity2);
+                            
+                            listEntity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(listEntity1);
+                            listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntity2);
                             foreach (var entity in listEntity1)
                             {
                                 context.Set<T1>().Add(entity);
@@ -90,10 +90,10 @@ namespace EFHelper.RepositorySave
                     {
                         try
                         {
-                            EntitySave saveEnt = new EntitySave();
-                            listEntity1 = saveEnt.SetPreparationEntity<T1>(listEntity1);
-                            listEntity2 = saveEnt.SetPreparationEntity<T2>(listEntity2);
-                            listEntity3 = saveEnt.SetPreparationEntity<T3>(listEntity3);
+                            
+                            listEntity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(listEntity1);
+                            listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntity2);
+                            listEntity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(listEntity3);
 
                             foreach (var entity in listEntity1)
                             {
@@ -134,11 +134,11 @@ namespace EFHelper.RepositorySave
                     {
                         try
                         {
-                            EntitySave saveEnt = new EntitySave();
-                            listEntity1 = saveEnt.SetPreparationEntity<T1>(listEntity1);
-                            listEntity2 = saveEnt.SetPreparationEntity<T2>(listEntity2);
-                            listEntity3 = saveEnt.SetPreparationEntity<T3>(listEntity3);
-                            listEntity4 = saveEnt.SetPreparationEntity<T4>(listEntity4);
+                            
+                            listEntity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(listEntity1);
+                            listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntity2);
+                            listEntity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(listEntity3);
+                            listEntity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(listEntity4);
                             foreach (var entity in listEntity1)
                             {
                                 context.Set<T1>().Add(entity);
@@ -183,12 +183,12 @@ namespace EFHelper.RepositorySave
                     {
                         try
                         {
-                            EntitySave saveEnt = new EntitySave();
-                            listEntity1 = saveEnt.SetPreparationEntity<T1>(listEntity1);
-                            listEntity2 = saveEnt.SetPreparationEntity<T2>(listEntity2);
-                            listEntity3 = saveEnt.SetPreparationEntity<T3>(listEntity3);
-                            listEntity4 = saveEnt.SetPreparationEntity<T4>(listEntity4);
-                            listEntity5 = saveEnt.SetPreparationEntity<T5>(listEntity5);
+                            
+                            listEntity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(listEntity1);
+                            listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntity2);
+                            listEntity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(listEntity3);
+                            listEntity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(listEntity4);
+                            listEntity5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T5>(listEntity5);
                             foreach (var entity in listEntity1)
                             {
                                 context.Set<T1>().Add(entity);

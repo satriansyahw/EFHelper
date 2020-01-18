@@ -21,8 +21,9 @@ namespace EFHelper.RepositorySave
                     {
                         try
                         {
-                            EntitySave saveEnt = new EntitySave();
-                            entity = saveEnt.SetPreparationEntity<T>(entity);
+                            
+                            
+                            entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T>(entity);
                             context.Set<T>().Add(entity);
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -50,9 +51,9 @@ namespace EFHelper.RepositorySave
                     {
                         if(entity1 !=null & entity2 !=null)
                         {
-                            EntitySave saveEnt = new EntitySave();
-                            entity1 = saveEnt.SetPreparationEntity<T1>(entity1);
-                            entity2 = saveEnt.SetPreparationEntity<T2>(entity2);
+                            
+                            entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(entity1); 
+                            entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(entity2); 
                             context.Set<T1>().Add(entity1);
                             context.Set<T2>().Add(entity2);
                             hasil = context.SaveChanges();
@@ -79,10 +80,10 @@ namespace EFHelper.RepositorySave
                     {
                         if (entity1 != null & entity2 != null & entity3 != null)
                         {
-                            EntitySave saveEnt = new EntitySave();
-                            entity1 = saveEnt.SetPreparationEntity<T1>(entity1);
-                            entity2 = saveEnt.SetPreparationEntity<T2>(entity2);
-                            entity3 = saveEnt.SetPreparationEntity<T3>(entity3);
+                            
+                            entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(entity1);
+                            entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(entity2);
+                            entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(entity3);
                             context.Set<T1>().Add(entity1);
                             context.Set<T2>().Add(entity2);
                             context.Set<T3>().Add(entity3);
@@ -111,11 +112,11 @@ namespace EFHelper.RepositorySave
                     {
                         if (entity1 != null & entity2 != null & entity3 != null)
                         {
-                            EntitySave saveEnt = new EntitySave();
-                            entity1 = saveEnt.SetPreparationEntity<T1>(entity1);
-                            entity2 = saveEnt.SetPreparationEntity<T2>(entity2);
-                            entity3 = saveEnt.SetPreparationEntity<T3>(entity3);
-                            entity4= saveEnt.SetPreparationEntity<T4>(entity4);
+                            
+                            entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(entity1);
+                            entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(entity2);
+                            entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(entity3);
+                            entity4=  EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(entity4);
                             context.Set<T1>().Add(entity1);
                             context.Set<T2>().Add(entity2);
                             context.Set<T3>().Add(entity3);
@@ -146,12 +147,12 @@ namespace EFHelper.RepositorySave
                     {
                         if (entity1 != null & entity2 != null & entity3 != null)
                         {
-                            EntitySave saveEnt = new EntitySave();
-                            entity1 = saveEnt.SetPreparationEntity<T1>(entity1);
-                            entity2 = saveEnt.SetPreparationEntity<T2>(entity2);
-                            entity3 = saveEnt.SetPreparationEntity<T3>(entity3);
-                            entity4 = saveEnt.SetPreparationEntity<T4>(entity4);
-                            entity5 = saveEnt.SetPreparationEntity<T5>(entity5);
+                            
+                            entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(entity1);
+                            entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(entity2);
+                            entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(entity3);
+                            entity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(entity4);
+                            entity5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T5>(entity5);
                             context.Set<T1>().Add(entity1);
                             context.Set<T2>().Add(entity2);
                             context.Set<T3>().Add(entity3);

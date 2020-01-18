@@ -11,6 +11,7 @@ namespace EFHelper.EntityPreparation
 {
     public class EntityUpdate : InterfaceEntityPreparation
     {
+        //update all all field,If forget update data entity, so auto fill from db record 
         public T SetPreparationEntity<T>(T entity) where T : class
         {
             var propIdentity = ColumnPropGet.GetInstance.GetIdentityColumnProps<T>();
@@ -23,7 +24,7 @@ namespace EFHelper.EntityPreparation
                 var checkEntityList = repo.ListData<T>(lsf);
                 if(checkEntityList != null & checkEntityList.Count() > 0)
                 {
-                    var colNull = ColumnPropGet.GetInstance.GetPropertyColNull<T>(entity);
+                    var colNull = ColumnPropGet.GetInstance.GetPropertyColNullOnly<T>(entity);
                     var checkEntity = checkEntityList.ToList()[0];
                     foreach (PropertyInfo itemPropUpdate in colNull)
                     {

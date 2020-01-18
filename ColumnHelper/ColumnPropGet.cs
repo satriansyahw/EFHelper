@@ -81,6 +81,21 @@ namespace EFHelper.ColumnHelper
             }
             return result;
         }
+        public List<PropertyInfo> GetPropertyColNullOnly<T>(T entity) where T : class
+        {
+
+            string fullName = string.Empty;
+            List<PropertyInfo> resultAwal = new List<PropertyInfo>();
+            List<PropertyInfo> result = new List<PropertyInfo>();
+            //looking from null value column
+            resultAwal = (from sa in entity.GetType().GetProperties().AsQueryable() where sa.GetValue(entity) == null select sa).ToList();
+            foreach (PropertyInfo property in resultAwal)
+            {
+                var sss = property.PropertyType.Name.ToLower();
+                result.Add(property);
+            }          
+            return result;
+        }
         public List<PropertyInfo> GetPropertyColNotNull<T>(T entity) where T : class
         {
             string fullName = string.Empty;
@@ -94,7 +109,7 @@ namespace EFHelper.ColumnHelper
                 string myFieldType = property.PropertyType.Name.ToLower();
                 myFieldType = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
 
-                if (myFieldType != "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, "activebool", "boolactive", "insertby", "insertbyid"))
+                if (!ColumnProperties.GetInstance.IsColumn(myFieldName, "activebool", "boolactive", "insertby", "insertbyid"))
                 {
                     result.Add(property);
                 }
