@@ -16,12 +16,12 @@ D:\PROJECTS\EFHelper\EFHelper\obj\Debug\netcoreapp2.1\EFHelper.AssemblyInfoInput
 D:\PROJECTS\EFHelper\EFHelper\obj\Debug\netcoreapp2.1\EFHelper.AssemblyInfo.cs
 D:\PROJECTS\EFHelper\EFHelper\obj\Debug\netcoreapp2.1\EFHelper.dll
 D:\PROJECTS\EFHelper\EFHelper\obj\Debug\netcoreapp2.1\EFHelper.pdb
-D:\ProjectResearch\EFHelper\EFHelper\bin\Debug\netcoreapp2.1\EFHelper.deps.json
-D:\ProjectResearch\EFHelper\EFHelper\bin\Debug\netcoreapp2.1\EFHelper.dll
-D:\ProjectResearch\EFHelper\EFHelper\bin\Debug\netcoreapp2.1\EFHelper.pdb
 D:\ProjectResearch\EFHelper\EFHelper\obj\Debug\netcoreapp2.1\EFHelper.csproj.CoreCompileInputs.cache
 D:\ProjectResearch\EFHelper\EFHelper\obj\Debug\netcoreapp2.1\EFHelper.AssemblyInfoInputs.cache
 D:\ProjectResearch\EFHelper\EFHelper\obj\Debug\netcoreapp2.1\EFHelper.AssemblyInfo.cs
+D:\ProjectResearch\EFHelper\EFHelper\bin\Debug\netcoreapp2.1\EFHelper.deps.json
+D:\ProjectResearch\EFHelper\EFHelper\bin\Debug\netcoreapp2.1\EFHelper.dll
+D:\ProjectResearch\EFHelper\EFHelper\bin\Debug\netcoreapp2.1\EFHelper.pdb
 D:\ProjectResearch\EFHelper\EFHelper\obj\Debug\netcoreapp2.1\EFHelper.dll
 D:\ProjectResearch\EFHelper\EFHelper\obj\Debug\netcoreapp2.1\EFHelper.pdb
 D:\ProjectResearch\EFHelper\EFHelper\obj\Debug\netcoreapp2.1\EFHelper.csprojAssemblyReference.cache

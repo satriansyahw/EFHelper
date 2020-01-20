@@ -36,4 +36,14 @@ namespace EFHelper.RepositoryDelete
         bool DeleteActiveBoolList<T>(List<T> listEntity) where T : class;
         bool DeleteActiveBoolList<T>(List<int> listIDIdentity) where T : class;
     }
+    public interface InterfaceRepoDeleteActiveBoolAsync
+    {
+        Task<bool> DeleteActiveBoolAsync<T>(T entity) where T : class;
+        Task<bool> DeleteActiveBoolAsync<T>(int IDIdentity) where T : class;
+    }
+    public interface InterfaceRepoDeleteActiveBoolListAsync
+    {
+        Task<bool> DeleteActiveBoolListAsync<T>(List<T> listEntity) where T : class;
+        Task<bool> DeleteActiveBoolListAsync<T>(List<int> listIDIdentity) where T : class;
+    }
 }

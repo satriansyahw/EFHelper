@@ -9,7 +9,8 @@ namespace EFHelper.RepositorySave
 {
     public  class RepoSaveHeaderDetailList : InterfaceRepoSaveHeaderDetailList
     {
-        public virtual EFReturnValue<T> SaveHeaderDetail<T, T1>(T tblHeader, string idReferenceColName, List<T1> tblDetail1)
+
+        public  EFReturnValue<T> SaveHeaderDetail<T, T1>(T tblHeader, string idReferenceColName, List<T1> tblDetail1)
             where T : class
             where T1 : class
         {
@@ -32,7 +33,8 @@ namespace EFHelper.RepositorySave
                             ColumnPropSet.GetInstance.SetColValue<T1>(item, idReferenceColName, objIDColumnHeader); // set value ref id to tbldetails
                         }
 
-                        var hasil = repoSaveList.SaveList<T1>(tblDetail1);//save to T1                      
+                        
+                        var hasil = repoSaveList.SaveList<T1>(tblDetail1);   
                         if (hasil != null)
                         {
                             result.Result = true;
@@ -89,7 +91,8 @@ namespace EFHelper.RepositorySave
                         else
                         {
                             result.Result = false;
-                            // Hapus disini ya Headernya
+                            RepoDelete repoDelete = new RepoDelete();
+                            repoDelete.Delete<T>(tblHeader);
                         }
                     }
 
@@ -141,7 +144,8 @@ namespace EFHelper.RepositorySave
                         else
                         {
                             result.Result = false;
-                            // Hapus disini ya Headernya
+                            RepoDelete repoDelete = new RepoDelete();
+                            repoDelete.Delete<T>(tblHeader);
                         }
                     }
 
@@ -198,7 +202,8 @@ namespace EFHelper.RepositorySave
                         else
                         {
                             result.Result = false;
-                            // Hapus disini ya Headernya
+                            RepoDelete repoDelete = new RepoDelete();
+                            repoDelete.Delete<T>(tblHeader);
                         }
                     }
 
@@ -260,7 +265,8 @@ namespace EFHelper.RepositorySave
                         else
                         {
                             result.Result = false;
-                            // Hapus disini ya Headernya
+                            RepoDelete repoDelete = new RepoDelete();
+                            repoDelete.Delete<T>(tblHeader);
                         }
                     }
 
@@ -270,5 +276,8 @@ namespace EFHelper.RepositorySave
             }
             return result;
         }
+
+       
+
     }   
 }

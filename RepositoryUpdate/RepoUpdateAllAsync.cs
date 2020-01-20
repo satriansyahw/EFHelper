@@ -6,12 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace EFHelper.RepositoryUpdate
 {
-    public class RepoUpdateAll : InterfaceRepoUpdateAll
+    public class RepoUpdateAllAsync : InterfaceRepoUpdateAllAsync
     {
-        public bool UpdateAll<T>(T entity) where T : class
+        public virtual async Task<bool> UpdateAllAsync<T>(T entity) where T : class
         {
             int hasil = 0;
             if (entity != null)
@@ -24,7 +25,7 @@ namespace EFHelper.RepositoryUpdate
                         {
                             context.Set<T>().Attach(entity);
                             context.Entry(entity).State = EntityState.Modified;
-                            hasil = context.SaveChanges();
+                            hasil = await context.SaveChangesAsync();
                             contextTrans.Commit();
                         }
                         catch { contextTrans.Rollback(); }
@@ -34,7 +35,7 @@ namespace EFHelper.RepositoryUpdate
             return hasil > 0 ? true : false; 
         }
 
-        public bool UpdateAll<T1, T2>(T1 entity1, T2 entity2)
+        public virtual async Task<bool> UpdateAllAsync<T1, T2>(T1 entity1, T2 entity2)
             where T1 : class
             where T2 : class
         {
@@ -53,7 +54,7 @@ namespace EFHelper.RepositoryUpdate
                             context.Entry(entity1).State = EntityState.Modified;
                             context.Entry(entity2).State = EntityState.Modified;
 
-                            hasil = context.SaveChanges();
+                            hasil = await context.SaveChangesAsync();
                             contextTrans.Commit();
                         }
                         catch { contextTrans.Rollback(); }
@@ -63,7 +64,7 @@ namespace EFHelper.RepositoryUpdate
             return hasil > 0 ? true : false;
         }
 
-        public bool UpdateAll<T1, T2, T3>(T1 entity1, T2 entity2, T3 entity3)
+        public virtual async Task<bool> UpdateAllAsync<T1, T2, T3>(T1 entity1, T2 entity2, T3 entity3)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -85,7 +86,7 @@ namespace EFHelper.RepositoryUpdate
                             context.Entry(entity2).State = EntityState.Modified;
                             context.Entry(entity3).State = EntityState.Modified;
 
-                            hasil = context.SaveChanges();
+                            hasil = await context.SaveChangesAsync();
                             contextTrans.Commit();
                         }
                         catch { contextTrans.Rollback(); }
@@ -95,7 +96,7 @@ namespace EFHelper.RepositoryUpdate
             return hasil > 0 ? true : false;
         }
 
-        public bool UpdateAll<T1, T2, T3, T4>(T1 entity1, T2 entity2, T3 entity3, T4 entity4)
+        public virtual async Task<bool> UpdateAllAsync<T1, T2, T3, T4>(T1 entity1, T2 entity2, T3 entity3, T4 entity4)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -120,7 +121,7 @@ namespace EFHelper.RepositoryUpdate
                             context.Entry(entity3).State = EntityState.Modified;
                             context.Entry(entity4).State = EntityState.Modified;
 
-                            hasil = context.SaveChanges();
+                            hasil = await context.SaveChangesAsync();
                             contextTrans.Commit();
                         }
                         catch { contextTrans.Rollback(); }
@@ -130,7 +131,7 @@ namespace EFHelper.RepositoryUpdate
             return hasil > 0 ? true : false;
         }
 
-        public bool UpdateAll<T1, T2, T3, T4, T5>(T1 entity1, T2 entity2, T3 entity3, T4 entity4, T5 entity5)
+        public virtual async Task<bool> UpdateAllAsync<T1, T2, T3, T4, T5>(T1 entity1, T2 entity2, T3 entity3, T4 entity4, T5 entity5)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -158,7 +159,7 @@ namespace EFHelper.RepositoryUpdate
                             context.Entry(entity4).State = EntityState.Modified;
                             context.Entry(entity5).State = EntityState.Modified;
 
-                            hasil = context.SaveChanges();
+                            hasil = await context.SaveChangesAsync();
                             contextTrans.Commit();
                         }
                         catch { contextTrans.Rollback(); }

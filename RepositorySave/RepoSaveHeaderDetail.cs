@@ -78,7 +78,8 @@ namespace EFHelper.RepositorySave
                         else
                         {
                             result.Result = false;
-                            // Hapus disini ya Headernya
+                            RepoDelete repoDelete = new RepoDelete();
+                            repoDelete.Delete<T>(tblHeader);
                         }
                     }
 
@@ -120,7 +121,8 @@ namespace EFHelper.RepositorySave
                         else
                         {
                             result.Result = false;
-                            // Hapus disini ya Headernya
+                            RepoDelete repoDelete = new RepoDelete();
+                            repoDelete.Delete<T>(tblHeader);
                         }
                     }
 
@@ -164,7 +166,8 @@ namespace EFHelper.RepositorySave
                         else
                         {
                             result.Result = false;
-                            // Hapus disini ya Headernya
+                            RepoDelete repoDelete = new RepoDelete();
+                            repoDelete.Delete<T>(tblHeader);
                         }
                     }
 
@@ -210,7 +213,8 @@ namespace EFHelper.RepositorySave
                         else
                         {
                             result.Result = false;
-                            // Hapus disini ya Headernya
+                            RepoDelete repoDelete = new RepoDelete();
+                            repoDelete.Delete<T>(tblHeader);
                         }
                     }
 

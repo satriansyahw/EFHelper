@@ -89,7 +89,8 @@ namespace EFHelper.RepositorySave
                         else
                         {
                             result.Result = false;
-                            // Hapus disini ya Headernya
+                            RepoDeleteAsync repoDelete = new RepoDeleteAsync();
+                            await repoDelete.DeleteAsync<T>(tblHeader);
                         }
                     }
 
@@ -141,7 +142,8 @@ namespace EFHelper.RepositorySave
                         else
                         {
                             result.Result = false;
-                            // Hapus disini ya Headernya
+                            RepoDeleteAsync repoDelete = new RepoDeleteAsync();
+                            await repoDelete.DeleteAsync<T>(tblHeader);
                         }
                     }
 
@@ -198,7 +200,8 @@ namespace EFHelper.RepositorySave
                         else
                         {
                             result.Result = false;
-                            // Hapus disini ya Headernya
+                            RepoDeleteAsync repoDelete = new RepoDeleteAsync();
+                            await repoDelete.DeleteAsync<T>(tblHeader);
                         }
                     }
 
@@ -260,7 +263,8 @@ namespace EFHelper.RepositorySave
                         else
                         {
                             result.Result = false;
-                            // Hapus disini ya Headernya
+                            RepoDeleteAsync repoDelete = new RepoDeleteAsync();
+                            await repoDelete.DeleteAsync<T>(tblHeader);
                         }
                     }
 

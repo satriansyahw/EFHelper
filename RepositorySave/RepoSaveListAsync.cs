@@ -23,10 +23,7 @@ namespace EFHelper.RepositorySave
                         {
                             
                             listEntity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T>(listEntity);
-                            foreach (var entity in listEntity)
-                            {
-                                context.Set<T>().Add(entity);
-                            }
+                            context.Set<List<T>>().Add(listEntity);
                             hasil = await context.SaveChangesAsync();
                             contextTrans.Commit();
                         }
@@ -55,14 +52,9 @@ namespace EFHelper.RepositorySave
                             
                             listEntity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(listEntity1);
                             listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntity2);
-                            foreach (var entity in listEntity1)
-                            {
-                                context.Set<T1>().Add(entity);
-                            }
-                            foreach (var entity in listEntity2)
-                            {
-                                context.Set<T2>().Add(entity);
-                            }
+                            context.Set<List<T1>>().Add(listEntity1);
+                            context.Set<List<T2>>().Add(listEntity2);
+
 
                             hasil = await context.SaveChangesAsync();
                             contextTrans.Commit();
@@ -95,18 +87,9 @@ namespace EFHelper.RepositorySave
                             listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntity2);
                             listEntity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(listEntity3);
 
-                            foreach (var entity in listEntity1)
-                            {
-                                context.Set<T1>().Add(entity);
-                            }
-                            foreach (var entity in listEntity2)
-                            {
-                                context.Set<T2>().Add(entity);
-                            }
-                            foreach (var entity in listEntity3)
-                            {
-                                context.Set<T3>().Add(entity);
-                            }
+                            context.Set<List<T1>>().Add(listEntity1);
+                            context.Set<List<T2>>().Add(listEntity2);
+                            context.Set<List<T3>>().Add(listEntity3);
 
                             hasil = await context.SaveChangesAsync();
                             contextTrans.Commit();
@@ -139,22 +122,12 @@ namespace EFHelper.RepositorySave
                             listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntity2);
                             listEntity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(listEntity3);
                             listEntity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(listEntity4);
-                            foreach (var entity in listEntity1)
-                            {
-                                context.Set<T1>().Add(entity);
-                            }
-                            foreach (var entity in listEntity2)
-                            {
-                                context.Set<T2>().Add(entity);
-                            }
-                            foreach (var entity in listEntity3)
-                            {
-                                context.Set<T3>().Add(entity);
-                            }
-                            foreach (var entity in listEntity4)
-                            {
-                                context.Set<T4>().Add(entity);
-                            }
+
+                            context.Set<List<T1>>().Add(listEntity1);
+                            context.Set<List<T2>>().Add(listEntity2);
+                            context.Set<List<T3>>().Add(listEntity3);
+                            context.Set<List<T4>>().Add(listEntity4);
+
 
                             hasil = await context.SaveChangesAsync();
                             contextTrans.Commit();
@@ -189,26 +162,13 @@ namespace EFHelper.RepositorySave
                             listEntity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(listEntity3);
                             listEntity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(listEntity4);
                             listEntity5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T5>(listEntity5);
-                            foreach (var entity in listEntity1)
-                            {
-                                context.Set<T1>().Add(entity);
-                            }
-                            foreach (var entity in listEntity2)
-                            {
-                                context.Set<T2>().Add(entity);
-                            }
-                            foreach (var entity in listEntity3)
-                            {
-                                context.Set<T3>().Add(entity);
-                            }
-                            foreach (var entity in listEntity4)
-                            {
-                                context.Set<T4>().Add(entity);
-                            }
-                            foreach (var entity in listEntity5)
-                            {
-                                context.Set<T5>().Add(entity);
-                            }
+
+                            context.Set<List<T1>>().Add(listEntity1);
+                            context.Set<List<T2>>().Add(listEntity2);
+                            context.Set<List<T3>>().Add(listEntity3);
+                            context.Set<List<T4>>().Add(listEntity4);
+                            context.Set<List<T5>>().Add(listEntity5);
+
                             hasil = await context.SaveChangesAsync();
                             contextTrans.Commit();
                         }

@@ -19,11 +19,8 @@ namespace EFHelper.RepositoryDelete
                     {
                         try
                         {
-                            foreach (var entity in listEntity)
-                            {
-                                context.Set<T>().Attach(entity);
-                                context.Set<T>().Remove(entity);
-                            }                          
+                            context.Set<List<T>>().Attach(listEntity);
+                            context.Set<List<T>>().Remove(listEntity);
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
                         }
@@ -46,16 +43,18 @@ namespace EFHelper.RepositoryDelete
                     {
                         try
                         {
+                            List<T> listEntity = new List<T>();
                             foreach (var IDIdentity in listIDIdentity)
                             {
                                 T entity = Activator.CreateInstance<T>();
                                 if (entity != null)
                                 {
                                     ColumnPropSet.GetInstance.SetColValueIdentityColumn<T>(entity, IDIdentity);
-                                    context.Set<T>().Attach(entity);
-                                    context.Set<T>().Remove(entity);
+                                    listEntity.Add(entity);
                                 }
-                            }                               
+                            }
+                            context.Set<List<T>>().Attach(listEntity);
+                            context.Set<List<T>>().Remove(listEntity);
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
                         }
