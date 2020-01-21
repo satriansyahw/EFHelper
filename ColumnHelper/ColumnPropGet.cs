@@ -26,6 +26,21 @@ namespace EFHelper.ColumnHelper
                 return instance;
             }
         }
+
+        public List<T> GetInstanceWithIDColumnList<T>(List<int> listIDIdentity) where T : class
+        {
+            List<T> listEntity = new List<T>();
+            foreach (var IDIdentity in listIDIdentity)
+            {
+                T entity = Activator.CreateInstance<T>();
+                if (entity != null)
+                {
+                    ColumnPropSet.GetInstance.SetColValueIdentityColumn<T>(entity, IDIdentity);
+                    listEntity.Add(entity);
+                }
+}
+            return listEntity;
+        }
         public List<ColumnListInfo> GetColumnList(Type t) 
         {
             List<ColumnListInfo> list = new List<ColumnListInfo>();
@@ -124,6 +139,76 @@ namespace EFHelper.ColumnHelper
                 }
             }
             return result;
+        }
+        public PropertyInfo GetColumnProps<T>(params string[] colnames) where T : class
+        {
+            T entity = (T)Activator.CreateInstance(typeof(T));
+            PropertyInfo pi = null;
+            for (int i = 0; i < colnames.Count(); i++)
+            {
+                string colname = colnames[i].Trim().ToLower();
+                string myProp = string.Empty;
+                foreach (var property in entity.GetType().GetRuntimeProperties())
+                {
+                    if (!string.IsNullOrEmpty(property.Name))
+                    {
+                        colname = ColumnProperties.GetInstance.GetClearFieldName(colname);
+                        myProp = ColumnProperties.GetInstance.GetClearFieldName(property.Name);
+                        if (myProp == colname.Trim())
+                        {
+                            pi = property;
+                        }
+                    }
+                    if (pi != null)
+                    {
+
+                        break;
+                    }
+                }
+                if (pi != null)
+                {
+
+                    break;
+                }
+            }
+          
+
+            return pi;
+        }
+        public PropertyInfo GetColumnProps(Type t,params string[] colnames)
+        {
+            var entity = Activator.CreateInstance(t);
+            PropertyInfo pi = null;
+            for (int i = 0; i < colnames.Count(); i++)
+            {
+                string colname = colnames[i].Trim().ToLower();
+                string myProp = string.Empty;
+                foreach (var property in entity.GetType().GetRuntimeProperties())
+                {
+                    if (!string.IsNullOrEmpty(property.Name))
+                    {
+                        colname = ColumnProperties.GetInstance.GetClearFieldName(colname);
+                        myProp = ColumnProperties.GetInstance.GetClearFieldName(property.Name);
+                        if (myProp == colname.Trim())
+                        {
+                            pi = property;
+                        }
+                    }
+                    if (pi != null)
+                    {
+
+                        break;
+                    }
+                }
+                if (pi != null)
+                {
+
+                    break;
+                }
+            }
+
+
+            return pi;
         }
         public PropertyInfo GetColumnProps<T>(string colname) where T : class
         {

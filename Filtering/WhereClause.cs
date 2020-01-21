@@ -77,11 +77,11 @@ namespace EFHelper.Filtering
                 isNull = false;
                 colName = itemSearch.Name;
                 colOperator = itemSearch.Operator;
-                if (!string.IsNullOrEmpty(colName) & !string.IsNullOrEmpty(colOperator) & !string.IsNullOrEmpty(itemSearch.Value))
+                if (!string.IsNullOrEmpty(colName) & !string.IsNullOrEmpty(colOperator) & itemSearch.Value !=null)
                 {
                     colName = colName.Trim().ToLower();
                     colOperator = colOperator.Trim().ToLower();
-                    colValue = itemSearch.Value.Trim().ToLower();
+                    colValue = itemSearch.Value.ToString().Trim().ToLower();
 
                     var colProp = ColumnPropGet.GetInstance.GetColumnProps(typeof(T), colName);
                     if (colProp != null)//Check if colname exists in Table

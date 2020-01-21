@@ -12,8 +12,7 @@ namespace EFHelper.EntityPreparation
         {
             //update all all field defined in entity ,additonal if forget for updatedate
             TypeBantuan tipe = new TypeBantuan();
-            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>("updatedate");
-            propUpdateDate = propUpdateDate != null ? propUpdateDate : ColumnPropGet.GetInstance.GetColumnProps<T>("updatetime");
+            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>("updatedate","updatetime");
             if (propUpdateDate != null)
             {
                 if (propUpdateDate.GetValue(entity) == null)

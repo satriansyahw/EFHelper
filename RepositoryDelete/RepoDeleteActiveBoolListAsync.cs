@@ -26,27 +26,14 @@ namespace EFHelper.RepositoryDelete
                         {
                             listEntity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["delete"].SetPreparationEntity<T>(listEntity);
                             TypeBantuan tipe = new TypeBantuan();
-                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>("updatedate");
-                            propUpdateDate = propUpdateDate != null ? propUpdateDate : ColumnPropGet.GetInstance.GetColumnProps<T>("updatetime");
-                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>("activebool");
-                            propActiveBool = propActiveBool != null ? propActiveBool : ColumnPropGet.GetInstance.GetColumnProps<T>("boolactive");
+                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>("updatedate","updatetime");                            
+                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>("activebool","boolactive");
+                            
                             context.Set<List<T>>().Attach(listEntity);
                             context.Entry(listEntity).State = EntityState.Unchanged;
+                            context.Entry(listEntity).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
+                            context.Entry(listEntity).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
 
-                            if (propUpdateDate != null)
-                            {
-                                if (propUpdateDate != null)
-                                {
-                                    context.Entry(listEntity).Property(propUpdateDate.Name).IsModified = true;
-                                }
-                            }
-                            if (propActiveBool != null)
-                            {
-                                if (propActiveBool != null)
-                                {
-                                    context.Entry(listEntity).Property(propActiveBool.Name).IsModified = true;
-                                }
-                            }                           
                             hasil = await context.SaveChangesAsync();
                             contextTrans.Commit();
                         }
@@ -85,26 +72,13 @@ namespace EFHelper.RepositoryDelete
 
                             listEntity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["delete"].SetPreparationEntity<T>(listEntity);
                             TypeBantuan tipe = new TypeBantuan();
-                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>("updatedate");
-                            propUpdateDate = propUpdateDate != null ? propUpdateDate : ColumnPropGet.GetInstance.GetColumnProps<T>("updatetime");
-                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>("activebool");
-                            propActiveBool = propActiveBool != null ? propActiveBool : ColumnPropGet.GetInstance.GetColumnProps<T>("boolactive");
+                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>("updatedate","updatetime");                            
+                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>("activebool","boolactive");
+                            
                             context.Set<List<T>>().Attach(listEntity);
                             context.Entry(listEntity).State = EntityState.Unchanged;
-                            if (propUpdateDate != null)
-                            {
-                                if (propUpdateDate != null)
-                                {
-                                    context.Entry(listEntity).Property(propUpdateDate.Name).IsModified = true;
-                                }
-                            }
-                            if (propActiveBool != null)
-                            {
-                                if (propActiveBool != null)
-                                {
-                                    context.Entry(listEntity).Property(propActiveBool.Name).IsModified = true;
-                                }
-                            }
+                            context.Entry(listEntity).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
+                            context.Entry(listEntity).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
 
 
                             hasil = await context.SaveChangesAsync();
