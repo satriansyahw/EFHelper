@@ -58,7 +58,7 @@ namespace EFHelper.RepositoryUpdate
             where T2 : class
         {
             int hasil = 0;
-            if (listEntity1 != null & listEntity2 != null)
+            if (listEntity1.Count > 0 & listEntity2.Count > 0)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
                 {
@@ -116,7 +116,7 @@ namespace EFHelper.RepositoryUpdate
             where T3 : class
         {
             int hasil = 0;
-            if (listEntity1 != null & listEntity2 != null & listEntity3 != null)
+            if (listEntity1.Count > 0 & listEntity2.Count > 0 & listEntity3.Count > 0)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
                 {
@@ -190,7 +190,7 @@ namespace EFHelper.RepositoryUpdate
             where T4 : class
         {
             int hasil = 0;
-            if (listEntity1 != null & listEntity2 != null & listEntity3 != null & listEntity4 != null)
+            if (listEntity1.Count > 0 & listEntity2.Count > 0 & listEntity3.Count > 0 & listEntity4.Count > 0)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
                 {
@@ -281,7 +281,7 @@ namespace EFHelper.RepositoryUpdate
             where T5 : class
         {
             int hasil = 0;
-            if (listEntity1 != null & listEntity2 != null & listEntity3 != null & listEntity4 != null & listEntity5 != null)
+            if (listEntity1.Count > 0 & listEntity2.Count > 0 & listEntity3.Count > 0 & listEntity4.Count > 0 & listEntity5.Count > 0)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
                 {
