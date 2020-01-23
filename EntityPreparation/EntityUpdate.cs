@@ -22,10 +22,11 @@ namespace EFHelper.EntityPreparation
                 List<SearchField> lsf = new List<SearchField>();
                 lsf.Add(new SearchField { Name = propIdentity.Name, Operator = "=", Value = identityID.ToString() });
                 var checkEntityList = repo.ListData<T>(lsf);
-                if(checkEntityList != null & checkEntityList.Count() > 0)
+                if(checkEntityList != null & checkEntityList.IsSuccessConnection & checkEntityList.IsSuccessQuery 
+                    & ((List<T>)checkEntityList.ReturnValue).Count > 0)
                 {
                     var colNull = ColumnPropGet.GetInstance.GetPropertyColNullOnly<T>(entity);
-                    var checkEntity = checkEntityList.ToList()[0];
+                    var checkEntity = ((List<T>)checkEntityList.ReturnValue).ToList()[0];
                     foreach (PropertyInfo itemPropUpdate in colNull)
                     {
                         // update tblEntity
@@ -36,7 +37,7 @@ namespace EFHelper.EntityPreparation
                     var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>("updatedate","updatetime");
                     if (propUpdateDate != null)
                     {
-                        if (propUpdateDate.GetValue(entity) == null)
+                        if (propUpdateDate.CanWrite)
                         {
                             object objUpdateDate = tipe.DictTypes[ColumnPropGet.GetInstance.GetColumnType(propUpdateDate)].GetDefaultValue(false);
                             propUpdateDate.SetValue(entity, objUpdateDate);

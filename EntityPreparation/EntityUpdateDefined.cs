@@ -15,7 +15,7 @@ namespace EFHelper.EntityPreparation
             var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>("updatedate","updatetime");
             if (propUpdateDate != null)
             {
-                if (propUpdateDate.GetValue(entity) == null)
+                if (propUpdateDate.CanWrite)
                 {
                     object objUpdateDate = tipe.DictTypes[ColumnPropGet.GetInstance.GetColumnType(propUpdateDate)].GetDefaultValue(false);
                     propUpdateDate.SetValue(entity, objUpdateDate);

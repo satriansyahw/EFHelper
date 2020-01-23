@@ -38,7 +38,7 @@ namespace EFHelper.ColumnHelper
                     ColumnPropSet.GetInstance.SetColValueIdentityColumn<T>(entity, IDIdentity);
                     listEntity.Add(entity);
                 }
-}
+            }
             return listEntity;
         }
         public List<ColumnListInfo> GetColumnList(Type t) 

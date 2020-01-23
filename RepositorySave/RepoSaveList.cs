@@ -1,5 +1,6 @@
 ﻿using EFHelper.Context;
 using EFHelper.EntityPreparation;
+using EFHelper.MiscClass;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,9 @@ namespace EFHelper.RepositorySave
 {
     public  class RepoSaveList : InterfaceRepoSaveList
     {
-        public virtual IEnumerable<T> SaveList<T>(List<T> listEntity) where T : class
+        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+
+        public virtual EFReturnValue SaveList<T>(List<T> listEntity) where T : class
         {
             var entityResult = Activator.CreateInstance<T>();
             int hasil = 0;
@@ -25,17 +28,17 @@ namespace EFHelper.RepositorySave
                             context.Set<List<T>>().Add(listEntity);
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn,true, hasil, listEntity);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
                 }
             }
 
             listEntity = hasil > 0 ? listEntity : null;
-            return listEntity;
+            return eFReturn;
         }
-
-        public virtual bool SaveList<T1, T2>(List<T1> listEntity1, List<T2> listEntity2)
+        public virtual EFReturnValue SaveList<T1, T2>(List<T1> listEntity1, List<T2> listEntity2)
             where T1 : class
             where T2 : class
         {
@@ -56,17 +59,18 @@ namespace EFHelper.RepositorySave
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn,true, hasil, listEntity1, listEntity2);
+
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
                 }
             }
 
 
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
-
-        public virtual bool SaveList<T1, T2, T3>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3)
+        public virtual EFReturnValue SaveList<T1, T2, T3>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -92,16 +96,17 @@ namespace EFHelper.RepositorySave
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn,true, hasil, listEntity1, listEntity2, listEntity3);
+
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
                 }
             }
 
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
-
-        public virtual bool SaveList<T1, T2, T3, T4>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3, List<T4> listEntity4)
+        public virtual EFReturnValue SaveList<T1, T2, T3, T4>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3, List<T4> listEntity4)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -130,16 +135,17 @@ namespace EFHelper.RepositorySave
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn,true, hasil, listEntity1, listEntity2, listEntity3, listEntity4);
+
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
                 }
             }
 
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
-
-        public virtual bool SaveList<T1, T2, T3, T4, T5>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3, List<T4> listEntity4, List<T5> listEntity5)
+        public virtual EFReturnValue SaveList<T1, T2, T3, T4, T5>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3, List<T4> listEntity4, List<T5> listEntity5)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -170,13 +176,14 @@ namespace EFHelper.RepositorySave
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn,true, hasil, listEntity1, listEntity2, listEntity3, listEntity4, listEntity5);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
                 }
             }
 
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
     }
 }

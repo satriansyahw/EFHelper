@@ -26,7 +26,8 @@ namespace EFHelper.EntityPreparation
             DictEntityPreparation.Add("save", new EntitySave());
             DictEntityPreparation.Add("update", new EntityUpdate());
             DictEntityPreparation.Add("updatedefined", new EntityUpdateDefined());
-            DictEntityPreparation.Add("delete", new EntityDelete());
+            DictEntityPreparation.Add("delete", new EntityDeleteActiveBool());
+            DictEntityPreparation.Add("deleteactivebool", new EntityDeleteActiveBool());
 
 
         }

@@ -57,6 +57,18 @@ namespace EFHelper.ColumnHelper
             }
             return entity;
         }
+        public List<T> SetColValue<T>(List<T> listEntity, string colName, object value) where T : class
+        {
+            PropertyInfo pi = ColumnPropGet.GetInstance.GetColumnProps<T>(colName.ToLower());
+            if (pi != null)
+            {                 
+                if (pi.CanWrite)
+                {
+                    pi.SetValue(listEntity, value);
+                }
+            }
+            return listEntity;
+        }
         public T SetColValueIdentityColumn<T>(T entity, object value) where T : class
         {
             string idcolname = string.Empty;
@@ -66,12 +78,26 @@ namespace EFHelper.ColumnHelper
             {
                 if (pi.CanWrite)
                 {
-
                     pi.SetValue(entity, value);
 
                 }
             }
             return entity;
+        }
+        public List<T> SetColValueIdentityColumn<T>(List<T> listEntity, object value) where T : class
+        {
+            string idcolname = string.Empty;
+            PropertyInfo pi = ColumnPropGet.GetInstance.GetIdentityColumnProps<T>();
+
+            if (pi != null)
+            {
+                if (pi.CanWrite)
+                {
+                    pi.SetValue(listEntity, value);
+
+                }
+            }
+            return listEntity;
         }
     }
 }

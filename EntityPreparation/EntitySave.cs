@@ -17,7 +17,8 @@ namespace EFHelper.EntityPreparation
             
             if (propIdentity !=null)
             {
-                if (propIdentity.GetValue(entity) == null)
+                
+                if (propIdentity.CanWrite)
                 {
                     object objID = tipe.DictTypes[ColumnPropGet.GetInstance.GetColumnType(propIdentity)].GetDefaultValue(false);
                     propIdentity.SetValue(entity, objID);
@@ -25,7 +26,7 @@ namespace EFHelper.EntityPreparation
             }
             if (propActiveBool != null)
             {
-                if (propActiveBool.GetValue(entity) == null)
+                if (propActiveBool.CanWrite)
                 {
                     object objActiveBool = tipe.DictTypes[ColumnPropGet.GetInstance.GetColumnType(propActiveBool)].GetDefaultValue(false);
                     propActiveBool.SetValue(entity, objActiveBool);
@@ -33,7 +34,7 @@ namespace EFHelper.EntityPreparation
             }
             if (propInsertDate != null)
             {
-                if (propInsertDate.GetValue(entity) == null)
+                if (propInsertDate.CanWrite)
                 {
                     object objInsertDate = tipe.DictTypes[ColumnPropGet.GetInstance.GetColumnType(propInsertDate)].GetDefaultValue(false);
                     propInsertDate.SetValue(entity, objInsertDate);

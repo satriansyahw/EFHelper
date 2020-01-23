@@ -1,6 +1,7 @@
 ﻿using EFHelper.ColumnHelper;
 using EFHelper.Context;
 using EFHelper.EntityPreparation;
+using EFHelper.MiscClass;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,8 @@ namespace EFHelper.RepositoryUpdate
 {
     public class RepoUpdateAllList : InterfaceRepoUpdateAllList
     {
-        public bool UpdateAllList<T>(List<T> listEntity) where T : class
+        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        public virtual EFReturnValue UpdateAllList<T>(List<T> listEntity) where T : class
         {
             int hasil = 0;
             if (listEntity != null)
@@ -22,20 +24,23 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
+                            listEntity= EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T>(listEntity);
+                            
                             context.Set<List<T>>().Attach(listEntity);
                             context.Entry(listEntity).State = EntityState.Modified;
                            
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
                 }
             }
-            return hasil > 0 ? true : false; 
+            return eFReturn; 
         }
 
-        public bool UpdateAllList<T1, T2>(List<T1> listEntity1, List<T2> listEntity2)
+        public virtual EFReturnValue UpdateAllList<T1, T2>(List<T1> listEntity1, List<T2> listEntity2)
             where T1 : class
             where T2 : class
         {
@@ -48,6 +53,9 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
+                            listEntity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(listEntity1);
+                            listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(listEntity2);
+                            
                             context.Set<List<T1>>().Attach(listEntity1);
                             context.Set<List<T2>>().Attach(listEntity2);
                             context.Entry(listEntity1).State = EntityState.Modified;
@@ -55,15 +63,16 @@ namespace EFHelper.RepositoryUpdate
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
                 }
             }
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
 
-        public bool UpdateAllList<T1, T2, T3>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3)
+        public virtual EFReturnValue UpdateAllList<T1, T2, T3>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -77,6 +86,10 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
+                            listEntity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(listEntity1);
+                            listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(listEntity2);
+                            listEntity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(listEntity3);
+                            
                             context.Set<List<T1>>().Attach(listEntity1);
                             context.Set<List<T2>>().Attach(listEntity2);
                             context.Set<List<T3>>().Attach(listEntity3);
@@ -87,15 +100,16 @@ namespace EFHelper.RepositoryUpdate
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
                 }
             }
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
 
-        public bool UpdateAllList<T1, T2, T3, T4>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3, List<T4> listEntity4)
+        public virtual EFReturnValue UpdateAllList<T1, T2, T3, T4>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3, List<T4> listEntity4)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -110,6 +124,11 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
+                            listEntity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(listEntity1);
+                            listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(listEntity2);
+                            listEntity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(listEntity3);
+                            listEntity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T4>(listEntity4);
+                            
                             context.Set<List<T1>>().Attach(listEntity1);
                             context.Set<List<T2>>().Attach(listEntity2);
                             context.Set<List<T3>>().Attach(listEntity3);
@@ -122,15 +141,16 @@ namespace EFHelper.RepositoryUpdate
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3, listEntity4);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
                 }
             }
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
 
-        public bool UpdateAllList<T1, T2, T3, T4, T5>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3, List<T4> listEntity4, List<T5> listEntity5)
+        public virtual EFReturnValue UpdateAllList<T1, T2, T3, T4, T5>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3, List<T4> listEntity4, List<T5> listEntity5)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -146,6 +166,12 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
+                            listEntity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(listEntity1);
+                            listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(listEntity2);
+                            listEntity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(listEntity3);
+                            listEntity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T4>(listEntity4);
+                            listEntity5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T5>(listEntity5);
+
                             context.Set<List<T1>>().Attach(listEntity1);
                             context.Set<List<T2>>().Attach(listEntity2);
                             context.Set<List<T3>>().Attach(listEntity3);
@@ -160,12 +186,13 @@ namespace EFHelper.RepositoryUpdate
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3, listEntity4, listEntity5);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
                 }
             }
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
     }
 }

@@ -2,6 +2,7 @@
 using EFHelper.Context;
 using EFHelper.EntityPreparation;
 using EFHelper.Filtering;
+using EFHelper.MiscClass;
 using EFHelper.RepositoryList;
 using EFHelper.TypeHelper;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +15,9 @@ namespace EFHelper.RepositoryDelete
 {
     public class RepoDeleteActiveBoolList : InterfaceRepoDeleteActiveBoolList
     {
-        public virtual bool DeleteActiveBoolList<T>(List<int> listIDIdentity) where T : class
+        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+
+        public virtual EFReturnValue DeleteActiveBoolList<T>(List<int> listIDIdentity) where T : class
         {
             int hasil = 0;
             if (listIDIdentity != null)
@@ -41,15 +44,16 @@ namespace EFHelper.RepositoryDelete
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
                 }
             }
 
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
-        public virtual bool DeleteActiveBoolList<T1, T2>(List<int> listIDIdentity1, List<int> listIDIdentity2)
+        public virtual EFReturnValue DeleteActiveBoolList<T1, T2>(List<int> listIDIdentity1, List<int> listIDIdentity2)
             where T1 : class
             where T2 : class
         {
@@ -90,14 +94,15 @@ namespace EFHelper.RepositoryDelete
                             
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
                 }
             }
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
-        public virtual bool DeleteActiveBoolList<T1, T2, T3>(List<int> listIDIdentity1, List<int> listIDIdentity2, List<int> listIDIdentity3)
+        public virtual EFReturnValue DeleteActiveBoolList<T1, T2, T3>(List<int> listIDIdentity1, List<int> listIDIdentity2, List<int> listIDIdentity3)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -148,14 +153,15 @@ namespace EFHelper.RepositoryDelete
  
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
                 }
             }
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
-        public virtual bool DeleteActiveBoolList<T1, T2, T3, T4>(List<int> listIDIdentity1, List<int> listIDIdentity2, List<int> listIDIdentity3, List<int> listIDIdentity4)
+        public virtual EFReturnValue DeleteActiveBoolList<T1, T2, T3, T4>(List<int> listIDIdentity1, List<int> listIDIdentity2, List<int> listIDIdentity3, List<int> listIDIdentity4)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -215,14 +221,15 @@ namespace EFHelper.RepositoryDelete
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3, listEntity4);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
                 }
             }
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
-        public virtual bool DeleteActiveBoolList<T1, T2, T3, T4, T5>(List<int> listIDIdentity1, List<int> listIDIdentity2, List<int> listIDIdentity3, List<int> listIDIdentity4, List<int> listIDIdentity5)
+        public virtual EFReturnValue DeleteActiveBoolList<T1, T2, T3, T4, T5>(List<int> listIDIdentity1, List<int> listIDIdentity2, List<int> listIDIdentity3, List<int> listIDIdentity4, List<int> listIDIdentity5)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -291,18 +298,17 @@ namespace EFHelper.RepositoryDelete
                             context.Entry(listEntity5).Property(propUpdateDate5.Name).IsModified = propUpdateDate5 != null ? true : false;
                             context.Entry(listEntity5).Property(propActiveBool5.Name).IsModified = propActiveBool5 != null ? true : false;
 
-
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3, listEntity4, listEntity5);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
                 }
             }
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
-
-        public virtual bool DeleteActiveBoolList<T>(List<T> listEntity) where T : class
+        public virtual EFReturnValue DeleteActiveBoolList<T>(List<T> listEntity) where T : class
         {
             int hasil = 0;
             if (listEntity != null)
@@ -326,17 +332,17 @@ namespace EFHelper.RepositoryDelete
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
 
                 }
             }
 
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
-
-        public virtual bool DeleteActiveBoolList<T1, T2>(List<T1> listEntity1, List<T2> listEntity2)
+        public virtual EFReturnValue DeleteActiveBoolList<T1, T2>(List<T1> listEntity1, List<T2> listEntity2)
             where T1 : class
             where T2 : class
         {
@@ -366,21 +372,20 @@ namespace EFHelper.RepositoryDelete
                             context.Entry(listEntity1).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
                             context.Entry(listEntity1).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
                             context.Entry(listEntity2).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
-                            context.Entry(listEntity2).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
-                            
+                            context.Entry(listEntity2).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;                            
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
 
                 }
             }
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
-
-        public virtual bool DeleteActiveBoolList<T1, T2, T3>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3)
+        public virtual EFReturnValue DeleteActiveBoolList<T1, T2, T3>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -419,21 +424,20 @@ namespace EFHelper.RepositoryDelete
                             context.Entry(listEntity2).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
                             context.Entry(listEntity2).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
                             context.Entry(listEntity3).Property(propUpdateDate3.Name).IsModified = propUpdateDate3 != null ? true : false;
-                            context.Entry(listEntity3).Property(propActiveBool3.Name).IsModified = propActiveBool3 != null ? true : false;
-                            
+                            context.Entry(listEntity3).Property(propActiveBool3.Name).IsModified = propActiveBool3 != null ? true : false;                            
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
 
                 }
             }
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
-
-        public virtual bool DeleteActiveBoolList<T1, T2, T3, T4>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3, List<T4> listEntity4)
+        public virtual EFReturnValue DeleteActiveBoolList<T1, T2, T3, T4>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3, List<T4> listEntity4)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -484,16 +488,16 @@ namespace EFHelper.RepositoryDelete
                             
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3, listEntity4);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
 
                 }
             }
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
-
-        public virtual bool DeleteActiveBoolList<T1, T2, T3, T4, T5>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3, List<T4> listEntity4, List<T5> listEntity5)
+        public virtual EFReturnValue DeleteActiveBoolList<T1, T2, T3, T4, T5>(List<T1> listEntity1, List<T2> listEntity2, List<T3> listEntity3, List<T4> listEntity4, List<T5> listEntity5)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -550,16 +554,18 @@ namespace EFHelper.RepositoryDelete
                             context.Entry(listEntity5).Property(propUpdateDate5.Name).IsModified = propUpdateDate5 != null ? true : false;
                             context.Entry(listEntity5).Property(propActiveBool5.Name).IsModified = propActiveBool5 != null ? true : false;
 
-
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3, listEntity4, listEntity5);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
 
                 }
             }
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
+
+
     }
 }

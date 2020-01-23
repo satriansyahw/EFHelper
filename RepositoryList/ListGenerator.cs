@@ -22,7 +22,6 @@ namespace EFHelper.RepositoryList
             return result;
 
         }
-
         public virtual IQueryable<TResult> QueryListGenerator<TSource, TResult>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
             where TSource : class
             where TResult : class

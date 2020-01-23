@@ -10,8 +10,9 @@ using EFHelper.TypeHelper;
 
 namespace EFHelper.EntityPreparation
 {
-    public class EntityDelete : InterfaceEntityPreparation
+    public class EntityDeleteActiveBool : InterfaceEntityPreparation
     {
+        /*this is only for set activebool to false, for physically remove drom table will use direct function from EF*/
         public T SetPreparationEntity<T>(T entity) where T : class
         {
             if (entity != null)
@@ -21,15 +22,15 @@ namespace EFHelper.EntityPreparation
                 var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>("activebool", "boolactive");
                 if (propUpdateDate != null)
                 {
-                    if (propUpdateDate.GetValue(entity) == null)
-                    {
+                    if (propUpdateDate.CanWrite)
+                    { 
                         object objUpdateDate = tipe.DictTypes[ColumnPropGet.GetInstance.GetColumnType(propUpdateDate)].GetDefaultValue(false);
                         propUpdateDate.SetValue(entity, objUpdateDate);
                     }
                 }
                 if (propActiveBool != null)
                 {
-                    if (propActiveBool.GetValue(entity) == null)
+                    if (propActiveBool.CanWrite)
                     {
                         propActiveBool.SetValue(entity, false);
                     }

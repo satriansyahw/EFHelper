@@ -1,6 +1,7 @@
 ﻿using EFHelper.ColumnHelper;
 using EFHelper.Context;
 using EFHelper.Filtering;
+using EFHelper.MiscClass;
 using EFHelper.RepositoryList;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,9 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
 {
     public class RepoDeleteHeaderDetailList : InterfaceDeleteHeaderDetailList
     {
-        public virtual bool DeleteHeaderDetailList<T, T1>(List<int> listIDIdentity, string idReferenceColName)
+        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+
+        public virtual EFReturnValue DeleteHeaderDetailList<T, T1>(List<int> listIDIdentity, string idReferenceColName)
             where T : class
             where T1 : class
         {
@@ -36,17 +39,17 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity, listEntity1);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
 
                 }
             }
 
-            return hasil > 0 ? true : false;
-        }
-        
-        public virtual bool DeleteHeaderDetailList<T, T1, T2>(List<int> listIDIdentity, string idReferenceColName)
+            return eFReturn;
+        }        
+        public virtual EFReturnValue DeleteHeaderDetailList<T, T1, T2>(List<int> listIDIdentity, string idReferenceColName)
             where T : class
             where T1 : class
             where T2 : class
@@ -75,17 +78,17 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity, listEntity1, listEntity2);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
 
                 }
             }
 
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
-
-        public virtual bool DeleteHeaderDetailList<T, T1, T2, T3>(List<int> listIDIdentity, string idReferenceColName)
+        public virtual EFReturnValue DeleteHeaderDetailList<T, T1, T2, T3>(List<int> listIDIdentity, string idReferenceColName)
             where T : class
             where T1 : class
             where T2 : class
@@ -118,17 +121,17 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity, listEntity1, listEntity2, listEntity3);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
 
                 }
             }
 
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
-
-        public virtual bool DeleteHeaderDetailList<T, T1, T2, T3, T4>(List<int> listIDIdentity, string idReferenceColName)
+        public virtual EFReturnValue DeleteHeaderDetailList<T, T1, T2, T3, T4>(List<int> listIDIdentity, string idReferenceColName)
             where T : class
             where T1 : class
             where T2 : class
@@ -165,17 +168,17 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity, listEntity1, listEntity2, listEntity3, listEntity4);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
 
                 }
             }
 
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
-
-        public virtual bool DeleteHeaderDetailList<T, T1, T2, T3, T4, T5>(List<int> listIDIdentity, string idReferenceColName)
+        public virtual EFReturnValue DeleteHeaderDetailList<T, T1, T2, T3, T4, T5>(List<int> listIDIdentity, string idReferenceColName)
             where T : class
             where T1 : class
             where T2 : class
@@ -216,22 +219,24 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity, listEntity1, listEntity2, listEntity3, listEntity4, listEntity5);
                         }
-                        catch { contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
                     }
 
                 }
             }
 
-            return hasil > 0 ? true : false;
+            return eFReturn;
         }
+
         private List<T> getListData<T>(List<int> listIDIdentity, string idReferenceColName) where T : class
         {
             List<SearchField> param = new System.Collections.Generic.List<SearchField>();
             param.Add(new SearchField { Name = idReferenceColName, Operator = "in", Value = listIDIdentity });
             RepoList list = new RepoList();
             var myList = list.ListData<T>(param);
-            return myList != null ? (List<T>)myList : null;
+             return (myList.IsSuccessConnection & myList.IsSuccessQuery  & ((List<T>)myList.ReturnValue).Count > 0) ? (List<T>)myList.ReturnValue : null;
         }
     }
 }
