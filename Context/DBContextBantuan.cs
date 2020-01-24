@@ -15,7 +15,7 @@ namespace EFHelper.Context
         public DBContextBantuan()
         {
             
-        }
+        }       
         public virtual DbContext CreateConnectionContext()
         {
             DbContext mydbContext = DBContextInfo.MyDbContext;

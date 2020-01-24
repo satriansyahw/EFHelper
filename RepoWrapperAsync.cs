@@ -56,7 +56,7 @@ namespace EFHelper
         {
             return ((InterfaceRepoDeleteActiveBoolAsync)GetInstance).DeleteActiveBoolAsync(entity1, entity2);
         }
-
+       
         public Task<EFReturnValue> DeleteActiveBoolAsync<T1, T2, T3>(T1 entity1, T2 entity2, T3 entity3)
             where T1 : class
             where T2 : class

@@ -18,7 +18,7 @@ namespace EFHelper.RepositoryDelete
                 if (instance == null) instance = new RepoDelete();
                 return instance;
             }
-        }
+        }       
         public virtual EFReturnValue Delete<T>(int IDIdentity) where T : class
         {
             int hasil = 0;
