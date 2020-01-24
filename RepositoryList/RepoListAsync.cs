@@ -73,6 +73,24 @@ namespace EFHelper.RepositoryList
             return eFReturn;
 
         }
+
+        public virtual async Task<EFReturnValue> ListDataAsync<T>() where T : class
+        {
+            using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
+            {
+                try
+                {
+                    var queryable = context.Set<T>().AsQueryable();
+                    QueryGenerator query = new QueryGenerator();
+                    queryable = query.QueryGeneratorList<T>(queryable, null, string.Empty, false, 0);
+                    var result = await queryable.ToListAsync();
+                    eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, result);
+                }
+                catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex); }
+            }
+            return eFReturn;
+        }
+
        
     }
 }

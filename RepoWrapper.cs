@@ -10,6 +10,7 @@ using EFHelper.RepositoryUpdate;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,7 +19,7 @@ namespace EFHelper
     public class RepoWrapper: DBContextBantuan,InterfaceRepoSave, InterfaceRepoSaveList, InterfaceRepoSaveHeaderDetail, InterfaceRepoSaveHeaderDetailList, InterfaceSaveUpdate, InterfaceSaveUpdateList
         , InterfaceRepoUpdate, InterfaceRepoUpdateList, InterfaceRepoUpdateAll, InterfaceRepoUpdateAllList, InterfaceRepoDelete, InterfaceRepoDeleteList, InterfaceRepoDeleteActiveBool, InterfaceRepoDeleteActiveBoolList
         , InterfaceDeleteHeaderDetail, InterfaceDeleteHeaderDetailList, InterfaceDeleteHeaderDetailActiveBool, InterfaceDeleteHeaderDetailActiveBoolList
-        , InterfaceRepoList
+        , InterfaceRepoList, InterfaceRepoListQueryable
     {
         private static RepoWrapper instance;
         public new static RepoWrapper GetInstance
@@ -954,6 +955,26 @@ namespace EFHelper
             where T5 : class
         {
             return ((InterfaceRepoUpdateList)GetInstance).UpdateList(listEntity1, listEntity2, listEntity3, listEntity4, listEntity5);
+        }
+
+        public EFReturnValue ListData<T>() where T : class
+        {
+            return ((InterfaceRepoList)GetInstance).ListData<T>();
+        }
+
+        public EFReturnValue ListDataQueryable<TResult>(IQueryable<TResult> queryable) where TResult : class
+        {
+            return ((InterfaceRepoListQueryable)GetInstance).ListDataQueryable(queryable);
+        }
+
+        public EFReturnValue ListDataQueryable<TResult>(IQueryable<TResult> queryable, List<SearchField> searchFieldList) where TResult : class
+        {
+            return ((InterfaceRepoListQueryable)GetInstance).ListDataQueryable(queryable, searchFieldList);
+        }
+
+        public EFReturnValue ListDataQueryable<TResult>(IQueryable<TResult> queryable, List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake) where TResult : class
+        {
+            return ((InterfaceRepoListQueryable)GetInstance).ListDataQueryable(queryable, searchFieldList, sortColumn, isAscending, topTake);
         }
     }
    

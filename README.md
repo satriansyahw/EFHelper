@@ -46,7 +46,8 @@
    15. DeleteHeaderDetailList, delete list data header detail not physically (soft delete)
    16. DeleteHeaderDetailActiveBool, delete data header detail not physically (soft delete)
    17. DeleteHeaderDetailActiveBoolList, delete data header detail not physically (soft delete)
-   18. ListData
+   18. ListData, make query list to database
+   19. ListDataQueryable, make query list to database, Iqueryable is from RepoWrapper Context
 
 ## List Of available methods (Asynchronous), you must use await for these methods
    1. SaveAsync, save data to database
@@ -68,7 +69,8 @@
    15. DeleteHeaderDetailListAsync, delete list data header detail not physically (soft delete)
    16. DeleteHeaderDetailActiveBoolAsync, delete data header detail not physically (soft delete)
    17. DeleteHeaderDetailActiveBoolListAsync, delete data header detail not physically (soft delete)
-   18. ListDataAsync
+   18. ListDataAsync, make query list to database
+   19. ListDataQueryableAsync,make query list to database, Iqueryable is from RepoWrapperAsync Context
 
 # HAPPYCoding
 Contact Me At satriansyahw@gmail.com

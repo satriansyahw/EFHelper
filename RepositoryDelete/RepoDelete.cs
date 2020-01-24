@@ -46,6 +46,8 @@ namespace EFHelper.RepositoryDelete
 
             return eFReturn;
         }
+
+
         public virtual EFReturnValue Delete<T1, T2>(int IDIdentity1, int IDIdentity2)
             where T1 : class
             where T2 : class

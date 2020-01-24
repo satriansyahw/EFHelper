@@ -10,6 +10,7 @@ using EFHelper.RepositoryUpdate;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,7 +19,7 @@ namespace EFHelper
     public class RepoWrapperAsync : DBContextBantuan,InterfaceRepoSaveAsync, InterfaceRepoSaveListAsync, InterfaceRepoSaveHeaderDetailAsync, InterfaceRepoSaveHeaderDetailListAsync, InterfaceSaveUpdateAsync, InterfaceSaveUpdateListAsync
         , InterfaceRepoUpdateAsync, InterfaceRepoUpdateListAsync, InterfaceRepoUpdateAllAsync, InterfaceRepoUpdateAllListAsync, InterfaceRepoDeleteAsync, InterfaceRepoDeleteListAsync, InterfaceRepoDeleteActiveBoolAsync, InterfaceRepoDeleteActiveBoolListAsync
         , InterfaceDeleteHeaderDetailAsync, InterfaceDeleteHeaderDetailListAsync, InterfaceDeleteHeaderDetailActiveBoolAsync, InterfaceDeleteHeaderDetailActiveBoolListAsync
-        , InterfaceRepoListAsync
+        , InterfaceRepoListAsync, InterfaceRepoListQueryableAsync
     {
         private static RepoWrapperAsync instance;
         public new static RepoWrapperAsync GetInstance
@@ -553,7 +554,10 @@ namespace EFHelper
         {
             return await ((InterfaceRepoListAsync)GetInstance).ListDataAsync<TSource, TResult>(searchFieldList, sortColumn, isAscending, topTake);
         }
-
+        public async Task<EFReturnValue> ListDataAsync<T>() where T : class
+        {
+            return await ((InterfaceRepoListAsync)GetInstance).ListDataAsync<T>();
+        }
         public async Task<EFReturnValue> SaveAsync<T>(T entity) where T : class
         {
             return await ((InterfaceRepoSaveAsync)GetInstance).SaveAsync(entity);
@@ -954,6 +958,21 @@ namespace EFHelper
             where T5 : class
         {
             return await ((InterfaceRepoUpdateListAsync)GetInstance).UpdateListAsync(listEntity1, listEntity2, listEntity3, listEntity4, listEntity5);
+        }
+
+        public async Task<EFReturnValue> ListDataQueryableAsync<TResult>(IQueryable<TResult> queryable) where TResult : class
+        {
+            return await ((InterfaceRepoListQueryableAsync)GetInstance).ListDataQueryableAsync(queryable);
+        }
+
+        public async Task<EFReturnValue> ListDataQueryableAsync<TResult>(IQueryable<TResult> queryable, List<SearchField> searchFieldList) where TResult : class
+        {
+            return await ((InterfaceRepoListQueryableAsync)GetInstance).ListDataQueryableAsync(queryable, searchFieldList);
+        }
+
+        public async Task<EFReturnValue> ListDataQueryableAsync<TResult>(IQueryable<TResult> queryable, List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake) where TResult : class
+        {
+            return await((InterfaceRepoListQueryableAsync)GetInstance).ListDataQueryableAsync(queryable, searchFieldList, sortColumn, isAscending, topTake);
         }
     }
 }
