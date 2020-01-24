@@ -12,8 +12,16 @@ namespace EFHelper.RepositorySaveUpdate
 {
     public class RepoSaveUpdate : InterfaceSaveUpdate
     {
-        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
-
+        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private static RepoSaveUpdate instance;
+        public static RepoSaveUpdate GetInstance
+        {
+            get
+            {
+                if (instance == null) instance = new RepoSaveUpdate();
+                return instance;
+            }
+        }
         public EFReturnValue SaveUpdate<T1>(T1 entity1, bool isSaveT1) where T1 : class
         {
             int hasil = 0;
@@ -25,7 +33,7 @@ namespace EFHelper.RepositorySaveUpdate
                     {
                         try
                         {
-                            List<PropertyInfo> colNotNullT1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);                        
+                            List<PropertyInfo> colNotNullT1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);                       
 
                             entity1 = this.SetEntityPreparation<T1>(entity1, isSaveT1);                          
 
@@ -126,8 +134,7 @@ namespace EFHelper.RepositorySaveUpdate
                         {
                             List<PropertyInfo> colNotNullT1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);
                             List<PropertyInfo> colNotNullT2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);
-                            List<PropertyInfo> colNotNullT3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);
-                          
+                            List<PropertyInfo> colNotNullT3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);                          
 
                             entity1 = this.SetEntityPreparation<T1>(entity1, isSaveT1);
                             entity2 = this.SetEntityPreparation<T2>(entity2, isSaveT2);

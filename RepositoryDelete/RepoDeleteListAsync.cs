@@ -11,8 +11,16 @@ namespace EFHelper.RepositoryDelete
 
     public class RepoDeleteListAsync : InterfaceRepoDeleteListAsync
     {
-        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
-
+        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private static RepoDeleteListAsync instance;
+        public static RepoDeleteListAsync GetInstance
+        {
+            get
+            {
+                if (instance == null) instance = new RepoDeleteListAsync();
+                return instance;
+            }
+        }
         public virtual async Task<EFReturnValue> DeleteListAsync<T>(List<T> listEntity) where T : class
         {
             int hasil = 0;

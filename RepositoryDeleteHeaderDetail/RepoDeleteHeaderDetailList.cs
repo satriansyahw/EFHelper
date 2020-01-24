@@ -11,8 +11,16 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
 {
     public class RepoDeleteHeaderDetailList : InterfaceDeleteHeaderDetailList
     {
-        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
-
+        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private static RepoDeleteHeaderDetailList instance;
+        public static RepoDeleteHeaderDetailList GetInstance
+        {
+            get
+            {
+                if (instance == null) instance = new RepoDeleteHeaderDetailList();
+                return instance;
+            }
+        }
         public virtual EFReturnValue DeleteHeaderDetailList<T, T1>(List<int> listIDIdentity, string idReferenceColName)
             where T : class
             where T1 : class

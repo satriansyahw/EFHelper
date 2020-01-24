@@ -11,8 +11,16 @@ namespace EFHelper.RepositorySave
 {
     public  class RepoSaveHeaderDetailListAsync : InterfaceRepoSaveHeaderDetailListAsync
     {
-        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
-
+        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private static RepoSaveHeaderDetailListAsync instance;
+        public static RepoSaveHeaderDetailListAsync GetInstance
+        {
+            get
+            {
+                if (instance == null) instance = new RepoSaveHeaderDetailListAsync();
+                return instance;
+            }
+        }
         public virtual async Task<EFReturnValue> SaveHeaderDetailListAsync<T, T1>(T tblHeader, string idReferenceColName, List<T1> listTblDetail1)
             where T : class
             where T1 : class

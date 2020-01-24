@@ -10,7 +10,7 @@ namespace EFHelper.RepositorySave
 {
     public  class RepoSaveHeaderDetail : InterfaceRepoSaveHeaderDetail
     {
-        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+       private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
 
         public virtual EFReturnValue SaveHeaderDetail<T, T1>(T tblHeader, string idReferenceColName, T1 tblDetail1)
             where T : class

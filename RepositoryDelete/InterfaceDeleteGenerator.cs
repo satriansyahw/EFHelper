@@ -8,7 +8,12 @@ namespace EFHelper.RepositoryDelete
 {
     public interface InterfaceRepoDelete
     {
-       
+        /// <summary>
+        /// hai
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="IDIdentity"></param>
+        /// <returns></returns>
         EFReturnValue Delete<T>(int IDIdentity) where T : class;
         EFReturnValue Delete<T1, T2>(int IDIdentity1, int IDIdentity2) where T1 : class where T2 : class;
         EFReturnValue Delete<T1, T2, T3>(int IDIdentity1, int IDIdentity2, int IDIdentity3) where T1 : class where T2 : class where T3 : class;
@@ -114,7 +119,6 @@ namespace EFHelper.RepositoryDelete
         Task<EFReturnValue> DeleteActiveBoolAsync<T1, T2, T3, T4>(int IDIdentity1, int IDIdentity2, int IDIdentity3, int IDIdentity4) where T1 : class where T2 : class where T3 : class where T4 : class;
         Task<EFReturnValue> DeleteActiveBoolAsync<T1, T2, T3, T4, T5>(int IDIdentity1, int IDIdentity2, int IDIdentity3, int IDIdentity4, int IDIdentity5) where T1 : class where T2 : class where T3 : class where T4 : class where T5 : class;
 
-        /*ini masih banyak yg kurang loh*/
 
     }
     public interface InterfaceRepoDeleteActiveBoolListAsync
@@ -132,7 +136,6 @@ namespace EFHelper.RepositoryDelete
         Task<EFReturnValue> DeleteActiveBoolListAsync<T1, T2, T3, T4>(List<int> listIDIdentity1, List<int> listIDIdentity2, List<int> listIDIdentity3, List<int> listIDIdentity4) where T1 : class where T2 : class where T3 : class where T4 : class;
         Task<EFReturnValue> DeleteActiveBoolListAsync<T1, T2, T3, T4, T5>(List<int> listIDIdentity1, List<int> listIDIdentity2, List<int> listIDIdentity3, List<int> listIDIdentity4, List<int> listIDIdentity5) where T1 : class where T2 : class where T3 : class where T4 : class where T5 : class;
 
-        /*ini masih banyak yg kurang loh*/
 
     }
 

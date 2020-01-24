@@ -13,10 +13,18 @@ using System.Threading.Tasks;
 
 namespace EFHelper.RepositoryDeleteHeaderDetail
 {
-    public class RepoDeleteHeaderDetailActiveBoolAsyncAsync : InterfaceDeleteHeaderDetailActiveBoolAsync
+    public class RepoDeleteHeaderDetailActiveBoolAsync : InterfaceDeleteHeaderDetailActiveBoolAsync
     {
-        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
-
+        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private static RepoDeleteHeaderDetailActiveBoolAsync instance;
+        public static RepoDeleteHeaderDetailActiveBoolAsync GetInstance
+        {
+            get
+            {
+                if (instance == null) instance = new RepoDeleteHeaderDetailActiveBoolAsync();
+                return instance;
+            }
+        }
         public virtual async Task<EFReturnValue> DeleteHeaderDetailActiveBoolAsync<T, T1>(int IDIdentity, string idReferenceColName)
               where T : class
               where T1 : class

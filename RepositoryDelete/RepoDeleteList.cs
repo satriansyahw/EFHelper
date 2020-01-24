@@ -9,8 +9,16 @@ namespace EFHelper.RepositoryDelete
 {
     public class RepoDeleteList : InterfaceRepoDeleteList
     {
-        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
-
+        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private static RepoDeleteList instance;
+        public static RepoDeleteList GetInstance
+        {
+            get
+            {
+                if (instance == null) instance = new RepoDeleteList();
+                return instance;
+            }
+        }
         public virtual EFReturnValue DeleteList<T>(List<T> listEntity) where T : class
         {         
             int hasil = 0;

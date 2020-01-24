@@ -13,8 +13,16 @@ namespace EFHelper.RepositorySaveUpdate
 {
     public class RepoSaveUpdateAsync:InterfaceSaveUpdateAsync
     {
-        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
-
+        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private static RepoSaveUpdateAsync instance;
+        public static RepoSaveUpdateAsync GetInstance
+        {
+            get
+            {
+                if (instance == null) instance = new RepoSaveUpdateAsync();
+                return instance;
+            }
+        }
         public async Task<EFReturnValue> SaveUpdateAsync<T1>(T1 entity1, bool isSaveT1) where T1 : class
         {
             int hasil = 0;

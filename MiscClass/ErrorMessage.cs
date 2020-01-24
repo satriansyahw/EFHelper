@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace EFHelper
+namespace EFHelper.MiscClass
 {
     public  class ErrorMessage
     {      

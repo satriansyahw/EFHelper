@@ -13,8 +13,16 @@ namespace EFHelper.RepositoryDelete
 {
     public class RepoDeleteActiveBool : InterfaceRepoDeleteActiveBool
     {
-        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
-
+        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private static RepoDeleteActiveBool instance;
+        public static RepoDeleteActiveBool GetInstance
+        {
+            get
+            {
+                if (instance == null) instance = new RepoDeleteActiveBool();
+                return instance;
+            }
+        }
         public virtual EFReturnValue DeleteActiveBool<T>(int IDIdentity) where T : class
         {
             int hasil = 0;

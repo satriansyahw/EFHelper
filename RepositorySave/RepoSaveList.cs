@@ -9,8 +9,16 @@ namespace EFHelper.RepositorySave
 {
     public  class RepoSaveList : InterfaceRepoSaveList
     {
-        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
-
+        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private static RepoSaveList instance;
+        public static RepoSaveList GetInstance
+        {
+            get
+            {
+                if (instance == null) instance = new RepoSaveList();
+                return instance;
+            }
+        }
         public virtual EFReturnValue SaveList<T>(List<T> listEntity) where T : class
         {
             var entityResult = Activator.CreateInstance<T>();

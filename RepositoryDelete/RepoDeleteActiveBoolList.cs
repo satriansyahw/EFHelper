@@ -15,8 +15,16 @@ namespace EFHelper.RepositoryDelete
 {
     public class RepoDeleteActiveBoolList : InterfaceRepoDeleteActiveBoolList
     {
-        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
-
+        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private static RepoDeleteActiveBoolList instance;
+        public static RepoDeleteActiveBoolList GetInstance
+        {
+            get
+            {
+                if (instance == null) instance = new RepoDeleteActiveBoolList();
+                return instance;
+            }
+        }
         public virtual EFReturnValue DeleteActiveBoolList<T>(List<int> listIDIdentity) where T : class
         {
             int hasil = 0;
@@ -29,7 +37,6 @@ namespace EFHelper.RepositoryDelete
                     {
                         try
                         {
-
                             List<T> listEntity = new List<T>();
                             listEntity = ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T>(listIDIdentity);                           
                             listEntity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["delete"].SetPreparationEntity<T>(listEntity);

@@ -10,8 +10,16 @@ namespace EFHelper.RepositorySave
 {
     public  class RepoSaveListAsync : InterfaceRepoSaveListAsync
     {
-        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
-
+        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private static RepoSaveListAsync instance;
+        public static RepoSaveListAsync GetInstance
+        {
+            get
+            {
+                if (instance == null) instance = new RepoSaveListAsync();
+                return instance;
+            }
+        }
         public virtual  async Task<EFReturnValue> SaveListAsync<T>(List<T> listEntity) where T : class
         {
             var entityResult = Activator.CreateInstance<T>();

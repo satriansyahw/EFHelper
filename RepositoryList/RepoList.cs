@@ -10,8 +10,16 @@ namespace EFHelper.RepositoryList
 {
     public class RepoList : InterfaceRepoList
     {       
-        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
-
+        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private static RepoList instance;
+        public static RepoList GetInstance
+        {
+            get
+            {
+                if (instance == null) instance = new RepoList();
+                return instance;
+            }
+        }
         public virtual EFReturnValue ListData<T>(List<SearchField> searchFieldList) where T : class
         {
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())

@@ -12,7 +12,16 @@ namespace EFHelper.RepositoryUpdate
 {
     public class RepoUpdateAllList : InterfaceRepoUpdateAllList
     {
-        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private static RepoUpdateAllList instance;
+        public static RepoUpdateAllList GetInstance
+        {
+            get
+            {
+                if (instance == null) instance = new RepoUpdateAllList();
+                return instance;
+            }
+        }
         public virtual EFReturnValue UpdateAllList<T>(List<T> listEntity) where T : class
         {
             int hasil = 0;

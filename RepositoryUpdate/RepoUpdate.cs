@@ -10,7 +10,15 @@ namespace EFHelper.RepositoryUpdate
 {
     public class RepoUpdate : InterfaceRepoUpdate
     {
-        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private static RepoUpdate instance;
+        public static RepoUpdate GetInstance
+        {
+            get {
+                if (instance == null) instance = new RepoUpdate();
+                return instance;
+            }
+        }
         public EFReturnValue Update<T>(T entity) where T : class
         {
             int hasil = 0;

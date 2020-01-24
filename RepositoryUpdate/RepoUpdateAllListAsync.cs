@@ -13,8 +13,16 @@ namespace EFHelper.RepositoryUpdate
 {
     public class RepoUpdateAllListAsync : InterfaceRepoUpdateAllListAsync
     {
-        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
-
+        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private static RepoUpdateAllListAsync instance;
+        public static RepoUpdateAllListAsync GetInstance
+        {
+            get
+            {
+                if (instance == null) instance = new RepoUpdateAllListAsync();
+                return instance;
+            }
+        }
         public virtual async Task<EFReturnValue> UpdateAllListAsync<T>(List<T> listEntity) where T : class
         {
             int hasil = 0;

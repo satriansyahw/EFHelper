@@ -14,8 +14,9 @@ namespace EFHelper.Context
         }
         public DBContextBantuan()
         {
+            
         }
-        public DbContext CreateConnectionContext()
+        public virtual DbContext CreateConnectionContext()
         {
             DbContext mydbContext = DBContextInfo.MyDbContext;
             //mydbContextBridge.Database.Initialize(force: false);
@@ -25,6 +26,12 @@ namespace EFHelper.Context
             mydbContext.ChangeTracker.LazyLoadingEnabled = false;
             return mydbContext;
         }
+
+        public virtual void SetConnectionContext(DbContext dbContext)
+        {
+            DBContextInfo.MyDbContext = dbContext ;
+        }
+
         public static DBContextBantuan GetInstance
         {
             get

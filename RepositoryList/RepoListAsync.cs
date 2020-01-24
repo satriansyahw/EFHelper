@@ -12,8 +12,16 @@ namespace EFHelper.RepositoryList
 {
     public  class RepoListAsync : InterfaceRepoListAsync
     {
-        EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
-
+        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private static RepoListAsync instance;
+        public static RepoListAsync GetInstance
+        {
+            get
+            {
+                if (instance == null) instance = new RepoListAsync();
+                return instance;
+            }
+        }
         public virtual async Task<EFReturnValue> ListDataAsync<T>(List<SearchField> searchFieldList) where T : class
         {
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())

@@ -7,6 +7,7 @@ namespace EFHelper.Context
 {
     public interface InterfaceDBContext
     {
-        DbContext CreateConnectionContext();        
+        DbContext CreateConnectionContext();
+        void SetConnectionContext(DbContext dbContext);
     }
 }
