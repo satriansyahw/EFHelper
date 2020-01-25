@@ -29,7 +29,7 @@ namespace EFHelper.RepositoryList
                     var queryable = context.Set<T>().AsQueryable();
                     QueryGenerator query = new QueryGenerator();
                     queryable = query.QueryGeneratorList<T>(queryable, searchFieldList, string.Empty, false, 0);
-                    var result = queryable.AsEnumerable();
+                    var result = queryable.ToList();
                     eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, result);
                 }
                 catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex); }
@@ -45,7 +45,7 @@ namespace EFHelper.RepositoryList
                     var queryable = context.Set<T>().AsQueryable();
                     QueryGenerator query = new QueryGenerator();
                     queryable = query.QueryGeneratorList<T>(queryable, searchFieldList,sortColumn,isAscending,topTake);
-                    var result = queryable.AsEnumerable();
+                    var result = queryable.ToList();
                     eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, result);
                 }
                 catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex); }
@@ -80,7 +80,7 @@ namespace EFHelper.RepositoryList
                     var queryable = context.Set<T>().AsQueryable();
                     QueryGenerator query = new QueryGenerator();
                     queryable = query.QueryGeneratorList<T>(queryable, null, string.Empty, false, 0);
-                    var result = queryable.AsEnumerable();
+                    var result = queryable.ToList();
                     eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, result);
                 }
                 catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex); }

@@ -25,7 +25,7 @@ namespace EFHelper.MiscClass
                     List<DictReturnValue> dictReturn = new List<DictReturnValue>();
                     foreach (var item in objectResult)
                     {
-                        dictReturn.Add(new DictReturnValue { Name = item.GetType().Name, ReturnValue = item });
+                        dictReturn.Add(new DictReturnValue { Name = item.GetType().Name.Replace("`",""), ReturnValue = item });
                     }
                     eFReturn.ReturnValue = dictReturn;
                 }
