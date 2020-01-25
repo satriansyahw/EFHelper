@@ -7,26 +7,27 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
+using static EFHelper.MiscClass.MiscClass;
 
-namespace EFHelper.RepositorySaveUpdate
+namespace EFHelper.RepositorySaveUpdateDelete
 {
-    public class RepoSaveUpdateListAsync:InterfaceRepoSaveUpdateListAsync
+    public class RepoSaveUpdateDeleteList : InterfaceRepoSaveUpdateDeleteList
     {
         private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
-        private static RepoSaveUpdateListAsync instance;
-        public static RepoSaveUpdateListAsync GetInstance
+        private static RepoSaveUpdateDeleteList instance;
+        public static RepoSaveUpdateDeleteList GetInstance
         {
             get
             {
-                if (instance == null) instance = new RepoSaveUpdateListAsync();
+                if (instance == null) instance = new RepoSaveUpdateDeleteList();
                 return instance;
             }
-        }
-        public async Task<EFReturnValue> SaveUpdateListAsync<T1>(List<T1> listEntity1, bool isSaveT1) where T1 : class
+        }        
+
+        public EFReturnValue SaveUpdateDeleteList<T1>(List<T1> listEntity1, EnumSaveUpdateDelete enumSUDT1) where T1 : class
         {
             int hasil = 0;
-            if (listEntity1 != null)
+            if (listEntity1 != null )
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
                 {
@@ -34,12 +35,14 @@ namespace EFHelper.RepositorySaveUpdate
                     {
                         try
                         {
+                            listEntity1 = this.SetEntityPreparation<T1>(listEntity1, enumSUDT1);
 
-                            listEntity1 = this.SetEntityPreparation<T1>(listEntity1, isSaveT1);
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<List<T1>>().Add(listEntity1);
 
-                            if (isSaveT1) context.Set<List<T1>>().Add(listEntity1);
 
-                            if (!isSaveT1)
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { context.Set<List<T1>>().Attach(listEntity1); context.Set<List<T1>>().Remove(listEntity1); }
+
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Update)
                             {
                                 for (int i = 0; i < listEntity1.Count; i++)
                                 {
@@ -56,8 +59,9 @@ namespace EFHelper.RepositorySaveUpdate
                                 }
 
                             }
+                           
 
-                            hasil = await context.SaveChangesAsync();
+                            hasil = context.SaveChanges();
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1);
                         }
@@ -67,7 +71,8 @@ namespace EFHelper.RepositorySaveUpdate
             }
             return eFReturn;
         }
-        public async Task<EFReturnValue> SaveUpdateListAsync<T1, T2>(List<T1> listEntity1, bool isSaveT1, List<T2> listEntity2, bool isSaveT2)
+
+        public EFReturnValue SaveUpdateDeleteList<T1, T2>(List<T1> listEntity1, EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, EnumSaveUpdateDelete enumSUDT2)
             where T1 : class
             where T2 : class
         {
@@ -80,14 +85,18 @@ namespace EFHelper.RepositorySaveUpdate
                     {
                         try
                         {
+                            listEntity1 = this.SetEntityPreparation<T1>(listEntity1, enumSUDT1);
+                            listEntity2 = this.SetEntityPreparation<T2>(listEntity2, enumSUDT2);
+                         
 
-                            listEntity1 = this.SetEntityPreparation<T1>(listEntity1, isSaveT1);
-                            listEntity2 = this.SetEntityPreparation<T2>(listEntity2, isSaveT2);
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<List<T1>>().Add(listEntity1);
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) context.Set<List<T2>>().Add(listEntity2);
+                         
 
-                            if (isSaveT1) context.Set<List<T1>>().Add(listEntity1);
-                            if (isSaveT2) context.Set<List<T2>>().Add(listEntity2);
-
-                            if (!isSaveT1)
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { context.Set<List<T1>>().Attach(listEntity1); context.Set<List<T1>>().Remove(listEntity1); }
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Delete) { context.Set<List<T2>>().Attach(listEntity2); context.Set<List<T2>>().Remove(listEntity2); }
+                           
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Update)
                             {
                                 for (int i = 0; i < listEntity1.Count; i++)
                                 {
@@ -104,7 +113,7 @@ namespace EFHelper.RepositorySaveUpdate
                                 }
 
                             }
-                            if (!isSaveT2)
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Update)
                             {
                                 for (int i = 0; i < listEntity2.Count; i++)
                                 {
@@ -120,9 +129,9 @@ namespace EFHelper.RepositorySaveUpdate
                                     }
                                 }
 
-                            }
+                            }                           
 
-                            hasil = await context.SaveChangesAsync();
+                            hasil = context.SaveChanges();
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2);
                         }
@@ -132,7 +141,8 @@ namespace EFHelper.RepositorySaveUpdate
             }
             return eFReturn;
         }
-        public async Task<EFReturnValue> SaveUpdateListAsync<T1, T2, T3>(List<T1> listEntity1, bool isSaveT1, List<T2> listEntity2, bool isSaveT2, List<T3> listEntity3, bool isSaveT3)
+
+        public EFReturnValue SaveUpdateDeleteList<T1, T2, T3>(List<T1> listEntity1, EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, EnumSaveUpdateDelete enumSUDT2, List<T3> listEntity3, EnumSaveUpdateDelete enumSUDT3)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -146,17 +156,19 @@ namespace EFHelper.RepositorySaveUpdate
                     {
                         try
                         {
+                            listEntity1 = this.SetEntityPreparation<T1>(listEntity1, enumSUDT1);
+                            listEntity2 = this.SetEntityPreparation<T2>(listEntity2, enumSUDT2);
+                            listEntity3 = this.SetEntityPreparation<T3>(listEntity3, enumSUDT3);    
 
-                            listEntity1 = this.SetEntityPreparation<T1>(listEntity1, isSaveT1);
-                            listEntity2 = this.SetEntityPreparation<T2>(listEntity2, isSaveT2);
-                            listEntity3 = this.SetEntityPreparation<T3>(listEntity3, isSaveT3);
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<List<T1>>().Add(listEntity1);
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) context.Set<List<T2>>().Add(listEntity2);
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) context.Set<List<T3>>().Add(listEntity3);        
 
-                            if (isSaveT1) context.Set<List<T1>>().Add(listEntity1);
-                            if (isSaveT2) context.Set<List<T2>>().Add(listEntity2);
-                            if (isSaveT3) context.Set<List<T3>>().Add(listEntity3);
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { context.Set<List<T1>>().Attach(listEntity1); context.Set<List<T1>>().Remove(listEntity1); }
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Delete) { context.Set<List<T2>>().Attach(listEntity2); context.Set<List<T2>>().Remove(listEntity2); }
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Delete) { context.Set<List<T3>>().Attach(listEntity3); context.Set<List<T3>>().Remove(listEntity3); }
 
-
-                            if (!isSaveT1)
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Update)
                             {
                                 for (int i = 0; i < listEntity1.Count; i++)
                                 {
@@ -173,7 +185,7 @@ namespace EFHelper.RepositorySaveUpdate
                                 }
 
                             }
-                            if (!isSaveT2)
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Update)
                             {
                                 for (int i = 0; i < listEntity2.Count; i++)
                                 {
@@ -190,7 +202,7 @@ namespace EFHelper.RepositorySaveUpdate
                                 }
 
                             }
-                            if (!isSaveT3)
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Update)
                             {
                                 for (int i = 0; i < listEntity3.Count; i++)
                                 {
@@ -207,8 +219,8 @@ namespace EFHelper.RepositorySaveUpdate
                                 }
 
                             }
-
-                            hasil = await context.SaveChangesAsync();
+                            
+                            hasil = context.SaveChanges();
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3);
                         }
@@ -218,7 +230,8 @@ namespace EFHelper.RepositorySaveUpdate
             }
             return eFReturn;
         }
-        public async Task<EFReturnValue> SaveUpdateListAsync<T1, T2, T3, T4>(List<T1> listEntity1, bool isSaveT1, List<T2> listEntity2, bool isSaveT2, List<T3> listEntity3, bool isSaveT3, List<T4> listEntity4, bool isSaveT4)
+
+        public EFReturnValue SaveUpdateDeleteList<T1, T2, T3, T4>(List<T1> listEntity1, EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, EnumSaveUpdateDelete enumSUDT2, List<T3> listEntity3, EnumSaveUpdateDelete enumSUDT3, List<T4> listEntity4, EnumSaveUpdateDelete enumSUDT4)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -233,20 +246,22 @@ namespace EFHelper.RepositorySaveUpdate
                     {
                         try
                         {
+                            listEntity1 = this.SetEntityPreparation<T1>(listEntity1, enumSUDT1);
+                            listEntity2 = this.SetEntityPreparation<T2>(listEntity2, enumSUDT2);
+                            listEntity3 = this.SetEntityPreparation<T3>(listEntity3, enumSUDT3);
+                            listEntity4 = this.SetEntityPreparation<T4>(listEntity4, enumSUDT4);
 
-                            listEntity1 = this.SetEntityPreparation<T1>(listEntity1, isSaveT1);
-                            listEntity2 = this.SetEntityPreparation<T2>(listEntity2, isSaveT2);
-                            listEntity3 = this.SetEntityPreparation<T3>(listEntity3, isSaveT3);
-                            listEntity4 = this.SetEntityPreparation<T4>(listEntity4, isSaveT4);
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<List<T1>>().Add(listEntity1);
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) context.Set<List<T2>>().Add(listEntity2);
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) context.Set<List<T3>>().Add(listEntity3);
+                            if (enumSUDT4 == EnumSaveUpdateDelete.Save) context.Set<List<T4>>().Add(listEntity4);
 
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { context.Set<List<T1>>().Attach(listEntity1); context.Set<List<T1>>().Remove(listEntity1); }
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Delete) { context.Set<List<T2>>().Attach(listEntity2); context.Set<List<T2>>().Remove(listEntity2); }
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Delete) { context.Set<List<T3>>().Attach(listEntity3); context.Set<List<T3>>().Remove(listEntity3); }
+                            if (enumSUDT4 == EnumSaveUpdateDelete.Delete) { context.Set<List<T4>>().Attach(listEntity4); context.Set<List<T4>>().Remove(listEntity4); }
 
-                            if (isSaveT1) context.Set<List<T1>>().Add(listEntity1);
-                            if (isSaveT2) context.Set<List<T2>>().Add(listEntity2);
-                            if (isSaveT3) context.Set<List<T3>>().Add(listEntity3);
-                            if (isSaveT4) context.Set<List<T4>>().Add(listEntity4);
-
-
-                            if (!isSaveT1)
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Update)
                             {
                                 for (int i = 0; i < listEntity1.Count; i++)
                                 {
@@ -263,7 +278,7 @@ namespace EFHelper.RepositorySaveUpdate
                                 }
 
                             }
-                            if (!isSaveT2)
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Update)
                             {
                                 for (int i = 0; i < listEntity2.Count; i++)
                                 {
@@ -280,7 +295,7 @@ namespace EFHelper.RepositorySaveUpdate
                                 }
 
                             }
-                            if (!isSaveT3)
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Update)
                             {
                                 for (int i = 0; i < listEntity3.Count; i++)
                                 {
@@ -297,7 +312,7 @@ namespace EFHelper.RepositorySaveUpdate
                                 }
 
                             }
-                            if (!isSaveT4)
+                            if (enumSUDT4 == EnumSaveUpdateDelete.Update)
                             {
                                 for (int i = 0; i < listEntity4.Count; i++)
                                 {
@@ -312,10 +327,9 @@ namespace EFHelper.RepositorySaveUpdate
                                         }
                                     }
                                 }
+                            }                           
 
-                            }
-
-                            hasil = await context.SaveChangesAsync();
+                            hasil = context.SaveChanges();
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3, listEntity4);
                         }
@@ -325,7 +339,8 @@ namespace EFHelper.RepositorySaveUpdate
             }
             return eFReturn;
         }
-        public async Task<EFReturnValue> SaveUpdateListAsync<T1, T2, T3, T4, T5>(List<T1> listEntity1, bool isSaveT1, List<T2> listEntity2, bool isSaveT2, List<T3> listEntity3, bool isSaveT3, List<T4> listEntity4, bool isSaveT4, List<T5> listEntity5, bool isSaveT5)
+
+        public EFReturnValue SaveUpdateDeleteList<T1, T2, T3, T4, T5>(List<T1> listEntity1, EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, EnumSaveUpdateDelete enumSUDT2, List<T3> listEntity3, EnumSaveUpdateDelete enumSUDT3, List<T4> listEntity4, EnumSaveUpdateDelete enumSUDT4, List<T5> listEntity5, EnumSaveUpdateDelete enumSUDT5)
             where T1 : class
             where T2 : class
             where T3 : class
@@ -333,7 +348,7 @@ namespace EFHelper.RepositorySaveUpdate
             where T5 : class
         {
             int hasil = 0;
-            if (listEntity1 != null & listEntity2 != null & listEntity3 != null & listEntity4.Count > 0 & listEntity5.Count > 0)
+            if (listEntity1 != null & listEntity2 != null & listEntity3 != null & listEntity4 != null & listEntity5 != null)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
                 {
@@ -341,20 +356,25 @@ namespace EFHelper.RepositorySaveUpdate
                     {
                         try
                         {
+                            listEntity1 = this.SetEntityPreparation<T1>(listEntity1, enumSUDT1);
+                            listEntity2 = this.SetEntityPreparation<T2>(listEntity2, enumSUDT2);
+                            listEntity3 = this.SetEntityPreparation<T3>(listEntity3, enumSUDT3);
+                            listEntity4 = this.SetEntityPreparation<T4>(listEntity4, enumSUDT4);
+                            listEntity5 = this.SetEntityPreparation<T5>(listEntity5, enumSUDT5);
 
-                            listEntity1 = this.SetEntityPreparation<T1>(listEntity1, isSaveT1);
-                            listEntity2 = this.SetEntityPreparation<T2>(listEntity2, isSaveT2);
-                            listEntity3 = this.SetEntityPreparation<T3>(listEntity3, isSaveT3);
-                            listEntity4 = this.SetEntityPreparation<T4>(listEntity4, isSaveT4);
-                            listEntity5 = this.SetEntityPreparation<T5>(listEntity5, isSaveT5);
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<List<T1>>().Add(listEntity1);
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) context.Set<List<T2>>().Add(listEntity2);
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) context.Set<List<T3>>().Add(listEntity3);
+                            if (enumSUDT4 == EnumSaveUpdateDelete.Save) context.Set<List<T4>>().Add(listEntity4);
+                            if (enumSUDT5 == EnumSaveUpdateDelete.Save) context.Set<List<T5>>().Add(listEntity5);
 
-                            if (isSaveT1) context.Set<List<T1>>().Add(listEntity1);
-                            if (isSaveT2) context.Set<List<T2>>().Add(listEntity2);
-                            if (isSaveT3) context.Set<List<T3>>().Add(listEntity3);
-                            if (isSaveT4) context.Set<List<T4>>().Add(listEntity4);
-                            if (isSaveT5) context.Set<List<T5>>().Add(listEntity5);
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { context.Set<List<T1>>().Attach(listEntity1); context.Set<List<T1>>().Remove(listEntity1); }
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Delete) { context.Set<List<T2>>().Attach(listEntity2); context.Set<List<T2>>().Remove(listEntity2); }
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Delete) { context.Set<List<T3>>().Attach(listEntity3); context.Set<List<T3>>().Remove(listEntity3); }
+                            if (enumSUDT4 == EnumSaveUpdateDelete.Delete) { context.Set<List<T4>>().Attach(listEntity4); context.Set<List<T4>>().Remove(listEntity4); }
+                            if (enumSUDT5 == EnumSaveUpdateDelete.Delete) { context.Set<List<T5>>().Attach(listEntity5); context.Set<List<T5>>().Remove(listEntity5); }
 
-                            if (!isSaveT1)
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Update)
                             {
                                 for (int i = 0; i < listEntity1.Count; i++)
                                 {
@@ -371,7 +391,7 @@ namespace EFHelper.RepositorySaveUpdate
                                 }
 
                             }
-                            if (!isSaveT2)
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Update)
                             {
                                 for (int i = 0; i < listEntity2.Count; i++)
                                 {
@@ -388,7 +408,7 @@ namespace EFHelper.RepositorySaveUpdate
                                 }
 
                             }
-                            if (!isSaveT3)
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Update)
                             {
                                 for (int i = 0; i < listEntity3.Count; i++)
                                 {
@@ -405,7 +425,7 @@ namespace EFHelper.RepositorySaveUpdate
                                 }
 
                             }
-                            if (!isSaveT4)
+                            if (enumSUDT4 == EnumSaveUpdateDelete.Update)
                             {
                                 for (int i = 0; i < listEntity4.Count; i++)
                                 {
@@ -420,9 +440,8 @@ namespace EFHelper.RepositorySaveUpdate
                                         }
                                     }
                                 }
-
                             }
-                            if (!isSaveT5)
+                            if (enumSUDT5 == EnumSaveUpdateDelete.Update)
                             {
                                 for (int i = 0; i < listEntity5.Count; i++)
                                 {
@@ -440,7 +459,7 @@ namespace EFHelper.RepositorySaveUpdate
 
                             }
 
-                            hasil = await context.SaveChangesAsync();
+                            hasil = context.SaveChanges();
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3, listEntity4, listEntity5);
                         }
@@ -450,14 +469,16 @@ namespace EFHelper.RepositorySaveUpdate
             }
             return eFReturn;
         }
-        private List<T> SetEntityPreparation<T>(List<T> listEntity, bool isSave) where T : class
+
+        private List<T> SetEntityPreparation<T>(List<T> listEntity, EnumSaveUpdateDelete saveUpdateDelete) where T : class
         {
-            if (isSave)
+            if (saveUpdateDelete == EnumSaveUpdateDelete.Save)
                 listEntity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T>(listEntity);
-            else
+            else if (saveUpdateDelete == EnumSaveUpdateDelete.Update)
                 listEntity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T>(listEntity);
+            else
+                listEntity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["deleteactivebool"].SetPreparationEntity<T>(listEntity);
             return listEntity;
         }
-
     }
 }

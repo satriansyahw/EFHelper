@@ -85,11 +85,11 @@ namespace EFHelper.ColumnHelper
                 string myFieldType = property.PropertyType.Name.ToLower();
                 myFieldType = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
 
-                if (myFieldType == "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, "insertdate", "inserttime"))
+                if (myFieldType == "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayInsertDate))
                 {
                     result.Add(property);
                 }
-                if (myFieldType == "boolean" & !ColumnProperties.GetInstance.IsColumn(myFieldName, "activebool", "boolactive"))
+                if (myFieldType == "boolean" & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayActiveBool))
                 {
                     result.Add(property);
                 }
@@ -124,11 +124,11 @@ namespace EFHelper.ColumnHelper
                 string myFieldType = property.PropertyType.Name.ToLower();
                 myFieldType = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
 
-                if (!ColumnProperties.GetInstance.IsColumn(myFieldName, "activebool", "boolactive", "insertby", "insertbyid"))
+                if (!ColumnProperties.GetInstance.IsColumn(myFieldName, "activebool","boolactive", "insertby", "insertbyid"))
                 {
                     result.Add(property);
                 }
-                if (myFieldType == "datetime" & ColumnProperties.GetInstance.IsColumn(myFieldName, "updatedate", "updatetime"))
+                if (myFieldType == "datetime" & ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayUpdateDate))
                 {
                     if (property.CanWrite)
                     {

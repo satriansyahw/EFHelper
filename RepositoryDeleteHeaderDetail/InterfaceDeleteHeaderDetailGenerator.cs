@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EFHelper.RepositoryDeleteHeaderDetail
 {
-    public interface InterfaceDeleteHeaderDetail
+    public interface InterfaceRepoDeleteHeaderDetail
     {
         EFReturnValue DeleteHeaderDetail<T, T1>(int IDIdentity, string idReferenceColName) where T : class where T1 : class;
         EFReturnValue DeleteHeaderDetail<T, T1, T2>(int IDIdentity, string idReferenceColName) where T : class where T1 : class where T2 : class;
@@ -15,7 +15,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
         EFReturnValue DeleteHeaderDetail<T, T1, T2, T3, T4, T5>(int IDIdentity, string idReferenceColName) where T : class where T1 : class where T2 : class where T3 : class where T4 : class where T5 : class;
 
     }
-    public interface InterfaceDeleteHeaderDetailAsync
+    public interface InterfaceRepoDeleteHeaderDetailAsync
     {
         Task<EFReturnValue> DeleteHeaderDetailAsync<T, T1>(int IDIdentity, string idReferenceColName) where T : class where T1 : class;
         Task<EFReturnValue> DeleteHeaderDetailAsync<T, T1, T2>(int IDIdentity, string idReferenceColName) where T : class where T1 : class where T2 : class;
@@ -24,7 +24,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
         Task<EFReturnValue> DeleteHeaderDetailAsync<T, T1, T2, T3, T4, T5>(int IDIdentity, string idReferenceColName) where T : class where T1 : class where T2 : class where T3 : class where T4 : class where T5 : class;
 
     }
-    public interface InterfaceDeleteHeaderDetailList
+    public interface InterfaceRepoDeleteHeaderDetailList
     {
         EFReturnValue DeleteHeaderDetailList<T, T1>(List<int> listIDIdentity, string idReferenceColName) where T : class where T1 : class;
         EFReturnValue DeleteHeaderDetailList<T, T1, T2>(List<int> listIDIdentity, string idReferenceColName) where T : class where T1 : class where T2 : class;
@@ -33,7 +33,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
         EFReturnValue DeleteHeaderDetailList<T, T1, T2, T3, T4, T5>(List<int> listIDIdentity, string idReferenceColName) where T : class where T1 : class where T2 : class where T3 : class where T4 : class where T5 : class;
 
     }
-    public interface InterfaceDeleteHeaderDetailListAsync
+    public interface InterfaceRepoDeleteHeaderDetailListAsync
     {
         Task<EFReturnValue> DeleteHeaderDetailListAsync<T, T1>(List<int> listIDIdentity, string idReferenceColName) where T : class where T1 : class;
         Task<EFReturnValue> DeleteHeaderDetailListAsync<T, T1, T2>(List<int> listIDIdentity, string idReferenceColName) where T : class where T1 : class where T2 : class;
@@ -42,7 +42,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
         Task<EFReturnValue> DeleteHeaderDetailListAsync<T, T1, T2, T3, T4, T5>(List<int> listIDIdentity, string idReferenceColName) where T : class where T1 : class where T2 : class where T3 : class where T4 : class where T5 : class;
 
     }
-    public interface InterfaceDeleteHeaderDetailActiveBool
+    public interface InterfaceRepoDeleteHeaderDetailActiveBool
     {
         EFReturnValue DeleteHeaderDetailActiveBool<T, T1>(int IDIdentity, string idReferenceColName) where T : class where T1 : class;
         EFReturnValue DeleteHeaderDetailActiveBool<T, T1, T2>(int IDIdentity, string idReferenceColName) where T : class where T1 : class where T2 : class;
@@ -51,7 +51,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
         EFReturnValue DeleteHeaderDetailActiveBool<T, T1, T2, T3, T4, T5>(int IDIdentity, string idReferenceColName) where T : class where T1 : class where T2 : class where T3 : class where T4 : class where T5 : class;
 
     }
-    public interface InterfaceDeleteHeaderDetailActiveBoolAsync
+    public interface InterfaceRepoDeleteHeaderDetailActiveBoolAsync
     {
         Task<EFReturnValue> DeleteHeaderDetailActiveBoolAsync<T, T1>(int IDIdentity, string idReferenceColName) where T : class where T1 : class;
         Task<EFReturnValue> DeleteHeaderDetailActiveBoolAsync<T, T1, T2>(int IDIdentity, string idReferenceColName) where T : class where T1 : class where T2 : class;
@@ -60,7 +60,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
         Task<EFReturnValue> DeleteHeaderDetailActiveBoolAsync<T, T1, T2, T3, T4, T5>(int IDIdentity, string idReferenceColName) where T : class where T1 : class where T2 : class where T3 : class where T4 : class where T5 : class;
 
     }
-    public interface InterfaceDeleteHeaderDetailActiveBoolList
+    public interface InterfaceRepoDeleteHeaderDetailActiveBoolList
     {
         EFReturnValue DeleteHeaderDetailActiveBoolList<T, T1>(List<int> listIDIdentity, string idReferenceColName) where T : class where T1 : class;
         EFReturnValue DeleteHeaderDetailActiveBoolList<T, T1, T2>(List<int> listIDIdentity, string idReferenceColName) where T : class where T1 : class where T2 : class;
@@ -69,7 +69,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
         EFReturnValue DeleteHeaderDetailActiveBoolList<T, T1, T2, T3, T4, T5>(List<int> listIDIdentity, string idReferenceColName) where T : class where T1 : class where T2 : class where T3 : class where T4 : class where T5 : class;
 
     }
-    public interface InterfaceDeleteHeaderDetailActiveBoolListAsync
+    public interface InterfaceRepoDeleteHeaderDetailActiveBoolListAsync
     {
         Task<EFReturnValue> DeleteHeaderDetailActiveBoolListAsync<T, T1>(List<int> listIDIdentity, string idReferenceColName) where T : class where T1 : class;
         Task<EFReturnValue> DeleteHeaderDetailActiveBoolListAsync<T, T1, T2>(List<int> listIDIdentity, string idReferenceColName) where T : class where T1 : class where T2 : class;

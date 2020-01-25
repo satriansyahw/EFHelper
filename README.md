@@ -48,6 +48,14 @@
    17. DeleteHeaderDetailActiveBoolList, delete data header detail not physically (soft delete)
    18. ListData, make query list to database
    19. ListDataQueryable, make query list to database, Iqueryable is from RepoWrapper Context
+   20. DeleteSave, Delete physically data based on parameter, and save data
+   21. DeleteSaveList, Delete physically data based on parameter, and save list data
+   20. DeleteSaveActiveBool, soft delete data based on parameter, and save data
+   21. DeleteSaveActiveBoolList, soft delete data based on parameter, and save list data
+   22. SaveUpdateDelete, Save or update or delete data from/to database
+   23. SaveUpdateDeleteList, Save or update or delete list data from/to database
+   24. SaveUpdateDeleteActiveBool, Save or update or delete data softly from/to database
+   25. SaveUpdateDeleteActiveBoolList, Save or update or delete list data softly from/to database
 
 ## List Of available methods (Asynchronous), you must use await for these methods
    1. SaveAsync, save data to database
@@ -71,9 +79,19 @@
    17. DeleteHeaderDetailActiveBoolListAsync, delete data header detail not physically (soft delete)
    18. ListDataAsync, make query list to database
    19. ListDataQueryableAsync,make query list to database, Iqueryable is from RepoWrapperAsync Context
+   20. DeleteSaveAsync, Delete physically data based on parameter, and save data
+   21. DeleteSaveListAsync, Delete physically data based on parameter, and save list data
+   20. DeleteSaveActiveBoolAsync, soft delete data based on parameter, and save data
+   21. DeleteSaveActiveBoolListAsync, soft delete data based on parameter, and save list data
+   22. SaveUpdateDeleteAsync, Save or update or delete data from/to database
+   23. SaveUpdateDeleteListAsync, Save or update or delete list data from/to database
+   24. SaveUpdateDeleteActiveBoolAsync, Save or update or delete data softly from/to database
+   25. SaveUpdateDeleteActiveBoolListAsync, Save or update or delete list data softly from/to database
+
 
 # HAPPYCoding
-Contact Me At satriansyahw@gmail.com
+
+contact me at satriansyahw@gmail.com
 
 
 

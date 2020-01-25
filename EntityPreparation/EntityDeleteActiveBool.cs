@@ -18,8 +18,8 @@ namespace EFHelper.EntityPreparation
             if (entity != null)
             {
                 TypeBantuan tipe = new TypeBantuan();
-                var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>("updatedate","updatetime");
-                var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>("activebool", "boolactive");
+                var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayUpdateDate);
+                var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayActiveBool);
                 if (propUpdateDate != null)
                 {
                     if (propUpdateDate.CanWrite)

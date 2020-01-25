@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EFHelper.RepositorySaveUpdate
 {
-    public class RepoSaveUpdate : InterfaceSaveUpdate
+    public class RepoSaveUpdate : InterfaceRepoSaveUpdate
     {
         private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
         private static RepoSaveUpdate instance;

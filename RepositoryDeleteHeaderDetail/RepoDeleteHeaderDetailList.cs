@@ -9,7 +9,7 @@ using System.Text;
 
 namespace EFHelper.RepositoryDeleteHeaderDetail
 {
-    public class RepoDeleteHeaderDetailList : InterfaceDeleteHeaderDetailList
+    public class RepoDeleteHeaderDetailList : InterfaceRepoDeleteHeaderDetailList
     {
         private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
         private static RepoDeleteHeaderDetailList instance;

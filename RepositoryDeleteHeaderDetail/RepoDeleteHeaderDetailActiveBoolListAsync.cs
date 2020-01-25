@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace EFHelper.RepositoryDeleteHeaderDetail
 {
-    public class RepoDeleteHeaderDetailActiveBoolListAsync : InterfaceDeleteHeaderDetailActiveBoolListAsync
+    public class RepoDeleteHeaderDetailActiveBoolListAsync : InterfaceRepoDeleteHeaderDetailActiveBoolListAsync
     {
         private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
         private static RepoDeleteHeaderDetailActiveBoolListAsync instance;
@@ -44,10 +44,10 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             listEntity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["delete"].SetPreparationEntity<T>(listEntity);
                             listEntity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["delete"].SetPreparationEntity<T1>(listEntity1);
 
-                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>("updatedate", "updatetime");
-                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>("activebool", "boolactive");
-                            var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>("updatedate", "updatetime");
-                            var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>("activebool", "boolactive");
+                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayActiveBool);
+                            var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
 
                             context.Set<List<T>>().Attach(listEntity);
                             context.Set<List<T1>>().Attach(listEntity1);
@@ -93,12 +93,12 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             listEntity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["delete"].SetPreparationEntity<T1>(listEntity1);
                             listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["delete"].SetPreparationEntity<T2>(listEntity2);
 
-                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>("updatedate", "updatetime");
-                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>("activebool", "boolactive");
-                            var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>("updatedate", "updatetime");
-                            var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>("activebool", "boolactive");
-                            var propUpdateDate2 = ColumnPropGet.GetInstance.GetColumnProps<T2>("updatedate", "updatetime");
-                            var propActiveBool2 = ColumnPropGet.GetInstance.GetColumnProps<T2>("activebool", "boolactive");
+                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayActiveBool);
+                            var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
+                            var propUpdateDate2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayActiveBool);
 
                             context.Set<List<T>>().Attach(listEntity);
                             context.Set<List<T1>>().Attach(listEntity1);
@@ -152,14 +152,14 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["delete"].SetPreparationEntity<T2>(listEntity2);
                             listEntity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["delete"].SetPreparationEntity<T3>(listEntity3);
 
-                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>("updatedate", "updatetime");
-                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>("activebool", "boolactive");
-                            var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>("updatedate", "updatetime");
-                            var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>("activebool", "boolactive");
-                            var propUpdateDate2 = ColumnPropGet.GetInstance.GetColumnProps<T2>("updatedate", "updatetime");
-                            var propActiveBool2 = ColumnPropGet.GetInstance.GetColumnProps<T2>("activebool", "boolactive");
-                            var propUpdateDate3 = ColumnPropGet.GetInstance.GetColumnProps<T3>("updatedate", "updatetime");
-                            var propActiveBool3 = ColumnPropGet.GetInstance.GetColumnProps<T3>("activebool", "boolactive");
+                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayActiveBool);
+                            var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
+                            var propUpdateDate2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayActiveBool);
+                            var propUpdateDate3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayActiveBool);
 
                             context.Set<List<T>>().Attach(listEntity);
                             context.Set<List<T1>>().Attach(listEntity1);
@@ -220,16 +220,16 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             listEntity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["delete"].SetPreparationEntity<T3>(listEntity3);
                             listEntity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["delete"].SetPreparationEntity<T4>(listEntity4);
 
-                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>("updatedate", "updatetime");
-                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>("activebool", "boolactive");
-                            var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>("updatedate", "updatetime");
-                            var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>("activebool", "boolactive");
-                            var propUpdateDate2 = ColumnPropGet.GetInstance.GetColumnProps<T2>("updatedate", "updatetime");
-                            var propActiveBool2 = ColumnPropGet.GetInstance.GetColumnProps<T2>("activebool", "boolactive");
-                            var propUpdateDate3 = ColumnPropGet.GetInstance.GetColumnProps<T3>("updatedate", "updatetime");
-                            var propActiveBool3 = ColumnPropGet.GetInstance.GetColumnProps<T3>("activebool", "boolactive");
-                            var propUpdateDate4 = ColumnPropGet.GetInstance.GetColumnProps<T4>("updatedate", "updatetime");
-                            var propActiveBool4 = ColumnPropGet.GetInstance.GetColumnProps<T4>("activebool", "boolactive");
+                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayActiveBool);
+                            var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
+                            var propUpdateDate2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayActiveBool);
+                            var propUpdateDate3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayActiveBool);
+                            var propUpdateDate4 = ColumnPropGet.GetInstance.GetColumnProps<T4>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool4 = ColumnPropGet.GetInstance.GetColumnProps<T4>(MiscClass.MiscClass.ArrayActiveBool);
 
                             context.Set<List<T>>().Attach(listEntity);
                             context.Set<List<T1>>().Attach(listEntity1);
@@ -297,18 +297,18 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             listEntity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["delete"].SetPreparationEntity<T4>(listEntity4);
                             listEntity5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["delete"].SetPreparationEntity<T5>(listEntity5);
 
-                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>("updatedate", "updatetime");
-                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>("activebool", "boolactive");
-                            var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>("updatedate", "updatetime");
-                            var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>("activebool", "boolactive");
-                            var propUpdateDate2 = ColumnPropGet.GetInstance.GetColumnProps<T2>("updatedate", "updatetime");
-                            var propActiveBool2 = ColumnPropGet.GetInstance.GetColumnProps<T2>("activebool", "boolactive");
-                            var propUpdateDate3 = ColumnPropGet.GetInstance.GetColumnProps<T3>("updatedate", "updatetime");
-                            var propActiveBool3 = ColumnPropGet.GetInstance.GetColumnProps<T3>("activebool", "boolactive");
-                            var propUpdateDate4 = ColumnPropGet.GetInstance.GetColumnProps<T4>("updatedate", "updatetime");
-                            var propActiveBool4 = ColumnPropGet.GetInstance.GetColumnProps<T4>("activebool", "boolactive");
-                            var propUpdateDate5 = ColumnPropGet.GetInstance.GetColumnProps<T5>("updatedate", "updatetime");
-                            var propActiveBool5 = ColumnPropGet.GetInstance.GetColumnProps<T5>("activebool", "boolactive");
+                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayActiveBool);
+                            var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
+                            var propUpdateDate2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayActiveBool);
+                            var propUpdateDate3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayActiveBool);
+                            var propUpdateDate4 = ColumnPropGet.GetInstance.GetColumnProps<T4>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool4 = ColumnPropGet.GetInstance.GetColumnProps<T4>(MiscClass.MiscClass.ArrayActiveBool);
+                            var propUpdateDate5 = ColumnPropGet.GetInstance.GetColumnProps<T5>(MiscClass.MiscClass.ArrayUpdateDate);
+                            var propActiveBool5 = ColumnPropGet.GetInstance.GetColumnProps<T5>(MiscClass.MiscClass.ArrayActiveBool);
 
                             context.Set<List<T>>().Attach(listEntity);
                             context.Set<List<T1>>().Attach(listEntity1);

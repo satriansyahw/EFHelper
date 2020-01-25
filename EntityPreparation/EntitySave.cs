@@ -12,8 +12,8 @@ namespace EFHelper.EntityPreparation
         {
             TypeBantuan tipe = new TypeBantuan();
             var propIdentity = ColumnPropGet.GetInstance.GetIdentityColumnProps<T>();
-            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>("activebool","boolactive");
-            var propInsertDate = ColumnPropGet.GetInstance.GetColumnProps<T>("insertdate","insertime");
+            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayActiveBool);
+            var propInsertDate = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayInsertDate);
             
             if (propIdentity !=null)
             {

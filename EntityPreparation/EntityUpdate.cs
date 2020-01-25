@@ -34,7 +34,7 @@ namespace EFHelper.EntityPreparation
                         ColumnPropSet.GetInstance.SetColValue<T>(entity, itemPropUpdate.Name, itemPropUpdateValue);
                     }
                     TypeBantuan tipe = new TypeBantuan();
-                    var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>("updatedate","updatetime");
+                    var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayUpdateDate);
                     if (propUpdateDate != null)
                     {
                         if (propUpdateDate.CanWrite)

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EFHelper.RepositoryDeleteHeaderDetail
 {
-    public class RepoDeleteHeaderDetailAsync : InterfaceDeleteHeaderDetailAsync
+    public class RepoDeleteHeaderDetailAsync : InterfaceRepoDeleteHeaderDetailAsync
     {
         private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
         private static RepoDeleteHeaderDetailAsync instance;
