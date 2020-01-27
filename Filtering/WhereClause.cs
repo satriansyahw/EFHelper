@@ -87,6 +87,7 @@ namespace EFHelper.Filtering
                     if (colProp != null)//Check if colname exists in Table
                     {
                         columnNameExpr = Expression.Property(pe, colName);
+                        columnValueExpr = Expression.Constant(colValue);
                         fieldType = colProp.PropertyType.Name.ToLower();
                         fullName = colProp.PropertyType.FullName.ToLower().Split(',')[0].ToString();
                         fieldName = ColumnProperties.GetInstance.GetClearFieldName(colProp.Name);

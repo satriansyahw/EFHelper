@@ -33,6 +33,7 @@ namespace EFHelper.Ekspression
             DictOperatorExpr.Add("like", new LikeOperatorExpr());
             DictOperatorExpr.Add("contains", new InOperatorExpr());
             DictOperatorExpr.Add("between", new BetweenOperatorExpr());
+            DictOperatorExpr.Add("datetime", new BetweenOperatorExpr());
         }
     }
 }

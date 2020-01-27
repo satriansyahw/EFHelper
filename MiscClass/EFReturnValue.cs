@@ -37,6 +37,14 @@ namespace EFHelper.MiscClass
                 }
 
             }
+            else
+            {
+                eFReturn.IsSuccessConnection = false;
+                eFReturn.IsSuccessQuery = false;
+                eFReturn.ErrorMessage = objectResult.ToString();
+                eFReturn.ReturnValue = null;
+
+            }
             return eFReturn;
         }
         public class DictReturnValue
