@@ -22,11 +22,12 @@ namespace EFHelper.EntityPreparation
                 List<SearchField> lsf = new List<SearchField>();
                 lsf.Add(new SearchField { Name = propIdentity.Name, Operator = "=", Value = identityID.ToString() });
                 var checkEntityList = repo.ListData<T>(lsf);
-                if(checkEntityList != null & checkEntityList.IsSuccessConnection & checkEntityList.IsSuccessQuery 
-                    & ((List<T>)checkEntityList.ReturnValue).Count > 0)
+                var checkEntityListData = (List<T>)checkEntityList.ReturnValue[0].ReturnValue;
+                if (checkEntityList != null & checkEntityList.IsSuccessConnection & checkEntityList.IsSuccessQuery 
+                    & (checkEntityListData).Count > 0)
                 {
                     var colNull = ColumnPropGet.GetInstance.GetPropertyColNullOnly<T>(entity);
-                    var checkEntity = ((List<T>)checkEntityList.ReturnValue).ToList()[0];
+                    var checkEntity = checkEntityListData[0];
                     foreach (PropertyInfo itemPropUpdate in colNull)
                     {
                         // update tblEntity

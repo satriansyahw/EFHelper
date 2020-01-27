@@ -242,7 +242,8 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
             param.Add(new SearchField { Name = idReferenceColName, Operator = "=", Value = IDIdentity.ToString() });
             RepoList list = new RepoList();
             var myList = list.ListData<T>(param);
-            return (myList.IsSuccessConnection & myList.IsSuccessQuery  & ((List<T>)myList.ReturnValue).Count > 0) ? (List<T>)myList.ReturnValue : null;
+            var myListData = myList.ReturnValue[0].ReturnValue;
+            return (myList.IsSuccessConnection & myList.IsSuccessQuery  & myListData.Count > 0) ? myListData : null;
         }
     }
 }

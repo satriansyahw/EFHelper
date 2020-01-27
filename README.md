@@ -24,7 +24,11 @@
 	  ex: Dictionary:name entity1, object List<objEntity1>   
    6. OK result, make sure the IsSuccessConnection = true and IsSuccessQuery = true
    7. Failed result, if one of IsSuccessConnection and IsSuccessQuery is false
-   8. Happy coding
+   8. How to retrieve data ReturnValue.ReturnValue in List<T>
+      var myList = list.ListData<T>(param);
+	  var myListData =(List<T>)myList.ReturnValue[0].ReturnValue;
+	  Index[0] depends on the order of T Class, T,T1,T2,T3,T4,T5,etc , will give order [0][1][2][3][4][5] 
+   9. Happy coding
 
 ## List Of available methods (synchronous)
    1. Save, save data to database

@@ -356,7 +356,8 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
             param.Add(new SearchField { Name = idReferenceColName, Operator = "=", Value = listIDIdentity });
             RepoListAsync list = new RepoListAsync();
             var myList = await list.ListDataAsync<T>(param);
-            return (myList.IsSuccessConnection & myList.IsSuccessQuery & ((List<T>)myList.ReturnValue).Count > 0) ? (List<T>)myList.ReturnValue : null;
+            var myListData = (List<T>)myList.ReturnValue[0].ReturnValue;
+            return (myList.IsSuccessConnection & myList.IsSuccessQuery & myListData.Count > 0) ? myListData : null;
         }
     }
 }

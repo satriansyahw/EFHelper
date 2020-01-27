@@ -9,6 +9,7 @@ using EFHelper.Filtering;
 using EFHelper.MiscClass;
 using EFHelper.RepositoryList;
 using Microsoft.EntityFrameworkCore;
+using static EFHelper.MiscClass.EFReturnValue;
 
 namespace EFHelper.RepositoryDeleteSave
 {
@@ -41,7 +42,9 @@ namespace EFHelper.RepositoryDeleteSave
                             var listDeleteRV = RepoList.GetInstance.ListData<TDelete>(deleteParameters);
                             if (listDeleteRV.IsSuccessConnection & listDeleteRV.IsSuccessQuery)
                             {
-                                listDelete = (List<TDelete>)listDeleteRV.ReturnValue;
+                                //listDelete = (List<TDelete>)listDeleteRV.ReturnValue;
+                                var x = ((List<DictReturnValue>)listDeleteRV.ReturnValue[0]);
+
                             }
                             //for delete will be delete physicallay
 
@@ -85,7 +88,8 @@ namespace EFHelper.RepositoryDeleteSave
                             var listDeleteRV = RepoList.GetInstance.ListData<TDelete>(deleteParameters);
                             if (listDeleteRV.IsSuccessConnection & listDeleteRV.IsSuccessQuery)
                             {
-                                listDelete = (List<TDelete>)listDeleteRV.ReturnValue;
+                                listDelete = (List<TDelete>)listDeleteRV.ReturnValue[0].ReturnValue;
+                                
                             }
                             //for delete will be delete physicallay
 
@@ -132,7 +136,8 @@ namespace EFHelper.RepositoryDeleteSave
                             var listDeleteRV = RepoList.GetInstance.ListData<TDelete>(deleteParameters);
                             if (listDeleteRV.IsSuccessConnection & listDeleteRV.IsSuccessQuery)
                             {
-                                listDelete = (List<TDelete>)listDeleteRV.ReturnValue;
+                                listDelete = (List<TDelete>)listDeleteRV.ReturnValue[0].ReturnValue;
+
                             }
                             //for delete will be delete physicallay
 
@@ -182,7 +187,7 @@ namespace EFHelper.RepositoryDeleteSave
                             var listDeleteRV = RepoList.GetInstance.ListData<TDelete>(deleteParameters);
                             if (listDeleteRV.IsSuccessConnection & listDeleteRV.IsSuccessQuery)
                             {
-                                listDelete = (List<TDelete>)listDeleteRV.ReturnValue;
+                                listDelete = (List<TDelete>)listDeleteRV.ReturnValue[0].ReturnValue;
                             }
                             //for delete will be delete physicallay
 
@@ -235,7 +240,7 @@ namespace EFHelper.RepositoryDeleteSave
                             var listDeleteRV = RepoList.GetInstance.ListData<TDelete>(deleteParameters);
                             if(listDeleteRV.IsSuccessConnection & listDeleteRV.IsSuccessQuery)
                             {
-                                listDelete = (List<TDelete>)listDeleteRV.ReturnValue;
+                                listDelete = (List<TDelete>)listDeleteRV.ReturnValue[0].ReturnValue;
                             }
                             //for delete will be delete physicallay
                             entitySave1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(entitySave1);
