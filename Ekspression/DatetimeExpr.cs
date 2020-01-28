@@ -12,6 +12,7 @@ namespace EFHelper.Ekspression
         public Expression GetExpression(bool isNull, string fieldType, string whereOperator, Expression columnNameExpr, Expression columnValueExpr)
         {
             Expression combinedExpr = null;
+            TypeDatetime typeDatetime = new TypeDatetime();
             if (!string.IsNullOrEmpty(whereOperator) & columnNameExpr != null & columnValueExpr != null)
             {
                 string valueDatetime = columnValueExpr.ToString().Replace(@"""", "").Trim();
@@ -27,6 +28,7 @@ namespace EFHelper.Ekspression
                     if (ColumnProperties.GetInstance.IsColumn(whereOperator, ">", ">="))
                     {
                         colValue = typeString.GetConvertedValue(false, mydatefrom, whereOperator);
+                        colValue = fieldType != "datetime" ? colValue : typeDatetime.GetConvertedValue(false, mydatefrom, whereOperator);
                         columnValueExpr = Expression.Constant(colValue);
                         expr = new MoreThanOperatorExpr();
                         combinedExpr = expr.GetExpression(false, "datetime", whereOperator, columnNameExpr, columnValueExpr);
@@ -35,6 +37,7 @@ namespace EFHelper.Ekspression
                     if (ColumnProperties.GetInstance.IsColumn(whereOperator, "<", "<="))
                     {
                         colValue = typeString.GetConvertedValue(false, mydateto, whereOperator);
+                        colValue = fieldType != "datetime" ? colValue : typeDatetime.GetConvertedValue(false, mydateto, whereOperator);
                         columnValueExpr = Expression.Constant(colValue);
                         expr = new LessThanOperatorExpr();
                         combinedExpr = expr.GetExpression(false, "datetime", whereOperator, columnNameExpr, columnValueExpr);
@@ -44,11 +47,13 @@ namespace EFHelper.Ekspression
                     if (ColumnProperties.GetInstance.IsColumn(whereOperator, "="))
                     {
                         colValue = typeString.GetConvertedValue(false, mydatefrom, whereOperator);
+                        colValue = fieldType != "datetime" ? colValue : typeDatetime.GetConvertedValue(false, mydatefrom, whereOperator);
                         columnValueExpr = Expression.Constant(colValue);
                         expr = new MoreThanOperatorExpr();
                         combinedExpr = expr.GetExpression(false, "datetime", whereOperator, columnNameExpr, columnValueExpr);
 
                         colValue = typeString.GetConvertedValue(false, mydateto, whereOperator);
+                        colValue = fieldType != "datetime" ? colValue : typeDatetime.GetConvertedValue(false, mydateto, whereOperator);
                         columnValueExpr = Expression.Constant(colValue);
                         expr = new LessThanOperatorExpr();
                         combinedExpr = Expression.And(combinedExpr, expr.GetExpression(false, "datetime", whereOperator, columnNameExpr, columnValueExpr));

@@ -13,6 +13,7 @@ namespace EFHelper.Ekspression
         public Expression GetExpression(bool isNull,string fieldType, string whereOperator,Expression columnNameExpr, Expression columnValueExpr)
         {
             Expression combinedExpr = null;
+            TypeDatetime typeDatetime = new TypeDatetime();
             if (!string.IsNullOrEmpty(whereOperator) & columnNameExpr != null & columnValueExpr != null)
             {
                 string valueBetween = columnValueExpr.ToString().Replace(@"""", "").Trim();
@@ -41,11 +42,13 @@ namespace EFHelper.Ekspression
                 if (fieldType == "datetime")
                 {
                     colValue = typeString.GetConvertedValue(false, value1, whereOperator);
+                    colValue = fieldType != "datetime" ? colValue : typeDatetime.GetConvertedValue(false, value1, whereOperator);
                     columnValueExpr = Expression.Constant(colValue);
                     expr = new MoreThanOperatorExpr();
                     combinedExpr = expr.GetExpression(false, "datetime", whereOperator, columnNameExpr, columnValueExpr);
 
-                    colValue = typeString.GetConvertedValue(false, value1, whereOperator);
+                    colValue = typeString.GetConvertedValue(false, value2, whereOperator);
+                    colValue = fieldType != "datetime" ? colValue : typeDatetime.GetConvertedValue(false, value2, whereOperator);
                     columnValueExpr = Expression.Constant(colValue);
                     expr = new LessThanOperatorExpr();
                     combinedExpr = Expression.And(combinedExpr, expr.GetExpression(false, "datetime", whereOperator, columnNameExpr, columnValueExpr));
