@@ -1,16 +1,23 @@
 # EFHelper version 1.0.0
+
 ## Minimum Requirement For Installation  
-   1.TargetFramework netcoreapp 2.1 </br>
-   2.Microsoft.CodeAnalysis 3.4.0 </br>
-   3.Microsoft.EntityFrameworkCore 2.1.8 </br>
+   1. TargetFramework netcoreapp 2.1 </br>
+   2. Microsoft.CodeAnalysis 3.4.0 </br>
+   3. Microsoft.EntityFrameworkCore 2.1.8 </br>
+   4. Microsoft.EntityFrameworkCore.Relational 2.1.8 </br>
+   5. System.Data.SqlClient 4.8.0 </br>
+
+## Project structures in Database context
+   1. The folder must Folder => File, Folder refers to schema name, File refers to table name
+      ex: user/mtEmployee.cs, user is the schema, mtEmployee.cs is table name
 
 ## How To Use
-   1.Instance your DatabaseContext ,ex: var myUserDBContext = new UserDBContext(). </br>
-     if you want specific connection timeout, please set in your DBContext</br>
-   2.Create Instance class of RepoWrapper or  RepoWrapperAsync </br>
-     var repoWrapper =  new RepoWrapper(myUserDBContext) </br>
-     if make call instance new RepoWrapper(), you must call SetConnectionContext(DbContext dbContext) </br>
-   3.Call your Desired methods
+   1. Instance your DatabaseContext ,ex: var myUserDBContext = new UserDBContext(). </br>
+      if you want specific connection timeout, please set in your DBContext</br>
+   2. Create Instance class of RepoWrapper or  RepoWrapperAsync </br>
+      var repoWrapper =  new RepoWrapper(myUserDBContext) </br>
+      if make call instance new RepoWrapper(), you must call SetConnectionContext(DbContext dbContext) </br>
+   3. Call your Desired methods
 
 ## Return Value
    1. This EFHelper has same return value,it's' EFReturnValue
@@ -92,6 +99,9 @@
    24. SaveUpdateDeleteActiveBoolAsync, Save or update or delete data softly from/to database
    25. SaveUpdateDeleteActiveBoolListAsync, Save or update or delete list data softly from/to database
 
+## Notes 
+   1. The Query basicly using EF features, but if in List<SearchField> contains datetime field type or operator = like, 
+      will authomatically using DBCommand 		
 
 # HAPPYCoding
 

@@ -16,8 +16,7 @@ namespace EFHelper.Filtering
             Expression<Func<T, bool>> resultExpr = null;
             if (SearchFieldList != null)
             {
-                ParameterExpression pe = Expression.Parameter(typeof(T), typeof(T).Name);
-                var sss = Activator.CreateInstance<T>();
+                ParameterExpression pe = Expression.Parameter(typeof(T), typeof(T).Name);              
                 SearchFieldList.RemoveAll(a => a.Name == null);//clearingSearchFieldList
 
                 /*trying to add activebool*/
@@ -42,8 +41,7 @@ namespace EFHelper.Filtering
             Expression<Func<T, bool>> resultExpr = null;
             if (SearchFieldList != null)
             {
-                ParameterExpression pe = Expression.Parameter(typeof(T), typeof(T).Name);
-                var sss = Activator.CreateInstance<T>();
+                ParameterExpression pe = Expression.Parameter(typeof(T), typeof(T).Name);               
                 SearchFieldList.RemoveAll(a => a.Name == null);//clearingSearchFieldList
                 Expression combinedExpr = GetWhereClauseProses<T>(pe, SearchFieldList);
                 if (combinedExpr != null)

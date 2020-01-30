@@ -1,4 +1,5 @@
-﻿using EFHelper.TypeHelper;
+﻿using EFHelper.Filtering;
+using EFHelper.TypeHelper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -263,6 +264,84 @@ namespace EFHelper.ColumnHelper
             }
             return pi;
         }
+        public bool GetCheckIsExistDatetimeAndLike<T>(List<SearchField> lsf) where T:class
+        {
+            //check if like
+            bool result = false;
+            string colName = string.Empty;
+            string queryOperator = string.Empty;
+            foreach (var item in lsf)
+            {
+                if (!string.IsNullOrEmpty(item.Name) & !string.IsNullOrEmpty(item.Operator) & item.Value != null)
+                {
+                    queryOperator = item.Name.ToLower().Trim();
+                    if (queryOperator == "like")
+                    {
+                        result = true;
+                        break;
+                    }
+                    else
+                    {
+                        colName = item.Name.ToString().ToLower().Trim().Replace(@"""", "").Replace("'", "");
+                        var colProp = this.GetColumnProps<T>(colName);
+                        if(colProp !=null)
+                        {
+                            string fullName = colProp.PropertyType.FullName.ToLower().Split(',')[0].ToString();
+                            string myFieldType = colProp.PropertyType.Name.ToLower();
+                            bool isnullData = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? true : false;
+                            myFieldType = isnullData ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType.ToLower().Trim();
+                            if(myFieldType =="datetime")
+                            {
+                                result = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+
+            }    
+            return result;
+        }
+        public bool GetCheckIsExistDatetimeAndLike(List<SearchField> lsf,Type t)
+        {
+            //check if like
+            bool result = false;
+            string colName = string.Empty;
+            string queryOperator = string.Empty;
+            foreach (var item in lsf)
+            {
+                if (!string.IsNullOrEmpty(item.Name) & !string.IsNullOrEmpty(item.Operator) & item.Value != null)
+                {
+                    queryOperator = item.Name.ToLower().Trim();
+                    if (queryOperator == "like")
+                    {
+                        result = true;
+                        break;
+                    }
+                    else
+                    {
+                        colName = item.Name.ToString().ToLower().Trim().Replace(@"""", "").Replace("'", "");
+                        var colProp = this.GetColumnProps(t,colName);
+                        if (colProp != null)
+                        {
+                            string fullName = colProp.PropertyType.FullName.ToLower().Split(',')[0].ToString();
+                            string myFieldType = colProp.PropertyType.Name.ToLower();
+                            bool isnullData = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? true : false;
+                            myFieldType = isnullData ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType.ToLower().Trim();
+                            if (myFieldType == "datetime")
+                            {
+                                result = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+
+            }
+            return result;
+        }
         public PropertyInfo GetIdentityColumnProps(Type t)
         {
             var entity = Activator.CreateInstance(t);
@@ -308,6 +387,15 @@ namespace EFHelper.ColumnHelper
             return pi;
         }
         public string GetColumnType(PropertyInfo property)
+        {
+            string fullName = property.PropertyType.FullName.ToLower().Split(',')[0].ToString();
+            string myFieldName = ColumnProperties.GetInstance.GetClearFieldName(property.Name);
+            string myFieldType = property.PropertyType.Name.ToLower();
+            bool isnullData = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? true : false;
+            myFieldType = isnullData ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
+            return myFieldType;
+        }
+        public string GetColumnDBType(PropertyInfo property)
         {
             string fullName = property.PropertyType.FullName.ToLower().Split(',')[0].ToString();
             string myFieldName = ColumnProperties.GetInstance.GetClearFieldName(property.Name);

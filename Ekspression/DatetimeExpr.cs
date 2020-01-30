@@ -15,7 +15,8 @@ namespace EFHelper.Ekspression
             TypeDatetime typeDatetime = new TypeDatetime();
             if (!string.IsNullOrEmpty(whereOperator) & columnNameExpr != null & columnValueExpr != null)
             {
-                string valueDatetime = columnValueExpr.ToString().Replace(@"""", "").Trim();
+
+                string valueDatetime = columnValueExpr.ToString().Replace(@"""", "").Replace(@"'","").Trim();
                 DateTime dateTime = Convert.ToDateTime(valueDatetime);
                 string mydatefrom = dateTime.ToString("yyyy-MM-dd") + " " + "00:00:00";
                 string mydateto = dateTime.ToString("yyyy-MM-dd") + " " + "23:59:59";

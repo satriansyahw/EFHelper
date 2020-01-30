@@ -30,7 +30,7 @@ namespace EFHelper.RepositoryList
                 var result =await queryable.ToListAsync();
                 eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, result);
             }
-            catch (Exception ex) { string a = ex.ToString(); }
+            catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); }
 
             return eFReturn;
         }
@@ -43,7 +43,7 @@ namespace EFHelper.RepositoryList
                 var result = await queryable.ToListAsync();
                 eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, result);
             }
-            catch (Exception ex) { string a = ex.ToString(); }
+            catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); }
 
             return eFReturn;
         }
@@ -56,7 +56,7 @@ namespace EFHelper.RepositoryList
                 var result = await queryable.ToListAsync();
                 eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, result);
             }
-            catch (Exception ex) { string a = ex.ToString(); }
+            catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); }
 
             return eFReturn;
         }

@@ -39,7 +39,7 @@ namespace EFHelper.RepositorySave
                             contextTrans.Commit();
                             eFReturn=eFReturn.SetEFReturnValue(eFReturn,true, hasil,entity);
                         }
-                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
+                        catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                     }
                 }
             }           
@@ -70,7 +70,7 @@ namespace EFHelper.RepositorySave
                       
 
                     }
-                    catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
+                    catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                 }
             }
             return eFReturn;
@@ -102,7 +102,7 @@ namespace EFHelper.RepositorySave
                         
                        
                     }
-                    catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
+                    catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                 }
             }
             return eFReturn;
@@ -137,7 +137,7 @@ namespace EFHelper.RepositorySave
                         }
                         
                     }
-                    catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
+                    catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                 }
             }
             return eFReturn;
@@ -175,7 +175,7 @@ namespace EFHelper.RepositorySave
                         }
                        
                     }
-                    catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, hasil, ex); contextTrans.Rollback(); }
+                    catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                 }
             }
             return eFReturn;

@@ -16,7 +16,8 @@ namespace EFHelper.Ekspression
             TypeDatetime typeDatetime = new TypeDatetime();
             if (!string.IsNullOrEmpty(whereOperator) & columnNameExpr != null & columnValueExpr != null)
             {
-                string valueBetween = columnValueExpr.ToString().Replace(@"""", "").Trim();
+
+                string valueBetween = columnValueExpr.ToString().Replace(@"""", "").Replace(@"'","").Trim();
                 string value1 = string.Empty;
                 string value2=string.Empty;
 

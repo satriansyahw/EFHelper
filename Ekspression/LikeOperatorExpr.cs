@@ -15,6 +15,10 @@ namespace EFHelper.Ekspression
             Expression result = null;
             if (!string.IsNullOrEmpty(whereOperator) & columnNameExpr != null & columnValueExpr != null)
             {
+                columnValueExpr = Expression.Constant( // recreate columnValueExpr
+                   TypeBantuan.GetInstance.DictTypes[fieldType].GetConvertedValue(isNull,
+                   columnValueExpr.ToString().Replace(@"""", "").Replace("'", ""), whereOperator)
+                   );
                 bool isInOperator = false;
                 var type = TypeBantuan.GetInstance.DictTypes["string"].GetConvertedType(isNull, isInOperator);
                 var method = TypeBantuan.GetInstance.DictTypes["string"].GetInMethodInfo(isNull);

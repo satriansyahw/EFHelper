@@ -12,6 +12,10 @@ namespace EFHelper.Ekspression
 
         public Expression GetExpression(bool isNull,string fieldType, string whereOperator,Expression columnNameExpr, Expression columnValueExpr)
         {
+            columnValueExpr = Expression.Constant( // recreate columnValueExpr
+                   TypeBantuan.GetInstance.DictTypes[fieldType].GetConvertedValue(isNull,
+                   columnValueExpr.ToString().Replace(@"""", "").Replace("'", ""), whereOperator)
+                   );
             Expression result = null;
             if (!string.IsNullOrEmpty(whereOperator) & columnNameExpr != null & columnValueExpr != null)
             {

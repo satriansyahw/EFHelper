@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using EFHelper.ColumnHelper;
 using EFHelper.Context;
+using EFHelper.DBCommandList;
 using EFHelper.EntityPreparation;
 using EFHelper.Filtering;
 using EFHelper.MiscClass;
 
 namespace EFHelper.RepositoryList
 {
-    public class RepoList : InterfaceRepoList
+    public class RepoList : EFRepoList
     {       
         private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private DBCommandRepoList listDBCommand = new DBCommandRepoList();
         private static RepoList instance;
         public static RepoList GetInstance
         {
@@ -20,71 +23,34 @@ namespace EFHelper.RepositoryList
                 return instance;
             }
         }
-        public virtual EFReturnValue ListData<T>(List<SearchField> searchFieldList) where T : class
+        public override EFReturnValue ListData<T>(List<SearchField> searchFieldList)
         {
-            using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
-            {
-                try
-                {
-                    var queryable = context.Set<T>().AsQueryable();
-                    QueryGenerator query = new QueryGenerator();
-                    queryable = query.QueryGeneratorList<T>(queryable, searchFieldList, string.Empty, false, 0);
-                    var result = queryable.ToList();
-                    eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, result);
-                }
-                catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex); }
-            }            
+            if (!ColumnPropGet.GetInstance.GetCheckIsExistDatetimeAndLike<T>(searchFieldList))
+                eFReturn = base.ListData<T>(searchFieldList);
+            else
+                eFReturn = listDBCommand.ListData<T>(searchFieldList);
             return eFReturn;
         }
-        public virtual EFReturnValue ListData<T>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake) where T : class
+        public override EFReturnValue ListData<T>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
         {
-            using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
-            {
-                try
-                {
-                    var queryable = context.Set<T>().AsQueryable();
-                    QueryGenerator query = new QueryGenerator();
-                    queryable = query.QueryGeneratorList<T>(queryable, searchFieldList,sortColumn,isAscending,topTake);
-                    var result = queryable.ToList();
-                    eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, result);
-                }
-                catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex); }
-            }
+            if (!ColumnPropGet.GetInstance.GetCheckIsExistDatetimeAndLike<T>(searchFieldList))
+                eFReturn = base.ListData<T>(searchFieldList, sortColumn, isAscending, topTake);
+            else
+                eFReturn = listDBCommand.ListData<T>(searchFieldList,sortColumn,isAscending,topTake);
             return eFReturn;
-
         }
-        public virtual EFReturnValue ListData<TSource, TResult>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
-            where TSource : class
-            where TResult : class
+        public override EFReturnValue ListData<TSource, TResult>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)         
         {
-            using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
-            {
-                try
-                {
-                    var queryable = context.Set<TSource>().AsQueryable();
-                    QueryGenerator query = new QueryGenerator();
-                    var result = query.QueryGeneratorList<TSource, TResult>(queryable, searchFieldList, sortColumn, false, topTake).AsEnumerable();
-                }
-                catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex); }
-            }
+            if (!ColumnPropGet.GetInstance.GetCheckIsExistDatetimeAndLike<TSource>(searchFieldList))
+                eFReturn = base.ListData<TSource, TResult>(searchFieldList, sortColumn, isAscending, topTake);
+            else
+                eFReturn = listDBCommand.ListData<TSource,TResult>(searchFieldList,sortColumn,isAscending,topTake);
             return eFReturn;
-
         }
 
-        public virtual EFReturnValue ListData<T>() where T : class
+        public override EFReturnValue ListData<T>()
         {
-            using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
-            {
-                try
-                {
-                    var queryable = context.Set<T>().AsQueryable();
-                    QueryGenerator query = new QueryGenerator();
-                    queryable = query.QueryGeneratorList<T>(queryable, null, string.Empty, false, 0);
-                    var result = queryable.ToList();
-                    eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, result);
-                }
-                catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex); }
-            }
+            eFReturn = base.ListData<T>();
             return eFReturn;
         }
 
