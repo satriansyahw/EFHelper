@@ -264,12 +264,13 @@ namespace EFHelper.ColumnHelper
             }
             return pi;
         }
-        public bool GetCheckIsExistDatetimeAndLike<T>(List<SearchField> lsf) where T:class
+        public bool GetCheckIsDBCommandList<T>(List<SearchField> lsf) where T:class
         {
             //check if like
             bool result = false;
             string colName = string.Empty;
             string queryOperator = string.Empty;
+            //like,datetime
             foreach (var item in lsf)
             {
                 if (!string.IsNullOrEmpty(item.Name) & !string.IsNullOrEmpty(item.Operator) & item.Value != null)
@@ -303,12 +304,13 @@ namespace EFHelper.ColumnHelper
             }    
             return result;
         }
-        public bool GetCheckIsExistDatetimeAndLike(List<SearchField> lsf,Type t)
+        public bool GetCheckIsDBCommandList(List<SearchField> lsf,Type t)
         {
             //check if like
             bool result = false;
             string colName = string.Empty;
             string queryOperator = string.Empty;
+            //like,datetime
             foreach (var item in lsf)
             {
                 if (!string.IsNullOrEmpty(item.Name) & !string.IsNullOrEmpty(item.Operator) & item.Value != null)

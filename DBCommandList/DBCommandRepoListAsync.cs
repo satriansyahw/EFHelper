@@ -49,9 +49,12 @@ namespace EFHelper.DBCommandList
                                 var classEntity = Activator.CreateInstance<T>();
                                 foreach (var item in listColumn)
                                 {
-                                    int ordinal = dataReader.GetOrdinal(item.ColName);
+                                    int ordinal = dataReader.GetOrdinal(item.ColPropInfo.Name);
                                     object value = dataReader.GetValue(ordinal);
-                                    ColumnPropSet.GetInstance.SetColValue<T>(classEntity, item.ColName, value);
+                                    if (value.GetType() != typeof(System.DBNull))
+                                    {
+                                        ColumnPropSet.GetInstance.SetColValue<T>(classEntity, item.ColPropInfo.Name, value);
+                                    }
                                 }
                                 listResult.Add(classEntity);
                             }
@@ -98,9 +101,12 @@ namespace EFHelper.DBCommandList
                                 var classEntity = Activator.CreateInstance<T>();
                                 foreach (var item in listColumn)
                                 {
-                                    int ordinal = dataReader.GetOrdinal(item.ColName);
+                                    int ordinal = dataReader.GetOrdinal(item.ColPropInfo.Name);
                                     object value = dataReader.GetValue(ordinal);
-                                    ColumnPropSet.GetInstance.SetColValue<T>(classEntity, item.ColName, value);
+                                    if (value.GetType() != typeof(System.DBNull))
+                                    {
+                                        ColumnPropSet.GetInstance.SetColValue<T>(classEntity, item.ColPropInfo.Name, value);
+                                    }
                                 }
                                 listResult.Add(classEntity);
                             }
@@ -146,9 +152,12 @@ namespace EFHelper.DBCommandList
                                 var classEntity = Activator.CreateInstance<T>();
                                 foreach (var item in listColumn)
                                 {
-                                    int ordinal = dataReader.GetOrdinal(item.ColName);
+                                    int ordinal = dataReader.GetOrdinal(item.ColPropInfo.Name);
                                     object value = dataReader.GetValue(ordinal);
-                                    ColumnPropSet.GetInstance.SetColValue<T>(classEntity, item.ColName, value);
+                                    if (value.GetType() != typeof(System.DBNull))
+                                    {
+                                        ColumnPropSet.GetInstance.SetColValue<T>(classEntity, item.ColPropInfo.Name, value);
+                                    }
                                 }
                                 listResult.Add(classEntity);
                             }
@@ -196,9 +205,12 @@ namespace EFHelper.DBCommandList
                                 var classEntity = Activator.CreateInstance<TResult>();
                                 foreach (var item in listColumn)
                                 {
-                                    int ordinal = dataReader.GetOrdinal(item.ColName);
+                                    int ordinal = dataReader.GetOrdinal(item.ColPropInfo.Name);
                                     object value = dataReader.GetValue(ordinal);
-                                    ColumnPropSet.GetInstance.SetColValue<TResult>(classEntity, item.ColName, value);
+                                    if (value.GetType() != typeof(System.DBNull))
+                                    {
+                                        ColumnPropSet.GetInstance.SetColValue<TResult>(classEntity, item.ColPropInfo.Name, value);
+                                    }
                                 }
                                 listResult.Add(classEntity);
                             }

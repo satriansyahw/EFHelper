@@ -38,7 +38,7 @@ namespace EFHelper.DBCommandList
             string from = " from ";
             string tableName = DBCommandListGet.GetInstance.GetTableName<T>();
             string selectFields = DBCommandListGet.GetInstance.GetSelectFields<T>();
-            result = selectFields + from;
+            result = selectFields + from +tableName;
             return result;
         }
         public string CreateQueryList<TSource, TResult>()
@@ -50,7 +50,7 @@ namespace EFHelper.DBCommandList
             string from = " from ";
             string tableNameSource = DBCommandListGet.GetInstance.GetTableName<TSource>();
             string selectFields = DBCommandListGet.GetInstance.GetSelectFields<TSource,TResult>();
-            result = selectFields + from;
+            result = selectFields + from+tableNameSource;
             return result;
         }
         public QueryGeneratorResult CreateQueryList<T>(List<SearchField> searchFieldList) where T : class

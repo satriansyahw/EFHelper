@@ -16,7 +16,9 @@ namespace EFHelper.DBCommandList
         private const string select = " select ";
         private const string orderby = " order by ";
         private const string aliasnull = " =null ";
-        private const string operatorlike = " like ";
+        private const string operatorlike = "like";
+        private const string operatorbetween = "between";
+
         public static DBCommandListGet GetInstance
         {
             get
@@ -40,7 +42,10 @@ namespace EFHelper.DBCommandList
             {
                 string[] classNameArray = className.Split(".");
                 if (classNameArray.Length >= 2)
-                    result = classNameArray[0] + "." + classNameArray[1];
+                    result = classNameArray[classNameArray.Length - 2] + "." + classNameArray[classNameArray.Length - 1];
+                else
+                    result = classNameArray[0];
+
             }
             return result;
         }
@@ -50,7 +55,7 @@ namespace EFHelper.DBCommandList
             List<ColumnListInfo> columnList = ColumnPropGet.GetInstance.GetColumnList<T>();
             foreach (var columnName in columnList)
             {
-                result = !string.IsNullOrEmpty(result) ? result + "," + columnName.ColName : columnName.ColName;
+                result = !string.IsNullOrEmpty(result) ? result + "," + columnName.ColPropInfo.Name : columnName.ColPropInfo.Name;
             }
             return " " + result + " ";
         }
@@ -66,11 +71,11 @@ namespace EFHelper.DBCommandList
                 columnResult = columnName.ColName.Trim().ToLower();
                 if (columnListSource.Exists(a => a.ColName.Trim().ToLower() == columnResult))
                 {
-                    result = !string.IsNullOrEmpty(result) ? result + "," + columnName.ColName : columnName.ColName;
+                    result = !string.IsNullOrEmpty(result) ? result + "," + columnName.ColPropInfo.Name : columnName.ColPropInfo.Name;
                 }
                 else
                 {
-                    result = !string.IsNullOrEmpty(result) ? result + "," + columnName.ColName + aliasnull : columnName.ColName + aliasnull;
+                    result = !string.IsNullOrEmpty(result) ? result + "," + columnName.ColPropInfo.Name + aliasnull : columnName.ColPropInfo.Name + aliasnull;
                 }
 
             }
@@ -78,6 +83,7 @@ namespace EFHelper.DBCommandList
         }
         public List<SqlParameter> GetWhereParameterCollection<T>(List<SearchField> lsf) where T : class
         {
+            DBCommandBetweenOperator betweenOprt = new DBCommandBetweenOperator();
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
             foreach (SearchField item in lsf)
             {
@@ -91,12 +97,25 @@ namespace EFHelper.DBCommandList
                         string queryOperator = item.Operator.ToLower().Trim();
                         string colType = ColumnPropGet.GetInstance.GetColumnType(colProp);
                         DbType dbType = TypeBantuan.GetInstance.DictTypes[colType].GetConvertedDbType(colType);
-                        if (queryOperator == operatorlike)
-                            value = string.Format(@"'%" + value + "%'");
+                        if (queryOperator == operatorbetween)
+                        {
+                            var listParameter = betweenOprt.CreateBetweenParameter(item, colType);
+                            sqlParameters.AddRange(listParameter);
+                        }
+                        else
+                        {
+                            if (queryOperator == operatorlike)
+                            {
+                                value = string.Format(@"'%" + value + "%'");
+                            }
+                            sqlParameters.Add(new SqlParameter
+                            {
+                                ParameterName = "@" + colProp.Name,
+                                Value = item.Value.ToString().Replace("'", "''"),
+                                DbType = dbType
+                            });
 
-                        sqlParameters.Add(new SqlParameter { ParameterName = "@" + colProp.Name
-                            , Value = item.Value.ToString().Replace("'", "''"),DbType= dbType
-                        });
+                        }
                     }
                 }
             }
@@ -104,6 +123,7 @@ namespace EFHelper.DBCommandList
         }
         public string GetWhereParameterizedQuery<T>(List<SearchField> lsf) where T : class
         {
+            DBCommandBetweenOperator betweenOprt = new DBCommandBetweenOperator();
             string result = " where 1=1 ";
             var activeBoolProp = ColumnPropGet.GetInstance.GetColumnProps<T>("activebool");
             if (activeBoolProp == null)
@@ -120,7 +140,11 @@ namespace EFHelper.DBCommandList
                     PropertyInfo colProp = ColumnPropGet.GetInstance.GetColumnProps<T>(colName);
                     if (colProp != null)
                     {
-                        result += " and " + colProp.Name + " " + item.Operator + " " + "@" + colProp.Name;
+                        string colType = ColumnPropGet.GetInstance.GetColumnType(colProp);
+                        if (item.Operator == "between")
+                            result += " and " + betweenOprt.CreateBetweenWhereClause(item, colType);
+                        else
+                            result += " and " + colProp.Name + " " + item.Operator + " " + "@" + colProp.Name;
                     }
                 }
             }

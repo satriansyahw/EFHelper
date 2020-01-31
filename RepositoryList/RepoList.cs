@@ -25,7 +25,7 @@ namespace EFHelper.RepositoryList
         }
         public override EFReturnValue ListData<T>(List<SearchField> searchFieldList)
         {
-            if (!ColumnPropGet.GetInstance.GetCheckIsExistDatetimeAndLike<T>(searchFieldList))
+            if (!ColumnPropGet.GetInstance.GetCheckIsDBCommandList<T>(searchFieldList))
                 eFReturn = base.ListData<T>(searchFieldList);
             else
                 eFReturn = listDBCommand.ListData<T>(searchFieldList);
@@ -33,7 +33,7 @@ namespace EFHelper.RepositoryList
         }
         public override EFReturnValue ListData<T>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
         {
-            if (!ColumnPropGet.GetInstance.GetCheckIsExistDatetimeAndLike<T>(searchFieldList))
+            if (!ColumnPropGet.GetInstance.GetCheckIsDBCommandList<T>(searchFieldList))
                 eFReturn = base.ListData<T>(searchFieldList, sortColumn, isAscending, topTake);
             else
                 eFReturn = listDBCommand.ListData<T>(searchFieldList,sortColumn,isAscending,topTake);
@@ -41,7 +41,7 @@ namespace EFHelper.RepositoryList
         }
         public override EFReturnValue ListData<TSource, TResult>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)         
         {
-            if (!ColumnPropGet.GetInstance.GetCheckIsExistDatetimeAndLike<TSource>(searchFieldList))
+            if (!ColumnPropGet.GetInstance.GetCheckIsDBCommandList<TSource>(searchFieldList))
                 eFReturn = base.ListData<TSource, TResult>(searchFieldList, sortColumn, isAscending, topTake);
             else
                 eFReturn = listDBCommand.ListData<TSource,TResult>(searchFieldList,sortColumn,isAscending,topTake);

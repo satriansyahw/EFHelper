@@ -40,9 +40,12 @@ namespace EFHelper.DBCommandList
                                 var classEntity = Activator.CreateInstance<T>();
                                 foreach (var item in listColumn)
                                 {
-                                    int ordinal = dataReader.GetOrdinal(item.ColName);
+                                    int ordinal = dataReader.GetOrdinal(item.ColPropInfo.Name);
                                     object value = dataReader.GetValue(ordinal);
-                                    ColumnPropSet.GetInstance.SetColValue<T>(classEntity, item.ColName, value);
+                                    if (value.GetType() != typeof(System.DBNull))
+                                    {
+                                        ColumnPropSet.GetInstance.SetColValue<T>(classEntity, item.ColPropInfo.Name, value);
+                                    }
                                 }
                                 listResult.Add(classEntity);
                             }
@@ -89,16 +92,20 @@ namespace EFHelper.DBCommandList
                                 var classEntity = Activator.CreateInstance<T>();
                                 foreach (var item in listColumn)
                                 {
-                                    int ordinal = dataReader.GetOrdinal(item.ColName);
+                                    int ordinal = dataReader.GetOrdinal(item.ColPropInfo.Name);
                                     object value = dataReader.GetValue(ordinal);
-                                    ColumnPropSet.GetInstance.SetColValue<T>(classEntity, item.ColName, value);
+                                    if (value.GetType() != typeof(System.DBNull))
+                                    {
+                                        ColumnPropSet.GetInstance.SetColValue<T>(classEntity, item.ColPropInfo.Name, value);
+                                    }
+
                                 }
                                 listResult.Add(classEntity);
                             }
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
                     }
-                    catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); }
+                     catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); }
                     finally
                     {
                         if (cmd.Connection.State == ConnectionState.Open)
@@ -137,9 +144,12 @@ namespace EFHelper.DBCommandList
                                 var classEntity = Activator.CreateInstance<T>();
                                 foreach (var item in listColumn)
                                 {
-                                    int ordinal = dataReader.GetOrdinal(item.ColName);
+                                    int ordinal = dataReader.GetOrdinal(item.ColPropInfo.Name);
                                     object value = dataReader.GetValue(ordinal);
-                                    ColumnPropSet.GetInstance.SetColValue<T>(classEntity, item.ColName, value);
+                                    if (value.GetType() != typeof(System.DBNull))
+                                    {
+                                        ColumnPropSet.GetInstance.SetColValue<T>(classEntity, item.ColPropInfo.Name, value);
+                                    }
                                 }
                                 listResult.Add(classEntity);
                             }
@@ -187,9 +197,12 @@ namespace EFHelper.DBCommandList
                                 var classEntity = Activator.CreateInstance<TResult>();
                                 foreach (var item in listColumn)
                                 {
-                                    int ordinal = dataReader.GetOrdinal(item.ColName);
+                                    int ordinal = dataReader.GetOrdinal(item.ColPropInfo.Name);
                                     object value = dataReader.GetValue(ordinal);
-                                    ColumnPropSet.GetInstance.SetColValue<TResult>(classEntity, item.ColName, value);
+                                    if (value.GetType() != typeof(System.DBNull))
+                                    {
+                                        ColumnPropSet.GetInstance.SetColValue<TResult>(classEntity, item.ColPropInfo.Name, value);
+                                    }
                                 }
                                 listResult.Add(classEntity);
                             }

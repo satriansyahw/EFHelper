@@ -27,7 +27,7 @@ namespace EFHelper.RepositoryList
         }
         public override async Task<EFReturnValue> ListDataAsync<T>(List<SearchField> searchFieldList) 
         {
-            if (!ColumnPropGet.GetInstance.GetCheckIsExistDatetimeAndLike<T>(searchFieldList))
+            if (!ColumnPropGet.GetInstance.GetCheckIsDBCommandList<T>(searchFieldList))
                 eFReturn = await base.ListDataAsync<T>(searchFieldList);
             else
                 eFReturn = await listDBCommand.ListDataAsync<T>(searchFieldList);
@@ -35,7 +35,7 @@ namespace EFHelper.RepositoryList
         }
         public override async Task<EFReturnValue> ListDataAsync<T>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
         {
-            if (!ColumnPropGet.GetInstance.GetCheckIsExistDatetimeAndLike<T>(searchFieldList))
+            if (!ColumnPropGet.GetInstance.GetCheckIsDBCommandList<T>(searchFieldList))
                 eFReturn = await base.ListDataAsync<T>(searchFieldList, sortColumn, isAscending, topTake);
             else
                 eFReturn = await listDBCommand.ListDataAsync<T>(searchFieldList,sortColumn,isAscending,topTake);
@@ -43,7 +43,7 @@ namespace EFHelper.RepositoryList
         }
         public override async Task<EFReturnValue> ListDataAsync<TSource, TResult>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)         
         {
-            if (!ColumnPropGet.GetInstance.GetCheckIsExistDatetimeAndLike<TSource>(searchFieldList))
+            if (!ColumnPropGet.GetInstance.GetCheckIsDBCommandList<TSource>(searchFieldList))
                 eFReturn = await base.ListDataAsync<TSource, TResult>(searchFieldList, sortColumn, isAscending, topTake);
             else
                 eFReturn = await listDBCommand.ListDataAsync<TSource,TResult>(searchFieldList,sortColumn,isAscending,topTake);
