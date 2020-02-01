@@ -54,7 +54,7 @@ namespace EFHelper.RepositoryList
                 {
                     var queryable = context.Set<TSource>().AsQueryable();
                     QueryGenerator query = new QueryGenerator();
-                    var result = query.QueryGeneratorList<TSource, TResult>(queryable, searchFieldList, sortColumn, false, topTake).AsEnumerable();
+                    var result = query.QueryGeneratorList<TSource, TResult>(queryable, searchFieldList, sortColumn, false, topTake).ToList();
                 }
                 catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); }
             }
