@@ -43,12 +43,12 @@ namespace EFHelper
         }
         public override DbContext CreateConnectionContext()
         {
-            return this.CreateConnectionContext();
+            return base.CreateConnectionContext();
         }
 
         public override void SetConnectionContext(DbContext dbContext)
         {
-            this.SetConnectionContext(dbContext);
+            base.SetConnectionContext(dbContext);
         }
         public EFReturnValue Delete<T>(int IDIdentity) where T : class
         {

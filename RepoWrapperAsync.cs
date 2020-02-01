@@ -43,11 +43,11 @@ namespace EFHelper
         }
         public override void SetConnectionContext(DbContext dbContext)
         {
-            this.SetConnectionContext(dbContext);
+            base.SetConnectionContext(dbContext);
         }
         public override DbContext CreateConnectionContext()
         {
-            return this.CreateConnectionContext();
+            return base.CreateConnectionContext();
         }
         public async Task<EFReturnValue> DeleteActiveBoolAsync<T>(T entity) where T : class
         {
