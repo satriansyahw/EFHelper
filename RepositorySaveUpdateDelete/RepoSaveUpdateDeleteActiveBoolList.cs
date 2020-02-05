@@ -26,7 +26,7 @@ namespace EFHelper.RepositorySaveUpdateDelete
 
         public EFReturnValue SaveUpdateDeleteActiveBoolList<T1>(List<T1> listEntity1, EnumSaveUpdateDelete enumSUDT1) where T1 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listEntity1 != null)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -80,7 +80,7 @@ namespace EFHelper.RepositorySaveUpdateDelete
             where T1 : class
             where T2 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listEntity1 != null & listEntity2 != null)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -161,7 +161,7 @@ namespace EFHelper.RepositorySaveUpdateDelete
             where T2 : class
             where T3 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listEntity1 != null & listEntity2 != null & listEntity3 != null)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -274,7 +274,7 @@ namespace EFHelper.RepositorySaveUpdateDelete
             where T3 : class
             where T4 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listEntity1 != null & listEntity2 != null & listEntity3 != null & listEntity4 != null )
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -413,7 +413,7 @@ namespace EFHelper.RepositorySaveUpdateDelete
             where T4 : class
             where T5 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listEntity1 != null & listEntity2 != null & listEntity3 != null & listEntity4 != null & listEntity5 != null)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())

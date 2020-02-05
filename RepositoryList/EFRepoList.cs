@@ -13,6 +13,7 @@ namespace EFHelper.RepositoryList
         private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
         public virtual EFReturnValue ListData<T>(List<SearchField> searchFieldList) where T : class
         {
+            eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
             {
                 try
@@ -29,6 +30,7 @@ namespace EFHelper.RepositoryList
         }
         public virtual EFReturnValue ListData<T>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake) where T : class
         {
+            eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
             {
                 try
@@ -48,6 +50,7 @@ namespace EFHelper.RepositoryList
             where TSource : class
             where TResult : class
         {
+            eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
             {
                 try
@@ -64,6 +67,7 @@ namespace EFHelper.RepositoryList
 
         public virtual EFReturnValue ListData<T>() where T : class
         {
+            eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
             {
                 try

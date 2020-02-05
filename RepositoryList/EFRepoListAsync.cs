@@ -15,6 +15,7 @@ namespace EFHelper.RepositoryList
         private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
         public virtual async Task<EFReturnValue> ListDataAsync<T>(List<SearchField> searchFieldList) where T : class
         {
+            eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
             {
                 try
@@ -31,6 +32,7 @@ namespace EFHelper.RepositoryList
         }
         public virtual async Task<EFReturnValue> ListDataAsync<T>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake) where T : class
         {
+            eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
             {
                 try
@@ -50,6 +52,7 @@ namespace EFHelper.RepositoryList
             where TSource : class
             where TResult : class
         {
+            eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
             {
                 try
@@ -67,6 +70,7 @@ namespace EFHelper.RepositoryList
 
         public virtual async Task<EFReturnValue> ListDataAsync<T>() where T : class
         {
+            eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
             {
                 try

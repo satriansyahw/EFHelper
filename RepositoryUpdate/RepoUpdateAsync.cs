@@ -23,7 +23,7 @@ namespace EFHelper.RepositoryUpdate
         }
         public virtual async Task<EFReturnValue> UpdateAsync<T>(T entity) where T : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (entity != null)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -57,7 +57,7 @@ namespace EFHelper.RepositoryUpdate
             where T1 : class
             where T2 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (entity1 != null & entity2 !=null)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -107,7 +107,7 @@ namespace EFHelper.RepositoryUpdate
             where T2 : class
             where T3 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (entity1 != null & entity2 != null & entity3 !=null)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -169,7 +169,7 @@ namespace EFHelper.RepositoryUpdate
             where T3 : class
             where T4 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (entity1 != null & entity2 != null & entity3 != null & entity4 != null)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -243,7 +243,7 @@ namespace EFHelper.RepositoryUpdate
             where T4 : class
             where T5 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (entity1 != null & entity2 != null & entity3 != null & entity4 != null & entity5 != null)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())

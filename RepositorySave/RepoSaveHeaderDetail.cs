@@ -24,7 +24,7 @@ namespace EFHelper.RepositorySave
             where T : class
             where T1 : class
         {           
-            object objIDColumnHeader = null;
+            object objIDColumnHeader = null; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             object objIDColumnDetail1 = null;
             if (tblHeader != null & !string.IsNullOrEmpty(idReferenceColName) & tblDetail1 != null)
             {
@@ -67,7 +67,7 @@ namespace EFHelper.RepositorySave
             where T1 : class where T2 : class
         {
             
-            object objIDColumnHeader = null;
+            object objIDColumnHeader = null; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             bool  resultDetail =false;
             if (tblHeader != null & !string.IsNullOrEmpty(idReferenceColName) & tblDetail1 != null)
             {
@@ -113,7 +113,7 @@ namespace EFHelper.RepositorySave
             where T3 : class
         {
             
-            object objIDColumnHeader = null;
+            object objIDColumnHeader = null; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             bool resultDetail = false;
             if (tblHeader != null & !string.IsNullOrEmpty(idReferenceColName) & tblDetail1 != null)
             {
@@ -162,7 +162,7 @@ namespace EFHelper.RepositorySave
             where T4 : class
         {
             
-            object objIDColumnHeader = null;
+            object objIDColumnHeader = null; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (tblHeader != null & !string.IsNullOrEmpty(idReferenceColName) & tblDetail1 != null)
             {
                 RepoSave repoSave = new RepoSave();
@@ -213,7 +213,7 @@ namespace EFHelper.RepositorySave
             where T5 : class
         {
             
-            object objIDColumnHeader = null;
+            object objIDColumnHeader = null; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             bool resultDetail = false;
             if (tblHeader != null & !string.IsNullOrEmpty(idReferenceColName) & tblDetail1 != null)
             {

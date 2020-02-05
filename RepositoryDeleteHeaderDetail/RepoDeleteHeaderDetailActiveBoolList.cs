@@ -28,7 +28,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
             where T : class
             where T1 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listIDIdentity.Count > 0 & !string.IsNullOrEmpty(idReferenceColName))
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -75,7 +75,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
             where T1 : class
             where T2 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listIDIdentity.Count > 0 & !string.IsNullOrEmpty(idReferenceColName))
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -132,7 +132,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
             where T2 : class
             where T3 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listIDIdentity.Count > 0 & !string.IsNullOrEmpty(idReferenceColName))
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -198,7 +198,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
             where T3 : class
             where T4 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listIDIdentity.Count > 0 & !string.IsNullOrEmpty(idReferenceColName))
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -273,7 +273,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
             where T4 : class
             where T5 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listIDIdentity.Count > 0 & !string.IsNullOrEmpty(idReferenceColName))
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())

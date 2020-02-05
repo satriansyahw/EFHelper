@@ -23,7 +23,7 @@ namespace EFHelper.RepositoryDelete
         }
         public virtual async Task<EFReturnValue> DeleteListAsync<T>(List<T> listEntity) where T : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listEntity.Count > 0)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -49,7 +49,7 @@ namespace EFHelper.RepositoryDelete
             where T1 : class
             where T2 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listEntity1.Count > 0 & listEntity2.Count > 0)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -80,7 +80,7 @@ namespace EFHelper.RepositoryDelete
             where T2 : class
             where T3 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listEntity1.Count > 0 & listEntity2.Count > 0 & listEntity3.Count > 0)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -113,7 +113,7 @@ namespace EFHelper.RepositoryDelete
             where T3 : class
             where T4 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listEntity1.Count > 0 & listEntity2.Count > 0 & listEntity3.Count > 0 & listEntity4.Count > 0)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -149,7 +149,7 @@ namespace EFHelper.RepositoryDelete
             where T4 : class
             where T5 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listEntity1.Count > 0 & listEntity2.Count > 0 & listEntity3.Count > 0 & listEntity4.Count > 0 & listEntity5.Count > 0)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -182,7 +182,7 @@ namespace EFHelper.RepositoryDelete
         }
         public virtual async Task<EFReturnValue> DeleteListAsync<T>(List<int> listIDIdentity) where T : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listIDIdentity.Count > 0)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -217,7 +217,7 @@ namespace EFHelper.RepositoryDelete
             where T1 : class
             where T2 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listIDIdentity1.Count > 0 & listIDIdentity2.Count > 0)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -250,7 +250,7 @@ namespace EFHelper.RepositoryDelete
             where T2 : class
             where T3 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listIDIdentity1.Count > 0 & listIDIdentity2.Count > 0 & listIDIdentity3.Count > 0)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -288,7 +288,7 @@ namespace EFHelper.RepositoryDelete
             where T3 : class
             where T4 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listIDIdentity1.Count > 0 & listIDIdentity2.Count > 0 & listIDIdentity3.Count > 0 & listIDIdentity4.Count > 0)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -330,7 +330,7 @@ namespace EFHelper.RepositoryDelete
             where T4 : class
             where T5 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (listIDIdentity1.Count > 0 & listIDIdentity2.Count > 0 & listIDIdentity3.Count > 0 & listIDIdentity4.Count > 0 & listIDIdentity5.Count > 0)
             {
                 using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())

@@ -25,6 +25,7 @@ namespace EFHelper.RepositoryList
         }
         public override EFReturnValue ListData<T>(List<SearchField> searchFieldList)
         {
+            eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (!ColumnPropGet.GetInstance.GetCheckIsDBCommandList<T>(searchFieldList))
                 eFReturn = base.ListData<T>(searchFieldList);
             else
@@ -33,6 +34,7 @@ namespace EFHelper.RepositoryList
         }
         public override EFReturnValue ListData<T>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
         {
+            eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (!ColumnPropGet.GetInstance.GetCheckIsDBCommandList<T>(searchFieldList))
                 eFReturn = base.ListData<T>(searchFieldList, sortColumn, isAscending, topTake);
             else
@@ -41,6 +43,7 @@ namespace EFHelper.RepositoryList
         }
         public override EFReturnValue ListData<TSource, TResult>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)         
         {
+            eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (!ColumnPropGet.GetInstance.GetCheckIsDBCommandList<TSource>(searchFieldList))
                 eFReturn = base.ListData<TSource, TResult>(searchFieldList, sortColumn, isAscending, topTake);
             else
@@ -50,6 +53,7 @@ namespace EFHelper.RepositoryList
 
         public override EFReturnValue ListData<T>()
         {
+            eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             eFReturn = base.ListData<T>();
             return eFReturn;
         }

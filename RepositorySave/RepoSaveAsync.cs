@@ -23,7 +23,7 @@ namespace EFHelper.RepositorySave
         public virtual async Task<EFReturnValue> SaveAsync<T>(T entity) where T : class
         {
             var entityResult = Activator.CreateInstance<T>();
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
 
             if (entity != null)
             {
@@ -52,7 +52,7 @@ namespace EFHelper.RepositorySave
             where T1 : class
             where T2 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
             {
                 using (var contextTrans = context.Database.BeginTransaction())
@@ -81,7 +81,7 @@ namespace EFHelper.RepositorySave
             where T2 : class
             where T3 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
             {
                 using (var contextTrans = context.Database.BeginTransaction())
@@ -114,7 +114,7 @@ namespace EFHelper.RepositorySave
             where T3 : class
             where T4 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
             {
                 using (var contextTrans = context.Database.BeginTransaction())
@@ -149,7 +149,7 @@ namespace EFHelper.RepositorySave
             where T4 : class
             where T5 : class
         {
-            int hasil = 0;
+            int hasil = 0; eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
             {
                 using (var contextTrans = context.Database.BeginTransaction())

@@ -27,6 +27,7 @@ namespace EFHelper.RepositoryList
         }
         public override async Task<EFReturnValue> ListDataAsync<T>(List<SearchField> searchFieldList) 
         {
+            eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (!ColumnPropGet.GetInstance.GetCheckIsDBCommandList<T>(searchFieldList))
                 eFReturn = await base.ListDataAsync<T>(searchFieldList);
             else
@@ -35,6 +36,7 @@ namespace EFHelper.RepositoryList
         }
         public override async Task<EFReturnValue> ListDataAsync<T>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
         {
+            eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (!ColumnPropGet.GetInstance.GetCheckIsDBCommandList<T>(searchFieldList))
                 eFReturn = await base.ListDataAsync<T>(searchFieldList, sortColumn, isAscending, topTake);
             else
@@ -43,6 +45,7 @@ namespace EFHelper.RepositoryList
         }
         public override async Task<EFReturnValue> ListDataAsync<TSource, TResult>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)         
         {
+            eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             if (!ColumnPropGet.GetInstance.GetCheckIsDBCommandList<TSource>(searchFieldList))
                 eFReturn = await base.ListDataAsync<TSource, TResult>(searchFieldList, sortColumn, isAscending, topTake);
             else
@@ -51,6 +54,7 @@ namespace EFHelper.RepositoryList
         }
         public override async Task<EFReturnValue> ListDataAsync<T>()
         {
+            eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             eFReturn = await base.ListDataAsync<T>();
             return eFReturn;
         }
