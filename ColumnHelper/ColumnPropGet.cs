@@ -1,4 +1,5 @@
 ﻿using EFHelper.Filtering;
+using EFHelper.MiscClass;
 using EFHelper.TypeHelper;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,17 @@ namespace EFHelper.ColumnHelper
                 return instance;
             }
         }
-
+        public List<ConvertNoToNamePI> GetColumnConvertPI<T>(List<ColumnConvertNoToName> listColumnConvert) where T : class
+        {
+            var result = new List<ConvertNoToNamePI>();
+            foreach (var item in listColumnConvert)
+            {
+                var sourcePI = ColumnPropGet.GetInstance.GetColumnProps<T>(item.SourceColumnNo);
+                var targetPI = ColumnPropGet.GetInstance.GetColumnProps<T>(item.TargetColumnName);
+                result.Add(new ConvertNoToNamePI { SourceNoPropertyInfo = sourcePI, TargetNamePropertyInfo = targetPI });
+            }
+            return result;
+        }
         public List<T> GetInstanceWithIDColumnList<T>(List<int> listIDIdentity) where T : class
         {
             List<T> listEntity = new List<T>();

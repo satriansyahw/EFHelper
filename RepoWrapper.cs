@@ -23,6 +23,7 @@ namespace EFHelper
         , InterfaceRepoDeleteHeaderDetail, InterfaceRepoDeleteHeaderDetailList, InterfaceRepoDeleteHeaderDetailActiveBool, InterfaceRepoDeleteHeaderDetailActiveBoolList
         , InterfaceRepoList, InterfaceRepoListQueryable, InterfaceRepoDeleteSave, InterfaceRepoDeleteSaveList, InterfaceRepoDeleteSaveActiveBool, InterfaceRepoDeleteSaveActiveBoolList
         , InterfaceRepoSaveUpdateDelete, InterfaceRepoSaveUpdateDeleteList, InterfaceRepoSaveUpdateDeleteActiveBool, InterfaceRepoSaveUpdateDeleteActiveBoolList
+        ,InterfaceRepoListWithEmpInfo,InterfaceRepoListQueryableWithEmpInfo
     {
         private static RepoWrapper instance;
         public new static RepoWrapper GetInstance
@@ -1314,6 +1315,48 @@ namespace EFHelper
             where T5 : class
         {
             return RepoSaveUpdateDeleteActiveBoolList.GetInstance.SaveUpdateDeleteActiveBoolList(listEntity1, enumSUDT1, listEntity2, enumSUDT2, listEntity3, enumSUDT3, listEntity4, enumSUDT4, listEntity5, enumSUDT5);
+        }
+
+        public EFReturnValue ListDataWithEmpInfo<T, TNoToName>(List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert)     
+             where T : class where TNoToName : class, IConvertNoToName
+        {
+            return RepoListWithEmpInfo.GetInstance.ListDataWithEmpInfo<T, TNoToName>(listTableConvert, listColumnConvert);
+        }
+
+        public EFReturnValue ListDataWithEmpInfo<T, TNoToName>(List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert, List<SearchField> searchFieldList)
+             where T : class where TNoToName : class, IConvertNoToName
+        {
+            return RepoListWithEmpInfo.GetInstance.ListDataWithEmpInfo<T, TNoToName>(listTableConvert, listColumnConvert, searchFieldList);
+        }
+
+        public EFReturnValue ListDataWithEmpInfo<T, TNoToName>(List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert, List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
+             where T : class where TNoToName : class, IConvertNoToName
+        {
+            return RepoListWithEmpInfo.GetInstance.ListDataWithEmpInfo<T, TNoToName>(listTableConvert, listColumnConvert, searchFieldList, sortColumn, isAscending, topTake);
+        }
+
+        public EFReturnValue ListDataWithEmpInfo<TSource, TResult, TNoToName>(List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert, List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
+             where TSource : class where TResult:class where TNoToName : class, IConvertNoToName
+        {
+            return RepoListWithEmpInfo.GetInstance.ListDataWithEmpInfo<TSource, TResult, TNoToName>(listTableConvert, listColumnConvert, searchFieldList, sortColumn, isAscending, topTake);
+        }
+
+        public EFReturnValue ListDataQueryableWithEmpInfo<TResult, TNoToName>(IQueryable<TResult> queryable, List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert)
+             where TResult : class where TNoToName : class, IConvertNoToName
+        {
+            return RepoListQueryableWithEmpInfo.GetInstance.ListDataQueryableWithEmpInfo(queryable, listTableConvert, listColumnConvert);
+        }
+
+        public EFReturnValue ListDataQueryableWithEmpInfo<TResult, TNoToName>(IQueryable<TResult> queryable, List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert, List<SearchField> searchFieldList)
+             where TResult : class where TNoToName : class, IConvertNoToName
+        {
+            return RepoListQueryableWithEmpInfo.GetInstance.ListDataQueryableWithEmpInfo(queryable, listTableConvert, listColumnConvert, searchFieldList);
+        }
+
+        public EFReturnValue ListDataQueryableWithEmpInfo<TResult, TNoToName>(IQueryable<TResult> queryable, List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert, List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
+            where TResult : class where TNoToName : class, IConvertNoToName
+        {
+            return RepoListQueryableWithEmpInfo.GetInstance.ListDataQueryableWithEmpInfo(queryable, listTableConvert, listColumnConvert, searchFieldList, sortColumn, isAscending, topTake);
         }
     }
    

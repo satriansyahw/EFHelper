@@ -14,8 +14,18 @@ namespace EFHelper.DBCommandList
 {
     public class DBCommandRepoList: InterfaceRepoList
     {
-        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        private static DBCommandRepoList instance;
+        public static DBCommandRepoList GetInstance
+        {
+            get
+            {
+                if (instance == null) instance = new DBCommandRepoList();
+                return instance;
+            }
+        }
 
+        private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
+        DBCommandListResult convertResult = new DBCommandListResult();
         public virtual EFReturnValue ListData<T>() where T : class
         {
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
@@ -37,17 +47,7 @@ namespace EFHelper.DBCommandList
                         {
                             while (dataReader.Read())
                             {
-                                var classEntity = Activator.CreateInstance<T>();
-                                foreach (var item in listColumn)
-                                {
-                                    int ordinal = dataReader.GetOrdinal(item.ColPropInfo.Name);
-                                    object value = dataReader.GetValue(ordinal);
-                                    if (value.GetType() != typeof(System.DBNull))
-                                    {
-                                        ColumnPropSet.GetInstance.SetColValue<T>(classEntity, item.ColPropInfo.Name, value);
-                                    }
-                                }
-                                listResult.Add(classEntity);
+                                listResult = convertResult.ConvertDataReaderToList<T>(dataReader);
                             }
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
@@ -89,18 +89,7 @@ namespace EFHelper.DBCommandList
                             listResult = new List<T>();
                             while (dataReader.Read())
                             {
-                                var classEntity = Activator.CreateInstance<T>();
-                                foreach (var item in listColumn)
-                                {
-                                    int ordinal = dataReader.GetOrdinal(item.ColPropInfo.Name);
-                                    object value = dataReader.GetValue(ordinal);
-                                    if (value.GetType() != typeof(System.DBNull))
-                                    {
-                                        ColumnPropSet.GetInstance.SetColValue<T>(classEntity, item.ColPropInfo.Name, value);
-                                    }
-
-                                }
-                                listResult.Add(classEntity);
+                                listResult = convertResult.ConvertDataReaderToList<T>(dataReader);
                             }
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
@@ -139,20 +128,7 @@ namespace EFHelper.DBCommandList
                         List<T> listResult = new List<T>();
                         using (var dataReader = cmd.ExecuteReader())
                         {
-                            while (dataReader.Read())
-                            {
-                                var classEntity = Activator.CreateInstance<T>();
-                                foreach (var item in listColumn)
-                                {
-                                    int ordinal = dataReader.GetOrdinal(item.ColPropInfo.Name);
-                                    object value = dataReader.GetValue(ordinal);
-                                    if (value.GetType() != typeof(System.DBNull))
-                                    {
-                                        ColumnPropSet.GetInstance.SetColValue<T>(classEntity, item.ColPropInfo.Name, value);
-                                    }
-                                }
-                                listResult.Add(classEntity);
-                            }
+                            listResult = convertResult.ConvertDataReaderToList<T>(dataReader);
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
                     }
@@ -192,20 +168,7 @@ namespace EFHelper.DBCommandList
                         List<TResult> listResult = new List<TResult>();
                         using (var dataReader = cmd.ExecuteReader())
                         {
-                            while (dataReader.Read())
-                            {
-                                var classEntity = Activator.CreateInstance<TResult>();
-                                foreach (var item in listColumn)
-                                {
-                                    int ordinal = dataReader.GetOrdinal(item.ColPropInfo.Name);
-                                    object value = dataReader.GetValue(ordinal);
-                                    if (value.GetType() != typeof(System.DBNull))
-                                    {
-                                        ColumnPropSet.GetInstance.SetColValue<TResult>(classEntity, item.ColPropInfo.Name, value);
-                                    }
-                                }
-                                listResult.Add(classEntity);
-                            }
+                            listResult = convertResult.ConvertDataReaderToList<TResult>(dataReader);
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
                     }
@@ -219,5 +182,7 @@ namespace EFHelper.DBCommandList
             }
             return eFReturn;
         }
+        
     }
+    
 }

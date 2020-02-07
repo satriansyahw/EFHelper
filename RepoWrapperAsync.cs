@@ -23,6 +23,7 @@ namespace EFHelper
         , InterfaceRepoDeleteHeaderDetailAsync, InterfaceRepoDeleteHeaderDetailListAsync, InterfaceRepoDeleteHeaderDetailActiveBoolAsync, InterfaceRepoDeleteHeaderDetailActiveBoolListAsync
         , InterfaceRepoListAsync, InterfaceRepoListQueryableAsync, InterfaceRepoDeleteSaveAsync, InterfaceRepoDeleteSaveListAsync, InterfaceRepoDeleteSaveActiveBoolAsync, InterfaceRepoDeleteSaveActiveBoolListAsync
         , InterfaceRepoSaveUpdateDeleteAsync, InterfaceRepoSaveUpdateDeleteListAsync, InterfaceRepoSaveUpdateDeleteActiveBoolAsync, InterfaceRepoSaveUpdateDeleteActiveBoolListAsync
+         , InterfaceRepoListWithEmpInfoAsync, InterfaceRepoListQueryableWithEmpInfoAsync
     {
         private static RepoWrapperAsync instance;
         public new static RepoWrapperAsync GetInstance
@@ -978,86 +979,41 @@ namespace EFHelper
             return await RepoListQueryableAsync.GetInstance.ListDataQueryableAsync(queryable, searchFieldList, sortColumn, isAscending, topTake);
         }
 
-        public Task<EFReturnValue> DeleteSaveListAsync<TDelete, T1>(List<SearchField> deleteParameters, List<T1> listEntitySave1)
+        public async Task<EFReturnValue> DeleteSaveListAsync<TDelete, T1>(List<SearchField> deleteParameters, List<T1> listEntitySave1)
             where TDelete : class
             where T1 : class
         {
-            return RepoDeleteSaveListAsync.GetInstance.DeleteSaveListAsync<TDelete, T1>(deleteParameters, listEntitySave1);
+            return await RepoDeleteSaveListAsync.GetInstance.DeleteSaveListAsync<TDelete, T1>(deleteParameters, listEntitySave1);
         }
 
-        public Task<EFReturnValue> DeleteSaveListAsync<TDelete, T1, T2>(List<SearchField> deleteParameters, List<T1> listEntitySave1, List<T2> listEntitySave2)
-            where TDelete : class
-            where T1 : class
-            where T2 : class
-        {
-            return RepoDeleteSaveListAsync.GetInstance.DeleteSaveListAsync<TDelete, T1, T2>(deleteParameters, listEntitySave1, listEntitySave2);
-        }
-
-        public Task<EFReturnValue> DeleteSaveListAsync<TDelete, T1, T2, T3>(List<SearchField> deleteParameters, List<T1> listEntitySave1, List<T2> listEntitySave2, List<T3> listEntitySave3)
-            where TDelete : class
-            where T1 : class
-            where T2 : class
-            where T3 : class
-        {
-            return RepoDeleteSaveListAsync.GetInstance.DeleteSaveListAsync<TDelete, T1, T2, T3>(deleteParameters, listEntitySave1, listEntitySave2, listEntitySave3);
-        }
-
-        public Task<EFReturnValue> DeleteSaveListAsync<TDelete, T1, T2, T3, T4>(List<SearchField> deleteParameters, List<T1> listEntitySave1, List<T2> listEntitySave2, List<T3> listEntitySave3, List<T4> listEntitySave4)
-            where TDelete : class
-            where T1 : class
-            where T2 : class
-            where T3 : class
-            where T4 : class
-        {
-            return RepoDeleteSaveListAsync.GetInstance.DeleteSaveListAsync<TDelete, T1, T2, T3, T4>(deleteParameters, listEntitySave1, listEntitySave2, listEntitySave3, listEntitySave4);
-        }
-
-        public Task<EFReturnValue> DeleteSaveListAsync<TDelete, T1, T2, T3, T4, T5>(List<SearchField> deleteParameters, List<T1> listEntitySave1, List<T2> listEntitySave2, List<T3> listEntitySave3, List<T4> listEntitySave4, List<T5> listEntitySave5)
-            where TDelete : class
-            where T1 : class
-            where T2 : class
-            where T3 : class
-            where T4 : class
-            where T5 : class
-        {
-            return RepoDeleteSaveListAsync.GetInstance.DeleteSaveListAsync<TDelete, T1, T2, T3, T4, T5>(deleteParameters, listEntitySave1, listEntitySave2, listEntitySave3, listEntitySave4, listEntitySave5);
-        }
-
-        public Task<EFReturnValue> DeleteSaveAsync<TDelete, T1>(List<SearchField> deleteParameters, T1 entitySave1)
-            where TDelete : class
-            where T1 : class
-        {
-            return RepoDeleteSaveAsync.GetInstance.DeleteSaveAsync<TDelete, T1>(deleteParameters, entitySave1);
-        }
-
-        public Task<EFReturnValue> DeleteSaveAsync<TDelete, T1, T2>(List<SearchField> deleteParameters, T1 entitySave1, T2 entitySave2)
+        public async Task<EFReturnValue> DeleteSaveListAsync<TDelete, T1, T2>(List<SearchField> deleteParameters, List<T1> listEntitySave1, List<T2> listEntitySave2)
             where TDelete : class
             where T1 : class
             where T2 : class
         {
-            return RepoDeleteSaveAsync.GetInstance.DeleteSaveAsync<TDelete, T1, T2>(deleteParameters, entitySave1, entitySave2);
+            return await RepoDeleteSaveListAsync.GetInstance.DeleteSaveListAsync<TDelete, T1, T2>(deleteParameters, listEntitySave1, listEntitySave2);
         }
 
-        public Task<EFReturnValue> DeleteSaveAsync<TDelete, T1, T2, T3>(List<SearchField> deleteParameters, T1 entitySave1, T2 entitySave2, T3 entitySave3)
+        public async Task<EFReturnValue> DeleteSaveListAsync<TDelete, T1, T2, T3>(List<SearchField> deleteParameters, List<T1> listEntitySave1, List<T2> listEntitySave2, List<T3> listEntitySave3)
             where TDelete : class
             where T1 : class
             where T2 : class
             where T3 : class
         {
-            return RepoDeleteSaveAsync.GetInstance.DeleteSaveAsync<TDelete, T1, T2, T3>(deleteParameters, entitySave1, entitySave2, entitySave3);
+            return await RepoDeleteSaveListAsync.GetInstance.DeleteSaveListAsync<TDelete, T1, T2, T3>(deleteParameters, listEntitySave1, listEntitySave2, listEntitySave3);
         }
 
-        public Task<EFReturnValue> DeleteSaveAsync<TDelete, T1, T2, T3, T4>(List<SearchField> deleteParameters, T1 entitySave1, T2 entitySave2, T3 entitySave3, T4 entitySave4)
+        public async Task<EFReturnValue> DeleteSaveListAsync<TDelete, T1, T2, T3, T4>(List<SearchField> deleteParameters, List<T1> listEntitySave1, List<T2> listEntitySave2, List<T3> listEntitySave3, List<T4> listEntitySave4)
             where TDelete : class
             where T1 : class
             where T2 : class
             where T3 : class
             where T4 : class
         {
-            return RepoDeleteSaveAsync.GetInstance.DeleteSaveAsync<TDelete, T1, T2, T3, T4>(deleteParameters, entitySave1, entitySave2, entitySave3, entitySave4);
+            return await RepoDeleteSaveListAsync.GetInstance.DeleteSaveListAsync<TDelete, T1, T2, T3, T4>(deleteParameters, listEntitySave1, listEntitySave2, listEntitySave3, listEntitySave4);
         }
 
-        public Task<EFReturnValue> DeleteSaveAsync<TDelete, T1, T2, T3, T4, T5>(List<SearchField> deleteParameters, T1 entitySave1, T2 entitySave2, T3 entitySave3, T4 entitySave4, T5 entitySave5)
+        public async Task<EFReturnValue> DeleteSaveListAsync<TDelete, T1, T2, T3, T4, T5>(List<SearchField> deleteParameters, List<T1> listEntitySave1, List<T2> listEntitySave2, List<T3> listEntitySave3, List<T4> listEntitySave4, List<T5> listEntitySave5)
             where TDelete : class
             where T1 : class
             where T2 : class
@@ -1065,89 +1021,44 @@ namespace EFHelper
             where T4 : class
             where T5 : class
         {
-            return RepoDeleteSaveAsync.GetInstance.DeleteSaveAsync<TDelete, T1, T2, T3, T4, T5>(deleteParameters, entitySave1, entitySave2, entitySave3, entitySave4, entitySave5);
+            return await RepoDeleteSaveListAsync.GetInstance.DeleteSaveListAsync<TDelete, T1, T2, T3, T4, T5>(deleteParameters, listEntitySave1, listEntitySave2, listEntitySave3, listEntitySave4, listEntitySave5);
         }
 
-        public Task<EFReturnValue> DeleteSaveActiveBoolAsync<TDelete, T1>(List<SearchField> deleteParameters, T1 entitySave1)
+        public async Task<EFReturnValue> DeleteSaveAsync<TDelete, T1>(List<SearchField> deleteParameters, T1 entitySave1)
             where TDelete : class
             where T1 : class
         {
-            return RepoDeleteSaveActiveBoolAsync.GetInstance.DeleteSaveActiveBoolAsync<TDelete, T1>(deleteParameters, entitySave1);
+            return await RepoDeleteSaveAsync.GetInstance.DeleteSaveAsync<TDelete, T1>(deleteParameters, entitySave1);
         }
 
-        public Task<EFReturnValue> DeleteSaveActiveBoolAsync<TDelete, T1, T2>(List<SearchField> deleteParameters, T1 entitySave1, T2 entitySave2)
-            where TDelete : class
-            where T1 : class
-            where T2 : class
-        {
-            return RepoDeleteSaveActiveBoolAsync.GetInstance.DeleteSaveActiveBoolAsync<TDelete, T1, T2>(deleteParameters, entitySave1, entitySave2);
-        }
-
-        public Task<EFReturnValue> DeleteSaveActiveBoolAsync<TDelete, T1, T2, T3>(List<SearchField> deleteParameters, T1 entitySave1, T2 entitySave2, T3 entitySave3)
-            where TDelete : class
-            where T1 : class
-            where T2 : class
-            where T3 : class
-        {
-            return RepoDeleteSaveActiveBoolAsync.GetInstance.DeleteSaveActiveBoolAsync<TDelete, T1, T2, T3>(deleteParameters, entitySave1, entitySave2, entitySave3);
-        }
-
-        public Task<EFReturnValue> DeleteSaveActiveBoolAsync<TDelete, T1, T2, T3, T4>(List<SearchField> deleteParameters, T1 entitySave1, T2 entitySave2, T3 entitySave3, T4 entitySave4)
-            where TDelete : class
-            where T1 : class
-            where T2 : class
-            where T3 : class
-            where T4 : class
-        {
-            return RepoDeleteSaveActiveBoolAsync.GetInstance.DeleteSaveActiveBoolAsync<TDelete, T1, T2, T3, T4>(deleteParameters, entitySave1, entitySave2, entitySave3, entitySave4);
-        }
-
-        public Task<EFReturnValue> DeleteSaveActiveBoolAsync<TDelete, T1, T2, T3, T4, T5>(List<SearchField> deleteParameters, T1 entitySave1, T2 entitySave2, T3 entitySave3, T4 entitySave4, T5 entitySave5)
-            where TDelete : class
-            where T1 : class
-            where T2 : class
-            where T3 : class
-            where T4 : class
-            where T5 : class
-        {
-            return RepoDeleteSaveActiveBoolAsync.GetInstance.DeleteSaveActiveBoolAsync<TDelete, T1, T2, T3, T4, T5>(deleteParameters, entitySave1, entitySave2, entitySave3, entitySave4, entitySave5);
-        }
-
-        public Task<EFReturnValue> DeleteSaveActiveBoolListAsync<TDelete, T1>(List<SearchField> deleteParameters, List<T1> listEntitySave1)
-            where TDelete : class
-            where T1 : class
-        {
-            return RepoDeleteSaveActiveBoolListAsync.GetInstance.DeleteSaveActiveBoolListAsync<TDelete, T1>(deleteParameters, listEntitySave1);
-        }
-
-        public Task<EFReturnValue> DeleteSaveActiveBoolListAsync<TDelete, T1, T2>(List<SearchField> deleteParameters, List<T1> listEntitySave1, List<T2> listEntitySave2)
+        public async Task<EFReturnValue> DeleteSaveAsync<TDelete, T1, T2>(List<SearchField> deleteParameters, T1 entitySave1, T2 entitySave2)
             where TDelete : class
             where T1 : class
             where T2 : class
         {
-            return RepoDeleteSaveActiveBoolListAsync.GetInstance.DeleteSaveActiveBoolListAsync<TDelete, T1, T2>(deleteParameters, listEntitySave1, listEntitySave2);
+            return await RepoDeleteSaveAsync.GetInstance.DeleteSaveAsync<TDelete, T1, T2>(deleteParameters, entitySave1, entitySave2);
         }
 
-        public Task<EFReturnValue> DeleteSaveActiveBoolListAsync<TDelete, T1, T2, T3>(List<SearchField> deleteParameters, List<T1> listEntitySave1, List<T2> listEntitySave2, List<T3> listEntitySave3)
+        public async Task<EFReturnValue> DeleteSaveAsync<TDelete, T1, T2, T3>(List<SearchField> deleteParameters, T1 entitySave1, T2 entitySave2, T3 entitySave3)
             where TDelete : class
             where T1 : class
             where T2 : class
             where T3 : class
         {
-            return RepoDeleteSaveActiveBoolListAsync.GetInstance.DeleteSaveActiveBoolListAsync<TDelete, T1, T2, T3>(deleteParameters, listEntitySave1, listEntitySave2, listEntitySave3);
+            return await RepoDeleteSaveAsync.GetInstance.DeleteSaveAsync<TDelete, T1, T2, T3>(deleteParameters, entitySave1, entitySave2, entitySave3);
         }
 
-        public Task<EFReturnValue> DeleteSaveActiveBoolListAsync<TDelete, T1, T2, T3, T4>(List<SearchField> deleteParameters, List<T1> listEntitySave1, List<T2> listEntitySave2, List<T3> listEntitySave3, List<T4> listEntitySave4)
+        public async Task<EFReturnValue> DeleteSaveAsync<TDelete, T1, T2, T3, T4>(List<SearchField> deleteParameters, T1 entitySave1, T2 entitySave2, T3 entitySave3, T4 entitySave4)
             where TDelete : class
             where T1 : class
             where T2 : class
             where T3 : class
             where T4 : class
         {
-            return RepoDeleteSaveActiveBoolListAsync.GetInstance.DeleteSaveActiveBoolListAsync<TDelete, T1, T2, T3, T4>(deleteParameters, listEntitySave1, listEntitySave2, listEntitySave3, listEntitySave4);
+            return await RepoDeleteSaveAsync.GetInstance.DeleteSaveAsync<TDelete, T1, T2, T3, T4>(deleteParameters, entitySave1, entitySave2, entitySave3, entitySave4);
         }
 
-        public Task<EFReturnValue> DeleteSaveActiveBoolListAsync<TDelete, T1, T2, T3, T4, T5>(List<SearchField> deleteParameters, List<T1> listEntitySave1, List<T2> listEntitySave2, List<T3> listEntitySave3, List<T4> listEntitySave4, List<T5> listEntitySave5)
+        public async Task<EFReturnValue> DeleteSaveAsync<TDelete, T1, T2, T3, T4, T5>(List<SearchField> deleteParameters, T1 entitySave1, T2 entitySave2, T3 entitySave3, T4 entitySave4, T5 entitySave5)
             where TDelete : class
             where T1 : class
             where T2 : class
@@ -1155,163 +1066,295 @@ namespace EFHelper
             where T4 : class
             where T5 : class
         {
-            return RepoDeleteSaveActiveBoolListAsync.GetInstance.DeleteSaveActiveBoolListAsync<TDelete, T1, T2, T3, T4, T5>(deleteParameters, listEntitySave1, listEntitySave2, listEntitySave3, listEntitySave4, listEntitySave5);
+            return await RepoDeleteSaveAsync.GetInstance.DeleteSaveAsync<TDelete, T1, T2, T3, T4, T5>(deleteParameters, entitySave1, entitySave2, entitySave3, entitySave4, entitySave5);
         }
 
-        public Task<EFReturnValue> SaveUpdateDeleteAsync<T1>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1) where T1 : class
+        public async Task<EFReturnValue> DeleteSaveActiveBoolAsync<TDelete, T1>(List<SearchField> deleteParameters, T1 entitySave1)
+            where TDelete : class
+            where T1 : class
         {
-            return RepoSaveUpdateDeleteAsync.GetInstance.SaveUpdateDeleteAsync(entity1, enumSUDT1);
+            return await RepoDeleteSaveActiveBoolAsync.GetInstance.DeleteSaveActiveBoolAsync<TDelete, T1>(deleteParameters, entitySave1);
         }
 
-        public Task<EFReturnValue> SaveUpdateDeleteAsync<T1, T2>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, T2 entity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2)
+        public async Task<EFReturnValue> DeleteSaveActiveBoolAsync<TDelete, T1, T2>(List<SearchField> deleteParameters, T1 entitySave1, T2 entitySave2)
+            where TDelete : class
             where T1 : class
             where T2 : class
         {
-            return RepoSaveUpdateDeleteAsync.GetInstance.SaveUpdateDeleteAsync(entity1, enumSUDT1, entity2, enumSUDT2);
+            return await RepoDeleteSaveActiveBoolAsync.GetInstance.DeleteSaveActiveBoolAsync<TDelete, T1, T2>(deleteParameters, entitySave1, entitySave2);
         }
 
-        public Task<EFReturnValue> SaveUpdateDeleteAsync<T1, T2, T3>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, T2 entity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, T3 entity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3)
-            where T1 : class
-            where T2 : class
-            where T3 : class
-        {
-            return RepoSaveUpdateDeleteAsync.GetInstance.SaveUpdateDeleteAsync(entity1, enumSUDT1, entity2, enumSUDT2, entity3, enumSUDT3);
-        }
-
-        public Task<EFReturnValue> SaveUpdateDeleteAsync<T1, T2, T3, T4>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, T2 entity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, T3 entity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3, T4 entity4, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT4)
-            where T1 : class
-            where T2 : class
-            where T3 : class
-            where T4 : class
-        {
-            return RepoSaveUpdateDeleteAsync.GetInstance.SaveUpdateDeleteAsync(entity1, enumSUDT1, entity2, enumSUDT2, entity3, enumSUDT3, entity4, enumSUDT4);
-        }
-
-        public Task<EFReturnValue> SaveUpdateDeleteAsync<T1, T2, T3, T4, T5>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, T2 entity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, T3 entity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3, T4 entity4, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT4, T5 entity5, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT5)
-            where T1 : class
-            where T2 : class
-            where T3 : class
-            where T4 : class
-            where T5 : class
-        {
-            return RepoSaveUpdateDeleteAsync.GetInstance.SaveUpdateDeleteAsync(entity1, enumSUDT1, entity2, enumSUDT2, entity3, enumSUDT3, entity4, enumSUDT4, entity5, enumSUDT5);
-        }
-
-        public Task<EFReturnValue> SaveUpdateDeleteListAsync<T1>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1) where T1 : class
-        {
-            return RepoSaveUpdateDeleteListAsync.GetInstance.SaveUpdateDeleteListAsync(listEntity1, enumSUDT1);
-        }
-
-        public Task<EFReturnValue> SaveUpdateDeleteListAsync<T1, T2>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2)
-            where T1 : class
-            where T2 : class
-        {
-            return RepoSaveUpdateDeleteListAsync.GetInstance.SaveUpdateDeleteListAsync(listEntity1, enumSUDT1, listEntity2, enumSUDT2);
-        }
-
-        public Task<EFReturnValue> SaveUpdateDeleteListAsync<T1, T2, T3>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, List<T3> listEntity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3)
+        public async Task<EFReturnValue> DeleteSaveActiveBoolAsync<TDelete, T1, T2, T3>(List<SearchField> deleteParameters, T1 entitySave1, T2 entitySave2, T3 entitySave3)
+            where TDelete : class
             where T1 : class
             where T2 : class
             where T3 : class
         {
-            return RepoSaveUpdateDeleteListAsync.GetInstance.SaveUpdateDeleteListAsync(listEntity1, enumSUDT1, listEntity2, enumSUDT2, listEntity3, enumSUDT3);
+            return await RepoDeleteSaveActiveBoolAsync.GetInstance.DeleteSaveActiveBoolAsync<TDelete, T1, T2, T3>(deleteParameters, entitySave1, entitySave2, entitySave3);
         }
 
-        public Task<EFReturnValue> SaveUpdateDeleteListAsync<T1, T2, T3, T4>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, List<T3> listEntity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3, List<T4> listEntity4, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT4)
+        public async Task<EFReturnValue> DeleteSaveActiveBoolAsync<TDelete, T1, T2, T3, T4>(List<SearchField> deleteParameters, T1 entitySave1, T2 entitySave2, T3 entitySave3, T4 entitySave4)
+            where TDelete : class
             where T1 : class
             where T2 : class
             where T3 : class
             where T4 : class
         {
-            return RepoSaveUpdateDeleteListAsync.GetInstance.SaveUpdateDeleteListAsync(listEntity1, enumSUDT1, listEntity2, enumSUDT2, listEntity3, enumSUDT3, listEntity4, enumSUDT4);
+            return await RepoDeleteSaveActiveBoolAsync.GetInstance.DeleteSaveActiveBoolAsync<TDelete, T1, T2, T3, T4>(deleteParameters, entitySave1, entitySave2, entitySave3, entitySave4);
         }
 
-        public Task<EFReturnValue> SaveUpdateDeleteListAsync<T1, T2, T3, T4, T5>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, List<T3> listEntity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3, List<T4> listEntity4, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT4, List<T5> listEntity5, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT5)
+        public async Task<EFReturnValue> DeleteSaveActiveBoolAsync<TDelete, T1, T2, T3, T4, T5>(List<SearchField> deleteParameters, T1 entitySave1, T2 entitySave2, T3 entitySave3, T4 entitySave4, T5 entitySave5)
+            where TDelete : class
             where T1 : class
             where T2 : class
             where T3 : class
             where T4 : class
             where T5 : class
         {
-            return RepoSaveUpdateDeleteListAsync.GetInstance.SaveUpdateDeleteListAsync(listEntity1, enumSUDT1, listEntity2, enumSUDT2, listEntity3, enumSUDT3, listEntity4, enumSUDT4, listEntity5, enumSUDT5);
+            return await RepoDeleteSaveActiveBoolAsync.GetInstance.DeleteSaveActiveBoolAsync<TDelete, T1, T2, T3, T4, T5>(deleteParameters, entitySave1, entitySave2, entitySave3, entitySave4, entitySave5);
         }
 
-        public Task<EFReturnValue> SaveUpdateDeleteActiveBoolAsync<T1>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1) where T1 : class
+        public async Task<EFReturnValue> DeleteSaveActiveBoolListAsync<TDelete, T1>(List<SearchField> deleteParameters, List<T1> listEntitySave1)
+            where TDelete : class
+            where T1 : class
         {
-            return RepoSaveUpdateDeleteActiveBoolAsync.GetInstance.SaveUpdateDeleteActiveBoolAsync(entity1, enumSUDT1);
+            return await RepoDeleteSaveActiveBoolListAsync.GetInstance.DeleteSaveActiveBoolListAsync<TDelete, T1>(deleteParameters, listEntitySave1);
         }
 
-        public Task<EFReturnValue> SaveUpdateDeleteActiveBoolAsync<T1, T2>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, T2 entity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2)
+        public async Task<EFReturnValue> DeleteSaveActiveBoolListAsync<TDelete, T1, T2>(List<SearchField> deleteParameters, List<T1> listEntitySave1, List<T2> listEntitySave2)
+            where TDelete : class
             where T1 : class
             where T2 : class
         {
-            return RepoSaveUpdateDeleteActiveBoolAsync.GetInstance.SaveUpdateDeleteActiveBoolAsync(entity1, enumSUDT1, entity2, enumSUDT2);
+            return await RepoDeleteSaveActiveBoolListAsync.GetInstance.DeleteSaveActiveBoolListAsync<TDelete, T1, T2>(deleteParameters, listEntitySave1, listEntitySave2);
         }
 
-        public Task<EFReturnValue> SaveUpdateDeleteActiveBoolAsync<T1, T2, T3>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, T2 entity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, T3 entity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3)
-            where T1 : class
-            where T2 : class
-            where T3 : class
-        {
-            return RepoSaveUpdateDeleteActiveBoolAsync.GetInstance.SaveUpdateDeleteActiveBoolAsync(entity1, enumSUDT1, entity2, enumSUDT2, entity3, enumSUDT3);
-        }
-
-        public Task<EFReturnValue> SaveUpdateDeleteActiveBoolAsync<T1, T2, T3, T4>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, T2 entity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, T3 entity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3, T4 entity4, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT4)
-            where T1 : class
-            where T2 : class
-            where T3 : class
-            where T4 : class
-        {
-            return RepoSaveUpdateDeleteActiveBoolAsync.GetInstance.SaveUpdateDeleteActiveBoolAsync(entity1, enumSUDT1, entity2, enumSUDT2, entity3, enumSUDT3, entity4, enumSUDT4);
-        }
-
-        public Task<EFReturnValue> SaveUpdateDeleteActiveBoolAsync<T1, T2, T3, T4, T5>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, T2 entity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, T3 entity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3, T4 entity4, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT4, T5 entity5, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT5)
-            where T1 : class
-            where T2 : class
-            where T3 : class
-            where T4 : class
-            where T5 : class
-        {
-            return RepoSaveUpdateDeleteActiveBoolAsync.GetInstance.SaveUpdateDeleteActiveBoolAsync(entity1, enumSUDT1, entity2, enumSUDT2, entity3, enumSUDT3, entity4, enumSUDT4, entity5, enumSUDT5);
-        }
-
-        public Task<EFReturnValue> SaveUpdateDeleteActiveBoolListAsync<T1>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1) where T1 : class
-        {
-            return RepoSaveUpdateDeleteActiveBoolListAsync.GetInstance.SaveUpdateDeleteActiveBoolListAsync(listEntity1, enumSUDT1);
-        }
-
-        public Task<EFReturnValue> SaveUpdateDeleteActiveBoolListAsync<T1, T2>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2)
-            where T1 : class
-            where T2 : class
-        {
-            return RepoSaveUpdateDeleteActiveBoolListAsync.GetInstance.SaveUpdateDeleteActiveBoolListAsync(listEntity1, enumSUDT1, listEntity2, enumSUDT2);
-        }
-
-        public Task<EFReturnValue> SaveUpdateDeleteActiveBoolListAsync<T1, T2, T3>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, List<T3> listEntity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3)
+        public async Task<EFReturnValue> DeleteSaveActiveBoolListAsync<TDelete, T1, T2, T3>(List<SearchField> deleteParameters, List<T1> listEntitySave1, List<T2> listEntitySave2, List<T3> listEntitySave3)
+            where TDelete : class
             where T1 : class
             where T2 : class
             where T3 : class
         {
-            return RepoSaveUpdateDeleteActiveBoolListAsync.GetInstance.SaveUpdateDeleteActiveBoolListAsync(listEntity1, enumSUDT1, listEntity2, enumSUDT2, listEntity3, enumSUDT3);
+            return await RepoDeleteSaveActiveBoolListAsync.GetInstance.DeleteSaveActiveBoolListAsync<TDelete, T1, T2, T3>(deleteParameters, listEntitySave1, listEntitySave2, listEntitySave3);
         }
 
-        public Task<EFReturnValue> SaveUpdateDeleteActiveBoolListAsync<T1, T2, T3, T4>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, List<T3> listEntity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3, List<T4> listEntity4, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT4)
+        public async Task<EFReturnValue> DeleteSaveActiveBoolListAsync<TDelete, T1, T2, T3, T4>(List<SearchField> deleteParameters, List<T1> listEntitySave1, List<T2> listEntitySave2, List<T3> listEntitySave3, List<T4> listEntitySave4)
+            where TDelete : class
             where T1 : class
             where T2 : class
             where T3 : class
             where T4 : class
         {
-            return RepoSaveUpdateDeleteActiveBoolListAsync.GetInstance.SaveUpdateDeleteActiveBoolListAsync(listEntity1, enumSUDT1, listEntity2, enumSUDT2, listEntity3, enumSUDT3, listEntity4, enumSUDT4);
+            return await RepoDeleteSaveActiveBoolListAsync.GetInstance.DeleteSaveActiveBoolListAsync<TDelete, T1, T2, T3, T4>(deleteParameters, listEntitySave1, listEntitySave2, listEntitySave3, listEntitySave4);
         }
 
-        public Task<EFReturnValue> SaveUpdateDeleteActiveBoolListAsync<T1, T2, T3, T4, T5>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, List<T3> listEntity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3, List<T4> listEntity4, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT4, List<T5> listEntity5, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT5)
+        public async Task<EFReturnValue> DeleteSaveActiveBoolListAsync<TDelete, T1, T2, T3, T4, T5>(List<SearchField> deleteParameters, List<T1> listEntitySave1, List<T2> listEntitySave2, List<T3> listEntitySave3, List<T4> listEntitySave4, List<T5> listEntitySave5)
+            where TDelete : class
             where T1 : class
             where T2 : class
             where T3 : class
             where T4 : class
             where T5 : class
         {
-            return RepoSaveUpdateDeleteActiveBoolListAsync.GetInstance.SaveUpdateDeleteActiveBoolListAsync(listEntity1, enumSUDT1, listEntity2, enumSUDT2, listEntity3, enumSUDT3, listEntity4, enumSUDT4, listEntity5, enumSUDT5);
+            return await RepoDeleteSaveActiveBoolListAsync.GetInstance.DeleteSaveActiveBoolListAsync<TDelete, T1, T2, T3, T4, T5>(deleteParameters, listEntitySave1, listEntitySave2, listEntitySave3, listEntitySave4, listEntitySave5);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteAsync<T1>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1) where T1 : class
+        {
+            return await RepoSaveUpdateDeleteAsync.GetInstance.SaveUpdateDeleteAsync(entity1, enumSUDT1);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteAsync<T1, T2>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, T2 entity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2)
+            where T1 : class
+            where T2 : class
+        {
+            return await RepoSaveUpdateDeleteAsync.GetInstance.SaveUpdateDeleteAsync(entity1, enumSUDT1, entity2, enumSUDT2);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteAsync<T1, T2, T3>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, T2 entity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, T3 entity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3)
+            where T1 : class
+            where T2 : class
+            where T3 : class
+        {
+            return await RepoSaveUpdateDeleteAsync.GetInstance.SaveUpdateDeleteAsync(entity1, enumSUDT1, entity2, enumSUDT2, entity3, enumSUDT3);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteAsync<T1, T2, T3, T4>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, T2 entity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, T3 entity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3, T4 entity4, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT4)
+            where T1 : class
+            where T2 : class
+            where T3 : class
+            where T4 : class
+        {
+            return await RepoSaveUpdateDeleteAsync.GetInstance.SaveUpdateDeleteAsync(entity1, enumSUDT1, entity2, enumSUDT2, entity3, enumSUDT3, entity4, enumSUDT4);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteAsync<T1, T2, T3, T4, T5>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, T2 entity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, T3 entity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3, T4 entity4, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT4, T5 entity5, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT5)
+            where T1 : class
+            where T2 : class
+            where T3 : class
+            where T4 : class
+            where T5 : class
+        {
+            return await RepoSaveUpdateDeleteAsync.GetInstance.SaveUpdateDeleteAsync(entity1, enumSUDT1, entity2, enumSUDT2, entity3, enumSUDT3, entity4, enumSUDT4, entity5, enumSUDT5);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteListAsync<T1>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1) where T1 : class
+        {
+            return await RepoSaveUpdateDeleteListAsync.GetInstance.SaveUpdateDeleteListAsync(listEntity1, enumSUDT1);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteListAsync<T1, T2>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2)
+            where T1 : class
+            where T2 : class
+        {
+            return await RepoSaveUpdateDeleteListAsync.GetInstance.SaveUpdateDeleteListAsync(listEntity1, enumSUDT1, listEntity2, enumSUDT2);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteListAsync<T1, T2, T3>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, List<T3> listEntity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3)
+            where T1 : class
+            where T2 : class
+            where T3 : class
+        {
+            return await RepoSaveUpdateDeleteListAsync.GetInstance.SaveUpdateDeleteListAsync(listEntity1, enumSUDT1, listEntity2, enumSUDT2, listEntity3, enumSUDT3);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteListAsync<T1, T2, T3, T4>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, List<T3> listEntity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3, List<T4> listEntity4, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT4)
+            where T1 : class
+            where T2 : class
+            where T3 : class
+            where T4 : class
+        {
+            return await RepoSaveUpdateDeleteListAsync.GetInstance.SaveUpdateDeleteListAsync(listEntity1, enumSUDT1, listEntity2, enumSUDT2, listEntity3, enumSUDT3, listEntity4, enumSUDT4);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteListAsync<T1, T2, T3, T4, T5>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, List<T3> listEntity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3, List<T4> listEntity4, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT4, List<T5> listEntity5, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT5)
+            where T1 : class
+            where T2 : class
+            where T3 : class
+            where T4 : class
+            where T5 : class
+        {
+            return await RepoSaveUpdateDeleteListAsync.GetInstance.SaveUpdateDeleteListAsync(listEntity1, enumSUDT1, listEntity2, enumSUDT2, listEntity3, enumSUDT3, listEntity4, enumSUDT4, listEntity5, enumSUDT5);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteActiveBoolAsync<T1>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1) where T1 : class
+        {
+            return await RepoSaveUpdateDeleteActiveBoolAsync.GetInstance.SaveUpdateDeleteActiveBoolAsync(entity1, enumSUDT1);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteActiveBoolAsync<T1, T2>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, T2 entity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2)
+            where T1 : class
+            where T2 : class
+        {
+            return await RepoSaveUpdateDeleteActiveBoolAsync.GetInstance.SaveUpdateDeleteActiveBoolAsync(entity1, enumSUDT1, entity2, enumSUDT2);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteActiveBoolAsync<T1, T2, T3>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, T2 entity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, T3 entity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3)
+            where T1 : class
+            where T2 : class
+            where T3 : class
+        {
+            return await RepoSaveUpdateDeleteActiveBoolAsync.GetInstance.SaveUpdateDeleteActiveBoolAsync(entity1, enumSUDT1, entity2, enumSUDT2, entity3, enumSUDT3);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteActiveBoolAsync<T1, T2, T3, T4>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, T2 entity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, T3 entity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3, T4 entity4, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT4)
+            where T1 : class
+            where T2 : class
+            where T3 : class
+            where T4 : class
+        {
+            return await RepoSaveUpdateDeleteActiveBoolAsync.GetInstance.SaveUpdateDeleteActiveBoolAsync(entity1, enumSUDT1, entity2, enumSUDT2, entity3, enumSUDT3, entity4, enumSUDT4);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteActiveBoolAsync<T1, T2, T3, T4, T5>(T1 entity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, T2 entity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, T3 entity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3, T4 entity4, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT4, T5 entity5, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT5)
+            where T1 : class
+            where T2 : class
+            where T3 : class
+            where T4 : class
+            where T5 : class
+        {
+            return await RepoSaveUpdateDeleteActiveBoolAsync.GetInstance.SaveUpdateDeleteActiveBoolAsync(entity1, enumSUDT1, entity2, enumSUDT2, entity3, enumSUDT3, entity4, enumSUDT4, entity5, enumSUDT5);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteActiveBoolListAsync<T1>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1) where T1 : class
+        {
+            return await RepoSaveUpdateDeleteActiveBoolListAsync.GetInstance.SaveUpdateDeleteActiveBoolListAsync(listEntity1, enumSUDT1);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteActiveBoolListAsync<T1, T2>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2)
+            where T1 : class
+            where T2 : class
+        {
+            return await RepoSaveUpdateDeleteActiveBoolListAsync.GetInstance.SaveUpdateDeleteActiveBoolListAsync(listEntity1, enumSUDT1, listEntity2, enumSUDT2);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteActiveBoolListAsync<T1, T2, T3>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, List<T3> listEntity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3)
+            where T1 : class
+            where T2 : class
+            where T3 : class
+        {
+            return await RepoSaveUpdateDeleteActiveBoolListAsync.GetInstance.SaveUpdateDeleteActiveBoolListAsync(listEntity1, enumSUDT1, listEntity2, enumSUDT2, listEntity3, enumSUDT3);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteActiveBoolListAsync<T1, T2, T3, T4>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, List<T3> listEntity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3, List<T4> listEntity4, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT4)
+            where T1 : class
+            where T2 : class
+            where T3 : class
+            where T4 : class
+        {
+            return await RepoSaveUpdateDeleteActiveBoolListAsync.GetInstance.SaveUpdateDeleteActiveBoolListAsync(listEntity1, enumSUDT1, listEntity2, enumSUDT2, listEntity3, enumSUDT3, listEntity4, enumSUDT4);
+        }
+
+        public async Task<EFReturnValue> SaveUpdateDeleteActiveBoolListAsync<T1, T2, T3, T4, T5>(List<T1> listEntity1, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT1, List<T2> listEntity2, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT2, List<T3> listEntity3, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT3, List<T4> listEntity4, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT4, List<T5> listEntity5, MiscClass.MiscClass.EnumSaveUpdateDelete enumSUDT5)
+            where T1 : class
+            where T2 : class
+            where T3 : class
+            where T4 : class
+            where T5 : class
+        {
+            return await RepoSaveUpdateDeleteActiveBoolListAsync.GetInstance.SaveUpdateDeleteActiveBoolListAsync(listEntity1, enumSUDT1, listEntity2, enumSUDT2, listEntity3, enumSUDT3, listEntity4, enumSUDT4, listEntity5, enumSUDT5);
+        }
+
+        public async Task<EFReturnValue> ListDataWithEmpInfoAsync<T, TNoToName>(List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert)
+              where T : class where TNoToName : class, IConvertNoToName
+        {
+            return await RepoListWithEmpInfoAsync.GetInstance.ListDataWithEmpInfoAsync<T, TNoToName>(listTableConvert, listColumnConvert);
+        }
+
+        public async Task<EFReturnValue> ListDataWithEmpInfoAsync<T, TNoToName>(List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert, List<SearchField> searchFieldList)
+              where T : class where TNoToName : class, IConvertNoToName
+        {
+            return await RepoListWithEmpInfoAsync.GetInstance.ListDataWithEmpInfoAsync<T, TNoToName>(listTableConvert, listColumnConvert, searchFieldList);
+        }
+
+        public async Task<EFReturnValue> ListDataWithEmpInfoAsync<T, TNoToName>(List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert, List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
+              where T : class where TNoToName : class, IConvertNoToName
+        {
+            return await RepoListWithEmpInfoAsync.GetInstance.ListDataWithEmpInfoAsync<T, TNoToName>(listTableConvert, listColumnConvert, searchFieldList, sortColumn, isAscending, topTake);
+        }
+
+        public async Task<EFReturnValue> ListDataWithEmpInfoAsync<TSource, TResult, TNoToName>(List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert, List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
+              where TSource : class where TResult : class where TNoToName : class, IConvertNoToName
+        {
+            return await RepoListWithEmpInfoAsync.GetInstance.ListDataWithEmpInfoAsync<TSource, TResult, TNoToName>(listTableConvert, listColumnConvert, searchFieldList, sortColumn, isAscending, topTake);
+        }
+
+        public async Task<EFReturnValue> ListDataQueryableWithEmpInfoAsync<TResult, TNoToName>(IQueryable<TResult> queryable, List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert)
+            where TResult : class where TNoToName : class, IConvertNoToName
+        {
+            return await RepoListQueryableWithEmpInfoAsync.GetInstance.ListDataQueryableWithEmpInfoAsync(queryable, listTableConvert, listColumnConvert);
+        }
+
+        public async Task<EFReturnValue> ListDataQueryableWithEmpInfoAsync<TResult, TNoToName>(IQueryable<TResult> queryable, List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert, List<SearchField> searchFieldList)
+            where TResult : class where TNoToName : class, IConvertNoToName
+        {
+            return await RepoListQueryableWithEmpInfoAsync.GetInstance.ListDataQueryableWithEmpInfoAsync(queryable, listTableConvert, listColumnConvert, searchFieldList);
+        }
+
+        public async Task<EFReturnValue> ListDataQueryableWithEmpInfoAsync<TResult, TNoToName>(IQueryable<TResult> queryable, List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert, List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
+            where TResult : class where TNoToName : class, IConvertNoToName
+        {
+            return await RepoListQueryableWithEmpInfoAsync.GetInstance.ListDataQueryableWithEmpInfoAsync(queryable, listTableConvert, listColumnConvert, searchFieldList, sortColumn, isAscending, topTake);
         }
     }
 }

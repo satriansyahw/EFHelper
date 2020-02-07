@@ -13,20 +13,21 @@ using System.Threading.Tasks;
 
 namespace EFHelper.DBCommandList
 {
-    public class DBCommandRepoListAsync : InterfaceRepoListAsync
+    public class DBCommandRepoListwithEmpInfoAsync : InterfaceRepoListWithEmpInfoAsync
     {
         private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
         DBCommandListResult convertResult = new DBCommandListResult();
-        private static DBCommandRepoListAsync instance;
-        public static DBCommandRepoListAsync GetInstance
+        private static DBCommandRepoListwithEmpInfoAsync instance;
+        public static DBCommandRepoListwithEmpInfoAsync GetInstance
         {
             get
             {
-                if (instance == null) instance = new DBCommandRepoListAsync();
+                if (instance == null) instance = new DBCommandRepoListwithEmpInfoAsync();
                 return instance;
             }
         }
-        public virtual async Task<EFReturnValue> ListDataAsync<T>() where T : class
+        public virtual async Task<EFReturnValue> ListDataWithEmpInfoAsync<T, TNoToName>(List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert)
+            where T : class where TNoToName : class, IConvertNoToName
         {
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
             {
@@ -47,7 +48,7 @@ namespace EFHelper.DBCommandList
                         {
                             while (await dataReader.ReadAsync())
                             {
-                                listResult = await convertResult.ConvertDataReaderToListAsync<T>(dataReader);
+                                listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<T,TNoToName>(dataReader,listTableConvert,listColumnConvert);
                             }
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
@@ -62,7 +63,8 @@ namespace EFHelper.DBCommandList
             }
             return eFReturn;
         }
-        public virtual async Task<EFReturnValue> ListDataAsync<T>(List<SearchField> searchFieldList) where T : class
+        public virtual async Task<EFReturnValue> ListDataWithEmpInfoAsync<T, TNoToName>(List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert, List<SearchField> searchFieldList)
+            where T : class where TNoToName : class, IConvertNoToName
         {
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
             {
@@ -86,7 +88,7 @@ namespace EFHelper.DBCommandList
                         List<T> listResult = new List<T>();
                         using (var dataReader = await cmd.ExecuteReaderAsync())
                         {
-                            listResult = await convertResult.ConvertDataReaderToListAsync<T>(dataReader);
+                            listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<T, TNoToName>(dataReader, listTableConvert, listColumnConvert);
 
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
@@ -101,7 +103,8 @@ namespace EFHelper.DBCommandList
             }
             return eFReturn;
         }
-        public virtual async Task<EFReturnValue> ListDataAsync<T>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake) where T : class
+        public virtual async Task<EFReturnValue> ListDataWithEmpInfoAsync<T, TNoToName>(List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert, List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
+            where T : class where TNoToName : class, IConvertNoToName
         {
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
             {
@@ -127,7 +130,7 @@ namespace EFHelper.DBCommandList
                         {
                             while (await dataReader.ReadAsync())
                             {
-                                listResult = await convertResult.ConvertDataReaderToListAsync<T>(dataReader);
+                                listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<T, TNoToName>(dataReader, listTableConvert, listColumnConvert);
 
                             }
                         }
@@ -143,9 +146,8 @@ namespace EFHelper.DBCommandList
             }
             return eFReturn;
         }
-        public virtual async Task<EFReturnValue> ListDataAsync<TSource, TResult>(List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
-            where TSource : class
-            where TResult : class
+        public virtual async Task<EFReturnValue> ListDataWithEmpInfoAsync<TSource, TResult, TNoToName>(List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert, List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
+            where TSource : class where TResult : class where TNoToName : class, IConvertNoToName
         {
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
             {
@@ -171,7 +173,7 @@ namespace EFHelper.DBCommandList
                         {
                             while (await dataReader.ReadAsync())
                             {
-                                listResult = await convertResult.ConvertDataReaderToListAsync<TResult>(dataReader);
+                                listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<TResult, TNoToName>(dataReader, listTableConvert, listColumnConvert);
 
                             }
                         }

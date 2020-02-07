@@ -19,7 +19,7 @@ namespace EFHelper.RepositoryList
                 return instance;
             }
         }
-        public EFReturnValue ListDataQueryable<TResult>(IQueryable<TResult> queryable) where TResult : class
+        public virtual EFReturnValue ListDataQueryable<TResult>(IQueryable<TResult> queryable) where TResult : class
         {
             eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             try
@@ -34,7 +34,7 @@ namespace EFHelper.RepositoryList
             return eFReturn;
         }
 
-        public EFReturnValue ListDataQueryable<TResult>(IQueryable<TResult> queryable, List<SearchField> searchFieldList) where TResult : class
+        public virtual EFReturnValue ListDataQueryable<TResult>(IQueryable<TResult> queryable, List<SearchField> searchFieldList) where TResult : class
         {
             eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             try
@@ -49,7 +49,7 @@ namespace EFHelper.RepositoryList
             return eFReturn;
         }
 
-        public EFReturnValue ListDataQueryable<TResult>(IQueryable<TResult> queryable, List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake) where TResult : class
+        public virtual EFReturnValue ListDataQueryable<TResult>(IQueryable<TResult> queryable, List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake) where TResult : class
         {
             eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
             try
