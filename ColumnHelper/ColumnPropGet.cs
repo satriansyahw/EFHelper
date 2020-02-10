@@ -153,6 +153,10 @@ namespace EFHelper.ColumnHelper
                     }                   
 
                 }
+                else if (myFieldType == "boolean" & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayActiveBool))
+                {
+                    result.Add(property);
+                }
             }
             return result;
         }
