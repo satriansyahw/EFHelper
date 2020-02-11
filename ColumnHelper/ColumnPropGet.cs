@@ -97,7 +97,11 @@ namespace EFHelper.ColumnHelper
                 string myFieldType = property.PropertyType.Name.ToLower();
                 myFieldType = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
 
-                if (myFieldType == "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayInsertDate)
+                if (this.GetIsPrimaryKey<T>(myFieldName))
+                {
+                    result.Add(property);
+                }
+                else if (myFieldType == "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayInsertDate)
                      & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayUpdateDate)
                     )
                 {
@@ -139,7 +143,11 @@ namespace EFHelper.ColumnHelper
                 string myFieldName = ColumnProperties.GetInstance.GetClearFieldName(property.Name);
                 string myFieldType = property.PropertyType.Name.ToLower();
                 myFieldType = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
-                if (myFieldType == "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayUpdateDate) 
+                if (this.GetIsPrimaryKey<T>(myFieldName))
+                {
+                    result.Add(property);
+                }
+                else if (myFieldType == "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayUpdateDate) 
                     & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayInsertDate))
                 {
                     object checkyear = property.GetValue(entity);
@@ -174,8 +182,9 @@ namespace EFHelper.ColumnHelper
                 string myFieldType = property.PropertyType.Name.ToLower();
                 myFieldType = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
 
+
                 if (myFieldType == "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayUpdateDate)
-                     & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayInsertDate))
+                     & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayInsertDate) & !this.GetIsPrimaryKey<T>(myFieldName))
                 {
                     object checkyear = property.GetValue(entity);
                     if (checkyear != null)
@@ -189,7 +198,7 @@ namespace EFHelper.ColumnHelper
 
                 }
                 else if (myFieldType == "datetime" & ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayUpdateDate)
-                    & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayInsertDate))
+                    & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayInsertDate) & !this.GetIsPrimaryKey<T>(myFieldName))
                 {
                     if (property.CanWrite)
                     {
@@ -198,7 +207,7 @@ namespace EFHelper.ColumnHelper
                     result.Add(property);
 
                 }
-                else if (myFieldType != "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, "activebool","boolactive", "insertby", "insertbyid"))
+                else if (myFieldType != "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, "activebool","boolactive", "insertby", "insertbyid") & !this.GetIsPrimaryKey<T>(myFieldName))
                 {
                     result.Add(property);
                 }
@@ -452,6 +461,32 @@ namespace EFHelper.ColumnHelper
             }
             pi = pi != null ? pi : entity.GetType().GetRuntimeProperties().ToList()[0];// jika null ambil property yang ke 0
             return pi;
+        }
+        public bool GetIsPrimaryKey<T>(string fieldName) where T:class
+        {
+            bool result = false;
+            var propIdentity = this.GetIdentityColumnProps<T>();
+            if(propIdentity !=null)
+            {
+                string myfieldName = ColumnProperties.GetInstance.GetClearFieldName(propIdentity.Name);
+                fieldName = ColumnProperties.GetInstance.GetClearFieldName(fieldName);
+                if (fieldName == myfieldName)
+                    result = true;
+            }
+            return result;
+        }
+        public bool GetIsPrimaryKey(Type t, string fieldName)
+        {
+            bool result = false;
+            var propIdentity = this.GetIdentityColumnProps(t);
+            if (propIdentity != null)
+            {
+                string myfieldName = ColumnProperties.GetInstance.GetClearFieldName(propIdentity.Name);
+                fieldName = ColumnProperties.GetInstance.GetClearFieldName(fieldName);
+                if (fieldName == myfieldName)
+                    result = true;
+            }
+            return result;
         }
         public string GetColumnType(PropertyInfo property)
         {
