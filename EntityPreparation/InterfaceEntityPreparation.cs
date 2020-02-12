@@ -1,6 +1,10 @@
-﻿using System;
+﻿using EFHelper.Filtering;
+using EFHelper.MiscClass;
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace EFHelper.EntityPreparation
 {
@@ -8,8 +12,14 @@ namespace EFHelper.EntityPreparation
     {
         T SetPreparationEntity<T>(T entity) where T : class;
         List<T> SetPreparationEntity<T>(List<T> listEntity) where T : class;
-       
-
-
     }
+    public interface InterfaceEntityMultiplePK
+    {
+        bool IsContinueSaveAfterMultiplePK<T>(T entity,out EFReturnValue returnValue) where T : class;
+        bool IsContinueSUpdateAfterMultiplePK<T>(T entity, out EFReturnValue returnValue) where T : class;
+        Task<bool> IsContinueSaveAfterMultiplePKAsync<T>(T entity) where T : class;
+        Task<bool> IsContinueSUpdateAfterMultiplePKAsync<T>(T entity) where T : class;
+    }
+     
+
 }

@@ -25,6 +25,7 @@ namespace EFHelper.Ekspression
         {
             DictOperatorExpr.Add("=", new EqualOperatorExpr());
             DictOperatorExpr.Add("<>", new EqualNotOperatorExpr());
+            DictOperatorExpr.Add("!=", new EqualNotOperatorExpr());
             DictOperatorExpr.Add("<", new LessThanOperatorExpr());
             DictOperatorExpr.Add("<=", new LessThanOperatorExpr());
             DictOperatorExpr.Add(">", new MoreThanOperatorExpr());

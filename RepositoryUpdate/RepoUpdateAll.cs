@@ -14,6 +14,7 @@ namespace EFHelper.RepositoryUpdate
     {
         private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
         private static RepoUpdateAll instance;
+        EntityMultiplePK multiple = new EntityMultiplePK();
         public static RepoUpdateAll GetInstance
         {
             get
@@ -33,12 +34,16 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T>(entity);
-                            context.Set<T>().Attach(entity);
-                            context.Entry(entity).State = EntityState.Modified;
-                            hasil = context.SaveChanges();
-                            contextTrans.Commit();
-                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity);
+                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T>(entity, out eFReturn);
+                            if (cekIsContinue)
+                            {
+                                entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T>(entity);
+                                context.Set<T>().Attach(entity);
+                                context.Entry(entity).State = EntityState.Modified;
+                                hasil = context.SaveChanges();
+                                contextTrans.Commit();
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity);
+                            }
                         }
                         catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                     }
@@ -60,19 +65,24 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
+                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
+                            if (cekIsContinue)
+                            {
+                                entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
+                                entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
 
-                            entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
-                            entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
-                            
-                            context.Set<T1>().Attach(entity1);
-                            context.Set<T2>().Attach(entity2);
+                                context.Set<T1>().Attach(entity1);
+                                context.Set<T2>().Attach(entity2);
 
-                            context.Entry(entity1).State = EntityState.Modified;
-                            context.Entry(entity2).State = EntityState.Modified;
+                                context.Entry(entity1).State = EntityState.Modified;
+                                context.Entry(entity2).State = EntityState.Modified;
 
-                            hasil = context.SaveChanges();
-                            contextTrans.Commit();
-                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2);
+                                hasil = context.SaveChanges();
+                                contextTrans.Commit();
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2);
+                            }
                         }
                         catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                     }
@@ -95,22 +105,29 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
+                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
+                            if (cekIsContinue)
+                            {
+                                entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
+                                entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
+                                entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity3);
 
-                            entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
-                            entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
-                            entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity3);
-                            
-                            context.Set<T1>().Attach(entity1);
-                            context.Set<T2>().Attach(entity2);
-                            context.Set<T3>().Attach(entity3);
+                                context.Set<T1>().Attach(entity1);
+                                context.Set<T2>().Attach(entity2);
+                                context.Set<T3>().Attach(entity3);
 
-                            context.Entry(entity1).State = EntityState.Modified;
-                            context.Entry(entity2).State = EntityState.Modified;
-                            context.Entry(entity3).State = EntityState.Modified;
+                                context.Entry(entity1).State = EntityState.Modified;
+                                context.Entry(entity2).State = EntityState.Modified;
+                                context.Entry(entity3).State = EntityState.Modified;
 
-                            hasil = context.SaveChanges();
-                            contextTrans.Commit();
-                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3);
+                                hasil = context.SaveChanges();
+                                contextTrans.Commit();
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3);
+                            }
                         }
                         catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                     }
@@ -134,24 +151,34 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
-                            entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
-                            entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity3);
-                            entity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T4>(entity4);
+                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T4>(entity4, out eFReturn);
+                            if (cekIsContinue)
+                            {
+                                entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
+                                entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
+                                entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity3);
+                                entity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T4>(entity4);
 
-                            context.Set<T1>().Attach(entity1);
-                            context.Set<T2>().Attach(entity2);
-                            context.Set<T3>().Attach(entity3);
-                            context.Set<T4>().Attach(entity4);
+                                context.Set<T1>().Attach(entity1);
+                                context.Set<T2>().Attach(entity2);
+                                context.Set<T3>().Attach(entity3);
+                                context.Set<T4>().Attach(entity4);
 
-                            context.Entry(entity1).State = EntityState.Modified;
-                            context.Entry(entity2).State = EntityState.Modified;
-                            context.Entry(entity3).State = EntityState.Modified;
-                            context.Entry(entity4).State = EntityState.Modified;
+                                context.Entry(entity1).State = EntityState.Modified;
+                                context.Entry(entity2).State = EntityState.Modified;
+                                context.Entry(entity3).State = EntityState.Modified;
+                                context.Entry(entity4).State = EntityState.Modified;
 
-                            hasil = context.SaveChanges();
-                            contextTrans.Commit();
-                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4);
+                                hasil = context.SaveChanges();
+                                contextTrans.Commit();
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4);
+                            }
                         }
                         catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                     }
@@ -176,27 +203,39 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
-                            entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
-                            entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity3);
-                            entity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T4>(entity4);
-                            entity5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T5>(entity5);
+                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T4>(entity4, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T5>(entity5, out eFReturn);
+                            if (cekIsContinue)
+                            {
+                                entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
+                                entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
+                                entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity3);
+                                entity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T4>(entity4);
+                                entity5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T5>(entity5);
 
-                            context.Set<T1>().Attach(entity1);
-                            context.Set<T2>().Attach(entity2);
-                            context.Set<T3>().Attach(entity3);
-                            context.Set<T4>().Attach(entity4);
-                            context.Set<T5>().Attach(entity5);
+                                context.Set<T1>().Attach(entity1);
+                                context.Set<T2>().Attach(entity2);
+                                context.Set<T3>().Attach(entity3);
+                                context.Set<T4>().Attach(entity4);
+                                context.Set<T5>().Attach(entity5);
 
-                            context.Entry(entity1).State = EntityState.Modified;
-                            context.Entry(entity2).State = EntityState.Modified;
-                            context.Entry(entity3).State = EntityState.Modified;
-                            context.Entry(entity4).State = EntityState.Modified;
-                            context.Entry(entity5).State = EntityState.Modified;
+                                context.Entry(entity1).State = EntityState.Modified;
+                                context.Entry(entity2).State = EntityState.Modified;
+                                context.Entry(entity3).State = EntityState.Modified;
+                                context.Entry(entity4).State = EntityState.Modified;
+                                context.Entry(entity5).State = EntityState.Modified;
 
-                            hasil = context.SaveChanges();
-                            contextTrans.Commit();
-                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4, entity5);
+                                hasil = context.SaveChanges();
+                                contextTrans.Commit();
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4, entity5);
+                            }
                         }
                         catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                     }

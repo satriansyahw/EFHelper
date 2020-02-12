@@ -12,6 +12,8 @@ namespace EFHelper.RepositorySave
     {
         private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull,ReturnValue=null };
         private static RepoSaveAsync instance;
+        EntityMultiplePK multiple = new EntityMultiplePK();
+        private string multipleErrorMessage = "Error, Violation of Multiple PK, check : ";
         public static RepoSaveAsync GetInstance
         {
             get
@@ -33,12 +35,21 @@ namespace EFHelper.RepositorySave
                     {
                         try
                         {
-                            
-                            entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T>(entity);
-                            context.Set<T>().Add(entity);
-                            hasil =await context.SaveChangesAsync();
-                            contextTrans.Commit();
-                            eFReturn=eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity);
+                            var cekIsContinue = await multiple.IsContinueSaveAfterMultiplePKAsync<T>(entity);
+                            if (cekIsContinue)
+                            {
+                                entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T>(entity);
+                                context.Set<T>().Add(entity);
+                                hasil = await context.SaveChangesAsync();
+                                contextTrans.Commit();
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity);
+                            }
+                            else
+                            {
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, this.multipleErrorMessage);
+
+                            }
+
                         }
                         catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                     }
@@ -61,15 +72,26 @@ namespace EFHelper.RepositorySave
                     {
                         if (entity1 != null & entity2 != null)
                         {
-                            
-                            entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(entity1);
-                            entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(entity2);
-                            context.Set<T1>().Add(entity1);
-                            context.Set<T2>().Add(entity2);
-                            hasil = await context.SaveChangesAsync();
-                            contextTrans.Commit();
-                            eFReturn=eFReturn.SetEFReturnValue(eFReturn,true,hasil, entity1, entity2);
-                        }                        
+                            var cekIsContinue = await multiple.IsContinueSaveAfterMultiplePKAsync<T1>(entity1);
+                            if (cekIsContinue)
+                                cekIsContinue = await multiple.IsContinueSaveAfterMultiplePKAsync<T2>(entity2);
+                            if (cekIsContinue)
+                            {
+                                entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(entity1);
+                                entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(entity2);
+                                context.Set<T1>().Add(entity1);
+                                context.Set<T2>().Add(entity2);
+                                hasil = await context.SaveChangesAsync();
+                                contextTrans.Commit();
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2);
+                            }
+                            else
+                            {
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, this.multipleErrorMessage);
+
+                            }
+
+                        }
                     }
                     catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                 }
@@ -90,18 +112,31 @@ namespace EFHelper.RepositorySave
                     {
                         if (entity1 != null & entity2 != null & entity3 != null)
                         {
-                            
-                            entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(entity1);
-                            entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(entity2);
-                            entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(entity3);
-                            context.Set<T1>().Add(entity1);
-                            context.Set<T2>().Add(entity2);
-                            context.Set<T3>().Add(entity3);
-                            hasil =await context.SaveChangesAsync();
-                            contextTrans.Commit();
-                            eFReturn=eFReturn.SetEFReturnValue(eFReturn,true, hasil,entity1, entity2, entity3);
+                            var cekIsContinue = await multiple.IsContinueSaveAfterMultiplePKAsync<T1>(entity1);
+                            if (cekIsContinue)
+                                cekIsContinue = await multiple.IsContinueSaveAfterMultiplePKAsync<T2>(entity2);
+                            if (cekIsContinue)
+                                cekIsContinue = await multiple.IsContinueSaveAfterMultiplePKAsync<T3>(entity3);
+                            if (cekIsContinue)
+                            {
+                                entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(entity1);
+                                entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(entity2);
+                                entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(entity3);
+                                context.Set<T1>().Add(entity1);
+                                context.Set<T2>().Add(entity2);
+                                context.Set<T3>().Add(entity3);
+                                hasil = await context.SaveChangesAsync();
+                                contextTrans.Commit();
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3);
+                            }
+                            else
+                            {
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, this.multipleErrorMessage);
+
+                            }
+
                         }
-                        
+
                     }
                     catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                 }
@@ -123,19 +158,34 @@ namespace EFHelper.RepositorySave
                     {
                         if (entity1 != null & entity2 != null & entity3 != null & entity4 != null)
                         {
-                            
-                            entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(entity1);
-                            entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(entity2);
-                            entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(entity3);
-                            entity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(entity4);
-                            context.Set<T1>().Add(entity1);
-                            context.Set<T2>().Add(entity2);
-                            context.Set<T3>().Add(entity3);
-                            context.Set<T4>().Add(entity4);
-                            hasil = await context.SaveChangesAsync();
-                            contextTrans.Commit();
-                            eFReturn=eFReturn.SetEFReturnValue(eFReturn,true,hasil, entity1, entity2, entity3, entity4);
-                        }                      
+                            var cekIsContinue = await multiple.IsContinueSaveAfterMultiplePKAsync<T1>(entity1);
+                            if (cekIsContinue)
+                                cekIsContinue = await multiple.IsContinueSaveAfterMultiplePKAsync<T2>(entity2);
+                            if (cekIsContinue)
+                                cekIsContinue = await multiple.IsContinueSaveAfterMultiplePKAsync<T3>(entity3);
+                            if (cekIsContinue)
+                                cekIsContinue = await multiple.IsContinueSaveAfterMultiplePKAsync<T4>(entity4);
+                            if (cekIsContinue)
+                            {
+                                entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(entity1);
+                                entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(entity2);
+                                entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(entity3);
+                                entity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(entity4);
+                                context.Set<T1>().Add(entity1);
+                                context.Set<T2>().Add(entity2);
+                                context.Set<T3>().Add(entity3);
+                                context.Set<T4>().Add(entity4);
+                                hasil = await context.SaveChangesAsync();
+                                contextTrans.Commit();
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4);
+                            }
+                            else
+                            {
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, this.multipleErrorMessage);
+
+                            }
+
+                        }
                     }
                     catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                 }
@@ -158,21 +208,37 @@ namespace EFHelper.RepositorySave
                     {
                         if (entity1 != null & entity2 != null & entity3 != null & entity4 != null & entity5 != null)
                         {
-                            
-                            entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(entity1);
-                            entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(entity2);
-                            entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(entity3);
-                            entity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(entity4);
-                            entity5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T5>(entity5);
-                            context.Set<T1>().Add(entity1);
-                            context.Set<T2>().Add(entity2);
-                            context.Set<T3>().Add(entity3);
-                            context.Set<T4>().Add(entity4);
-                            context.Set<T5>().Add(entity5);
+                            var cekIsContinue = await multiple.IsContinueSaveAfterMultiplePKAsync<T1>(entity1);
+                            if (cekIsContinue)
+                                cekIsContinue = await multiple.IsContinueSaveAfterMultiplePKAsync<T2>(entity2);
+                            if (cekIsContinue)
+                                cekIsContinue = await multiple.IsContinueSaveAfterMultiplePKAsync<T3>(entity3);
+                            if (cekIsContinue)
+                                cekIsContinue = await multiple.IsContinueSaveAfterMultiplePKAsync<T4>(entity4);
+                            if (cekIsContinue)
+                                cekIsContinue = await multiple.IsContinueSaveAfterMultiplePKAsync<T5>(entity5);
+                            if (cekIsContinue)
+                            {
+                                entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(entity1);
+                                entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(entity2);
+                                entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(entity3);
+                                entity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(entity4);
+                                entity5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T5>(entity5);
+                                context.Set<T1>().Add(entity1);
+                                context.Set<T2>().Add(entity2);
+                                context.Set<T3>().Add(entity3);
+                                context.Set<T4>().Add(entity4);
+                                context.Set<T5>().Add(entity5);
 
-                            hasil =await context.SaveChangesAsync();
-                            contextTrans.Commit();
-                            eFReturn=eFReturn.SetEFReturnValue(eFReturn,true,hasil,entity1, entity2, entity3, entity4, entity5);
+                                hasil = await context.SaveChangesAsync();
+                                contextTrans.Commit();
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4, entity5);
+                            }
+                            else
+                            {
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, this.multipleErrorMessage);
+                               
+                            }
                         }                        
                     }
                     catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }

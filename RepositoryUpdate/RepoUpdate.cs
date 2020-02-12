@@ -12,6 +12,7 @@ namespace EFHelper.RepositoryUpdate
     {
         private EFReturnValue eFReturn = new EFReturnValue { IsSuccessConnection = false, IsSuccessQuery = false, ErrorMessage = ErrorMessage.EntityCannotBeNull, ReturnValue = null };
         private static RepoUpdate instance;
+        EntityMultiplePK multiple = new EntityMultiplePK();
         public static RepoUpdate GetInstance
         {
             get {
@@ -29,21 +30,25 @@ namespace EFHelper.RepositoryUpdate
                     using (var contextTrans = context.Database.BeginTransaction())
                     {
                         try
-                        {                            
-                            var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T>(entity);//will update except activebool boolactive insertby insertbyid
-                            entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T>(entity);
-                            context.Set<T>().Attach(entity);
-                            context.Entry(entity).State = EntityState.Unchanged;
-                            foreach (PropertyInfo property in colNotNull)
+                        {
+                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T>(entity, out eFReturn);
+                            if (cekIsContinue)
                             {
-                                if (property != null)
+                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T>(entity);//will update except activebool boolactive insertby insertbyid
+                                entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T>(entity);
+                                context.Set<T>().Attach(entity);
+                                context.Entry(entity).State = EntityState.Unchanged;
+                                foreach (PropertyInfo property in colNotNull)
                                 {
-                                    context.Entry(entity).Property(property.Name).IsModified = true;
+                                    if (property != null)
+                                    {
+                                        context.Entry(entity).Property(property.Name).IsModified = true;
+                                    }
                                 }
+                                hasil = context.SaveChanges();
+                                contextTrans.Commit();
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity);
                             }
-                            hasil = context.SaveChanges();
-                            contextTrans.Commit();
-                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity);
                         }
                         catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                     }
@@ -65,35 +70,41 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            var colNotNull1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);//will update except activebool boolactive insertby insertbyid
-                            var colNotNull2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);//will update except activebool boolactive insertby insertbyid
-
-                            entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
-                            entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
-
-                            context.Set<T1>().Attach(entity1);
-                            context.Set<T2>().Attach(entity2);
-
-                            context.Entry(entity1).State = EntityState.Unchanged;
-                            context.Entry(entity2).State = EntityState.Unchanged;
-
-                            foreach (PropertyInfo property in colNotNull1)
+                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
+                            if (cekIsContinue)
                             {
-                                if (property != null)
+                                var colNotNull1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);//will update except activebool boolactive insertby insertbyid
+
+                                entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
+                                entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
+
+                                context.Set<T1>().Attach(entity1);
+                                context.Set<T2>().Attach(entity2);
+
+                                context.Entry(entity1).State = EntityState.Unchanged;
+                                context.Entry(entity2).State = EntityState.Unchanged;
+
+                                foreach (PropertyInfo property in colNotNull1)
                                 {
-                                    context.Entry(entity1).Property(property.Name).IsModified = true;
+                                    if (property != null)
+                                    {
+                                        context.Entry(entity1).Property(property.Name).IsModified = true;
+                                    }
                                 }
-                            }
-                            foreach (PropertyInfo property in colNotNull1)
-                            {
-                                if (property != null)
+                                foreach (PropertyInfo property in colNotNull1)
                                 {
-                                    context.Entry(entity2).Property(property.Name).IsModified = true;
+                                    if (property != null)
+                                    {
+                                        context.Entry(entity2).Property(property.Name).IsModified = true;
+                                    }
                                 }
+                                hasil = context.SaveChanges();
+                                contextTrans.Commit();
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2);
                             }
-                            hasil = context.SaveChanges();
-                            contextTrans.Commit();
-                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1,entity2);
                         }
                         catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                     }
@@ -116,46 +127,54 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            var colNotNull1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);//will update except activebool boolactive insertby insertbyid
-                            var colNotNull2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);//will update except activebool boolactive insertby insertbyid
-                            var colNotNull3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);//will update except activebool boolactive insertby insertbyid
-
-                            entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
-                            entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
-                            entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity3);
-
-                            context.Set<T1>().Attach(entity1);
-                            context.Set<T2>().Attach(entity2);
-                            context.Set<T3>().Attach(entity3);
-
-                            context.Entry(entity1).State = EntityState.Unchanged;
-                            context.Entry(entity2).State = EntityState.Unchanged;
-                            context.Entry(entity3).State = EntityState.Unchanged;
-
-                            foreach (PropertyInfo property in colNotNull1)
+                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
+                            if (cekIsContinue)
                             {
-                                if (property != null)
+                                var colNotNull1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);//will update except activebool boolactive insertby insertbyid
+
+                                entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
+                                entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
+                                entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity3);
+
+                                context.Set<T1>().Attach(entity1);
+                                context.Set<T2>().Attach(entity2);
+                                context.Set<T3>().Attach(entity3);
+
+                                context.Entry(entity1).State = EntityState.Unchanged;
+                                context.Entry(entity2).State = EntityState.Unchanged;
+                                context.Entry(entity3).State = EntityState.Unchanged;
+
+                                foreach (PropertyInfo property in colNotNull1)
                                 {
-                                    context.Entry(entity1).Property(property.Name).IsModified = true;
+                                    if (property != null)
+                                    {
+                                        context.Entry(entity1).Property(property.Name).IsModified = true;
+                                    }
                                 }
-                            }
-                            foreach (PropertyInfo property in colNotNull1)
-                            {
-                                if (property != null)
+                                foreach (PropertyInfo property in colNotNull1)
                                 {
-                                    context.Entry(entity2).Property(property.Name).IsModified = true;
+                                    if (property != null)
+                                    {
+                                        context.Entry(entity2).Property(property.Name).IsModified = true;
+                                    }
                                 }
-                            }
-                            foreach (PropertyInfo property in colNotNull1)
-                            {
-                                if (property != null)
+                                foreach (PropertyInfo property in colNotNull1)
                                 {
-                                    context.Entry(entity3).Property(property.Name).IsModified = true;
+                                    if (property != null)
+                                    {
+                                        context.Entry(entity3).Property(property.Name).IsModified = true;
+                                    }
                                 }
+                                hasil = context.SaveChanges();
+                                contextTrans.Commit();
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3);
                             }
-                            hasil = context.SaveChanges();
-                            contextTrans.Commit();
-                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1,entity2,entity3);
                         }
                         catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                     }
@@ -179,57 +198,67 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            var colNotNull1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);//will update except activebool boolactive insertby insertbyid
-                            var colNotNull2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);//will update except activebool boolactive insertby insertbyid
-                            var colNotNull3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);//will update except activebool boolactive insertby insertbyid
-                            var colNotNull4 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity4);//will update except activebool boolactive insertby insertbyid
-
-                            entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
-                            entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
-                            entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity3);
-                            entity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T4>(entity4);
-
-                            context.Set<T1>().Attach(entity1);
-                            context.Set<T2>().Attach(entity2);
-                            context.Set<T3>().Attach(entity3);
-                            context.Set<T4>().Attach(entity4);
-
-                            context.Entry(entity1).State = EntityState.Unchanged;
-                            context.Entry(entity2).State = EntityState.Unchanged;
-                            context.Entry(entity3).State = EntityState.Unchanged;
-                            context.Entry(entity4).State = EntityState.Unchanged;
-
-                            foreach (PropertyInfo property in colNotNull1)
+                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T4>(entity4, out eFReturn);
+                            if (cekIsContinue)
                             {
-                                if (property != null)
+                                var colNotNull1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull4 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity4);//will update except activebool boolactive insertby insertbyid
+
+                                entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
+                                entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
+                                entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity3);
+                                entity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T4>(entity4);
+
+                                context.Set<T1>().Attach(entity1);
+                                context.Set<T2>().Attach(entity2);
+                                context.Set<T3>().Attach(entity3);
+                                context.Set<T4>().Attach(entity4);
+
+                                context.Entry(entity1).State = EntityState.Unchanged;
+                                context.Entry(entity2).State = EntityState.Unchanged;
+                                context.Entry(entity3).State = EntityState.Unchanged;
+                                context.Entry(entity4).State = EntityState.Unchanged;
+
+                                foreach (PropertyInfo property in colNotNull1)
                                 {
-                                    context.Entry(entity1).Property(property.Name).IsModified = true;
+                                    if (property != null)
+                                    {
+                                        context.Entry(entity1).Property(property.Name).IsModified = true;
+                                    }
                                 }
-                            }
-                            foreach (PropertyInfo property in colNotNull1)
-                            {
-                                if (property != null)
+                                foreach (PropertyInfo property in colNotNull1)
                                 {
-                                    context.Entry(entity2).Property(property.Name).IsModified = true;
+                                    if (property != null)
+                                    {
+                                        context.Entry(entity2).Property(property.Name).IsModified = true;
+                                    }
                                 }
-                            }
-                            foreach (PropertyInfo property in colNotNull1)
-                            {
-                                if (property != null)
+                                foreach (PropertyInfo property in colNotNull1)
                                 {
-                                    context.Entry(entity3).Property(property.Name).IsModified = true;
+                                    if (property != null)
+                                    {
+                                        context.Entry(entity3).Property(property.Name).IsModified = true;
+                                    }
                                 }
-                            }
-                            foreach (PropertyInfo property in colNotNull1)
-                            {
-                                if (property != null)
+                                foreach (PropertyInfo property in colNotNull1)
                                 {
-                                    context.Entry(entity4).Property(property.Name).IsModified = true;
+                                    if (property != null)
+                                    {
+                                        context.Entry(entity4).Property(property.Name).IsModified = true;
+                                    }
                                 }
+                                hasil = context.SaveChanges();
+                                contextTrans.Commit();
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4);
                             }
-                            hasil = context.SaveChanges();
-                            contextTrans.Commit();
-                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1,entity2,entity3,entity4);
                         }
                         catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                     }
@@ -253,69 +282,81 @@ namespace EFHelper.RepositoryUpdate
                     using (var contextTrans = context.Database.BeginTransaction())
                     {
                         try
-                        {
-                            var colNotNull1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);//will update except activebool boolactive insertby insertbyid
-                            var colNotNull2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);//will update except activebool boolactive insertby insertbyid
-                            var colNotNull3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);//will update except activebool boolactive insertby insertbyid
-                            var colNotNull4 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity4);//will update except activebool boolactive insertby insertbyid
-                            var colNotNull5 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T5>(entity5);//will update except activebool boolactive insertby insertbyid
+                        { 
+                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T4>(entity4, out eFReturn);
+                            if (cekIsContinue)
+                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T5>(entity5, out eFReturn);
+                            if (cekIsContinue)                       
+                            {
+                                var colNotNull1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull4 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity4);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull5 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T5>(entity5);//will update except activebool boolactive insertby insertbyid
 
-                            entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
-                            entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
-                            entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity3);
-                            entity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T4>(entity4);
-                            entity5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T5>(entity5);
+                                entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
+                                entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
+                                entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity3);
+                                entity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T4>(entity4);
+                                entity5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T5>(entity5);
 
-                            context.Set<T1>().Attach(entity1);
-                            context.Set<T2>().Attach(entity2);
-                            context.Set<T3>().Attach(entity3);
-                            context.Set<T4>().Attach(entity4);
-                            context.Set<T5>().Attach(entity5);
+                                context.Set<T1>().Attach(entity1);
+                                context.Set<T2>().Attach(entity2);
+                                context.Set<T3>().Attach(entity3);
+                                context.Set<T4>().Attach(entity4);
+                                context.Set<T5>().Attach(entity5);
 
-                            context.Entry(entity1).State = EntityState.Unchanged;
-                            context.Entry(entity2).State = EntityState.Unchanged;
-                            context.Entry(entity3).State = EntityState.Unchanged;
-                            context.Entry(entity4).State = EntityState.Unchanged;
-                            context.Entry(entity5).State = EntityState.Unchanged;
+                                context.Entry(entity1).State = EntityState.Unchanged;
+                                context.Entry(entity2).State = EntityState.Unchanged;
+                                context.Entry(entity3).State = EntityState.Unchanged;
+                                context.Entry(entity4).State = EntityState.Unchanged;
+                                context.Entry(entity5).State = EntityState.Unchanged;
 
-                            foreach (PropertyInfo property in colNotNull1)
-                            {
-                                if (property != null)
+                                foreach (PropertyInfo property in colNotNull1)
                                 {
-                                    context.Entry(entity1).Property(property.Name).IsModified = true;
+                                    if (property != null)
+                                    {
+                                        context.Entry(entity1).Property(property.Name).IsModified = true;
+                                    }
                                 }
-                            }
-                            foreach (PropertyInfo property in colNotNull1)
-                            {
-                                if (property != null)
+                                foreach (PropertyInfo property in colNotNull1)
                                 {
-                                    context.Entry(entity2).Property(property.Name).IsModified = true;
+                                    if (property != null)
+                                    {
+                                        context.Entry(entity2).Property(property.Name).IsModified = true;
+                                    }
                                 }
-                            }
-                            foreach (PropertyInfo property in colNotNull1)
-                            {
-                                if (property != null)
+                                foreach (PropertyInfo property in colNotNull1)
                                 {
-                                    context.Entry(entity3).Property(property.Name).IsModified = true;
+                                    if (property != null)
+                                    {
+                                        context.Entry(entity3).Property(property.Name).IsModified = true;
+                                    }
                                 }
-                            }
-                            foreach (PropertyInfo property in colNotNull1)
-                            {
-                                if (property != null)
+                                foreach (PropertyInfo property in colNotNull1)
                                 {
-                                    context.Entry(entity4).Property(property.Name).IsModified = true;
+                                    if (property != null)
+                                    {
+                                        context.Entry(entity4).Property(property.Name).IsModified = true;
+                                    }
                                 }
-                            }
-                            foreach (PropertyInfo property in colNotNull1)
-                            {
-                                if (property != null)
+                                foreach (PropertyInfo property in colNotNull1)
                                 {
-                                    context.Entry(entity5).Property(property.Name).IsModified = true;
+                                    if (property != null)
+                                    {
+                                        context.Entry(entity5).Property(property.Name).IsModified = true;
+                                    }
                                 }
+                                hasil = context.SaveChanges();
+                                contextTrans.Commit();
+                                eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4, entity5);
                             }
-                            hasil = context.SaveChanges();
-                            contextTrans.Commit();
-                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1,entity2,entity3,entity4,entity5);
                         }
                         catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                     }
