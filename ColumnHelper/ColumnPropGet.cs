@@ -14,7 +14,7 @@ namespace EFHelper.ColumnHelper
     public class ColumnPropGet
     {
         private static ColumnPropGet instance;
-
+        private int nullDatetime = 1;
         public ColumnPropGet()
         {
 
@@ -53,7 +53,7 @@ namespace EFHelper.ColumnHelper
             }
             return listEntity;
         }
-        public List<ColumnListInfo> GetColumnList(Type t) 
+        public List<ColumnListInfo> GetColumnList(Type t)
         {
             List<ColumnListInfo> list = new List<ColumnListInfo>();
             var entity = Activator.CreateInstance(t);
@@ -77,7 +77,7 @@ namespace EFHelper.ColumnHelper
         }
         public List<PropertyInfo> GetPropertyColNull<T>(T entity) where T : class
         {
-            int nullDatetime = 1;
+            
             string fullName = string.Empty;
             List<PropertyInfo> resultAwal = new List<PropertyInfo>();
             List<PropertyInfo> result = new List<PropertyInfo>();
@@ -85,7 +85,7 @@ namespace EFHelper.ColumnHelper
             resultAwal = (from sa in entity.GetType().GetProperties().AsQueryable() where sa.GetValue(entity) == null select sa).ToList();
             foreach (PropertyInfo property in resultAwal)
             {
-                var sss  =property.PropertyType.Name.ToLower();
+                var sss = property.PropertyType.Name.ToLower();
                 result.Add(property);
             }
             //looking from not value column
@@ -124,7 +124,7 @@ namespace EFHelper.ColumnHelper
         }
         public List<PropertyInfo> GetPropertyColNullOnly<T>(T entity) where T : class
         {
-            int nullDatetime = 1;
+           
             string fullName = string.Empty;
             List<PropertyInfo> resultAwal = new List<PropertyInfo>();
             List<PropertyInfo> result = new List<PropertyInfo>();
@@ -133,7 +133,7 @@ namespace EFHelper.ColumnHelper
             foreach (PropertyInfo property in resultAwal)
             {
                 result.Add(property);
-            }          
+            }
 
             // check datetime where date year ==1 equals to null datetime
             var resultDatetimeNull = (from sa in entity.GetType().GetProperties().AsQueryable() where sa.GetValue(entity) != null select sa).ToList();
@@ -147,18 +147,18 @@ namespace EFHelper.ColumnHelper
                 {
                     result.Add(property);
                 }
-                else if (myFieldType == "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayUpdateDate) 
+                else if (myFieldType == "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayUpdateDate)
                     & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayInsertDate))
                 {
                     object checkyear = property.GetValue(entity);
-                    if(checkyear !=null)
+                    if (checkyear != null)
                     {
                         DateTime dateTime = (DateTime)checkyear;
-                        if(dateTime.Date.Year == nullDatetime)
+                        if (dateTime.Date.Year == nullDatetime)
                         {
                             result.Add(property);
                         }
-                    }                   
+                    }
 
                 }
                 else if (myFieldType == "boolean" & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayActiveBool))
@@ -207,11 +207,11 @@ namespace EFHelper.ColumnHelper
                     result.Add(property);
 
                 }
-                else if (myFieldType != "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, "activebool","boolactive", "insertby", "insertbyid") & !this.GetIsPrimaryKey<T>(myFieldName))
+                else if (myFieldType != "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, "activebool", "boolactive", "insertby", "insertbyid") & !this.GetIsPrimaryKey<T>(myFieldName))
                 {
                     result.Add(property);
                 }
-                
+
             }
             return result;
         }
@@ -246,11 +246,11 @@ namespace EFHelper.ColumnHelper
                     break;
                 }
             }
-          
+
 
             return pi;
         }
-        public PropertyInfo GetColumnProps(Type t,params string[] colnames)
+        public PropertyInfo GetColumnProps(Type t, params string[] colnames)
         {
             var entity = Activator.CreateInstance(t);
             PropertyInfo pi = null;
@@ -338,7 +338,7 @@ namespace EFHelper.ColumnHelper
             }
             return pi;
         }
-        public bool GetCheckIsDBCommandList<T>(List<SearchField> lsf) where T:class
+        public bool GetCheckIsDBCommandList<T>(List<SearchField> lsf) where T : class
         {
             //check if like
             bool result = false;
@@ -359,13 +359,13 @@ namespace EFHelper.ColumnHelper
                     {
                         colName = item.Name.ToString().ToLower().Trim().Replace(@"""", "").Replace("'", "");
                         var colProp = this.GetColumnProps<T>(colName);
-                        if(colProp !=null)
+                        if (colProp != null)
                         {
                             string fullName = colProp.PropertyType.FullName.ToLower().Split(',')[0].ToString();
                             string myFieldType = colProp.PropertyType.Name.ToLower();
                             bool isnullData = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? true : false;
                             myFieldType = isnullData ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType.ToLower().Trim();
-                            if(myFieldType =="datetime")
+                            if (myFieldType == "datetime")
                             {
                                 result = true;
                                 break;
@@ -375,10 +375,10 @@ namespace EFHelper.ColumnHelper
                 }
 
 
-            }    
+            }
             return result;
         }
-        public bool GetCheckIsDBCommandList(List<SearchField> lsf,Type t)
+        public bool GetCheckIsDBCommandList(List<SearchField> lsf, Type t)
         {
             //check if like
             bool result = false;
@@ -398,7 +398,7 @@ namespace EFHelper.ColumnHelper
                     else
                     {
                         colName = item.Name.ToString().ToLower().Trim().Replace(@"""", "").Replace("'", "");
-                        var colProp = this.GetColumnProps(t,colName);
+                        var colProp = this.GetColumnProps(t, colName);
                         if (colProp != null)
                         {
                             string fullName = colProp.PropertyType.FullName.ToLower().Split(',')[0].ToString();
@@ -435,7 +435,7 @@ namespace EFHelper.ColumnHelper
                 }
 
                 if (pi != null)
-                    break;               
+                    break;
             }
             pi = pi != null ? pi : entity.GetType().GetRuntimeProperties().ToList()[0];// jika null ambil property yang ke 0
             return pi;
@@ -462,11 +462,11 @@ namespace EFHelper.ColumnHelper
             pi = pi != null ? pi : entity.GetType().GetRuntimeProperties().ToList()[0];// jika null ambil property yang ke 0
             return pi;
         }
-        public bool GetIsPrimaryKey<T>(string fieldName) where T:class
+        public bool GetIsPrimaryKey<T>(string fieldName) where T : class
         {
             bool result = false;
             var propIdentity = this.GetIdentityColumnProps<T>();
-            if(propIdentity !=null)
+            if (propIdentity != null)
             {
                 string myfieldName = ColumnProperties.GetInstance.GetClearFieldName(propIdentity.Name);
                 fieldName = ColumnProperties.GetInstance.GetClearFieldName(fieldName);
@@ -488,6 +488,25 @@ namespace EFHelper.ColumnHelper
             }
             return result;
         }
+        public bool GetIsNullDatetime<T>(PropertyInfo propertyDatetime, T entity) where T : class
+        {
+            bool result = false;    //result= false, it's not null datetime, else null datetime      
+            if (entity == null || propertyDatetime == null)
+                return true;
+            object objdatetTime = propertyDatetime.GetValue(entity);
+            if(objdatetTime !=null)
+            {
+                if(this.GetColumnType(propertyDatetime) == "datetime")
+                {
+                    if(((DateTime)objdatetTime).Date.Year == nullDatetime)
+                    {
+                        result = true;
+                    }
+                }
+            }
+            return result;        
+        }
+
         public string GetColumnType(PropertyInfo property)
         {
             string fullName = property.PropertyType.FullName.ToLower().Split(',')[0].ToString();

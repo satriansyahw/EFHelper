@@ -43,6 +43,19 @@ namespace EFHelper.ColumnHelper
             }
             return entity;
         }
+        public object SetColumnPicValue<T>(PropertyInfo propertyPic, T entity) where T : class
+        {
+            object objpic= propertyPic.GetValue(entity);
+            if (ColumnPropGet.GetInstance.GetColumnType(propertyPic) == "string")
+            {
+                if(objpic==null || objpic.ToString().Trim()=="")
+                {
+                    objpic = "System";
+                }
+            }
+            return objpic;
+        }
+
         public T SetColValue<T>(T entity, string colName, object value) where T : class
         {
             PropertyInfo pi = ColumnPropGet.GetInstance.GetColumnProps<T>(colName.ToLower());

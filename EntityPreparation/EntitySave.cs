@@ -14,7 +14,8 @@ namespace EFHelper.EntityPreparation
             var propIdentity = ColumnPropGet.GetInstance.GetIdentityColumnProps<T>();
             var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayActiveBool);
             var propInsertDate = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayInsertDate);
-            
+            var propInsertBy = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayInsertBy);
+
             if (propIdentity !=null)
             {
                 
@@ -36,8 +37,20 @@ namespace EFHelper.EntityPreparation
             {
                 if (propInsertDate.CanWrite)
                 {
-                    object objInsertDate = tipe.DictTypes[ColumnPropGet.GetInstance.GetColumnType(propInsertDate)].GetDefaultValue(false);
-                    propInsertDate.SetValue(entity, objInsertDate);
+                    if (ColumnPropGet.GetInstance.GetIsNullDatetime<T>(propInsertDate, entity))
+                    {
+                        object objInsertDate = tipe.DictTypes[ColumnPropGet.GetInstance.GetColumnType(propInsertDate)].GetDefaultValue(false);
+                        propInsertDate.SetValue(entity, objInsertDate);
+                    }
+                }
+            }
+            if (propInsertBy != null)
+            {
+                if (propInsertBy.CanWrite)
+                {
+                    object objpic = ColumnPropSet.GetInstance.SetColumnPicValue<T>(propInsertBy, entity);
+                    propInsertBy.SetValue(entity, objpic);                   
+                   
                 }
             }
             return entity;

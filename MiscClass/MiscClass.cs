@@ -13,6 +13,9 @@ namespace EFHelper.MiscClass
         }
         public static string[] ArrayInsertDate = { "insertdate", "inserttime" };
         public static string[] ArrayUpdateDate = { "updatedate","updatetime" };
+        public static string[] ArrayUpdateBy = { "updateby", "picupdate","updatepic" };
+        public static string[] ArrayInsertBy = { "insertby", "picinsert","insertpic" };
+
         public static string[] ArrayActiveBool = { "activebool", "boolactive" };
         public static int CommandTimeOut =100;
     }

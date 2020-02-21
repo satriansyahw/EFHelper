@@ -16,12 +16,26 @@ namespace EFHelper.EntityPreparation
             //update all all field defined in entity ,additonal if forget for updatedate
             TypeBantuan tipe = new TypeBantuan();
             var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayUpdateDate);
+            var propUpdateBy = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayUpdateBy);
             if (propUpdateDate != null)
+                if (propUpdateDate != null)
             {
                 if (propUpdateDate.CanWrite)
                 {
-                    object objUpdateDate = tipe.DictTypes[ColumnPropGet.GetInstance.GetColumnType(propUpdateDate)].GetDefaultValue(false);
-                    propUpdateDate.SetValue(entity, objUpdateDate);
+                    if (ColumnPropGet.GetInstance.GetIsNullDatetime<T>(propUpdateDate, entity))
+                    {
+                        object objUpdateDate = tipe.DictTypes[ColumnPropGet.GetInstance.GetColumnType(propUpdateDate)].GetDefaultValue(false);
+                        propUpdateDate.SetValue(entity, objUpdateDate);
+                    }
+                }
+                if (propUpdateBy != null)
+                {
+                    if (propUpdateBy.CanWrite)
+                    {
+                        object objpic = ColumnPropSet.GetInstance.SetColumnPicValue<T>(propUpdateBy, entity);
+                        propUpdateBy.SetValue(entity, objpic);
+
+                    }
                 }
             }
             return entity;
