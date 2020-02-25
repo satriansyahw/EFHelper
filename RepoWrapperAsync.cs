@@ -1356,5 +1356,17 @@ namespace EFHelper
         {
             return await RepoListQueryableWithEmpInfoAsync.GetInstance.ListDataQueryableWithEmpInfoAsync(queryable, listTableConvert, listColumnConvert, searchFieldList, sortColumn, isAscending, topTake);
         }
+        public async Task<List<T>> ConvertDataToListEmpInfoAsync<T, TNoToName>(List<T> listDataWantToConverted, List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert)
+          where T : class where TNoToName : class, IConvertNoToName
+        {
+            List<T> result = null;
+            await Task.Run(() =>
+            {
+                RepoListMiscHelper repoListMisc = new RepoListMiscHelper();
+                result = repoListMisc.ConvertDataToListEmpInfo<T, TNoToName>(listDataWantToConverted, listTableConvert, listColumnConvert);
+
+            });
+            return result;
+        }
     }
 }

@@ -1362,8 +1362,7 @@ namespace EFHelper
             where T : class  where TNoToName : class, IConvertNoToName
         {
             RepoListMiscHelper repoListMisc = new RepoListMiscHelper();
-            repoListMisc.ConvertDataToListEmpInfo<T, TNoToName>(listDataWantToConverted, listTableConvert, listColumnConvert);
-            return null;
+            return repoListMisc.ConvertDataToListEmpInfo<T, TNoToName>(listDataWantToConverted, listTableConvert, listColumnConvert);
         }
     }
    
