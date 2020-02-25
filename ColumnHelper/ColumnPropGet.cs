@@ -14,7 +14,7 @@ namespace EFHelper.ColumnHelper
     public class ColumnPropGet
     {
         private static ColumnPropGet instance;
-        private int nullDatetime = 1;
+        private readonly int nullDatetime = 1;
         public ColumnPropGet()
         {
 
@@ -437,7 +437,7 @@ namespace EFHelper.ColumnHelper
                 if (pi != null)
                     break;
             }
-            pi = pi != null ? pi : entity.GetType().GetRuntimeProperties().ToList()[0];// jika null ambil property yang ke 0
+            pi = pi ?? entity.GetType().GetRuntimeProperties().ToList()[0];// jika null ambil property yang ke 0
             return pi;
         }
         public PropertyInfo GetIdentityColumnProps<T>() where T : class
@@ -459,7 +459,7 @@ namespace EFHelper.ColumnHelper
                 if (pi != null)
                     break;
             }
-            pi = pi != null ? pi : entity.GetType().GetRuntimeProperties().ToList()[0];// jika null ambil property yang ke 0
+            pi = pi ?? entity.GetType().GetRuntimeProperties().ToList()[0];// jika null ambil property yang ke 0
             return pi;
         }
         public bool GetIsPrimaryKey<T>(string fieldName) where T : class

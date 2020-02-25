@@ -1,4 +1,5 @@
-﻿using EFHelper.MiscClass;
+﻿using EFHelper.ColumnHelper;
+using EFHelper.MiscClass;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,28 @@ namespace EFHelper.RepositoryList
 
         public List<ConvertNoToNamePI> ListColumnConvertPI = new List<ConvertNoToNamePI>();
         public List<ConvertNoToName> ListConvertSelected = new List<ConvertNoToName>();
+
+        public List<T> ConvertDataToListEmpInfo<T, TNoToName>(List<T> listDataWantToConverted, List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert)
+         where T : class
+         where TNoToName : class, IConvertNoToName
+        {
+            this.ListColumnConvertPI = ColumnPropGet.GetInstance.GetColumnConvertPI<T>(listColumnConvert);
+            for (int i = 0; i < listDataWantToConverted.Count; i++)
+            {
+                foreach (ConvertNoToNamePI itemPI in ListColumnConvertPI)
+                {
+                    string strNo = itemPI.SourceNoPropertyInfo.GetValue(listDataWantToConverted[i]).ToString();
+                    string strName = string.Empty;
+                    if (strNo.Contains(",") || strNo.Contains("|") || strNo.Contains("^") || strNo.Contains("~"))
+                        strName = this.ConvertNoToNameProcessArray<T, TNoToName>(listTableConvert, itemPI.TargetNamePropertyInfo, strNo);
+                    else
+                        strName = this.ConvertNoToNameProcessSingle<T, TNoToName>(listTableConvert, itemPI.TargetNamePropertyInfo, strNo);
+                    ColumnPropSet.GetInstance.SetColValue<T>(listDataWantToConverted[i], itemPI.TargetNamePropertyInfo.Name, strName);
+
+                }
+            }
+            return null;
+        }
 
         public string ConvertNoToNameProcessSingle<T, TNoToName>(List<TNoToName> listTableConvert, PropertyInfo targetColNamePI, string strNo)
             where T : class where TNoToName : class, IConvertNoToName

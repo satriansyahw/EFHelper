@@ -11,8 +11,8 @@ namespace EFHelper.MiscClass
         {
             Save,Update,Delete
         }
-        public static string[] ArrayInsertDate = { "insertdate", "inserttime" };
-        public static string[] ArrayUpdateDate = { "updatedate","updatetime" };
+        public static string[] ArrayInsertDate = { "insertdate", "inserttime", "inserteddate", "insertedtime" };
+        public static string[] ArrayUpdateDate = { "updatedate","updatetime", "updateddate", "updatedtime","lastupdate", "lastupdated" };
         public static string[] ArrayUpdateBy = { "updateby", "picupdate","updatepic" };
         public static string[] ArrayInsertBy = { "insertby", "picinsert","insertpic" };
 

@@ -1358,6 +1358,13 @@ namespace EFHelper
         {
             return RepoListQueryableWithEmpInfo.GetInstance.ListDataQueryableWithEmpInfo(queryable, listTableConvert, listColumnConvert, searchFieldList, sortColumn, isAscending, topTake);
         }
+        public List<T> ConvertDataToListEmpInfo<T, TNoToName>(List<T> listDataWantToConverted, List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert)
+            where T : class  where TNoToName : class, IConvertNoToName
+        {
+            RepoListMiscHelper repoListMisc = new RepoListMiscHelper();
+            repoListMisc.ConvertDataToListEmpInfo<T, TNoToName>(listDataWantToConverted, listTableConvert, listColumnConvert);
+            return null;
+        }
     }
    
 }
