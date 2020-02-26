@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using System.Dynamic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace EFHelper.DBCommandList
@@ -42,14 +42,12 @@ namespace EFHelper.DBCommandList
                         cmd.CommandTimeout = MiscClass.MiscClass.CommandTimeOut;
                         cmd.CommandText = "select " + DBCommandListQuery.GetInstance.CreateQueryList<T>();
 
-                        List<ColumnListInfo> listColumn =  ColumnPropGet.GetInstance.GetColumnList<T>();
+                        List<ColumnListInfo> listColumn = ColumnPropGet.GetInstance.GetColumnList<T>();
                         List<T> listResult = new List<T>();
                         using (var dataReader = await cmd.ExecuteReaderAsync())
                         {
-                            while (await dataReader.ReadAsync())
-                            {
-                                listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<T,TNoToName>(dataReader,listTableConvert,listColumnConvert);
-                            }
+                            if (dataReader.HasRows)
+                                listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<T, TNoToName>(dataReader, listTableConvert, listColumnConvert);
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
                     }
@@ -79,6 +77,7 @@ namespace EFHelper.DBCommandList
                         cmd.CommandTimeout = MiscClass.MiscClass.CommandTimeOut;
                         var queryResult = DBCommandListQuery.GetInstance.CreateQueryList<T>(searchFieldList);
                         cmd.CommandText = queryResult.SelectQuery;
+                        queryResult.ListParameters = queryResult.ListParameters.Distinct().ToList();
                         foreach (var sqlParameter in queryResult.ListParameters)
                         {
                             cmd.Parameters.Add(sqlParameter);
@@ -88,8 +87,8 @@ namespace EFHelper.DBCommandList
                         List<T> listResult = new List<T>();
                         using (var dataReader = await cmd.ExecuteReaderAsync())
                         {
-                            listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<T, TNoToName>(dataReader, listTableConvert, listColumnConvert);
-
+                            if (dataReader.HasRows)
+                                listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<T, TNoToName>(dataReader, listTableConvert, listColumnConvert);
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
                     }
@@ -117,8 +116,9 @@ namespace EFHelper.DBCommandList
                         if (cmd.Connection.State == ConnectionState.Closed)
                             cmd.Connection.Open();
                         cmd.CommandTimeout = MiscClass.MiscClass.CommandTimeOut;
-                        var queryResult = DBCommandListQuery.GetInstance.CreateQueryList<T>(searchFieldList,sortColumn,isAscending,topTake);
+                        var queryResult = DBCommandListQuery.GetInstance.CreateQueryList<T>(searchFieldList, sortColumn, isAscending, topTake);
                         cmd.CommandText = queryResult.SelectQuery;
+                        queryResult.ListParameters = queryResult.ListParameters.Distinct().ToList();
                         foreach (var sqlParameter in queryResult.ListParameters)
                         {
                             cmd.Parameters.Add(sqlParameter);
@@ -128,11 +128,8 @@ namespace EFHelper.DBCommandList
                         List<T> listResult = new List<T>();
                         using (var dataReader = await cmd.ExecuteReaderAsync())
                         {
-                            while (await dataReader.ReadAsync())
-                            {
+                            if (dataReader.HasRows)
                                 listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<T, TNoToName>(dataReader, listTableConvert, listColumnConvert);
-
-                            }
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
                     }
@@ -160,8 +157,9 @@ namespace EFHelper.DBCommandList
                         if (cmd.Connection.State == ConnectionState.Closed)
                             cmd.Connection.Open();
                         cmd.CommandTimeout = MiscClass.MiscClass.CommandTimeOut;
-                        var queryResult = DBCommandListQuery.GetInstance.CreateQueryList<TSource,TResult>(searchFieldList, sortColumn, isAscending, topTake);
+                        var queryResult = DBCommandListQuery.GetInstance.CreateQueryList<TSource, TResult>(searchFieldList, sortColumn, isAscending, topTake);
                         cmd.CommandText = queryResult.SelectQuery;
+                        queryResult.ListParameters = queryResult.ListParameters.Distinct().ToList();
                         foreach (var sqlParameter in queryResult.ListParameters)
                         {
                             cmd.Parameters.Add(sqlParameter);
@@ -169,13 +167,10 @@ namespace EFHelper.DBCommandList
 
                         List<ColumnListInfo> listColumn = ColumnPropGet.GetInstance.GetColumnList<TResult>();
                         List<TResult> listResult = new List<TResult>();
-                        using (var dataReader =await cmd.ExecuteReaderAsync())
+                        using (var dataReader = await cmd.ExecuteReaderAsync())
                         {
-                            while (await dataReader.ReadAsync())
-                            {
+                            if (dataReader.HasRows)
                                 listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<TResult, TNoToName>(dataReader, listTableConvert, listColumnConvert);
-
-                            }
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
                     }

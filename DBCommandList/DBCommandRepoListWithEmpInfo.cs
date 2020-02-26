@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using System.Dynamic;
+using System.Linq;
 
 namespace EFHelper.DBCommandList
 {
@@ -32,14 +32,13 @@ namespace EFHelper.DBCommandList
                         cmd.CommandTimeout = MiscClass.MiscClass.CommandTimeOut;
                         cmd.CommandText = "select " + DBCommandListQuery.GetInstance.CreateQueryList<T>();
 
-                        List<ColumnListInfo> listColumn =  ColumnPropGet.GetInstance.GetColumnList<T>();
+                        List<ColumnListInfo> listColumn = ColumnPropGet.GetInstance.GetColumnList<T>();
                         List<T> listResult = new List<T>();
                         using (var dataReader = cmd.ExecuteReader())
                         {
-                            while (dataReader.Read())
-                            {
-                                listResult = convertResult.ConvertDataReaderToListEmpInfo<T, TNoToName>(dataReader,listTableConvert,listColumnConvert);
-                            }
+                            if (dataReader.HasRows)
+                                listResult = convertResult.ConvertDataReaderToListEmpInfo<T, TNoToName>(dataReader, listTableConvert, listColumnConvert);
+
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
                     }
@@ -69,6 +68,7 @@ namespace EFHelper.DBCommandList
                         cmd.CommandTimeout = MiscClass.MiscClass.CommandTimeOut;
                         var queryResult = DBCommandListQuery.GetInstance.CreateQueryList<T>(searchFieldList);
                         cmd.CommandText = queryResult.SelectQuery;
+                        queryResult.ListParameters = queryResult.ListParameters.Distinct().ToList();
                         foreach (var sqlParameter in queryResult.ListParameters)
                         {
                             cmd.Parameters.Add(sqlParameter);
@@ -78,15 +78,12 @@ namespace EFHelper.DBCommandList
                         List<T> listResult = new List<T>();
                         using (var dataReader = cmd.ExecuteReader())
                         {
-                            listResult = new List<T>();
-                            while (dataReader.Read())
-                            {
+                            if (dataReader.HasRows)
                                 listResult = convertResult.ConvertDataReaderToListEmpInfo<T, TNoToName>(dataReader, listTableConvert, listColumnConvert);
-                            }
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
                     }
-                     catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); }
+                    catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); }
                     finally
                     {
                         if (cmd.Connection.State == ConnectionState.Open)
@@ -99,7 +96,7 @@ namespace EFHelper.DBCommandList
         public virtual EFReturnValue ListDataWithEmpInfo<T, TNoToName>(List<TNoToName> listTableConvert, List<ColumnConvertNoToName> listColumnConvert
             , List<SearchField> searchFieldList, string sortColumn, bool isAscending, int topTake)
             where T : class where TNoToName : class, IConvertNoToName
-        { 
+        {
             using (var context = DBContextBantuan.GetInstance.CreateConnectionContext())
             {
                 using (var cmd = context.Database.GetDbConnection().CreateCommand())
@@ -111,8 +108,9 @@ namespace EFHelper.DBCommandList
                         if (cmd.Connection.State == ConnectionState.Closed)
                             cmd.Connection.Open();
                         cmd.CommandTimeout = MiscClass.MiscClass.CommandTimeOut;
-                        var queryResult = DBCommandListQuery.GetInstance.CreateQueryList<T>(searchFieldList,sortColumn,isAscending,topTake);
+                        var queryResult = DBCommandListQuery.GetInstance.CreateQueryList<T>(searchFieldList, sortColumn, isAscending, topTake);
                         cmd.CommandText = queryResult.SelectQuery;
+                        queryResult.ListParameters = queryResult.ListParameters.Distinct().ToList();
                         foreach (var sqlParameter in queryResult.ListParameters)
                         {
                             cmd.Parameters.Add(sqlParameter);
@@ -122,7 +120,8 @@ namespace EFHelper.DBCommandList
                         List<T> listResult = new List<T>();
                         using (var dataReader = cmd.ExecuteReader())
                         {
-                            listResult = convertResult.ConvertDataReaderToListEmpInfo<T, TNoToName>(dataReader, listTableConvert, listColumnConvert);
+                            if (dataReader.HasRows)
+                                listResult = convertResult.ConvertDataReaderToListEmpInfo<T, TNoToName>(dataReader, listTableConvert, listColumnConvert);
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
                     }
@@ -150,8 +149,9 @@ namespace EFHelper.DBCommandList
                         if (cmd.Connection.State == ConnectionState.Closed)
                             cmd.Connection.Open();
                         cmd.CommandTimeout = MiscClass.MiscClass.CommandTimeOut;
-                        var queryResult = DBCommandListQuery.GetInstance.CreateQueryList<TSource,TResult>(searchFieldList, sortColumn, isAscending, topTake);
+                        var queryResult = DBCommandListQuery.GetInstance.CreateQueryList<TSource, TResult>(searchFieldList, sortColumn, isAscending, topTake);
                         cmd.CommandText = queryResult.SelectQuery;
+                        queryResult.ListParameters = queryResult.ListParameters.Distinct().ToList();
                         foreach (var sqlParameter in queryResult.ListParameters)
                         {
                             cmd.Parameters.Add(sqlParameter);
@@ -161,7 +161,8 @@ namespace EFHelper.DBCommandList
                         List<TResult> listResult = new List<TResult>();
                         using (var dataReader = cmd.ExecuteReader())
                         {
-                            listResult = convertResult.ConvertDataReaderToListEmpInfo<TResult, TNoToName>(dataReader, listTableConvert, listColumnConvert);
+                            if (dataReader.HasRows)
+                                listResult = convertResult.ConvertDataReaderToListEmpInfo<TResult, TNoToName>(dataReader, listTableConvert, listColumnConvert);
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
                     }
@@ -175,7 +176,7 @@ namespace EFHelper.DBCommandList
             }
             return eFReturn;
         }
-        
+
     }
-    
+
 }
