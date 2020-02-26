@@ -24,6 +24,7 @@ namespace EFHelper.Context
             mydbContext = (DbContext)entity;
             mydbContext.ChangeTracker.AutoDetectChangesEnabled = false;
             mydbContext.ChangeTracker.LazyLoadingEnabled = false;
+            mydbContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             return mydbContext;
         }
 
