@@ -96,6 +96,10 @@ namespace EFHelper.DBCommandList
                         string value = item.Value.ToString().Replace("'", "''");
                         string queryOperator = item.Operator.ToLower().Trim();
                         string colType = ColumnPropGet.GetInstance.GetColumnType(colProp);
+
+                        if (colType == "boolean")                       
+                            item.Value = item.Value.ToString().Trim().ToLower() == "true" ? true : false;
+                        
                         DbType dbType = TypeBantuan.GetInstance.DictTypes[colType].GetConvertedDbType(colType);
                         if (queryOperator == operatorbetween)
                         {
@@ -108,12 +112,14 @@ namespace EFHelper.DBCommandList
                             {
                                 value = string.Format(@"'%" + value + "%'");
                             }
-                            sqlParameters.Add(new SqlParameter
+                            var myParams = new SqlParameter
                             {
                                 ParameterName = "@" + colProp.Name,
                                 Value = item.Value.ToString().Replace("'", "''"),
                                 DbType = dbType
-                            });
+                            };
+                            if (!sqlParameters.Contains(myParams))
+                                sqlParameters.Add(myParams);
 
                         }
                     }

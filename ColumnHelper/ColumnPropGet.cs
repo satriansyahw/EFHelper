@@ -341,40 +341,45 @@ namespace EFHelper.ColumnHelper
         public bool GetCheckIsDBCommandList<T>(List<SearchField> lsf) where T : class
         {
             //check if like
-            bool result = false;
+           
+            bool result = MiscClass.MiscClass.IsUsingADODBCommandList;
             string colName = string.Empty;
             string queryOperator = string.Empty;
-            //like,datetime
-            foreach (var item in lsf)
+
+            if (!result) // check to direct properties
             {
-                if (!string.IsNullOrEmpty(item.Name) & !string.IsNullOrEmpty(item.Operator) & item.Value != null)
+                //like,datetime
+                foreach (var item in lsf)
                 {
-                    queryOperator = item.Name.ToLower().Trim();
-                    if (queryOperator == "like")
+                    if (!string.IsNullOrEmpty(item.Name) & !string.IsNullOrEmpty(item.Operator) & item.Value != null)
                     {
-                        result = true;
-                        break;
-                    }
-                    else
-                    {
-                        colName = item.Name.ToString().ToLower().Trim().Replace(@"""", "").Replace("'", "");
-                        var colProp = this.GetColumnProps<T>(colName);
-                        if (colProp != null)
+                        queryOperator = item.Name.ToLower().Trim();
+                        if (queryOperator == "like")
                         {
-                            string fullName = colProp.PropertyType.FullName.ToLower().Split(',')[0].ToString();
-                            string myFieldType = colProp.PropertyType.Name.ToLower();
-                            bool isnullData = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? true : false;
-                            myFieldType = isnullData ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType.ToLower().Trim();
-                            if (myFieldType == "datetime")
+                            result = true;
+                            break;
+                        }
+                        else
+                        {
+                            colName = item.Name.ToString().ToLower().Trim().Replace(@"""", "").Replace("'", "");
+                            var colProp = this.GetColumnProps<T>(colName);
+                            if (colProp != null)
                             {
-                                result = true;
-                                break;
+                                string fullName = colProp.PropertyType.FullName.ToLower().Split(',')[0].ToString();
+                                string myFieldType = colProp.PropertyType.Name.ToLower();
+                                bool isnullData = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? true : false;
+                                myFieldType = isnullData ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType.ToLower().Trim();
+                                if (myFieldType == "datetime")
+                                {
+                                    result = true;
+                                    break;
+                                }
                             }
                         }
                     }
+
+
                 }
-
-
             }
             return result;
         }

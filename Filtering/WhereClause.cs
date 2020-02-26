@@ -25,7 +25,10 @@ namespace EFHelper.Filtering
                     activeBoolProp = ColumnPropGet.GetInstance.GetColumnProps(typeof(T), "boolactive");
                 if(activeBoolProp !=null)
                 {
-                    SearchFieldList.Add(new SearchField { Name = activeBoolProp.Name, Operator = "=", Value = "true" });
+                    if (SearchFieldList.Where(a => a.Name.Trim().ToLower() == activeBoolProp.Name.Trim().ToLower()).ToList().Count <= 0)
+                    {
+                        SearchFieldList.Add(new SearchField { Name = activeBoolProp.Name, Operator = "=", Value = "true" });
+                    }
                 }
 
                 Expression combinedExpr = GetWhereClauseProses<T>(pe, SearchFieldList);
@@ -64,6 +67,7 @@ namespace EFHelper.Filtering
             string colOperator = string.Empty;
             object colValue = null;
             bool isNull = false;
+            SearchFieldList = SearchFieldList.Distinct().ToList();//clearing SearchFieldList
             foreach (SearchField itemSearch in SearchFieldList)
             {
                 e1 = null;

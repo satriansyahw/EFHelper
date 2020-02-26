@@ -17,6 +17,7 @@ namespace EFHelper.MiscClass
         public static string[] ArrayInsertBy = { "insertby", "picinsert","insertpic" };
         public static string[] ArrayActiveBool = { "activebool", "boolactive" };
         public static int CommandTimeOut =100;
+        public static bool IsUsingADODBCommandList = false;// if false will be check to actual properties, if true, will authomatically using  IsUsingADODBCommandList
     }
     public class ColumnConvertNoToName
     {

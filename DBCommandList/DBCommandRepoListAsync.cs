@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Dynamic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace EFHelper.DBCommandList
@@ -47,7 +48,8 @@ namespace EFHelper.DBCommandList
                         {
                             while (await dataReader.ReadAsync())
                             {
-                                listResult = await convertResult.ConvertDataReaderToListAsync<T>(dataReader);
+                                if (dataReader.HasRows)
+                                    listResult =await convertResult.ConvertDataReaderToListAsync<T>(dataReader);
                             }
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
@@ -77,6 +79,7 @@ namespace EFHelper.DBCommandList
                         cmd.CommandTimeout = MiscClass.MiscClass.CommandTimeOut;
                         var queryResult = DBCommandListQuery.GetInstance.CreateQueryList<T>(searchFieldList);
                         cmd.CommandText = queryResult.SelectQuery;
+                        queryResult.ListParameters = queryResult.ListParameters.Distinct().ToList();
                         foreach (var sqlParameter in queryResult.ListParameters)
                         {
                             cmd.Parameters.Add(sqlParameter);
@@ -86,7 +89,8 @@ namespace EFHelper.DBCommandList
                         List<T> listResult = new List<T>();
                         using (var dataReader = await cmd.ExecuteReaderAsync())
                         {
-                            listResult = await convertResult.ConvertDataReaderToListAsync<T>(dataReader);
+                            if (dataReader.HasRows)
+                                listResult = await convertResult.ConvertDataReaderToListAsync<T>(dataReader);
 
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
@@ -116,6 +120,7 @@ namespace EFHelper.DBCommandList
                         cmd.CommandTimeout = MiscClass.MiscClass.CommandTimeOut;
                         var queryResult = DBCommandListQuery.GetInstance.CreateQueryList<T>(searchFieldList,sortColumn,isAscending,topTake);
                         cmd.CommandText = queryResult.SelectQuery;
+                        queryResult.ListParameters = queryResult.ListParameters.Distinct().ToList();
                         foreach (var sqlParameter in queryResult.ListParameters)
                         {
                             cmd.Parameters.Add(sqlParameter);
@@ -127,7 +132,8 @@ namespace EFHelper.DBCommandList
                         {
                             while (await dataReader.ReadAsync())
                             {
-                                listResult = await convertResult.ConvertDataReaderToListAsync<T>(dataReader);
+                                if (dataReader.HasRows)
+                                    listResult = await convertResult.ConvertDataReaderToListAsync<T>(dataReader);
 
                             }
                         }
@@ -160,6 +166,7 @@ namespace EFHelper.DBCommandList
                         cmd.CommandTimeout = MiscClass.MiscClass.CommandTimeOut;
                         var queryResult = DBCommandListQuery.GetInstance.CreateQueryList<TSource,TResult>(searchFieldList, sortColumn, isAscending, topTake);
                         cmd.CommandText = queryResult.SelectQuery;
+                        queryResult.ListParameters = queryResult.ListParameters.Distinct().ToList();
                         foreach (var sqlParameter in queryResult.ListParameters)
                         {
                             cmd.Parameters.Add(sqlParameter);
@@ -171,8 +178,8 @@ namespace EFHelper.DBCommandList
                         {
                             while (await dataReader.ReadAsync())
                             {
-                                listResult = await convertResult.ConvertDataReaderToListAsync<TResult>(dataReader);
-
+                                if (dataReader.HasRows)
+                                    listResult = await convertResult.ConvertDataReaderToListAsync<TResult>(dataReader);
                             }
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
