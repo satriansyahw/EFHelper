@@ -50,6 +50,13 @@ namespace EFHelper
         {
             return base.CreateConnectionContext();
         }
+        public async Task IsUsingADODBCommandListAsync(bool isTrue)
+        {
+            await Task.Run(() =>
+            {
+                MiscClass.MiscClass.IsUsingADODBCommandList = true;
+            });
+        }
         public async Task<EFReturnValue> DeleteActiveBoolAsync<T>(T entity) where T : class
         {
             return await RepoDeleteActiveBoolAsync.GetInstance.DeleteActiveBoolAsync(entity);

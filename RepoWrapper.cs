@@ -51,6 +51,10 @@ namespace EFHelper
         {
             base.SetConnectionContext(dbContext);
         }
+        public void IsUsingADODBCommandList(bool isTrue)
+        {
+            MiscClass.MiscClass.IsUsingADODBCommandList = true;
+        }
         public EFReturnValue Delete<T>(int IDIdentity) where T : class
         {
             return RepoDelete.GetInstance.Delete<T>(IDIdentity);
