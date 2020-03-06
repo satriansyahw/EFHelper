@@ -8,7 +8,13 @@ using System.Text;
 namespace EFHelper.TypeHelper
 {
     public class TypeBool : InterfaceType
-    {
+    {       
+        public object GetActuallyNullValue(bool isNull)
+        {
+            if (isNull) return null;
+            return (Boolean)false;
+        }
+
         public DbType GetConvertedDbType(string fieldType)
         {
             return DbType.Boolean;
@@ -93,6 +99,7 @@ namespace EFHelper.TypeHelper
         public bool IsActuallyNullData(object value)
         {
             if (value == null) return true;
+            if ((bool)value == (bool)this.GetActuallyNullValue(false)) return true;
             return false;
         }
     }

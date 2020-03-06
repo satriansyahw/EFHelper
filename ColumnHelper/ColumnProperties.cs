@@ -32,7 +32,8 @@ namespace EFHelper.ColumnHelper
         }
         public bool IsNullableField(string fieldTypeName)
         {
-            return fieldTypeName == ColumnProperties.GetInstance.NullAbleInfo ? true : false;
+            if (fieldTypeName.Contains(ColumnProperties.GetInstance.NullAbleInfo)) return true;
+            return false;
         }
     }
 }

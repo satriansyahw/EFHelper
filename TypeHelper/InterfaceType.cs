@@ -13,7 +13,8 @@ namespace EFHelper.TypeHelper
         Type GetConvertedType(bool isNull, bool isInOperator);
         MethodInfo GetInMethodInfo(bool isNull);
         object GetConvertedValue(bool isNull, object values, string whereOperator);
-        bool IsActuallyNullData(object value); 
+        bool IsActuallyNullData(object value);
+        object GetActuallyNullValue(bool isNull);
 
     }
 }

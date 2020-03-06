@@ -91,8 +91,15 @@ namespace EFHelper.TypeHelper
         public bool IsActuallyNullData(object value)
         {
             if (value == null) return true;
+            if ((Guid)value == (Guid)this.GetActuallyNullValue(false)) return true;
             return false;
 
+        }
+
+        public object GetActuallyNullValue(bool isNull)
+        {
+            if (isNull) return null;
+            return Guid.Empty;
         }
     }
 }

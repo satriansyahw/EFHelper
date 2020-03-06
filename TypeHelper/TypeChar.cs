@@ -91,10 +91,14 @@ namespace EFHelper.TypeHelper
         {
 
             if (value == null) return true;
-            char check = (char)value;
-            if (check == DataTypeNullValue.Null_Char)
-                return true;
+            if ((char)value == (char)this.GetActuallyNullValue(false)) return true;
             return false;
+        }
+
+        public object GetActuallyNullValue(bool isNull)
+        {
+            if (isNull) return null;
+            return (char)'\uffff';
         }
     }
 }

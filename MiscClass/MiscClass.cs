@@ -35,26 +35,6 @@ namespace EFHelper.MiscClass
         public PropertyInfo SourceNoPropertyInfo { get; set; }
         public PropertyInfo TargetNamePropertyInfo { get; set; }
     }
-    /*
-change to max per data type as null 
-update order setting in save update,update,delet
-column get update getisDatetime null
-list async
-columnpropget
-misc classs
-InterfaceType ... all TypeFolder
-ColumnPropSet
-RepoUpdate
-RepoUpdateAsync
-RepoUpdateList
-RepoUpdateListAsync
-RepoSaveUpdate
-RepoSaveUpdateAsync
-Savechangesasync 
-
-        change order between Colnotnull and set entity
-      List<T> saveUpdate
-         */
     public class DataTypeNullValue
     {
         /*never assign your variable to these below data, because your variable will become null, this is only for not null data, that wiil be not assigned to any values*/
@@ -74,6 +54,7 @@ Savechangesasync
         public static decimal Null_Decimal { get; } = (decimal)7976931348623223308;
         public static char Null_Char { get; } = (char)'\uffff';
         public static Single Null_Single { get; } = (float)-3.402823e38;
+        public static string Null_String { get; } = "~u*^$";
 
     }
 

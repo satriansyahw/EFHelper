@@ -36,7 +36,7 @@ namespace EFHelper.ColumnHelper
                 fullName = property.PropertyType.FullName.ToLower().Split(',')[0].ToString();
                 string myFieldName = ColumnProperties.GetInstance.GetClearFieldName(property.Name);
                 string myFieldType = property.PropertyType.Name.ToLower();
-                isnullData = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? true : false;
+                isnullData = ColumnProperties.GetInstance.IsNullableField(myFieldType);
                 myFieldType = isnullData ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
                 defaultValue = TypeBantuan.GetInstance.DictTypes[myFieldType].GetDefaultValue(isnullData);
                 SetColValue<T>(entity, property.Name, defaultValue);

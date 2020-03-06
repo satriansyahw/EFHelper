@@ -89,7 +89,14 @@ namespace EFHelper.TypeHelper
         public bool IsActuallyNullData(object value)
         {
             if (value == null) return true;
+            if ((byte)value == (byte)this.GetActuallyNullValue(false)) return true;
             return false;
+        }
+
+        public object GetActuallyNullValue(bool isNull)
+        {
+            if (isNull) return null;
+            return (byte)0;
         }
     }
 }

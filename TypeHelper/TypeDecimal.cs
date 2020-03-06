@@ -91,11 +91,15 @@ namespace EFHelper.TypeHelper
         public bool IsActuallyNullData(object value)
         {
             if (value == null) return true;
-            decimal check = (decimal)value;
-            if (check == DataTypeNullValue.Null_Decimal)
-                return true;
+            if ((decimal)value == (decimal)this.GetActuallyNullValue(false)) return true;
             return false;
 
+        }
+
+        public object GetActuallyNullValue(bool isNull)
+        {
+            if (isNull) return null;
+            return (decimal)7976931348623223308;
         }
     }
 }

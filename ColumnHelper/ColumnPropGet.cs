@@ -28,6 +28,23 @@ namespace EFHelper.ColumnHelper
                 return instance;
             }
         }
+        public T GetClassWithNUllDefaultValue<T>()where T:class
+        {
+            T entity = Activator.CreateInstance<T>();
+            foreach (var property in entity.GetType().GetRuntimeProperties())
+            {
+                string fullName = property.PropertyType.FullName.ToLower().Split(',')[0].ToString();
+                string myFieldType = property.PropertyType.Name.ToLower();
+                myFieldType = ColumnProperties.GetInstance.IsNullableField(myFieldType) ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
+                bool isNull = ColumnProperties.GetInstance.IsNullableField(myFieldType);
+                if(property.CanWrite)
+                {
+                    property.SetValue(entity, TypeBantuan.GetInstance.DictTypes[myFieldType].GetActuallyNullValue(isNull))
+                }
+            }
+            return entity;
+        }
+
         public List<ConvertNoToNamePI> GetColumnConvertPI<T>(List<ColumnConvertNoToName> listColumnConvert) where T : class
         {
             var result = new List<ConvertNoToNamePI>();
@@ -96,7 +113,7 @@ namespace EFHelper.ColumnHelper
                 fullName = property.PropertyType.FullName.ToLower().Split(',')[0].ToString();
                 string myFieldName = ColumnProperties.GetInstance.GetClearFieldName(property.Name);
                 string myFieldType = property.PropertyType.Name.ToLower();
-                myFieldType = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
+                myFieldType = ColumnProperties.GetInstance.IsNullableField(myFieldType) ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
                 object checkValue = property.GetValue(entity);
                 if (this.GetIsPrimaryKey<T>(myFieldName))
                 {
@@ -138,7 +155,7 @@ namespace EFHelper.ColumnHelper
                 fullName = property.PropertyType.FullName.ToLower().Split(',')[0].ToString();
                 string myFieldName = ColumnProperties.GetInstance.GetClearFieldName(property.Name);
                 string myFieldType = property.PropertyType.Name.ToLower();
-                myFieldType = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
+                myFieldType = ColumnProperties.GetInstance.IsNullableField(myFieldType) ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
 
                 object checkValue = property.GetValue(entity);
                 if (myFieldType == "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayUpdateDate)
@@ -325,7 +342,7 @@ namespace EFHelper.ColumnHelper
                             {
                                 string fullName = colProp.PropertyType.FullName.ToLower().Split(',')[0].ToString();
                                 string myFieldType = colProp.PropertyType.Name.ToLower();
-                                bool isnullData = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? true : false;
+                                bool isnullData = ColumnProperties.GetInstance.IsNullableField(myFieldType);
                                 myFieldType = isnullData ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType.ToLower().Trim();
                                 if (myFieldType == "datetime")
                                 {
@@ -366,7 +383,7 @@ namespace EFHelper.ColumnHelper
                         {
                             string fullName = colProp.PropertyType.FullName.ToLower().Split(',')[0].ToString();
                             string myFieldType = colProp.PropertyType.Name.ToLower();
-                            bool isnullData = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? true : false;
+                            bool isnullData = ColumnProperties.GetInstance.IsNullableField(myFieldType);
                             myFieldType = isnullData ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType.ToLower().Trim();
                             if (myFieldType == "datetime")
                             {
@@ -476,7 +493,7 @@ namespace EFHelper.ColumnHelper
             string fullName = property.PropertyType.FullName.ToLower().Split(',')[0].ToString();
             string myFieldName = ColumnProperties.GetInstance.GetClearFieldName(property.Name);
             string myFieldType = property.PropertyType.Name.ToLower();
-            bool isnullData = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? true : false;
+            bool isnullData = ColumnProperties.GetInstance.IsNullableField(myFieldType);
             myFieldType = isnullData ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
             return myFieldType;
         }
@@ -485,7 +502,7 @@ namespace EFHelper.ColumnHelper
             string fullName = property.PropertyType.FullName.ToLower().Split(',')[0].ToString();
             string myFieldName = ColumnProperties.GetInstance.GetClearFieldName(property.Name);
             string myFieldType = property.PropertyType.Name.ToLower();
-            bool isnullData = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? true : false;
+            bool isnullData = ColumnProperties.GetInstance.IsNullableField(myFieldType);
             myFieldType = isnullData ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
             return myFieldType;
         }

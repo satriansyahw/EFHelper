@@ -95,5 +95,12 @@ namespace EFHelper.TypeHelper
                 return true;
             return false;
         }
+
+        public object GetActuallyNullValue(bool isNull)
+        {
+            if (isNull) return null;
+            DateTime dateTime = new DateTime(1, 1, 1);
+            return dateTime;
+        }
     }
 }
