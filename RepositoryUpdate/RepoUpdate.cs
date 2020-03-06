@@ -31,11 +31,11 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T>(entity, out eFReturn);
+                            var cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T>(entity, out eFReturn);
                             if (cekIsContinue)
                             {
-                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T>(entity);//will update except activebool boolactive insertby insertbyid
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T>(entity);
+                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T>(entity);//will update except activebool boolactive insertby insertbyid
                                 context.Set<T>().Attach(entity);
                                 context.Entry(entity).State = EntityState.Unchanged;
                                 foreach (PropertyInfo property in colNotNull)
@@ -70,16 +70,16 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
+                            var cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
                             if (cekIsContinue)
                             {
-                                var colNotNull1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);//will update except activebool boolactive insertby insertbyid
-                                var colNotNull2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);//will update except activebool boolactive insertby insertbyid
-
                                 entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
                                 entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
+
+                                var colNotNull1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);//will update except activebool boolactive insertby insertbyid
 
                                 context.Set<T1>().Attach(entity1);
                                 context.Set<T2>().Attach(entity2);
@@ -127,20 +127,22 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
+                            var cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
                             if (cekIsContinue)
                             {
-                                var colNotNull1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);//will update except activebool boolactive insertby insertbyid
-                                var colNotNull2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);//will update except activebool boolactive insertby insertbyid
-                                var colNotNull3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);//will update except activebool boolactive insertby insertbyid
 
                                 entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
                                 entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
                                 entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity3);
+
+                                var colNotNull1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);//will update except activebool boolactive insertby insertbyid
+
 
                                 context.Set<T1>().Attach(entity1);
                                 context.Set<T2>().Attach(entity2);
@@ -198,24 +200,25 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
+                            var cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T4>(entity4, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T4>(entity4, out eFReturn);
                             if (cekIsContinue)
                             {
-                                var colNotNull1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);//will update except activebool boolactive insertby insertbyid
-                                var colNotNull2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);//will update except activebool boolactive insertby insertbyid
-                                var colNotNull3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);//will update except activebool boolactive insertby insertbyid
-                                var colNotNull4 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity4);//will update except activebool boolactive insertby insertbyid
-
                                 entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
                                 entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
                                 entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity3);
                                 entity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T4>(entity4);
+
+
+                                var colNotNull1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull4 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity4);//will update except activebool boolactive insertby insertbyid
 
                                 context.Set<T1>().Attach(entity1);
                                 context.Set<T2>().Attach(entity2);
@@ -283,28 +286,30 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         { 
-                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
+                            var cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T4>(entity4, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T4>(entity4, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T5>(entity5, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T5>(entity5, out eFReturn);
                             if (cekIsContinue)                       
                             {
-                                var colNotNull1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);//will update except activebool boolactive insertby insertbyid
-                                var colNotNull2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);//will update except activebool boolactive insertby insertbyid
-                                var colNotNull3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);//will update except activebool boolactive insertby insertbyid
-                                var colNotNull4 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity4);//will update except activebool boolactive insertby insertbyid
-                                var colNotNull5 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T5>(entity5);//will update except activebool boolactive insertby insertbyid
 
                                 entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
                                 entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity2);
                                 entity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity3);
                                 entity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T4>(entity4);
                                 entity5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T5>(entity5);
+
+                                var colNotNull1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull4 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity4);//will update except activebool boolactive insertby insertbyid
+                                var colNotNull5 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T5>(entity5);//will update except activebool boolactive insertby insertbyid
+
 
                                 context.Set<T1>().Attach(entity1);
                                 context.Set<T2>().Attach(entity2);

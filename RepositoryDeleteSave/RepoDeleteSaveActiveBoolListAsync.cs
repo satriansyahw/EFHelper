@@ -44,21 +44,23 @@ namespace EFHelper.RepositoryDeleteSave
                             {
                                 listDelete = (List<TDelete>)listDeleteRV.ReturnValue;
                             }
-                            //for delete will be delete physicallay
 
                             listEntitySave1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(listEntitySave1);
 
                             listDelete = EntityPreparationBantuan.GetInstance.DictEntityPreparation["deleteactivebool"].SetPreparationEntity<TDelete>(listDelete);
-                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayUpdateDate);
-                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
-                            context.Set<List<TDelete>>().Attach(listDelete);
-                            context.Entry(listDelete).State = EntityState.Unchanged;
-                            context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                            context.Entry(listDelete).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            foreach (var item in listDelete)
+                            {
+                                var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayUpdateDate);
+                                var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
 
-                            context.Set<List<T1>>().Add(listEntitySave1);
-                            
-                            hasil = await context.SaveChangesAsync();
+                                context.Set<TDelete>().Attach(item);
+                                context.Entry(item).State = EntityState.Unchanged;
+                                context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
+                                context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            }
+                            foreach (var item in listEntitySave1) context.Set<T1>().Add(item);
+
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listDelete, listEntitySave1);
                         }
@@ -88,23 +90,25 @@ namespace EFHelper.RepositoryDeleteSave
                             {
                                 listDelete = (List<TDelete>)listDeleteRV.ReturnValue;
                             }
-                            //for delete will be delete physicallay
 
                             listEntitySave1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(listEntitySave1);
                             listEntitySave2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntitySave2);
 
                             listDelete = EntityPreparationBantuan.GetInstance.DictEntityPreparation["deleteactivebool"].SetPreparationEntity<TDelete>(listDelete);
-                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayUpdateDate);
-                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
-                            context.Set<List<TDelete>>().Attach(listDelete);
-                            context.Entry(listDelete).State = EntityState.Unchanged;
-                            context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                            context.Entry(listDelete).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            foreach (var item in listDelete)
+                            {
+                                var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayUpdateDate);
+                                var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
 
-                            context.Set<List<T1>>().Add(listEntitySave1);
-                            context.Set<List<T2>>().Add(listEntitySave2);
+                                context.Set<TDelete>().Attach(item);
+                                context.Entry(item).State = EntityState.Unchanged;
+                                context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
+                                context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            }
+                            foreach (var item in listEntitySave1) context.Set<T1>().Add(item);
+                            foreach (var item in listEntitySave2) context.Set<T2>().Add(item);
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listDelete, listEntitySave1, listEntitySave2);
                         }
@@ -135,25 +139,27 @@ namespace EFHelper.RepositoryDeleteSave
                             {
                                 listDelete = (List<TDelete>)listDeleteRV.ReturnValue;
                             }
-                            //for delete will be delete physicallay
 
                             listEntitySave1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(listEntitySave1);
                             listEntitySave2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntitySave2);
                             listEntitySave3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(listEntitySave3);
 
                             listDelete = EntityPreparationBantuan.GetInstance.DictEntityPreparation["deleteactivebool"].SetPreparationEntity<TDelete>(listDelete);
-                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayUpdateDate);
-                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
-                            context.Set<List<TDelete>>().Attach(listDelete);
-                            context.Entry(listDelete).State = EntityState.Unchanged;
-                            context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                            context.Entry(listDelete).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            foreach (var item in listDelete)
+                            {
+                                var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayUpdateDate);
+                                var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
 
-                            context.Set<List<T1>>().Add(listEntitySave1);
-                            context.Set<List<T2>>().Add(listEntitySave2);
-                            context.Set<List<T3>>().Add(listEntitySave3);
+                                context.Set<TDelete>().Attach(item);
+                                context.Entry(item).State = EntityState.Unchanged;
+                                context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
+                                context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            }
+                            foreach (var item in listEntitySave1) context.Set<T1>().Add(item);
+                            foreach (var item in listEntitySave2) context.Set<T2>().Add(item);
+                            foreach (var item in listEntitySave3) context.Set<T3>().Add(item);
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listDelete, listEntitySave1, listEntitySave2, listEntitySave3);
                         }
@@ -185,7 +191,6 @@ namespace EFHelper.RepositoryDeleteSave
                             {
                                 listDelete = (List<TDelete>)listDeleteRV.ReturnValue;
                             }
-                            //for delete will be delete physicallay
 
                             listEntitySave1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(listEntitySave1);
                             listEntitySave2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntitySave2);
@@ -193,19 +198,22 @@ namespace EFHelper.RepositoryDeleteSave
                             listEntitySave4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(listEntitySave4);
 
                             listDelete = EntityPreparationBantuan.GetInstance.DictEntityPreparation["deleteactivebool"].SetPreparationEntity<TDelete>(listDelete);
-                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayUpdateDate);
-                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
-                            context.Set<List<TDelete>>().Attach(listDelete);
-                            context.Entry(listDelete).State = EntityState.Unchanged;
-                            context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                            context.Entry(listDelete).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            foreach (var item in listDelete)
+                            {
+                                var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayUpdateDate);
+                                var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
 
-                            context.Set<List<T1>>().Add(listEntitySave1);
-                            context.Set<List<T2>>().Add(listEntitySave2);
-                            context.Set<List<T3>>().Add(listEntitySave3);
-                            context.Set<List<T4>>().Add(listEntitySave4);
+                                context.Set<TDelete>().Attach(item);
+                                context.Entry(item).State = EntityState.Unchanged;
+                                context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
+                                context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            }
+                            foreach (var item in listEntitySave1) context.Set<T1>().Add(item);
+                            foreach (var item in listEntitySave2) context.Set<T2>().Add(item);
+                            foreach (var item in listEntitySave3) context.Set<T3>().Add(item);
+                            foreach (var item in listEntitySave4) context.Set<T4>().Add(item);
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listDelete, listEntitySave1, listEntitySave2, listEntitySave3, listEntitySave4);
                         }
@@ -238,7 +246,6 @@ namespace EFHelper.RepositoryDeleteSave
                             {
                                 listDelete = (List<TDelete>)listDeleteRV.ReturnValue;
                             }
-                            //for delete will be delete physicallay
 
                             listEntitySave1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(listEntitySave1);
                             listEntitySave2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntitySave2);
@@ -247,20 +254,23 @@ namespace EFHelper.RepositoryDeleteSave
                             listEntitySave5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T5>(listEntitySave5);
 
                             listDelete = EntityPreparationBantuan.GetInstance.DictEntityPreparation["deleteactivebool"].SetPreparationEntity<TDelete>(listDelete);
-                            var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayUpdateDate);
-                            var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
-                            context.Set<List<TDelete>>().Attach(listDelete);
-                            context.Entry(listDelete).State = EntityState.Unchanged;
-                            context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                            context.Entry(listDelete).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            foreach (var item in listDelete)
+                            {
+                                var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayUpdateDate);
+                                var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
 
-                            context.Set<List<T1>>().Add(listEntitySave1);
-                            context.Set<List<T2>>().Add(listEntitySave2);
-                            context.Set<List<T3>>().Add(listEntitySave3);
-                            context.Set<List<T4>>().Add(listEntitySave4);
-                            context.Set<List<T5>>().Add(listEntitySave5);
+                                context.Set<TDelete>().Attach(item);
+                                context.Entry(item).State = EntityState.Unchanged;
+                                context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
+                                context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            }
+                            foreach (var item in listEntitySave1) context.Set<T1>().Add(item);
+                            foreach (var item in listEntitySave2) context.Set<T2>().Add(item);
+                            foreach (var item in listEntitySave3) context.Set<T3>().Add(item);
+                            foreach (var item in listEntitySave4) context.Set<T4>().Add(item);
+                            foreach (var item in listEntitySave5) context.Set<T5>().Add(item);
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listDelete, listEntitySave1, listEntitySave2, listEntitySave3, listEntitySave4, listEntitySave5);
                         }

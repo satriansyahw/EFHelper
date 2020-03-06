@@ -37,7 +37,8 @@ namespace EFHelper.RepositorySaveUpdate
 
                             listEntity1 = this.SetEntityPreparation<T1>(listEntity1, isSaveT1);
 
-                            if (isSaveT1) context.Set<List<T1>>().Add(listEntity1);
+                            if (isSaveT1) { foreach (var item in listEntity1) context.Set<T1>().Add(item); }
+
 
                             if (!isSaveT1)
                             {
@@ -57,7 +58,7 @@ namespace EFHelper.RepositorySaveUpdate
 
                             }
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1);
                         }
@@ -84,8 +85,8 @@ namespace EFHelper.RepositorySaveUpdate
                             listEntity1 = this.SetEntityPreparation<T1>(listEntity1, isSaveT1);
                             listEntity2 = this.SetEntityPreparation<T2>(listEntity2, isSaveT2);
 
-                            if (isSaveT1) context.Set<List<T1>>().Add(listEntity1);
-                            if (isSaveT2) context.Set<List<T2>>().Add(listEntity2);
+                            if (isSaveT1) { foreach (var item in listEntity1) context.Set<T1>().Add(item); }
+                            if (isSaveT2) { foreach (var item in listEntity2) context.Set<T2>().Add(item); }
 
                             if (!isSaveT1)
                             {
@@ -122,7 +123,7 @@ namespace EFHelper.RepositorySaveUpdate
 
                             }
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2);
                         }
@@ -151,9 +152,10 @@ namespace EFHelper.RepositorySaveUpdate
                             listEntity2 = this.SetEntityPreparation<T2>(listEntity2, isSaveT2);
                             listEntity3 = this.SetEntityPreparation<T3>(listEntity3, isSaveT3);
 
-                            if (isSaveT1) context.Set<List<T1>>().Add(listEntity1);
-                            if (isSaveT2) context.Set<List<T2>>().Add(listEntity2);
-                            if (isSaveT3) context.Set<List<T3>>().Add(listEntity3);
+                            if (isSaveT1) { foreach (var item in listEntity1) context.Set<T1>().Add(item); }
+                            if (isSaveT2) { foreach (var item in listEntity2) context.Set<T2>().Add(item); }
+                            if (isSaveT3) { foreach (var item in listEntity3) context.Set<T3>().Add(item); }
+
 
 
                             if (!isSaveT1)
@@ -208,7 +210,7 @@ namespace EFHelper.RepositorySaveUpdate
 
                             }
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3);
                         }
@@ -240,11 +242,10 @@ namespace EFHelper.RepositorySaveUpdate
                             listEntity4 = this.SetEntityPreparation<T4>(listEntity4, isSaveT4);
 
 
-                            if (isSaveT1) context.Set<List<T1>>().Add(listEntity1);
-                            if (isSaveT2) context.Set<List<T2>>().Add(listEntity2);
-                            if (isSaveT3) context.Set<List<T3>>().Add(listEntity3);
-                            if (isSaveT4) context.Set<List<T4>>().Add(listEntity4);
-
+                            if (isSaveT1) { foreach (var item in listEntity1) context.Set<T1>().Add(item); }
+                            if (isSaveT2) { foreach (var item in listEntity2) context.Set<T2>().Add(item); }
+                            if (isSaveT3) { foreach (var item in listEntity3) context.Set<T3>().Add(item); }
+                            if (isSaveT4) { foreach (var item in listEntity4) context.Set<T4>().Add(item); }
 
                             if (!isSaveT1)
                             {
@@ -315,7 +316,7 @@ namespace EFHelper.RepositorySaveUpdate
 
                             }
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3, listEntity4);
                         }
@@ -348,11 +349,12 @@ namespace EFHelper.RepositorySaveUpdate
                             listEntity4 = this.SetEntityPreparation<T4>(listEntity4, isSaveT4);
                             listEntity5 = this.SetEntityPreparation<T5>(listEntity5, isSaveT5);
 
-                            if (isSaveT1) context.Set<List<T1>>().Add(listEntity1);
-                            if (isSaveT2) context.Set<List<T2>>().Add(listEntity2);
-                            if (isSaveT3) context.Set<List<T3>>().Add(listEntity3);
-                            if (isSaveT4) context.Set<List<T4>>().Add(listEntity4);
-                            if (isSaveT5) context.Set<List<T5>>().Add(listEntity5);
+                            if (isSaveT1) { foreach (var item in listEntity1) context.Set<T1>().Add(item); }
+                            if (isSaveT2) { foreach (var item in listEntity2) context.Set<T2>().Add(item); }
+                            if (isSaveT3) { foreach (var item in listEntity3) context.Set<T3>().Add(item); }
+                            if (isSaveT4) { foreach (var item in listEntity4) context.Set<T4>().Add(item); }
+                            if (isSaveT5) { foreach (var item in listEntity5) context.Set<T5>().Add(item); }
+
 
                             if (!isSaveT1)
                             {
@@ -440,7 +442,7 @@ namespace EFHelper.RepositorySaveUpdate
 
                             }
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3, listEntity4, listEntity5);
                         }

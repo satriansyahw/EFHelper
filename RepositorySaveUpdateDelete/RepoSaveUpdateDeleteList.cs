@@ -36,11 +36,9 @@ namespace EFHelper.RepositorySaveUpdateDelete
                         try
                         {
                             listEntity1 = this.SetEntityPreparation<T1>(listEntity1, enumSUDT1);
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity1) { context.Set<T1>().Add(item); } }
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<List<T1>>().Add(listEntity1);
-
-
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { context.Set<List<T1>>().Attach(listEntity1); context.Set<List<T1>>().Remove(listEntity1); }
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); } }
 
                             if (enumSUDT1 == EnumSaveUpdateDelete.Update)
                             {
@@ -87,15 +85,14 @@ namespace EFHelper.RepositorySaveUpdateDelete
                         {
                             listEntity1 = this.SetEntityPreparation<T1>(listEntity1, enumSUDT1);
                             listEntity2 = this.SetEntityPreparation<T2>(listEntity2, enumSUDT2);
-                         
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<List<T1>>().Add(listEntity1);
-                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) context.Set<List<T2>>().Add(listEntity2);
-                         
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { context.Set<List<T1>>().Attach(listEntity1); context.Set<List<T1>>().Remove(listEntity1); }
-                            if (enumSUDT2 == EnumSaveUpdateDelete.Delete) { context.Set<List<T2>>().Attach(listEntity2); context.Set<List<T2>>().Remove(listEntity2); }
-                           
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity1) { context.Set<T1>().Add(item); } }
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity2) { context.Set<T2>().Add(item); } }
+
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); } }
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Delete) { foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); } }
+
                             if (enumSUDT1 == EnumSaveUpdateDelete.Update)
                             {
                                 for (int i = 0; i < listEntity1.Count; i++)
@@ -158,15 +155,15 @@ namespace EFHelper.RepositorySaveUpdateDelete
                         {
                             listEntity1 = this.SetEntityPreparation<T1>(listEntity1, enumSUDT1);
                             listEntity2 = this.SetEntityPreparation<T2>(listEntity2, enumSUDT2);
-                            listEntity3 = this.SetEntityPreparation<T3>(listEntity3, enumSUDT3);    
+                            listEntity3 = this.SetEntityPreparation<T3>(listEntity3, enumSUDT3);
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<List<T1>>().Add(listEntity1);
-                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) context.Set<List<T2>>().Add(listEntity2);
-                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) context.Set<List<T3>>().Add(listEntity3);        
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity1) { context.Set<T1>().Add(item); } }
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity2) { context.Set<T2>().Add(item); } }
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity3) { context.Set<T3>().Add(item); } }
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { context.Set<List<T1>>().Attach(listEntity1); context.Set<List<T1>>().Remove(listEntity1); }
-                            if (enumSUDT2 == EnumSaveUpdateDelete.Delete) { context.Set<List<T2>>().Attach(listEntity2); context.Set<List<T2>>().Remove(listEntity2); }
-                            if (enumSUDT3 == EnumSaveUpdateDelete.Delete) { context.Set<List<T3>>().Attach(listEntity3); context.Set<List<T3>>().Remove(listEntity3); }
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); } }
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Delete) { foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); } }
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Delete) { foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); } }
 
                             if (enumSUDT1 == EnumSaveUpdateDelete.Update)
                             {
@@ -251,15 +248,15 @@ namespace EFHelper.RepositorySaveUpdateDelete
                             listEntity3 = this.SetEntityPreparation<T3>(listEntity3, enumSUDT3);
                             listEntity4 = this.SetEntityPreparation<T4>(listEntity4, enumSUDT4);
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<List<T1>>().Add(listEntity1);
-                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) context.Set<List<T2>>().Add(listEntity2);
-                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) context.Set<List<T3>>().Add(listEntity3);
-                            if (enumSUDT4 == EnumSaveUpdateDelete.Save) context.Set<List<T4>>().Add(listEntity4);
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity1) { context.Set<T1>().Add(item); } }
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity2) { context.Set<T2>().Add(item); } }
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity3) { context.Set<T3>().Add(item); } }
+                            if (enumSUDT4 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity4) { context.Set<T4>().Add(item); } }
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { context.Set<List<T1>>().Attach(listEntity1); context.Set<List<T1>>().Remove(listEntity1); }
-                            if (enumSUDT2 == EnumSaveUpdateDelete.Delete) { context.Set<List<T2>>().Attach(listEntity2); context.Set<List<T2>>().Remove(listEntity2); }
-                            if (enumSUDT3 == EnumSaveUpdateDelete.Delete) { context.Set<List<T3>>().Attach(listEntity3); context.Set<List<T3>>().Remove(listEntity3); }
-                            if (enumSUDT4 == EnumSaveUpdateDelete.Delete) { context.Set<List<T4>>().Attach(listEntity4); context.Set<List<T4>>().Remove(listEntity4); }
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); } }
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Delete) { foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); } }
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Delete) { foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); } }
+                            if (enumSUDT4 == EnumSaveUpdateDelete.Delete) { foreach (var item in listEntity4) { context.Set<T4>().Attach(item); context.Set<T4>().Remove(item); } }
 
                             if (enumSUDT1 == EnumSaveUpdateDelete.Update)
                             {
@@ -362,17 +359,18 @@ namespace EFHelper.RepositorySaveUpdateDelete
                             listEntity4 = this.SetEntityPreparation<T4>(listEntity4, enumSUDT4);
                             listEntity5 = this.SetEntityPreparation<T5>(listEntity5, enumSUDT5);
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<List<T1>>().Add(listEntity1);
-                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) context.Set<List<T2>>().Add(listEntity2);
-                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) context.Set<List<T3>>().Add(listEntity3);
-                            if (enumSUDT4 == EnumSaveUpdateDelete.Save) context.Set<List<T4>>().Add(listEntity4);
-                            if (enumSUDT5 == EnumSaveUpdateDelete.Save) context.Set<List<T5>>().Add(listEntity5);
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity1) { context.Set<T1>().Add(item); } }
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity2) { context.Set<T2>().Add(item); } }
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity3) { context.Set<T3>().Add(item); } }
+                            if (enumSUDT4 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity4) { context.Set<T4>().Add(item); } }
+                            if (enumSUDT5 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity5) { context.Set<T5>().Add(item); } }
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { context.Set<List<T1>>().Attach(listEntity1); context.Set<List<T1>>().Remove(listEntity1); }
-                            if (enumSUDT2 == EnumSaveUpdateDelete.Delete) { context.Set<List<T2>>().Attach(listEntity2); context.Set<List<T2>>().Remove(listEntity2); }
-                            if (enumSUDT3 == EnumSaveUpdateDelete.Delete) { context.Set<List<T3>>().Attach(listEntity3); context.Set<List<T3>>().Remove(listEntity3); }
-                            if (enumSUDT4 == EnumSaveUpdateDelete.Delete) { context.Set<List<T4>>().Attach(listEntity4); context.Set<List<T4>>().Remove(listEntity4); }
-                            if (enumSUDT5 == EnumSaveUpdateDelete.Delete) { context.Set<List<T5>>().Attach(listEntity5); context.Set<List<T5>>().Remove(listEntity5); }
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { foreach (var item in listEntity1) {context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }}
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Delete) { foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); } }
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Delete) { foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); } }
+                            if (enumSUDT4 == EnumSaveUpdateDelete.Delete) { foreach (var item in listEntity4) { context.Set<T4>().Attach(item); context.Set<T4>().Remove(item); } }
+                            if (enumSUDT5 == EnumSaveUpdateDelete.Delete) { foreach (var item in listEntity5) { context.Set<T5>().Attach(item); context.Set<T5>().Remove(item); } }
+
 
                             if (enumSUDT1 == EnumSaveUpdateDelete.Update)
                             {

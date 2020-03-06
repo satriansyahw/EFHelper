@@ -32,9 +32,8 @@ namespace EFHelper.RepositoryDelete
                     {
                         try
                         {
-                            context.Set<List<T>>().Attach(listEntity);
-                            context.Set<List<T>>().Remove(listEntity);
-                            hasil = await context.SaveChangesAsync();
+                            foreach (var item in listEntity) { context.Set<T>().Attach(item); context.Set<T>().Remove(item); }
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity);
                         }
@@ -58,14 +57,10 @@ namespace EFHelper.RepositoryDelete
                     {
                         try
                         {
-                            context.Set<List<T1>>().Attach(listEntity1);
-                            context.Set<List<T2>>().Attach(listEntity2);
+                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
+                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
 
-
-                            context.Set<List<T1>>().Remove(listEntity1);
-                            context.Set<List<T2>>().Remove(listEntity2);
-
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2);
                         }
@@ -89,15 +84,11 @@ namespace EFHelper.RepositoryDelete
                     {
                         try
                         {
-                            context.Set<List<T1>>().Attach(listEntity1);
-                            context.Set<List<T2>>().Attach(listEntity2);
-                            context.Set<List<T3>>().Attach(listEntity3);
+                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
+                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
+                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); }
 
-                            context.Set<List<T1>>().Remove(listEntity1);
-                            context.Set<List<T2>>().Remove(listEntity2);
-                            context.Set<List<T3>>().Remove(listEntity3);
-
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3);
                         }
@@ -122,17 +113,11 @@ namespace EFHelper.RepositoryDelete
                     {
                         try
                         {
-                            context.Set<List<T1>>().Attach(listEntity1);
-                            context.Set<List<T2>>().Attach(listEntity2);
-                            context.Set<List<T3>>().Attach(listEntity3);
-                            context.Set<List<T4>>().Attach(listEntity4);
-
-                            context.Set<List<T1>>().Remove(listEntity1);
-                            context.Set<List<T2>>().Remove(listEntity2);
-                            context.Set<List<T3>>().Remove(listEntity3);
-                            context.Set<List<T4>>().Remove(listEntity4);
-
-                            hasil = await context.SaveChangesAsync();
+                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
+                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
+                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); }
+                            foreach (var item in listEntity4) { context.Set<T4>().Attach(item); context.Set<T4>().Remove(item); }
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3, listEntity4);
                         }
@@ -158,19 +143,13 @@ namespace EFHelper.RepositoryDelete
                     {
                         try
                         {
-                            context.Set<List<T1>>().Attach(listEntity1);
-                            context.Set<List<T2>>().Attach(listEntity2);
-                            context.Set<List<T3>>().Attach(listEntity3);
-                            context.Set<List<T4>>().Attach(listEntity4);
-                            context.Set<List<T5>>().Attach(listEntity5);
+                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
+                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
+                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); }
+                            foreach (var item in listEntity4) { context.Set<T4>().Attach(item); context.Set<T4>().Remove(item); }
+                            foreach (var item in listEntity5) { context.Set<T5>().Attach(item); context.Set<T5>().Remove(item); }
 
-                            context.Set<List<T1>>().Remove(listEntity1);
-                            context.Set<List<T2>>().Remove(listEntity2);
-                            context.Set<List<T3>>().Remove(listEntity3);
-                            context.Set<List<T4>>().Remove(listEntity4);
-                            context.Set<List<T5>>().Remove(listEntity5);
-
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3, listEntity4, listEntity5);
                         }
@@ -201,9 +180,8 @@ namespace EFHelper.RepositoryDelete
                                     listEntity.Add(entity);
                                 }
                             }
-                            context.Set<List<T>>().Attach(listEntity);
-                            context.Set<List<T>>().Remove(listEntity);
-                            hasil = await context.SaveChangesAsync();
+                            foreach (var item in listEntity) { context.Set<T>().Attach(item); context.Set<T>().Remove(item); }
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                         }
                         catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
@@ -229,12 +207,9 @@ namespace EFHelper.RepositoryDelete
                             List<T1> listEntity1 = ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T1>(listIDIdentity1);
                             List<T2> listEntity2 = ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T2>(listIDIdentity2);
 
-                            context.Set<List<T1>>().Attach(listEntity1);
-                            context.Set<List<T2>>().Attach(listEntity2);
-
-                            context.Set<List<T1>>().Remove(listEntity1);
-                            context.Set<List<T2>>().Remove(listEntity2);
-                            hasil = await context.SaveChangesAsync();
+                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
+                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2);
                         }
@@ -263,15 +238,11 @@ namespace EFHelper.RepositoryDelete
                             List<T2> listEntity2 = ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T2>(listIDIdentity2);
                             List<T3> listEntity3 = ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T3>(listIDIdentity3);
 
-                            context.Set<List<T1>>().Attach(listEntity1);
-                            context.Set<List<T2>>().Attach(listEntity2);
-                            context.Set<List<T3>>().Attach(listEntity3);
+                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
+                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
+                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); }
 
-                            context.Set<List<T1>>().Remove(listEntity1);
-                            context.Set<List<T2>>().Remove(listEntity2);
-                            context.Set<List<T3>>().Remove(listEntity3);
-
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3);
                         }
@@ -302,17 +273,12 @@ namespace EFHelper.RepositoryDelete
                             List<T3> listEntity3 = ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T3>(listIDIdentity3);
                             List<T4> listEntity4 = ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T4>(listIDIdentity4);
 
-                            context.Set<List<T1>>().Attach(listEntity1);
-                            context.Set<List<T2>>().Attach(listEntity2);
-                            context.Set<List<T3>>().Attach(listEntity3);
-                            context.Set<List<T4>>().Attach(listEntity4);
+                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
+                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
+                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); }
+                            foreach (var item in listEntity4) { context.Set<T4>().Attach(item); context.Set<T4>().Remove(item); }
 
-                            context.Set<List<T1>>().Remove(listEntity1);
-                            context.Set<List<T2>>().Remove(listEntity2);
-                            context.Set<List<T3>>().Remove(listEntity3);
-                            context.Set<List<T4>>().Remove(listEntity4);
-
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3, listEntity4);
                         }
@@ -345,19 +311,13 @@ namespace EFHelper.RepositoryDelete
                             List<T4> listEntity4 = ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T4>(listIDIdentity4);
                             List<T5> listEntity5 = ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T5>(listIDIdentity5);
 
-                            context.Set<List<T1>>().Attach(listEntity1);
-                            context.Set<List<T2>>().Attach(listEntity2);
-                            context.Set<List<T3>>().Attach(listEntity3);
-                            context.Set<List<T4>>().Attach(listEntity4);
-                            context.Set<List<T5>>().Attach(listEntity5);
+                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
+                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
+                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); }
+                            foreach (var item in listEntity4) { context.Set<T4>().Attach(item); context.Set<T4>().Remove(item); }
+                            foreach (var item in listEntity5) { context.Set<T5>().Attach(item); context.Set<T5>().Remove(item); }
 
-                            context.Set<List<T1>>().Remove(listEntity1);
-                            context.Set<List<T2>>().Remove(listEntity2);
-                            context.Set<List<T3>>().Remove(listEntity3);
-                            context.Set<List<T4>>().Remove(listEntity4);
-                            context.Set<List<T5>>().Remove(listEntity5);
-
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3, listEntity4, listEntity5);
                         }

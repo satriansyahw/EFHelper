@@ -86,5 +86,11 @@ namespace EFHelper.TypeHelper
             return result;
 
         }
+
+        public bool IsActuallyNullData(object value)
+        {
+            if (value == null) return true;
+            return false;
+        }
     }
 }

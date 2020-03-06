@@ -34,10 +34,10 @@ namespace EFHelper.RepositoryUpdate
                         try
                         {
                             listEntity= EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T>(listEntity);
-                            
-                            context.Set<List<T>>().Attach(listEntity);
-                            context.Entry(listEntity).State = EntityState.Modified;
-                           
+
+                            foreach (var item in listEntity) { context.Set<T>().Attach(item); context.Entry(item).State = EntityState.Modified; }
+
+
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil);
@@ -64,11 +64,10 @@ namespace EFHelper.RepositoryUpdate
                         {
                             listEntity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(listEntity1);
                             listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(listEntity2);
-                            
-                            context.Set<List<T1>>().Attach(listEntity1);
-                            context.Set<List<T2>>().Attach(listEntity2);
-                            context.Entry(listEntity1).State = EntityState.Modified;
-                            context.Entry(listEntity2).State = EntityState.Modified;
+
+                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Entry(item).State = EntityState.Modified; }
+                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Entry(item).State = EntityState.Modified; }
+
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -98,14 +97,11 @@ namespace EFHelper.RepositoryUpdate
                             listEntity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(listEntity1);
                             listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(listEntity2);
                             listEntity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(listEntity3);
-                            
-                            context.Set<List<T1>>().Attach(listEntity1);
-                            context.Set<List<T2>>().Attach(listEntity2);
-                            context.Set<List<T3>>().Attach(listEntity3);
 
-                            context.Entry(listEntity1).State = EntityState.Modified;
-                            context.Entry(listEntity2).State = EntityState.Modified;
-                            context.Entry(listEntity3).State = EntityState.Modified;
+                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Entry(item).State = EntityState.Modified; }
+                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Entry(item).State = EntityState.Modified; }
+                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Entry(item).State = EntityState.Modified; }
+
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -137,16 +133,11 @@ namespace EFHelper.RepositoryUpdate
                             listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(listEntity2);
                             listEntity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(listEntity3);
                             listEntity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T4>(listEntity4);
-                            
-                            context.Set<List<T1>>().Attach(listEntity1);
-                            context.Set<List<T2>>().Attach(listEntity2);
-                            context.Set<List<T3>>().Attach(listEntity3);
-                            context.Set<List<T4>>().Attach(listEntity4);
 
-                            context.Entry(listEntity1).State = EntityState.Modified;
-                            context.Entry(listEntity2).State = EntityState.Modified;
-                            context.Entry(listEntity3).State = EntityState.Modified;
-                            context.Entry(listEntity4).State = EntityState.Modified;
+                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Entry(item).State = EntityState.Modified; }
+                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Entry(item).State = EntityState.Modified; }
+                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Entry(item).State = EntityState.Modified; }
+                            foreach (var item in listEntity4) { context.Set<T4>().Attach(item); context.Entry(item).State = EntityState.Modified; }
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -181,17 +172,11 @@ namespace EFHelper.RepositoryUpdate
                             listEntity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T4>(listEntity4);
                             listEntity5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T5>(listEntity5);
 
-                            context.Set<List<T1>>().Attach(listEntity1);
-                            context.Set<List<T2>>().Attach(listEntity2);
-                            context.Set<List<T3>>().Attach(listEntity3);
-                            context.Set<List<T4>>().Attach(listEntity4);
-                            context.Set<List<T5>>().Attach(listEntity5);
-
-                            context.Entry(listEntity1).State = EntityState.Modified;
-                            context.Entry(listEntity2).State = EntityState.Modified;
-                            context.Entry(listEntity3).State = EntityState.Modified;
-                            context.Entry(listEntity4).State = EntityState.Modified;
-                            context.Entry(listEntity5).State = EntityState.Modified;
+                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Entry(item).State = EntityState.Modified;  }
+                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Entry(item).State = EntityState.Modified; }
+                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Entry(item).State = EntityState.Modified; }
+                            foreach (var item in listEntity4) { context.Set<T4>().Attach(item); context.Entry(item).State = EntityState.Modified; }
+                            foreach (var item in listEntity5) { context.Set<T5>().Attach(item); context.Entry(item).State = EntityState.Modified; }
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();

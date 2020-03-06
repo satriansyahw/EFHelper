@@ -89,5 +89,11 @@ namespace EFHelper.TypeHelper
             t = isNull ? t = typeof(List<bool>).GetMethod("Contains", new[] { typeof(Nullable<bool>) }) : t = typeof(List<bool>).GetMethod("Contains", new[] { typeof(bool) });
             return t;           
         }
+
+        public bool IsActuallyNullData(object value)
+        {
+            if (value == null) return true;
+            return false;
+        }
     }
 }

@@ -36,8 +36,8 @@ namespace EFHelper.RepositoryUpdate
                             for (int i = 0; i < listEntity.Count; i++)
                             {
                                 T entity = listEntity[i];
-                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T>(entity);//will update except activebool boolactive insertby insertbyid
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T>(entity);
+                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T>(entity);//will update except activebool boolactive insertby insertbyid
                                 context.Set<T>().Attach(entity);
                                 context.Entry(entity).State = EntityState.Unchanged;
                                 foreach (PropertyInfo property in colNotNull)
@@ -77,8 +77,8 @@ namespace EFHelper.RepositoryUpdate
                             for (int i = 0; i < listEntity1.Count; i++)
                             {
                                 T1 entity = listEntity1[i];
-                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity);//will update except activebool boolactive insertby insertbyid
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity);
+                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity);//will update except activebool boolactive insertby insertbyid
                                 context.Set<T1>().Attach(entity);
                                 context.Entry(entity).State = EntityState.Unchanged;
                                 foreach (PropertyInfo property in colNotNull)
@@ -93,8 +93,8 @@ namespace EFHelper.RepositoryUpdate
                             for (int i = 0; i < listEntity2.Count; i++)
                             {
                                 T2 entity = listEntity2[i];
-                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity);//will update except activebool boolactive insertby insertbyid
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity);
+                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity);//will update except activebool boolactive insertby insertbyid
                                 context.Set<T2>().Attach(entity);
                                 context.Entry(entity).State = EntityState.Unchanged;
                                 foreach (PropertyInfo property in colNotNull)
@@ -135,8 +135,8 @@ namespace EFHelper.RepositoryUpdate
                             for (int i = 0; i < listEntity1.Count; i++)
                             {
                                 T1 entity = listEntity1[i];
-                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity);//will update except activebool boolactive insertby insertbyid
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity);
+                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity);//will update except activebool boolactive insertby insertbyid
                                 context.Set<T1>().Attach(entity);
                                 context.Entry(entity).State = EntityState.Unchanged;
                                 foreach (PropertyInfo property in colNotNull)
@@ -151,8 +151,8 @@ namespace EFHelper.RepositoryUpdate
                             for (int i = 0; i < listEntity2.Count; i++)
                             {
                                 T2 entity = listEntity2[i];
-                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity);//will update except activebool boolactive insertby insertbyid
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity);
+                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity);//will update except activebool boolactive insertby insertbyid
                                 context.Set<T2>().Attach(entity);
                                 context.Entry(entity).State = EntityState.Unchanged;
                                 foreach (PropertyInfo property in colNotNull)
@@ -167,8 +167,8 @@ namespace EFHelper.RepositoryUpdate
                             for (int i = 0; i < listEntity3.Count; i++)
                             {
                                 T3 entity = listEntity3[i];
-                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity);//will update except activebool boolactive insertby insertbyid
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity);
+                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity);//will update except activebool boolactive insertby insertbyid
                                 context.Set<T3>().Attach(entity);
                                 context.Entry(entity).State = EntityState.Unchanged;
                                 foreach (PropertyInfo property in colNotNull)
@@ -209,8 +209,8 @@ namespace EFHelper.RepositoryUpdate
                             for (int i = 0; i < listEntity1.Count; i++)
                             {
                                 T1 entity = listEntity1[i];
-                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity);//will update except activebool boolactive insertby insertbyid
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity);
+                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity);//will update except activebool boolactive insertby insertbyid
                                 context.Set<T1>().Attach(entity);
                                 context.Entry(entity).State = EntityState.Unchanged;
                                 foreach (PropertyInfo property in colNotNull)
@@ -225,8 +225,8 @@ namespace EFHelper.RepositoryUpdate
                             for (int i = 0; i < listEntity2.Count; i++)
                             {
                                 T2 entity = listEntity2[i];
-                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity);//will update except activebool boolactive insertby insertbyid
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity);
+                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity);//will update except activebool boolactive insertby insertbyid
                                 context.Set<T2>().Attach(entity);
                                 context.Entry(entity).State = EntityState.Unchanged;
                                 foreach (PropertyInfo property in colNotNull)
@@ -241,8 +241,8 @@ namespace EFHelper.RepositoryUpdate
                             for (int i = 0; i < listEntity3.Count; i++)
                             {
                                 T3 entity = listEntity3[i];
-                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity);//will update except activebool boolactive insertby insertbyid
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity);
+                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity);//will update except activebool boolactive insertby insertbyid
                                 context.Set<T3>().Attach(entity);
                                 context.Entry(entity).State = EntityState.Unchanged;
                                 foreach (PropertyInfo property in colNotNull)
@@ -257,8 +257,8 @@ namespace EFHelper.RepositoryUpdate
                             for (int i = 0; i < listEntity4.Count; i++)
                             {
                                 T4 entity = listEntity4[i];
-                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity);//will update except activebool boolactive insertby insertbyid
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T4>(entity);
+                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity);//will update except activebool boolactive insertby insertbyid
                                 context.Set<T4>().Attach(entity);
                                 context.Entry(entity).State = EntityState.Unchanged;
                                 foreach (PropertyInfo property in colNotNull)
@@ -301,8 +301,8 @@ namespace EFHelper.RepositoryUpdate
                             for (int i = 0; i < listEntity1.Count; i++)
                             {
                                 T1 entity = listEntity1[i];
-                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity);//will update except activebool boolactive insertby insertbyid
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity);
+                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity);//will update except activebool boolactive insertby insertbyid
                                 context.Set<T1>().Attach(entity);
                                 context.Entry(entity).State = EntityState.Unchanged;
                                 foreach (PropertyInfo property in colNotNull)
@@ -317,8 +317,8 @@ namespace EFHelper.RepositoryUpdate
                             for (int i = 0; i < listEntity2.Count; i++)
                             {
                                 T2 entity = listEntity2[i];
-                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity);//will update except activebool boolactive insertby insertbyid
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T2>(entity);
+                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity);//will update except activebool boolactive insertby insertbyid
                                 context.Set<T2>().Attach(entity);
                                 context.Entry(entity).State = EntityState.Unchanged;
                                 foreach (PropertyInfo property in colNotNull)
@@ -333,8 +333,8 @@ namespace EFHelper.RepositoryUpdate
                             for (int i = 0; i < listEntity3.Count; i++)
                             {
                                 T3 entity = listEntity3[i];
-                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity);//will update except activebool boolactive insertby insertbyid
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T3>(entity);
+                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity);//will update except activebool boolactive insertby insertbyid
                                 context.Set<T3>().Attach(entity);
                                 context.Entry(entity).State = EntityState.Unchanged;
                                 foreach (PropertyInfo property in colNotNull)
@@ -349,8 +349,8 @@ namespace EFHelper.RepositoryUpdate
                             for (int i = 0; i < listEntity4.Count; i++)
                             {
                                 T4 entity = listEntity4[i];
-                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity);//will update except activebool boolactive insertby insertbyid
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T4>(entity);
+                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity);//will update except activebool boolactive insertby insertbyid
                                 context.Set<T4>().Attach(entity);
                                 context.Entry(entity).State = EntityState.Unchanged;
                                 foreach (PropertyInfo property in colNotNull)
@@ -365,8 +365,8 @@ namespace EFHelper.RepositoryUpdate
                             for (int i = 0; i < listEntity5.Count; i++)
                             {
                                 T5 entity = listEntity5[i];
-                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T5>(entity);//will update except activebool boolactive insertby insertbyid
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T5>(entity);
+                                var colNotNull = ColumnPropGet.GetInstance.GetPropertyColNotNull<T5>(entity);//will update except activebool boolactive insertby insertbyid
                                 context.Set<T5>().Attach(entity);
                                 context.Entry(entity).State = EntityState.Unchanged;
                                 foreach (PropertyInfo property in colNotNull)

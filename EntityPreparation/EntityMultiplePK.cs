@@ -92,7 +92,7 @@ namespace EFHelper.EntityPreparation
             return result;
         }
 
-        public bool IsContinueSUpdateAfterMultiplePK<T>(T entity, out EFReturnValue returnValue) where T : class
+        public bool IsContinueUpdateAfterMultiplePK<T>(T entity, out EFReturnValue returnValue) where T : class
         {
 
             // if true, continue to next query
@@ -133,7 +133,7 @@ namespace EFHelper.EntityPreparation
             return result;
         }
 
-        public async Task<bool> IsContinueSUpdateAfterMultiplePKAsync<T>(T entity) where T : class
+        public async Task<bool> IsContinueUpdateAfterMultiplePKAsync<T>(T entity) where T : class
         {
             // if true, continue to next query
             bool result = true;

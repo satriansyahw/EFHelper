@@ -27,7 +27,7 @@ namespace EFHelper.ColumnHelper
         public T SetPropertyColDefaultValue<T>(T entity) where T : class
         {
             List<PropertyInfo> listNull = new List<PropertyInfo>();
-            listNull = ColumnPropGet.GetInstance.GetPropertyColNull<T>(entity);
+            listNull = ColumnPropGet.GetInstance.GetPropertyColNullOnly<T>(entity);
             string fullName = string.Empty;
             object defaultValue = null;
             bool isnullData = false;

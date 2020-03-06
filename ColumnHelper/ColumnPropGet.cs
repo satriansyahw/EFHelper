@@ -75,53 +75,7 @@ namespace EFHelper.ColumnHelper
             }
             return list;
         }
-        public List<PropertyInfo> GetPropertyColNull<T>(T entity) where T : class
-        {
-            
-            string fullName = string.Empty;
-            List<PropertyInfo> resultAwal = new List<PropertyInfo>();
-            List<PropertyInfo> result = new List<PropertyInfo>();
-            //looking from null value column
-            resultAwal = (from sa in entity.GetType().GetProperties().AsQueryable() where sa.GetValue(entity) == null select sa).ToList();
-            foreach (PropertyInfo property in resultAwal)
-            {
-                var sss = property.PropertyType.Name.ToLower();
-                result.Add(property);
-            }
-            //looking from not value column
-            resultAwal = (from sa in entity.GetType().GetProperties().AsQueryable() where sa.GetValue(entity) != null select sa).ToList();
-            foreach (PropertyInfo property in resultAwal)
-            {
-                fullName = property.PropertyType.FullName.ToLower().Split(',')[0].ToString();
-                string myFieldName = ColumnProperties.GetInstance.GetClearFieldName(property.Name);
-                string myFieldType = property.PropertyType.Name.ToLower();
-                myFieldType = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
-
-                if (this.GetIsPrimaryKey<T>(myFieldName))
-                {
-                    result.Add(property);
-                }
-                else if (myFieldType == "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayInsertDate)
-                     & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayUpdateDate)
-                    )
-                {
-                    object checkyear = property.GetValue(entity);
-                    if (checkyear != null)
-                    {
-                        DateTime dateTime = (DateTime)checkyear;
-                        if (dateTime.Date.Year == nullDatetime)
-                        {
-                            result.Add(property);
-                        }
-                    }
-                }
-                else if (myFieldType == "boolean" & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayActiveBool))
-                {
-                    result.Add(property);
-                }
-            }
-            return result;
-        }
+       
         public List<PropertyInfo> GetPropertyColNullOnly<T>(T entity) where T : class
         {
            
@@ -143,6 +97,7 @@ namespace EFHelper.ColumnHelper
                 string myFieldName = ColumnProperties.GetInstance.GetClearFieldName(property.Name);
                 string myFieldType = property.PropertyType.Name.ToLower();
                 myFieldType = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
+                object checkValue = property.GetValue(entity);
                 if (this.GetIsPrimaryKey<T>(myFieldName))
                 {
                     result.Add(property);
@@ -150,14 +105,10 @@ namespace EFHelper.ColumnHelper
                 else if (myFieldType == "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayUpdateDate)
                     & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayInsertDate))
                 {
-                    object checkyear = property.GetValue(entity);
-                    if (checkyear != null)
+                   
+                    if (!TypeBantuan.GetInstance.DictTypes[myFieldType].IsActuallyNullData(checkValue))
                     {
-                        DateTime dateTime = (DateTime)checkyear;
-                        if (dateTime.Date.Year == nullDatetime)
-                        {
-                            result.Add(property);
-                        }
+                        result.Add(property);
                     }
 
                 }
@@ -165,13 +116,20 @@ namespace EFHelper.ColumnHelper
                 {
                     result.Add(property);
                 }
+                else
+                {
+                    if (TypeBantuan.GetInstance.DictTypes[myFieldType].IsActuallyNullData(checkValue))
+                    {
+                        result.Add(property);
+                    }
+
+                }
             }
             return result;
         }
         public List<PropertyInfo> GetPropertyColNotNull<T>(T entity) where T : class
         {
             string fullName = string.Empty;
-            int nullDatetime = 1;
             List<PropertyInfo> resultAwal = new List<PropertyInfo>();
             List<PropertyInfo> result = new List<PropertyInfo>();
             resultAwal = (from sa in entity.GetType().GetProperties().AsQueryable() where sa.GetValue(entity) != null select sa).ToList();
@@ -182,19 +140,15 @@ namespace EFHelper.ColumnHelper
                 string myFieldType = property.PropertyType.Name.ToLower();
                 myFieldType = myFieldType == ColumnProperties.GetInstance.NullAbleInfo ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
 
-
+                object checkValue = property.GetValue(entity);
                 if (myFieldType == "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayUpdateDate)
                      & !ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayInsertDate) & !this.GetIsPrimaryKey<T>(myFieldName))
                 {
-                    object checkyear = property.GetValue(entity);
-                    if (checkyear != null)
+                    
+                    if(!TypeBantuan.GetInstance.DictTypes[myFieldType].IsActuallyNullData(checkValue))
                     {
-                        DateTime dateTime = (DateTime)checkyear;
-                        if (dateTime.Date.Year != nullDatetime)
-                        {
-                            result.Add(property);
-                        }
-                    }
+                        result.Add(property);
+                    }                   
 
                 }
                 else if (myFieldType == "datetime" & ColumnProperties.GetInstance.IsColumn(myFieldName, MiscClass.MiscClass.ArrayUpdateDate)
@@ -207,9 +161,13 @@ namespace EFHelper.ColumnHelper
                     result.Add(property);
 
                 }
-                else if (myFieldType != "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, "activebool", "boolactive", "insertby", "insertbyid") & !this.GetIsPrimaryKey<T>(myFieldName))
+                else if (myFieldType != "datetime" & !ColumnProperties.GetInstance.IsColumn(myFieldName, "activebool", "boolactive", "insertby", "insertbyid") 
+                    & !this.GetIsPrimaryKey<T>(myFieldName))
                 {
-                    result.Add(property);
+                    if (!TypeBantuan.GetInstance.DictTypes[myFieldType].IsActuallyNullData(checkValue))
+                    {
+                        result.Add(property);
+                    }
                 }
 
             }
@@ -509,6 +467,7 @@ namespace EFHelper.ColumnHelper
                     }
                 }
             }
+            if (objdatetTime == null) result = true;
             return result;        
         }
 

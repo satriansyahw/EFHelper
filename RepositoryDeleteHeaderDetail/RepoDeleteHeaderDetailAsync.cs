@@ -37,7 +37,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                         {
                             T entity = Activator.CreateInstance<T>();
                             ColumnPropSet.GetInstance.SetColValueIdentityColumn<T>(entity, IDIdentity);
-                            List<T1> listEntity1 = await this.getListData<T1>(IDIdentity, idReferenceColName);
+                            List<T1> listEntity1 = await this.GetListData<T1>(IDIdentity, idReferenceColName);
 
                             context.Set<T>().Attach(entity);
                             context.Set<List<T1>>().Attach(listEntity1);
@@ -45,7 +45,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             context.Set<T>().Remove(entity);
                             context.Set<List<T1>>().Remove(listEntity1);
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity, listEntity1);
                         }
@@ -73,8 +73,8 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                         {
                             T entity = Activator.CreateInstance<T>();
                             ColumnPropSet.GetInstance.SetColValueIdentityColumn<T>(entity, IDIdentity);
-                            List<T1> listEntity1 = await this.getListData<T1>(IDIdentity, idReferenceColName);
-                            List<T2> listEntity2 = await  this.getListData<T2>(IDIdentity, idReferenceColName);
+                            List<T1> listEntity1 = await this.GetListData<T1>(IDIdentity, idReferenceColName);
+                            List<T2> listEntity2 = await  this.GetListData<T2>(IDIdentity, idReferenceColName);
 
                             context.Set<T>().Attach(entity);
                             context.Set<List<T1>>().Attach(listEntity1);
@@ -84,7 +84,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             context.Set<List<T1>>().Remove(listEntity1);
                             context.Set<List<T2>>().Remove(listEntity2);
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity, listEntity1, listEntity2);
                         }
@@ -113,9 +113,9 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                         {
                             T entity = Activator.CreateInstance<T>();
                             ColumnPropSet.GetInstance.SetColValueIdentityColumn<T>(entity, IDIdentity);
-                            List<T1> listEntity1 = await this.getListData<T1>(IDIdentity, idReferenceColName);
-                            List<T2> listEntity2 = await this.getListData<T2>(IDIdentity, idReferenceColName);
-                            List<T3> listEntity3 = await this.getListData<T3>(IDIdentity, idReferenceColName);
+                            List<T1> listEntity1 = await this.GetListData<T1>(IDIdentity, idReferenceColName);
+                            List<T2> listEntity2 = await this.GetListData<T2>(IDIdentity, idReferenceColName);
+                            List<T3> listEntity3 = await this.GetListData<T3>(IDIdentity, idReferenceColName);
 
                             context.Set<T>().Attach(entity);
                             context.Set<List<T1>>().Attach(listEntity1);
@@ -127,7 +127,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             context.Set<List<T2>>().Remove(listEntity2);
                             context.Set<List<T3>>().Remove(listEntity3);
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity, listEntity1, listEntity2, listEntity3);
                         }
@@ -157,10 +157,10 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                         {
                             T entity = Activator.CreateInstance<T>();
                             ColumnPropSet.GetInstance.SetColValueIdentityColumn<T>(entity, IDIdentity);
-                            List<T1> listEntity1 = await this.getListData<T1>(IDIdentity, idReferenceColName);
-                            List<T2> listEntity2 = await this.getListData<T2>(IDIdentity, idReferenceColName);
-                            List<T3> listEntity3 = await this.getListData<T3>(IDIdentity, idReferenceColName);
-                            List<T4> listEntity4 = await this.getListData<T4>(IDIdentity, idReferenceColName);
+                            List<T1> listEntity1 = await this.GetListData<T1>(IDIdentity, idReferenceColName);
+                            List<T2> listEntity2 = await this.GetListData<T2>(IDIdentity, idReferenceColName);
+                            List<T3> listEntity3 = await this.GetListData<T3>(IDIdentity, idReferenceColName);
+                            List<T4> listEntity4 = await this.GetListData<T4>(IDIdentity, idReferenceColName);
 
                             context.Set<T>().Attach(entity);
                             context.Set<List<T1>>().Attach(listEntity1);
@@ -174,7 +174,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             context.Set<List<T3>>().Remove(listEntity3);
                             context.Set<List<T4>>().Remove(listEntity4);
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity, listEntity1, listEntity2, listEntity3, listEntity4);
                         }
@@ -205,11 +205,11 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                         {
                             T entity = Activator.CreateInstance<T>();
                             ColumnPropSet.GetInstance.SetColValueIdentityColumn<T>(entity, IDIdentity);
-                            List<T1> listEntity1 = await this.getListData<T1>(IDIdentity, idReferenceColName);
-                            List<T2> listEntity2 = await this.getListData<T2>(IDIdentity, idReferenceColName);
-                            List<T3> listEntity3 = await this.getListData<T3>(IDIdentity, idReferenceColName);
-                            List<T4> listEntity4 = await this.getListData<T4>(IDIdentity, idReferenceColName);
-                            List<T5> listEntity5 = await this.getListData<T5>(IDIdentity, idReferenceColName);
+                            List<T1> listEntity1 = await this.GetListData<T1>(IDIdentity, idReferenceColName);
+                            List<T2> listEntity2 = await this.GetListData<T2>(IDIdentity, idReferenceColName);
+                            List<T3> listEntity3 = await this.GetListData<T3>(IDIdentity, idReferenceColName);
+                            List<T4> listEntity4 = await this.GetListData<T4>(IDIdentity, idReferenceColName);
+                            List<T5> listEntity5 = await this.GetListData<T5>(IDIdentity, idReferenceColName);
 
                             context.Set<T>().Attach(entity);
                             context.Set<List<T1>>().Attach(listEntity1);
@@ -225,7 +225,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             context.Set<List<T4>>().Remove(listEntity4);
                             context.Set<List<T5>>().Remove(listEntity5);
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity,listEntity1, listEntity2, listEntity3, listEntity4, listEntity5);
                         }
@@ -237,10 +237,12 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
 
             return eFReturn;
         }
-        private async Task<List<T>> getListData<T>(int IDIdentity, string idReferenceColName) where T : class
+        private async Task<List<T>> GetListData<T>(int IDIdentity, string idReferenceColName) where T : class
         {
-            List<SearchField> param = new System.Collections.Generic.List<SearchField>();
-            param.Add(new SearchField { Name = idReferenceColName, Operator = "=", Value = IDIdentity.ToString() });
+            List<SearchField> param = new System.Collections.Generic.List<SearchField>
+            {
+                new SearchField { Name = idReferenceColName, Operator = "=", Value = IDIdentity.ToString() }
+            };
             RepoListAsync list = new RepoListAsync();
             var myList = await list.ListDataAsync<T>(param);
             var myListData = (List<T>)myList.ReturnValue[0].ReturnValue;

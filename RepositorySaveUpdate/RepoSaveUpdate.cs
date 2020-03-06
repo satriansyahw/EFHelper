@@ -74,12 +74,12 @@ namespace EFHelper.RepositorySaveUpdate
                     {
                         try
                         {
-                            List<PropertyInfo> colNotNullT1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);
-                            List<PropertyInfo> colNotNullT2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);
                            
                             entity1 = this.SetEntityPreparation<T1>(entity1, isSaveT1);
                             entity2 = this.SetEntityPreparation<T2>(entity2, isSaveT2);
-                           
+                            List<PropertyInfo> colNotNullT1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);
+                            List<PropertyInfo> colNotNullT2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);
+
                             if (isSaveT1) context.Set<T1>().Add(entity1);
                             if (isSaveT2) context.Set<T2>().Add(entity2);
                             
@@ -132,14 +132,14 @@ namespace EFHelper.RepositorySaveUpdate
                     {
                         try
                         {
-                            List<PropertyInfo> colNotNullT1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);
-                            List<PropertyInfo> colNotNullT2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);
-                            List<PropertyInfo> colNotNullT3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);                          
 
                             entity1 = this.SetEntityPreparation<T1>(entity1, isSaveT1);
                             entity2 = this.SetEntityPreparation<T2>(entity2, isSaveT2);
                             entity3 = this.SetEntityPreparation<T3>(entity3, isSaveT3);
-                            
+                            List<PropertyInfo> colNotNullT1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);
+                            List<PropertyInfo> colNotNullT2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);
+                            List<PropertyInfo> colNotNullT3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);
+
                             if (isSaveT1) context.Set<T1>().Add(entity1);
                             if (isSaveT2) context.Set<T2>().Add(entity2);
                             if (isSaveT3) context.Set<T3>().Add(entity3);
@@ -206,15 +206,16 @@ namespace EFHelper.RepositorySaveUpdate
                     {
                         try
                         {
-                            List<PropertyInfo> colNotNullT1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);
-                            List<PropertyInfo> colNotNullT2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);
-                            List<PropertyInfo> colNotNullT3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);
-                            List<PropertyInfo> colNotNullT4 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity4);                           
 
                             entity1 = this.SetEntityPreparation<T1>(entity1, isSaveT1);
                             entity2 = this.SetEntityPreparation<T2>(entity2, isSaveT2);
                             entity3 = this.SetEntityPreparation<T3>(entity3, isSaveT3);
-                            entity4 = this.SetEntityPreparation<T4>(entity4, isSaveT4);                          
+                            entity4 = this.SetEntityPreparation<T4>(entity4, isSaveT4);
+
+                            List<PropertyInfo> colNotNullT1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);
+                            List<PropertyInfo> colNotNullT2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);
+                            List<PropertyInfo> colNotNullT3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);
+                            List<PropertyInfo> colNotNullT4 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity4);
 
                             if (isSaveT1) context.Set<T1>().Add(entity1);
                             if (isSaveT2) context.Set<T2>().Add(entity2);
@@ -297,17 +298,19 @@ namespace EFHelper.RepositorySaveUpdate
                     {
                         try
                         {
-                            List<PropertyInfo> colNotNullT1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);
-                            List<PropertyInfo> colNotNullT2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);
-                            List<PropertyInfo> colNotNullT3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);
-                            List<PropertyInfo> colNotNullT4 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity4);
-                            List<PropertyInfo> colNotNullT5 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T5>(entity5);
 
                             entity1 = this.SetEntityPreparation<T1>(entity1, isSaveT1);
                             entity2 = this.SetEntityPreparation<T2>(entity2, isSaveT2);
                             entity3 = this.SetEntityPreparation<T3>(entity3, isSaveT3);
                             entity4 = this.SetEntityPreparation<T4>(entity4, isSaveT4);
                             entity5 = this.SetEntityPreparation<T5>(entity5, isSaveT5);
+
+                            List<PropertyInfo> colNotNullT1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);
+                            List<PropertyInfo> colNotNullT2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);
+                            List<PropertyInfo> colNotNullT3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);
+                            List<PropertyInfo> colNotNullT4 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity4);
+                            List<PropertyInfo> colNotNullT5 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T5>(entity5);
+
 
                             if (isSaveT1) context.Set<T1>().Add(entity1);
                             if (isSaveT2) context.Set<T2>().Add(entity2);

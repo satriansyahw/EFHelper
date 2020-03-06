@@ -34,7 +34,7 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T>(entity, out eFReturn);
+                            var cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T>(entity, out eFReturn);
                             if (cekIsContinue)
                             {
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T>(entity);
@@ -65,9 +65,9 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
+                            var cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
                             if (cekIsContinue)
                             {
                                 entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
@@ -105,11 +105,11 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
+                            var cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
                             if (cekIsContinue)
                             {
                                 entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
@@ -151,13 +151,13 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
+                            var cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T4>(entity4, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T4>(entity4, out eFReturn);
                             if (cekIsContinue)
                             {
                                 entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
@@ -203,15 +203,15 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            var cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
+                            var cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T1>(entity1, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T2>(entity2, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T3>(entity3, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T4>(entity4, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T4>(entity4, out eFReturn);
                             if (cekIsContinue)
-                                cekIsContinue = multiple.IsContinueSUpdateAfterMultiplePK<T5>(entity5, out eFReturn);
+                                cekIsContinue = multiple.IsContinueUpdateAfterMultiplePK<T5>(entity5, out eFReturn);
                             if (cekIsContinue)
                             {
                                 entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);

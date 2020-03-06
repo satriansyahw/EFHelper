@@ -38,14 +38,14 @@ namespace EFHelper.RepositoryUpdate
                         {
                             try
                             {
-                                var cekIsContinue = await multiple.IsContinueSUpdateAfterMultiplePKAsync<T>(entity);
+                                var cekIsContinue = await multiple.IsContinueUpdateAfterMultiplePKAsync<T>(entity);
                                 if (cekIsContinue)
                                 {
                                     entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T>(entity);
                                     context.Set<T>().Attach(entity);
                                     context.Entry(entity).State = EntityState.Modified;
 
-                                    hasil = await context.SaveChangesAsync();
+                                    await Task.Run(()=> {hasil = context.SaveChanges();});
                                     contextTrans.Commit();
                                     eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity);
                                 }
@@ -76,9 +76,9 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            var cekIsContinue = await multiple.IsContinueSUpdateAfterMultiplePKAsync<T1>(entity1);
+                            var cekIsContinue = await multiple.IsContinueUpdateAfterMultiplePKAsync<T1>(entity1);
                             if (cekIsContinue)
-                                cekIsContinue = await multiple.IsContinueSUpdateAfterMultiplePKAsync<T2>(entity2);
+                                cekIsContinue = await multiple.IsContinueUpdateAfterMultiplePKAsync<T2>(entity2);
                             if (cekIsContinue)
                             {
                                 entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
@@ -90,7 +90,7 @@ namespace EFHelper.RepositoryUpdate
                                 context.Entry(entity1).State = EntityState.Modified;
                                 context.Entry(entity2).State = EntityState.Modified;
 
-                                hasil = await context.SaveChangesAsync();
+                                await Task.Run(()=> {hasil = context.SaveChanges();});
                                 contextTrans.Commit();
                                 eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2);
                             }
@@ -120,11 +120,11 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            var cekIsContinue = await multiple.IsContinueSUpdateAfterMultiplePKAsync<T1>(entity1);
+                            var cekIsContinue = await multiple.IsContinueUpdateAfterMultiplePKAsync<T1>(entity1);
                             if (cekIsContinue)
-                                cekIsContinue = await multiple.IsContinueSUpdateAfterMultiplePKAsync<T2>(entity2);
+                                cekIsContinue = await multiple.IsContinueUpdateAfterMultiplePKAsync<T2>(entity2);
                             if (cekIsContinue)
-                                cekIsContinue = await multiple.IsContinueSUpdateAfterMultiplePKAsync<T3>(entity3);
+                                cekIsContinue = await multiple.IsContinueUpdateAfterMultiplePKAsync<T3>(entity3);
                             if (cekIsContinue)
                             {
                                 entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
@@ -139,7 +139,7 @@ namespace EFHelper.RepositoryUpdate
                                 context.Entry(entity2).State = EntityState.Modified;
                                 context.Entry(entity3).State = EntityState.Modified;
 
-                                hasil = await context.SaveChangesAsync();
+                                await Task.Run(()=> {hasil = context.SaveChanges();});
                                 contextTrans.Commit();
                                 eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3);
                             }
@@ -170,13 +170,13 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            var cekIsContinue = await multiple.IsContinueSUpdateAfterMultiplePKAsync<T1>(entity1);
+                            var cekIsContinue = await multiple.IsContinueUpdateAfterMultiplePKAsync<T1>(entity1);
                             if (cekIsContinue)
-                                cekIsContinue = await multiple.IsContinueSUpdateAfterMultiplePKAsync<T2>(entity2);
+                                cekIsContinue = await multiple.IsContinueUpdateAfterMultiplePKAsync<T2>(entity2);
                             if (cekIsContinue)
-                                cekIsContinue = await multiple.IsContinueSUpdateAfterMultiplePKAsync<T3>(entity3);
+                                cekIsContinue = await multiple.IsContinueUpdateAfterMultiplePKAsync<T3>(entity3);
                             if (cekIsContinue)
-                                cekIsContinue = await multiple.IsContinueSUpdateAfterMultiplePKAsync<T4>(entity4);
+                                cekIsContinue = await multiple.IsContinueUpdateAfterMultiplePKAsync<T4>(entity4);
                             if (cekIsContinue)
                             {
                                 entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
@@ -194,7 +194,7 @@ namespace EFHelper.RepositoryUpdate
                                 context.Entry(entity3).State = EntityState.Modified;
                                 context.Entry(entity4).State = EntityState.Modified;
 
-                                hasil = await context.SaveChangesAsync();
+                                await Task.Run(()=> {hasil = context.SaveChanges();});
                                 contextTrans.Commit();
                                 eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4);
                             }
@@ -226,15 +226,15 @@ namespace EFHelper.RepositoryUpdate
                     {
                         try
                         {
-                            var cekIsContinue = await multiple.IsContinueSUpdateAfterMultiplePKAsync<T1>(entity1);
+                            var cekIsContinue = await multiple.IsContinueUpdateAfterMultiplePKAsync<T1>(entity1);
                             if (cekIsContinue)
-                                cekIsContinue = await multiple.IsContinueSUpdateAfterMultiplePKAsync<T2>(entity2);
+                                cekIsContinue = await multiple.IsContinueUpdateAfterMultiplePKAsync<T2>(entity2);
                             if (cekIsContinue)
-                                cekIsContinue = await multiple.IsContinueSUpdateAfterMultiplePKAsync<T3>(entity3);
+                                cekIsContinue = await multiple.IsContinueUpdateAfterMultiplePKAsync<T3>(entity3);
                             if (cekIsContinue)
-                                cekIsContinue = await multiple.IsContinueSUpdateAfterMultiplePKAsync<T4>(entity4);
+                                cekIsContinue = await multiple.IsContinueUpdateAfterMultiplePKAsync<T4>(entity4);
                             if (cekIsContinue)
-                                cekIsContinue = await multiple.IsContinueSUpdateAfterMultiplePKAsync<T5>(entity5);
+                                cekIsContinue = await multiple.IsContinueUpdateAfterMultiplePKAsync<T5>(entity5);
                             if (cekIsContinue)
                             {
                                 entity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["updatedefined"].SetPreparationEntity<T1>(entity1);
@@ -255,7 +255,7 @@ namespace EFHelper.RepositoryUpdate
                                 context.Entry(entity4).State = EntityState.Modified;
                                 context.Entry(entity5).State = EntityState.Modified;
 
-                                hasil = await context.SaveChangesAsync();
+                                await Task.Run(()=> {hasil = context.SaveChanges();});
                                 contextTrans.Commit();
                                 eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4, entity5);
                             }

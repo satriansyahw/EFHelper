@@ -40,7 +40,7 @@ namespace EFHelper.RepositorySave
                             {
                                 entity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T>(entity);
                                 context.Set<T>().Add(entity);
-                                hasil = await context.SaveChangesAsync();
+                                await Task.Run(()=> {hasil = context.SaveChanges();});
                                 contextTrans.Commit();
                                 eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity);
                             }
@@ -81,7 +81,7 @@ namespace EFHelper.RepositorySave
                                 entity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(entity2);
                                 context.Set<T1>().Add(entity1);
                                 context.Set<T2>().Add(entity2);
-                                hasil = await context.SaveChangesAsync();
+                                await Task.Run(()=> {hasil = context.SaveChanges();});
                                 contextTrans.Commit();
                                 eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2);
                             }
@@ -125,7 +125,7 @@ namespace EFHelper.RepositorySave
                                 context.Set<T1>().Add(entity1);
                                 context.Set<T2>().Add(entity2);
                                 context.Set<T3>().Add(entity3);
-                                hasil = await context.SaveChangesAsync();
+                                await Task.Run(()=> {hasil = context.SaveChanges();});
                                 contextTrans.Commit();
                                 eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3);
                             }
@@ -175,7 +175,7 @@ namespace EFHelper.RepositorySave
                                 context.Set<T2>().Add(entity2);
                                 context.Set<T3>().Add(entity3);
                                 context.Set<T4>().Add(entity4);
-                                hasil = await context.SaveChangesAsync();
+                                await Task.Run(()=> {hasil = context.SaveChanges();});
                                 contextTrans.Commit();
                                 eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4);
                             }
@@ -230,7 +230,7 @@ namespace EFHelper.RepositorySave
                                 context.Set<T4>().Add(entity4);
                                 context.Set<T5>().Add(entity5);
 
-                                hasil = await context.SaveChangesAsync();
+                                await Task.Run(()=> {hasil = context.SaveChanges();});
                                 contextTrans.Commit();
                                 eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4, entity5);
                             }

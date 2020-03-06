@@ -36,7 +36,7 @@ namespace EFHelper.RepositoryDelete
                             ColumnPropSet.GetInstance.SetColValueIdentityColumn<T>(entity, IDIdentity);
                             context.Set<T>().Attach(entity);
                             context.Set<T>().Remove(entity);
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity);
                         }
@@ -74,7 +74,7 @@ namespace EFHelper.RepositoryDelete
                             context.Set<T1>().Remove(entity1);
                             context.Set<T2>().Remove(entity2);
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2);
                         }
@@ -115,7 +115,7 @@ namespace EFHelper.RepositoryDelete
                             context.Set<T2>().Remove(entity2);
                             context.Set<T3>().Remove(entity3);
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3);
                         }
@@ -161,7 +161,7 @@ namespace EFHelper.RepositoryDelete
                             context.Set<T3>().Remove(entity3);
                             context.Set<T4>().Remove(entity4);
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4);
                         }
@@ -212,7 +212,7 @@ namespace EFHelper.RepositoryDelete
                             context.Set<T4>().Remove(entity4);
                             context.Set<T5>().Remove(entity5);
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4, entity5);
                         }
@@ -236,7 +236,7 @@ namespace EFHelper.RepositoryDelete
                         {
                             context.Set<T>().Attach(entity);
                             context.Set<T>().Remove(entity);
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity);
                         }
@@ -266,7 +266,7 @@ namespace EFHelper.RepositoryDelete
                             context.Set<T1>().Remove(entity1);
                             context.Set<T2>().Remove(entity2);
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2);
                         }
@@ -299,7 +299,7 @@ namespace EFHelper.RepositoryDelete
                             context.Set<T2>().Remove(entity2);
                             context.Set<T3>().Remove(entity3);
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3);
                         }
@@ -335,7 +335,7 @@ namespace EFHelper.RepositoryDelete
                             context.Set<T3>().Remove(entity3);
                             context.Set<T4>().Remove(entity4);
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4);
                         }
@@ -374,7 +374,7 @@ namespace EFHelper.RepositoryDelete
                             context.Set<T4>().Remove(entity4);
                             context.Set<T5>().Remove(entity5);
 
-                            hasil = await context.SaveChangesAsync();
+                            await Task.Run(()=> {hasil = context.SaveChanges();});
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4, entity5);
                         }

@@ -1,4 +1,5 @@
 ﻿using EFHelper.ColumnHelper;
+using EFHelper.MiscClass;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -84,6 +85,16 @@ namespace EFHelper.TypeHelper
 
             }
             return result;
+
+        }
+
+        public bool IsActuallyNullData(object value)
+        {
+            if (value == null) return true;
+            decimal check = (decimal)value;
+            if (check == DataTypeNullValue.Null_Decimal)
+                return true;
+            return false;
 
         }
     }

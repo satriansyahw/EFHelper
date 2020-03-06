@@ -23,7 +23,11 @@ namespace EFHelper.RepositoryList
                     var queryable = context.Set<T>().AsQueryable();
                     QueryGenerator query = new QueryGenerator();
                     queryable = query.QueryGeneratorList<T>(queryable, searchFieldList, string.Empty, false, 0);
-                    var result = await queryable.ToListAsync();
+                    // ef original Async List still found bugs, so change to Task.Run Async 
+                    List<T> result = new List<T>();
+                    await Task.Run(()=> {
+                        result = queryable.ToList();
+                    });
                     eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, result);
                 }
                 catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); }
@@ -40,7 +44,11 @@ namespace EFHelper.RepositoryList
                     var queryable = context.Set<T>().AsQueryable();
                     QueryGenerator query = new QueryGenerator();
                     queryable = query.QueryGeneratorList<T>(queryable, searchFieldList, sortColumn, isAscending, topTake);
-                    var result = await queryable.ToListAsync();
+                    // ef original Async List still found bugs, so change to Task.Run Async 
+                    List<T> result = new List<T>();
+                    await Task.Run(() => {
+                        result = queryable.ToList();
+                    });
                     eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, result);
                 }
                 catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); }
@@ -59,7 +67,14 @@ namespace EFHelper.RepositoryList
                 {
                     var queryable = context.Set<TSource>().AsQueryable();
                     QueryGenerator query = new QueryGenerator();
-                    var result = await query.QueryGeneratorList<TSource, TResult>(queryable, searchFieldList, sortColumn, false, topTake).ToListAsync();
+                    // var result = await query.QueryGeneratorList<TSource, TResult>(queryable, searchFieldList, sortColumn, false, topTake).ToListAsync();
+                    // ef original Async List still found bugs, so change to Task.Run Async 
+                    List<TResult> result = new List<TResult>();
+                    await Task.Run(() => {
+                        result = query.QueryGeneratorList<TSource, TResult>(queryable, searchFieldList, sortColumn, false, topTake).ToList();
+                    });
+
+
                     eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, result);
                 }
                 catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); }
@@ -78,7 +93,12 @@ namespace EFHelper.RepositoryList
                     var queryable = context.Set<T>().AsQueryable();
                     QueryGenerator query = new QueryGenerator();
                     queryable = query.QueryGeneratorList<T>(queryable, null, string.Empty, false, 0);
-                    var result = await queryable.ToListAsync();
+                    // ef original Async List still found bugs, so change to Task.Run Async 
+                    List<T> result = new List<T>();
+                    await Task.Run(() => {
+                        result = queryable.ToList();
+                    });
+
                     eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, result);
                 }
                 catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); }
