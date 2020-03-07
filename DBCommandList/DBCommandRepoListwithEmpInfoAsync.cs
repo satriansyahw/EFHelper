@@ -44,10 +44,10 @@ namespace EFHelper.DBCommandList
 
                         List<ColumnListInfo> listColumn = ColumnPropGet.GetInstance.GetColumnList<T>();
                         List<T> listResult = new List<T>();
-                        using (var dataReader = await cmd.ExecuteReaderAsync())
+                        using (var dataReader = await cmd.ExecuteReaderAsync().ConfigureAwait(false))
                         {
                             if (dataReader.HasRows)
-                                listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<T, TNoToName>(dataReader, listTableConvert, listColumnConvert);
+                                listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<T, TNoToName>(dataReader, listTableConvert, listColumnConvert).ConfigureAwait(false);
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
                     }
@@ -85,10 +85,10 @@ namespace EFHelper.DBCommandList
 
                         List<ColumnListInfo> listColumn = ColumnPropGet.GetInstance.GetColumnList<T>();
                         List<T> listResult = new List<T>();
-                        using (var dataReader = await cmd.ExecuteReaderAsync())
+                        using (var dataReader = await cmd.ExecuteReaderAsync().ConfigureAwait(false))
                         {
                             if (dataReader.HasRows)
-                                listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<T, TNoToName>(dataReader, listTableConvert, listColumnConvert);
+                                listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<T, TNoToName>(dataReader, listTableConvert, listColumnConvert).ConfigureAwait(false);
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
                     }
@@ -126,10 +126,10 @@ namespace EFHelper.DBCommandList
 
                         List<ColumnListInfo> listColumn = ColumnPropGet.GetInstance.GetColumnList<T>();
                         List<T> listResult = new List<T>();
-                        using (var dataReader = await cmd.ExecuteReaderAsync())
+                        using (var dataReader = await cmd.ExecuteReaderAsync().ConfigureAwait(false))
                         {
                             if (dataReader.HasRows)
-                                listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<T, TNoToName>(dataReader, listTableConvert, listColumnConvert);
+                                listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<T, TNoToName>(dataReader, listTableConvert, listColumnConvert).ConfigureAwait(false);
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
                     }
@@ -167,10 +167,10 @@ namespace EFHelper.DBCommandList
 
                         List<ColumnListInfo> listColumn = ColumnPropGet.GetInstance.GetColumnList<TResult>();
                         List<TResult> listResult = new List<TResult>();
-                        using (var dataReader = await cmd.ExecuteReaderAsync())
+                        using (var dataReader = await cmd.ExecuteReaderAsync().ConfigureAwait(false))
                         {
                             if (dataReader.HasRows)
-                                listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<TResult, TNoToName>(dataReader, listTableConvert, listColumnConvert);
+                                listResult = await convertResult.ConvertDataReaderToListEmpInfoAsync<TResult, TNoToName>(dataReader, listTableConvert, listColumnConvert).ConfigureAwait(false);
                         }
                         eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, listResult);
                     }

@@ -53,7 +53,7 @@ namespace EFHelper.RepositoryDeleteSave
                             listDelete = EntityPreparationBantuan.GetInstance.DictEntityPreparation["deleteactivebool"].SetPreparationEntity<TDelete>(listDelete);
                             var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayUpdateDate);
                             var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
-                            context.Set<List<TDelete>>().Attach(listDelete);
+                            context.Set<TDelete>().AttachRange(listDelete);
                             context.Entry(listDelete).State = EntityState.Unchanged;
                             context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
                             context.Entry(listDelete).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
@@ -99,7 +99,7 @@ namespace EFHelper.RepositoryDeleteSave
                             listDelete = EntityPreparationBantuan.GetInstance.DictEntityPreparation["deleteactivebool"].SetPreparationEntity<TDelete>(listDelete);
                             var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayUpdateDate);
                             var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
-                            context.Set<List<TDelete>>().Attach(listDelete);
+                            context.Set<TDelete>().AttachRange(listDelete);
                             context.Entry(listDelete).State = EntityState.Unchanged;
                             context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
                             context.Entry(listDelete).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
@@ -148,7 +148,7 @@ namespace EFHelper.RepositoryDeleteSave
                             listDelete = EntityPreparationBantuan.GetInstance.DictEntityPreparation["deleteactivebool"].SetPreparationEntity<TDelete>(listDelete);
                             var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayUpdateDate);
                             var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
-                            context.Set<List<TDelete>>().Attach(listDelete);
+                            context.Set<TDelete>().AttachRange(listDelete);
                             context.Entry(listDelete).State = EntityState.Unchanged;
                             context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
                             context.Entry(listDelete).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
@@ -199,7 +199,7 @@ namespace EFHelper.RepositoryDeleteSave
                             listDelete = EntityPreparationBantuan.GetInstance.DictEntityPreparation["deleteactivebool"].SetPreparationEntity<TDelete>(listDelete);
                             var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayUpdateDate);
                             var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
-                            context.Set<List<TDelete>>().Attach(listDelete);
+                            context.Set<TDelete>().AttachRange(listDelete);
                             context.Entry(listDelete).State = EntityState.Unchanged;
                             context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
                             context.Entry(listDelete).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
@@ -252,7 +252,7 @@ namespace EFHelper.RepositoryDeleteSave
                             listDelete = EntityPreparationBantuan.GetInstance.DictEntityPreparation["deleteactivebool"].SetPreparationEntity<TDelete>(listDelete);
                             var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayUpdateDate);
                             var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
-                            context.Set<List<TDelete>>().Attach(listDelete);
+                            context.Set<TDelete>().AttachRange(listDelete);
                             context.Entry(listDelete).State = EntityState.Unchanged;
                             context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
                             context.Entry(listDelete).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;

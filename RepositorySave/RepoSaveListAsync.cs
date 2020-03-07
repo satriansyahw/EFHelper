@@ -34,8 +34,8 @@ namespace EFHelper.RepositorySave
                         {
                             
                             listEntity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T>(listEntity);
-                            foreach (var item in listEntity) context.Set<T>().Add(item);
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                            await context.Set<T>().AddRangeAsync(listEntity);
+                            hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity);
                         }
@@ -63,9 +63,9 @@ namespace EFHelper.RepositorySave
                             
                             listEntity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(listEntity1);
                             listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntity2);
-                            foreach (var item in listEntity1) context.Set<T1>().Add(item);
-                            foreach (var item in listEntity2) context.Set<T2>().Add(item);
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                            await context.Set<T1>().AddRangeAsync(listEntity1);
+                            await context.Set<T2>().AddRangeAsync(listEntity2);
+                            hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1,listEntity2);
                             contextTrans.Commit();
                         }
@@ -96,11 +96,10 @@ namespace EFHelper.RepositorySave
                             listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntity2);
                             listEntity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(listEntity3);
 
-                            foreach (var item in listEntity1) context.Set<T1>().Add(item);
-                            foreach (var item in listEntity2) context.Set<T2>().Add(item);
-                            foreach (var item in listEntity3) context.Set<T3>().Add(item);
-
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                            await context.Set<T1>().AddRangeAsync(listEntity1);
+                            await context.Set<T2>().AddRangeAsync(listEntity2);
+                            await context.Set<T3>().AddRangeAsync(listEntity3);
+                            hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1,listEntity2,listEntity3);
                         }
@@ -132,11 +131,11 @@ namespace EFHelper.RepositorySave
                             listEntity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(listEntity3);
                             listEntity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(listEntity4);
 
-                            foreach (var item in listEntity1) context.Set<T1>().Add(item);
-                            foreach (var item in listEntity2) context.Set<T2>().Add(item);
-                            foreach (var item in listEntity3) context.Set<T3>().Add(item);
-                            foreach (var item in listEntity4) context.Set<T4>().Add(item);
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                            await context.Set<T1>().AddRangeAsync(listEntity1);
+                            await context.Set<T2>().AddRangeAsync(listEntity2);
+                            await context.Set<T3>().AddRangeAsync(listEntity3);
+                            await context.Set<T4>().AddRangeAsync(listEntity4);
+                            hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1,listEntity2,listEntity3,listEntity4);
                         }
@@ -170,13 +169,13 @@ namespace EFHelper.RepositorySave
                             listEntity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(listEntity4);
                             listEntity5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T5>(listEntity5);
 
-                            foreach (var item in listEntity1) context.Set<T1>().Add(item);
-                            foreach (var item in listEntity2) context.Set<T2>().Add(item);
-                            foreach (var item in listEntity3) context.Set<T3>().Add(item);
-                            foreach (var item in listEntity4) context.Set<T4>().Add(item);
-                            foreach (var item in listEntity5) context.Set<T5>().Add(item);
+                            await context.Set<T1>().AddRangeAsync(listEntity1);
+                            await context.Set<T2>().AddRangeAsync(listEntity2);
+                            await context.Set<T3>().AddRangeAsync(listEntity3);
+                            await context.Set<T4>().AddRangeAsync(listEntity4);
+                            await context.Set<T5>().AddRangeAsync(listEntity5);
 
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                            hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1,listEntity2,listEntity3,listEntity4,listEntity5);
                         }

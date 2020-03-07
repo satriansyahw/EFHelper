@@ -39,10 +39,10 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             List<T1> listEntity1 = this.getListData<T1>(IDIdentity, idReferenceColName);
 
                             context.Set<T>().Attach(entity);
-                            context.Set<List<T1>>().Attach(listEntity1);
-
                             context.Set<T>().Remove(entity);
-                            context.Set<List<T1>>().Remove(listEntity1);
+                            context.Set<T1>().AttachRange(listEntity1);
+                            context.Set<T1>().RemoveRange(listEntity1);
+
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -76,12 +76,11 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             List<T2> listEntity2 = this.getListData<T2>(IDIdentity, idReferenceColName);
 
                             context.Set<T>().Attach(entity);
-                            context.Set<List<T1>>().Attach(listEntity1);
-                            context.Set<List<T2>>().Attach(listEntity2);
-
                             context.Set<T>().Remove(entity);
-                            context.Set<List<T1>>().Remove(listEntity1);
-                            context.Set<List<T2>>().Remove(listEntity2);
+                            context.Set<T1>().AttachRange(listEntity1);
+                            context.Set<T1>().RemoveRange(listEntity1);
+                            context.Set<T2>().AttachRange(listEntity2);
+                            context.Set<T2>().RemoveRange(listEntity2);
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -117,14 +116,14 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             List<T3> listEntity3 = this.getListData<T3>(IDIdentity, idReferenceColName);
 
                             context.Set<T>().Attach(entity);
-                            context.Set<List<T1>>().Attach(listEntity1);
-                            context.Set<List<T2>>().Attach(listEntity2);
-                            context.Set<List<T3>>().Attach(listEntity3);
-
                             context.Set<T>().Remove(entity);
-                            context.Set<List<T1>>().Remove(listEntity1);
-                            context.Set<List<T2>>().Remove(listEntity2);
-                            context.Set<List<T3>>().Remove(listEntity3);
+                            context.Set<T1>().AttachRange(listEntity1);
+                            context.Set<T1>().RemoveRange(listEntity1);
+                            context.Set<T2>().AttachRange(listEntity2);
+                            context.Set<T2>().RemoveRange(listEntity2);
+                            context.Set<T3>().AttachRange(listEntity3);
+                            context.Set<T3>().RemoveRange(listEntity3);
+
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -162,16 +161,16 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             List<T4> listEntity4 = this.getListData<T4>(IDIdentity, idReferenceColName);
 
                             context.Set<T>().Attach(entity);
-                            context.Set<List<T1>>().Attach(listEntity1);
-                            context.Set<List<T2>>().Attach(listEntity2);
-                            context.Set<List<T3>>().Attach(listEntity3);
-                            context.Set<List<T4>>().Attach(listEntity4);
-
                             context.Set<T>().Remove(entity);
-                            context.Set<List<T1>>().Remove(listEntity1);
-                            context.Set<List<T2>>().Remove(listEntity2);
-                            context.Set<List<T3>>().Remove(listEntity3);
-                            context.Set<List<T4>>().Remove(listEntity4);
+                            context.Set<T1>().AttachRange(listEntity1);
+                            context.Set<T1>().RemoveRange(listEntity1);
+                            context.Set<T2>().AttachRange(listEntity2);
+                            context.Set<T2>().RemoveRange(listEntity2);
+                            context.Set<T3>().AttachRange(listEntity3);
+                            context.Set<T3>().RemoveRange(listEntity3);
+                            context.Set<T4>().AttachRange(listEntity4);
+                            context.Set<T4>().RemoveRange(listEntity4);
+
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -211,18 +210,17 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             List<T5> listEntity5 = this.getListData<T5>(IDIdentity, idReferenceColName);
 
                             context.Set<T>().Attach(entity);
-                            context.Set<List<T1>>().Attach(listEntity1);
-                            context.Set<List<T2>>().Attach(listEntity2);
-                            context.Set<List<T3>>().Attach(listEntity3);
-                            context.Set<List<T4>>().Attach(listEntity4);
-                            context.Set<List<T5>>().Attach(listEntity5);
-
                             context.Set<T>().Remove(entity);
-                            context.Set<List<T1>>().Remove(listEntity1);
-                            context.Set<List<T2>>().Remove(listEntity2);
-                            context.Set<List<T3>>().Remove(listEntity3);
-                            context.Set<List<T4>>().Remove(listEntity4);
-                            context.Set<List<T5>>().Remove(listEntity5);
+                            context.Set<T1>().AttachRange(listEntity1);
+                            context.Set<T1>().RemoveRange(listEntity1);
+                            context.Set<T2>().AttachRange(listEntity2);
+                            context.Set<T2>().RemoveRange(listEntity2);
+                            context.Set<T3>().AttachRange(listEntity3);
+                            context.Set<T3>().RemoveRange(listEntity3);
+                            context.Set<T4>().AttachRange(listEntity4);
+                            context.Set<T4>().RemoveRange(listEntity4);
+                            context.Set<T5>().AttachRange(listEntity5);
+                            context.Set<T5>().RemoveRange(listEntity5);
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();

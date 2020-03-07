@@ -37,7 +37,9 @@ namespace EFHelper.RepositorySaveUpdateDelete
                         {
                             listEntity1 = this.SetEntityPreparation<T1>(listEntity1, enumSUDT1);
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity1) context.Set<T1>().Add(item); }
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<T1>().AddRange(listEntity1);
+
+
                             if (enumSUDT1 == EnumSaveUpdateDelete.Delete)
                             {
                                 var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayUpdateDate);
@@ -95,8 +97,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                             listEntity1 = this.SetEntityPreparation<T1>(listEntity1, enumSUDT1);
                             listEntity2 = this.SetEntityPreparation<T2>(listEntity2, enumSUDT2);
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity1) context.Set<T1>().Add(item); }
-                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity2) context.Set<T2>().Add(item); }
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<T1>().AddRange(listEntity1);
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) context.Set<T2>().AddRange(listEntity2);
 
 
                             if (enumSUDT1 == EnumSaveUpdateDelete.Delete)
@@ -184,9 +186,9 @@ namespace EFHelper.RepositorySaveUpdateDelete
                             listEntity2 = this.SetEntityPreparation<T2>(listEntity2, enumSUDT2);
                             listEntity3 = this.SetEntityPreparation<T3>(listEntity3, enumSUDT3);
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity1) context.Set<T1>().Add(item); }
-                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity2) context.Set<T2>().Add(item); }
-                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity3) context.Set<T3>().Add(item); }
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<T1>().AddRange(listEntity1);
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) context.Set<T2>().AddRange(listEntity2);
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) context.Set<T3>().AddRange(listEntity3);
 
                             if (enumSUDT1 == EnumSaveUpdateDelete.Delete)
                             {
@@ -305,10 +307,11 @@ namespace EFHelper.RepositorySaveUpdateDelete
                             listEntity3 = this.SetEntityPreparation<T3>(listEntity3, enumSUDT3);
                             listEntity4 = this.SetEntityPreparation<T4>(listEntity4, enumSUDT4);
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity1) context.Set<T1>().Add(item); }
-                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity2) context.Set<T2>().Add(item); }
-                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity3) context.Set<T3>().Add(item); }
-                            if (enumSUDT4 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity4) context.Set<T4>().Add(item); }
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<T1>().AddRange(listEntity1);
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) context.Set<T2>().AddRange(listEntity2);
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) context.Set<T3>().AddRange(listEntity3);
+                            if (enumSUDT4 == EnumSaveUpdateDelete.Save) context.Set<T4>().AddRange(listEntity4);
+
                             if (enumSUDT1 == EnumSaveUpdateDelete.Delete)
                             {
                                 var propUpdateDate = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayUpdateDate);
@@ -455,11 +458,11 @@ namespace EFHelper.RepositorySaveUpdateDelete
                             listEntity4 = this.SetEntityPreparation<T4>(listEntity4, enumSUDT4);
                             listEntity5 = this.SetEntityPreparation<T5>(listEntity5, enumSUDT5);
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity1) context.Set<T1>().Add(item); }
-                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity2) context.Set<T2>().Add(item); }
-                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity3) context.Set<T3>().Add(item); }
-                            if (enumSUDT4 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity4) context.Set<T4>().Add(item); }
-                            if (enumSUDT5 == EnumSaveUpdateDelete.Save) { foreach (var item in listEntity5) context.Set<T5>().Add(item); }
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<T1>().AddRange(listEntity1); 
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) context.Set<T2>().AddRange(listEntity2);
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) context.Set<T3>().AddRange(listEntity3);
+                            if (enumSUDT4 == EnumSaveUpdateDelete.Save) context.Set<T4>().AddRange(listEntity4);
+                            if (enumSUDT5 == EnumSaveUpdateDelete.Save) context.Set<T5>().AddRange(listEntity5);
 
                             if (enumSUDT1 == EnumSaveUpdateDelete.Delete)
                             {

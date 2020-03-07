@@ -62,7 +62,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             }
 
 
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                        hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity, listEntity1);
                         }
@@ -120,7 +120,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                                 context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
                                 context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
                             }
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                        hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity, listEntity1, listEntity2);
                         }
@@ -190,7 +190,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                                 context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
                             }
 
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                        hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity, listEntity1, listEntity2, listEntity3);
                         }
@@ -271,7 +271,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                                 context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
                             }
 
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                        hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity, listEntity1, listEntity2, listEntity3, listEntity4);
                         }
@@ -363,7 +363,7 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                                 context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
                             }
 
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                        hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity, listEntity1, listEntity2, listEntity3, listEntity4, listEntity5);
                         }

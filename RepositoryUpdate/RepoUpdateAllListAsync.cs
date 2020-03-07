@@ -39,7 +39,7 @@ namespace EFHelper.RepositoryUpdate
                             foreach (var item in listEntity) { context.Set<T>().Attach(item); context.Entry(item).State = EntityState.Modified; }
 
 
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                        hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity);
                         }
@@ -69,7 +69,7 @@ namespace EFHelper.RepositoryUpdate
                             foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Entry(item).State = EntityState.Modified; }
 
 
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                        hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2);
                         }
@@ -102,7 +102,7 @@ namespace EFHelper.RepositoryUpdate
                             foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Entry(item).State = EntityState.Modified; }
 
 
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                        hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3);
                         }
@@ -138,7 +138,7 @@ namespace EFHelper.RepositoryUpdate
                             foreach (var item in listEntity4) { context.Set<T4>().Attach(item); context.Entry(item).State = EntityState.Modified; }
 
 
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                        hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3, listEntity4);
                         }
@@ -177,7 +177,7 @@ namespace EFHelper.RepositoryUpdate
                             foreach (var item in listEntity5) { context.Set<T5>().Attach(item); context.Entry(item).State = EntityState.Modified; }
 
 
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                        hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3, listEntity4, listEntity5);
                         }

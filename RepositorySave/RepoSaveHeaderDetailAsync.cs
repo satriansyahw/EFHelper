@@ -32,7 +32,7 @@ namespace EFHelper.RepositorySave
             {
                 RepoSaveAsync repoSave = new RepoSaveAsync();
                 tblHeader = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T>(tblHeader);
-                var saveMainTable = await repoSave.SaveAsync<T>(tblHeader); // Safe first in main table
+                var saveMainTable = await repoSave.SaveAsync<T>(tblHeader).ConfigureAwait(false); // Safe first in main table
                 if (saveMainTable.IsSuccessConnection & saveMainTable.IsSuccessQuery)
                 {
                     var propIdColumnHeader = ColumnPropGet.GetInstance.GetIdentityColumnProps<T>();
@@ -53,7 +53,7 @@ namespace EFHelper.RepositorySave
                         {
 
                             RepoDeleteAsync repoDelete = new RepoDeleteAsync();
-                            await repoDelete.DeleteAsync<T>(tblHeader);
+                            await repoDelete.DeleteAsync<T>(tblHeader).ConfigureAwait(false);
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ErrorMessage.SaveHeaderDetailFailed);
                         }
                     }
@@ -75,7 +75,7 @@ namespace EFHelper.RepositorySave
             {
                 RepoSaveAsync repoSave = new RepoSaveAsync();
                 tblHeader = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T>(tblHeader);
-                var saveMainTable = await repoSave.SaveAsync<T>(tblHeader); // Safe first in main table
+                var saveMainTable = await repoSave.SaveAsync<T>(tblHeader).ConfigureAwait(false); // Safe first in main table
                 if (saveMainTable.IsSuccessConnection & saveMainTable.IsSuccessQuery)
                 {
                     var propIdColumnHeader = ColumnPropGet.GetInstance.GetIdentityColumnProps<T>();
@@ -88,7 +88,7 @@ namespace EFHelper.RepositorySave
                         tblDetail1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(tblDetail1);
                         tblDetail2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(tblDetail2);
                         
-                        var saveDetailTable = await repoSave.SaveAsync<T1, T2>(tblDetail1, tblDetail2);//save to T1
+                        var saveDetailTable = await repoSave.SaveAsync<T1, T2>(tblDetail1, tblDetail2).ConfigureAwait(false);//save to T1
                         if (resultDetail)
                         {
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, tblDetail1, tblDetail2);
@@ -97,7 +97,7 @@ namespace EFHelper.RepositorySave
                         {
 
                             RepoDeleteAsync repoDelete = new RepoDeleteAsync();
-                            await repoDelete.DeleteAsync<T>(tblHeader);
+                            await repoDelete.DeleteAsync<T>(tblHeader).ConfigureAwait(false);
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ErrorMessage.SaveHeaderDetailFailed);
                         }
                     }
@@ -121,7 +121,7 @@ namespace EFHelper.RepositorySave
             {
                 RepoSaveAsync repoSave = new RepoSaveAsync();
                 tblHeader = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T>(tblHeader);
-                var saveMainTable = await repoSave.SaveAsync<T>(tblHeader); // Safe first in main table
+                var saveMainTable = await repoSave.SaveAsync<T>(tblHeader).ConfigureAwait(false); // Safe first in main table
                 if (saveMainTable.IsSuccessConnection & saveMainTable.IsSuccessQuery)
                 {
                     var propIdColumnHeader = ColumnPropGet.GetInstance.GetIdentityColumnProps<T>();
@@ -136,7 +136,7 @@ namespace EFHelper.RepositorySave
                         tblDetail2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(tblDetail2);
                         tblDetail3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(tblDetail3);
                         
-                        var saveDetailTable = await repoSave.SaveAsync<T1, T2, T3>(tblDetail1, tblDetail2, tblDetail3);//save to T1
+                        var saveDetailTable = await repoSave.SaveAsync<T1, T2, T3>(tblDetail1, tblDetail2, tblDetail3).ConfigureAwait(false);//save to T1
                         if (resultDetail)
                         {
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, tblDetail1, tblDetail2, tblDetail3);
@@ -144,7 +144,7 @@ namespace EFHelper.RepositorySave
                         else
                         {
                             RepoDeleteAsync repoDelete = new RepoDeleteAsync();
-                            await repoDelete.DeleteAsync<T>(tblHeader);
+                            await repoDelete.DeleteAsync<T>(tblHeader).ConfigureAwait(false);
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ErrorMessage.SaveHeaderDetailFailed);
                         }
                     }
@@ -168,7 +168,7 @@ namespace EFHelper.RepositorySave
             {
                 RepoSaveAsync repoSave = new RepoSaveAsync();
                 tblHeader = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T>(tblHeader);
-                var saveMainTable = await repoSave.SaveAsync<T>(tblHeader); // Safe first in main table
+                var saveMainTable = await repoSave.SaveAsync<T>(tblHeader).ConfigureAwait(false); // Safe first in main table
                 if (saveMainTable.IsSuccessConnection & saveMainTable.IsSuccessQuery)
                 {
                     var propIdColumnHeader = ColumnPropGet.GetInstance.GetIdentityColumnProps<T>();
@@ -185,7 +185,7 @@ namespace EFHelper.RepositorySave
                         tblDetail3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(tblDetail3);
                         tblDetail4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(tblDetail4);
                         
-                        var saveDetailTable = await repoSave.SaveAsync<T1, T2, T3, T4>(tblDetail1, tblDetail2, tblDetail3, tblDetail4);//save to T1
+                        var saveDetailTable = await repoSave.SaveAsync<T1, T2, T3, T4>(tblDetail1, tblDetail2, tblDetail3, tblDetail4).ConfigureAwait(false);//save to T1
                         if (saveDetailTable.IsSuccessConnection & saveDetailTable.IsSuccessQuery)
                         {
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, tblDetail1, tblDetail2, tblDetail3, tblDetail4);
@@ -193,7 +193,7 @@ namespace EFHelper.RepositorySave
                         else
                         {
                             RepoDeleteAsync repoDelete = new RepoDeleteAsync();
-                            await repoDelete.DeleteAsync<T>(tblHeader);
+                            await repoDelete.DeleteAsync<T>(tblHeader).ConfigureAwait(false);
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ErrorMessage.SaveHeaderDetailFailed);
 
                         }
@@ -220,7 +220,7 @@ namespace EFHelper.RepositorySave
             {
                 RepoSaveAsync repoSave = new RepoSaveAsync();
                 tblHeader = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T>(tblHeader);
-                var saveMainTable = await repoSave.SaveAsync<T>(tblHeader); // Safe first in main table
+                var saveMainTable = await repoSave.SaveAsync<T>(tblHeader).ConfigureAwait(false); // Safe first in main table
                 if (saveMainTable.IsSuccessConnection & saveMainTable.IsSuccessQuery)
                 {
                     var propIdColumnHeader = ColumnPropGet.GetInstance.GetIdentityColumnProps<T>();
@@ -239,7 +239,7 @@ namespace EFHelper.RepositorySave
                         tblDetail4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(tblDetail4);
                         tblDetail5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T5>(tblDetail5);
 
-                        var saveDetailTable = await repoSave.SaveAsync<T1, T2, T3, T4, T5>(tblDetail1, tblDetail2, tblDetail3, tblDetail4, tblDetail5);//save to T1
+                        var saveDetailTable = await repoSave.SaveAsync<T1, T2, T3, T4, T5>(tblDetail1, tblDetail2, tblDetail3, tblDetail4, tblDetail5).ConfigureAwait(false);//save to T1
                         if (resultDetail)
                         {
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, 1, tblDetail1, tblDetail2, tblDetail3, tblDetail4, tblDetail5);
@@ -247,7 +247,7 @@ namespace EFHelper.RepositorySave
                         else
                         {
                             RepoDeleteAsync repoDelete = new RepoDeleteAsync();
-                            await repoDelete.DeleteAsync<T>(tblHeader);
+                            await repoDelete.DeleteAsync<T>(tblHeader).ConfigureAwait(false);
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ErrorMessage.SaveHeaderDetailFailed);
                         }
                     }

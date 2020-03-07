@@ -33,7 +33,7 @@ namespace EFHelper.RepositorySave
                         {
                             
                             listEntity = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T>(listEntity);
-                            foreach (var item in listEntity) context.Set<T>().Add(item);
+                            context.Set<T>().AddRange(listEntity);
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn,true, hasil, listEntity);
@@ -62,8 +62,8 @@ namespace EFHelper.RepositorySave
                             
                             listEntity1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(listEntity1);
                             listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntity2);
-                            foreach (var item in listEntity1) context.Set<T1>().Add(item);
-                            foreach (var item in listEntity2) context.Set<T2>().Add(item);
+                            context.Set<T1>().AddRange(listEntity1);
+                            context.Set<T2>().AddRange(listEntity2);
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -97,9 +97,9 @@ namespace EFHelper.RepositorySave
                             listEntity2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntity2);
                             listEntity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(listEntity3);
 
-                            foreach (var item in listEntity1) context.Set<T1>().Add(item);
-                            foreach (var item in listEntity2) context.Set<T2>().Add(item);
-                            foreach (var item in listEntity3) context.Set<T3>().Add(item);
+                            context.Set<T1>().AddRange(listEntity1);
+                            context.Set<T2>().AddRange(listEntity2);
+                            context.Set<T3>().AddRange(listEntity3);
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -134,10 +134,10 @@ namespace EFHelper.RepositorySave
                             listEntity3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(listEntity3);
                             listEntity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(listEntity4);
 
-                            foreach (var item in listEntity1) context.Set<T1>().Add(item);
-                            foreach (var item in listEntity2) context.Set<T2>().Add(item);
-                            foreach (var item in listEntity3) context.Set<T3>().Add(item);
-                            foreach (var item in listEntity4) context.Set<T4>().Add(item);
+                            context.Set<T1>().AddRange(listEntity1);
+                            context.Set<T2>().AddRange(listEntity2);
+                            context.Set<T3>().AddRange(listEntity3);
+                            context.Set<T4>().AddRange(listEntity4);
 
 
                             hasil = context.SaveChanges();
@@ -175,11 +175,11 @@ namespace EFHelper.RepositorySave
                             listEntity4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(listEntity4);
                             listEntity5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T5>(listEntity5);
 
-                            foreach (var item in listEntity1) context.Set<T1>().Add(item);
-                            foreach (var item in listEntity2) context.Set<T2>().Add(item);
-                            foreach (var item in listEntity3) context.Set<T3>().Add(item);
-                            foreach (var item in listEntity4) context.Set<T4>().Add(item);
-                            foreach (var item in listEntity5) context.Set<T5>().Add(item);
+                            context.Set<T1>().AddRange(listEntity1);
+                            context.Set<T2>().AddRange(listEntity2);
+                            context.Set<T3>().AddRange(listEntity3);
+                            context.Set<T4>().AddRange(listEntity4);
+                            context.Set<T5>().AddRange(listEntity5);
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();

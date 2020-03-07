@@ -67,7 +67,7 @@ namespace EFHelper.EntityPreparation
                 if (isMultiple)
                 {
                     RepoListAsync repoList = new RepoListAsync();
-                    var cekList = await repoList.ListDataAsync<T>(lsfMultiplePK);
+                    var cekList = await repoList.ListDataAsync<T>(lsfMultiplePK).ConfigureAwait(false);
                     if (cekList.IsSuccessConnection & cekList.IsSuccessQuery)
                     {
                         if (cekList.ReturnValue.ReturnValue != null)
@@ -144,7 +144,7 @@ namespace EFHelper.EntityPreparation
                 if (isMultiple)
                 {
                     RepoListAsync repoList = new RepoListAsync();
-                    var cekList = await repoList.ListDataAsync<T>(lsfMultiplePK);
+                    var cekList = await repoList.ListDataAsync<T>(lsfMultiplePK).ConfigureAwait(false);
                     if (cekList.IsSuccessConnection & cekList.IsSuccessQuery)
                     {
                         if (cekList.ReturnValue.ReturnValue != null)

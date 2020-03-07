@@ -48,7 +48,7 @@ namespace EFHelper.RepositoryUpdate
                                         context.Entry(entity).Property(property.Name).IsModified = true;
                                     }
                                 }
-                                await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                            hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                                 contextTrans.Commit();
                                 eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity);
                             }
@@ -106,7 +106,7 @@ namespace EFHelper.RepositoryUpdate
                                         context.Entry(entity2).Property(property.Name).IsModified = true;
                                     }
                                 }
-                                await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                            hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                                 contextTrans.Commit();
                                 eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2);
                             }
@@ -180,7 +180,7 @@ namespace EFHelper.RepositoryUpdate
                                         context.Entry(entity3).Property(property.Name).IsModified = true;
                                     }
                                 }
-                                await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                            hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                                 contextTrans.Commit();
                                 eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3);
                             }
@@ -268,7 +268,7 @@ namespace EFHelper.RepositoryUpdate
                                         context.Entry(entity4).Property(property.Name).IsModified = true;
                                     }
                                 }
-                                await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                            hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                                 contextTrans.Commit();
                                 eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4);
                             }
@@ -371,7 +371,7 @@ namespace EFHelper.RepositoryUpdate
                                         context.Entry(entity5).Property(property.Name).IsModified = true;
                                     }
                                 }
-                                await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                            hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                                 contextTrans.Commit();
                                 eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4, entity5);
                             }

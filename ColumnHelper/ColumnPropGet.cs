@@ -39,7 +39,7 @@ namespace EFHelper.ColumnHelper
                 bool isNull = ColumnProperties.GetInstance.IsNullableField(myFieldType);
                 if(property.CanWrite)
                 {
-                    property.SetValue(entity, TypeBantuan.GetInstance.DictTypes[myFieldType].GetActuallyNullValue(isNull))
+                    property.SetValue(entity, TypeBantuan.GetInstance.DictTypes[myFieldType].GetActuallyNullValue(isNull));
                 }
             }
             return entity;

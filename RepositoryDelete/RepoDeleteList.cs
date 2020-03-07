@@ -30,7 +30,7 @@ namespace EFHelper.RepositoryDelete
                     {
                         try
                         {
-                            foreach (var item in listEntity) { context.Set<T>().Attach(item); context.Set<T>().Remove(item); }
+                            context.Set<T>().AttachRange(listEntity); context.Set<T>().RemoveRange(listEntity);
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity);
@@ -55,9 +55,8 @@ namespace EFHelper.RepositoryDelete
                     {
                         try
                         {
-                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
-                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
-
+                            context.Set<T1>().AttachRange(listEntity1); context.Set<T1>().RemoveRange(listEntity1);
+                            context.Set<T2>().AttachRange(listEntity2); context.Set<T2>().RemoveRange(listEntity2);
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2);
@@ -82,9 +81,9 @@ namespace EFHelper.RepositoryDelete
                     {
                         try
                         {
-                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
-                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
-                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); }
+                            context.Set<T1>().AttachRange(listEntity1); context.Set<T1>().RemoveRange(listEntity1);
+                            context.Set<T2>().AttachRange(listEntity2); context.Set<T2>().RemoveRange(listEntity2);
+                            context.Set<T3>().AttachRange(listEntity3); context.Set<T3>().RemoveRange(listEntity3);
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -111,10 +110,10 @@ namespace EFHelper.RepositoryDelete
                     {
                         try
                         {
-                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
-                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
-                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); }
-                            foreach (var item in listEntity4) { context.Set<T4>().Attach(item); context.Set<T4>().Remove(item); }
+                            context.Set<T1>().AttachRange(listEntity1); context.Set<T1>().RemoveRange(listEntity1);
+                            context.Set<T2>().AttachRange(listEntity2); context.Set<T2>().RemoveRange(listEntity2);
+                            context.Set<T3>().AttachRange(listEntity3); context.Set<T3>().RemoveRange(listEntity3);
+                            context.Set<T4>().AttachRange(listEntity4); context.Set<T4>().RemoveRange(listEntity4);
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -142,11 +141,11 @@ namespace EFHelper.RepositoryDelete
                     {
                         try
                         {
-                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
-                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
-                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); }
-                            foreach (var item in listEntity4) { context.Set<T4>().Attach(item); context.Set<T4>().Remove(item); }
-                            foreach (var item in listEntity5) { context.Set<T5>().Attach(item); context.Set<T5>().Remove(item); }
+                            context.Set<T1>().AttachRange(listEntity1); context.Set<T1>().RemoveRange(listEntity1);
+                            context.Set<T2>().AttachRange(listEntity2); context.Set<T2>().RemoveRange(listEntity2);
+                            context.Set<T3>().AttachRange(listEntity3); context.Set<T3>().RemoveRange(listEntity3);
+                            context.Set<T4>().AttachRange(listEntity4); context.Set<T4>().RemoveRange(listEntity4);
+                            context.Set<T5>().AttachRange(listEntity5); context.Set<T5>().RemoveRange(listEntity5);
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -169,20 +168,11 @@ namespace EFHelper.RepositoryDelete
                     {
                         try
                         {
-                            List<T> listEntity = new List<T>();
-                            foreach (var IDIdentity in listIDIdentity)
-                            {
-                                T entity = Activator.CreateInstance<T>();
-                                if (entity != null)
-                                {
-                                    ColumnPropSet.GetInstance.SetColValueIdentityColumn<T>(entity, IDIdentity);
-                                    listEntity.Add(entity);
-                                }
-                            }
-                            foreach (var item in listEntity) { context.Set<T>().Attach(item); context.Set<T>().Remove(item); }
+                            List<T> listEntity1 = ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T>(listIDIdentity);
+                            foreach (var item in listEntity1) { context.Set<T>().Attach(item); context.Set<T>().Remove(item); }
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
-                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity);
+                            eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1);
                         }
                         catch (Exception ex) { eFReturn = eFReturn.SetEFReturnValue(eFReturn, false, 0, ex.Message); contextTrans.Rollback(); }
                     }
@@ -207,8 +197,9 @@ namespace EFHelper.RepositoryDelete
                             List<T1> listEntity1 =  ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T1>(listIDIdentity1);
                             List<T2> listEntity2 = ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T2>(listIDIdentity2);
 
-                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
-                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
+                            context.Set<T1>().AttachRange(listEntity1); context.Set<T1>().RemoveRange(listEntity1);
+                            context.Set<T2>().AttachRange(listEntity2); context.Set<T2>().RemoveRange(listEntity2);
+
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2);
@@ -238,9 +229,10 @@ namespace EFHelper.RepositoryDelete
                             List<T2> listEntity2 = ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T2>(listIDIdentity2);
                             List<T3> listEntity3 = ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T3>(listIDIdentity3);
 
-                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
-                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
-                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); }
+                            context.Set<T1>().AttachRange(listEntity1); context.Set<T1>().RemoveRange(listEntity1);
+                            context.Set<T2>().AttachRange(listEntity2); context.Set<T2>().RemoveRange(listEntity2);
+                            context.Set<T3>().AttachRange(listEntity3); context.Set<T3>().RemoveRange(listEntity3);
+
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listEntity1, listEntity2, listEntity3);
@@ -272,10 +264,11 @@ namespace EFHelper.RepositoryDelete
                             List<T3> listEntity3 = ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T3>(listIDIdentity3);
                             List<T4> listEntity4 = ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T4>(listIDIdentity4);
 
-                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
-                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
-                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); }
-                            foreach (var item in listEntity4) { context.Set<T4>().Attach(item); context.Set<T4>().Remove(item); }
+                            context.Set<T1>().AttachRange(listEntity1); context.Set<T1>().RemoveRange(listEntity1);
+                            context.Set<T2>().AttachRange(listEntity2); context.Set<T2>().RemoveRange(listEntity2);
+                            context.Set<T3>().AttachRange(listEntity3); context.Set<T3>().RemoveRange(listEntity3);
+                            context.Set<T4>().AttachRange(listEntity4); context.Set<T4>().RemoveRange(listEntity4);
+
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -310,11 +303,11 @@ namespace EFHelper.RepositoryDelete
                             List<T4> listEntity4 = ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T4>(listIDIdentity4);
                             List<T5> listEntity5 = ColumnPropGet.GetInstance.GetInstanceWithIDColumnList<T5>(listIDIdentity5);
 
-                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
-                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
-                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); }
-                            foreach (var item in listEntity4) { context.Set<T4>().Attach(item); context.Set<T4>().Remove(item); }
-                            foreach (var item in listEntity5) { context.Set<T5>().Attach(item); context.Set<T5>().Remove(item); }
+                            context.Set<T1>().AttachRange(listEntity1); context.Set<T1>().RemoveRange(listEntity1);
+                            context.Set<T2>().AttachRange(listEntity2); context.Set<T2>().RemoveRange(listEntity2);
+                            context.Set<T3>().AttachRange(listEntity3); context.Set<T3>().RemoveRange(listEntity3);
+                            context.Set<T4>().AttachRange(listEntity4); context.Set<T4>().RemoveRange(listEntity4);
+                            context.Set<T5>().AttachRange(listEntity5); context.Set<T5>().RemoveRange(listEntity5);
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();

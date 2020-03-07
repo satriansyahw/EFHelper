@@ -40,9 +40,12 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
 
                             List<T1> listEntity1 = this.GetListData<T1>(listIDIdentity, idReferenceColName);
 
-                            context.Set<T>().Attach(entity); context.Set<T>().Remove(entity);
-                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                            context.Set<T>().Attach(entity);
+                            context.Set<T>().Remove(entity);
+                            context.Set<T1>().AttachRange(listEntity1);
+                            context.Set<T1>().RemoveRange(listEntity1);
+
+                            hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity, listEntity1);
                         }
@@ -72,12 +75,14 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             ColumnPropSet.GetInstance.SetColValueIdentityColumn<T>(entity, listIDIdentity);
                             List<T1> listEntity1 = this.GetListData<T1>(listIDIdentity, idReferenceColName);
                             List<T2> listEntity2 = this.GetListData<T2>(listIDIdentity, idReferenceColName);
+                            context.Set<T>().Attach(entity);
+                            context.Set<T>().Remove(entity);
+                            context.Set<T1>().AttachRange(listEntity1);
+                            context.Set<T1>().RemoveRange(listEntity1);
+                            context.Set<T2>().AttachRange(listEntity2);
+                            context.Set<T2>().RemoveRange(listEntity2);
 
-                            context.Set<T>().Attach(entity); context.Set<T>().Remove(entity);
-                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
-                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
-
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                            hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity, listEntity1, listEntity2);
                         }
@@ -110,12 +115,17 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             List<T2> listEntity2 = this.GetListData<T2>(listIDIdentity, idReferenceColName);
                             List<T3> listEntity3 = this.GetListData<T3>(listIDIdentity, idReferenceColName);
 
-                            context.Set<T>().Attach(entity); context.Set<T>().Remove(entity);
-                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
-                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
-                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); }
+                            context.Set<T>().Attach(entity);
+                            context.Set<T>().Remove(entity);
+                            context.Set<T1>().AttachRange(listEntity1);
+                            context.Set<T1>().RemoveRange(listEntity1);
+                            context.Set<T2>().AttachRange(listEntity2);
+                            context.Set<T2>().RemoveRange(listEntity2);
+                            context.Set<T3>().AttachRange(listEntity3);
+                            context.Set<T3>().RemoveRange(listEntity3);
 
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+
+                            hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity, listEntity1, listEntity2, listEntity3);
                         }
@@ -150,13 +160,19 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             List<T3> listEntity3 = this.GetListData<T3>(listIDIdentity, idReferenceColName);
                             List<T4> listEntity4 = this.GetListData<T4>(listIDIdentity, idReferenceColName);
 
-                            context.Set<T>().Attach(entity); context.Set<T>().Remove(entity);
-                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
-                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
-                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); }
-                            foreach (var item in listEntity4) { context.Set<T4>().Attach(item); context.Set<T4>().Remove(item); }
+                            context.Set<T>().Attach(entity);
+                            context.Set<T>().Remove(entity);
+                            context.Set<T1>().AttachRange(listEntity1);
+                            context.Set<T1>().RemoveRange(listEntity1);
+                            context.Set<T2>().AttachRange(listEntity2);
+                            context.Set<T2>().RemoveRange(listEntity2);
+                            context.Set<T3>().AttachRange(listEntity3);
+                            context.Set<T3>().RemoveRange(listEntity3);
+                            context.Set<T4>().AttachRange(listEntity4);
+                            context.Set<T4>().RemoveRange(listEntity4);
 
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+
+                            hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity, listEntity1, listEntity2, listEntity3, listEntity4);
                         }
@@ -193,14 +209,21 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             List<T4> listEntity4 = this.GetListData<T4>(listIDIdentity, idReferenceColName);
                             List<T5> listEntity5 = this.GetListData<T5>(listIDIdentity, idReferenceColName);
 
-                            context.Set<T>().Attach(entity); context.Set<T>().Remove(entity);
-                            foreach (var item in listEntity1) { context.Set<T1>().Attach(item); context.Set<T1>().Remove(item); }
-                            foreach (var item in listEntity2) { context.Set<T2>().Attach(item); context.Set<T2>().Remove(item); }
-                            foreach (var item in listEntity3) { context.Set<T3>().Attach(item); context.Set<T3>().Remove(item); }
-                            foreach (var item in listEntity4) { context.Set<T4>().Attach(item); context.Set<T4>().Remove(item); }
-                            foreach (var item in listEntity5) { context.Set<T5>().Attach(item); context.Set<T5>().Remove(item); }
+                            context.Set<T>().Attach(entity);
+                            context.Set<T>().Remove(entity);
+                            context.Set<T1>().AttachRange(listEntity1);
+                            context.Set<T1>().RemoveRange(listEntity1);
+                            context.Set<T2>().AttachRange(listEntity2);
+                            context.Set<T2>().RemoveRange(listEntity2);
+                            context.Set<T3>().AttachRange(listEntity3);
+                            context.Set<T3>().RemoveRange(listEntity3);
+                            context.Set<T4>().AttachRange(listEntity4);
+                            context.Set<T4>().RemoveRange(listEntity4);
+                            context.Set<T5>().AttachRange(listEntity5);
+                            context.Set<T5>().RemoveRange(listEntity5);
 
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+
+                            hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity, listEntity1, listEntity2, listEntity3, listEntity4, listEntity5);
                         }

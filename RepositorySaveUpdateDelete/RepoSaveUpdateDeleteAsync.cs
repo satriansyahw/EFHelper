@@ -39,7 +39,7 @@ namespace EFHelper.RepositorySaveUpdateDelete
                             entity1 = this.SetEntityPreparation<T1>(entity1, enumSUDT1);
                             List<PropertyInfo> colNotNullT1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<T1>().Add(entity1);
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) await context.Set<T1>().AddAsync(entity1);
 
                             if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { context.Set<T1>().Attach(entity1); context.Set<T1>().Remove(entity1); }
 
@@ -56,7 +56,7 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 }
                             }
  
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                        hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1);
                         }
@@ -84,8 +84,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                             List<PropertyInfo> colNotNullT1 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T1>(entity1);
                             List<PropertyInfo> colNotNullT2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<T1>().Add(entity1);
-                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) context.Set<T2>().Add(entity2);
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) await context.Set<T1>().AddAsync(entity1);
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) await context.Set<T2>().AddAsync(entity2);
 
                             if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { context.Set<T1>().Attach(entity1); context.Set<T1>().Remove(entity1); }
                             if (enumSUDT2 == EnumSaveUpdateDelete.Delete) { context.Set<T2>().Attach(entity2); context.Set<T2>().Remove(entity2); }
@@ -115,7 +115,7 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 }
                             }
  
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                        hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1);
                         }
@@ -146,9 +146,9 @@ namespace EFHelper.RepositorySaveUpdateDelete
                             List<PropertyInfo> colNotNullT2 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T2>(entity2);
                             List<PropertyInfo> colNotNullT3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<T1>().Add(entity1);
-                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) context.Set<T2>().Add(entity2);
-                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) context.Set<T3>().Add(entity3);
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) await context.Set<T1>().AddAsync(entity1);
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) await context.Set<T2>().AddAsync(entity2);
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) await context.Set<T3>().AddAsync(entity3);
 
                             if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { context.Set<T1>().Attach(entity1); context.Set<T1>().Remove(entity1); }
                             if (enumSUDT2 == EnumSaveUpdateDelete.Delete) { context.Set<T2>().Attach(entity2); context.Set<T2>().Remove(entity2); }
@@ -190,7 +190,7 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                     }
                                 }
                             }
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                        hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3);
                         }
@@ -225,10 +225,10 @@ namespace EFHelper.RepositorySaveUpdateDelete
                             List<PropertyInfo> colNotNullT3 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T3>(entity3);
                             List<PropertyInfo> colNotNullT4 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity4);
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<T1>().Add(entity1);
-                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) context.Set<T2>().Add(entity2);
-                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) context.Set<T3>().Add(entity3);
-                            if (enumSUDT4 == EnumSaveUpdateDelete.Save) context.Set<T4>().Add(entity4);
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) await context.Set<T1>().AddAsync(entity1);
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) await context.Set<T2>().AddAsync(entity2);
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) await context.Set<T3>().AddAsync(entity3);
+                            if (enumSUDT4 == EnumSaveUpdateDelete.Save) await context.Set<T4>().AddAsync(entity4);
 
                             if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { context.Set<T1>().Attach(entity1); context.Set<T1>().Remove(entity1); }
                             if (enumSUDT2 == EnumSaveUpdateDelete.Delete) { context.Set<T2>().Attach(entity2); context.Set<T2>().Remove(entity2); }
@@ -284,7 +284,7 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 }
                             }
    
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+                                                        hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1, entity2, entity3, entity4);
                         }
@@ -322,11 +322,11 @@ namespace EFHelper.RepositorySaveUpdateDelete
                             List<PropertyInfo> colNotNullT4 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T4>(entity4);
                             List<PropertyInfo> colNotNullT5 = ColumnPropGet.GetInstance.GetPropertyColNotNull<T5>(entity5);
 
-                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) context.Set<T1>().Add(entity1);
-                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) context.Set<T2>().Add(entity2);
-                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) context.Set<T3>().Add(entity3);
-                            if (enumSUDT4 == EnumSaveUpdateDelete.Save) context.Set<T4>().Add(entity4);
-                            if (enumSUDT5 == EnumSaveUpdateDelete.Save) context.Set<T5>().Add(entity5);
+                            if (enumSUDT1 == EnumSaveUpdateDelete.Save) await context.Set<T1>().AddAsync(entity1);
+                            if (enumSUDT2 == EnumSaveUpdateDelete.Save) await context.Set<T2>().AddAsync(entity2);
+                            if (enumSUDT3 == EnumSaveUpdateDelete.Save) await context.Set<T3>().AddAsync(entity3);
+                            if (enumSUDT4 == EnumSaveUpdateDelete.Save) await context.Set<T4>().AddAsync(entity4);
+                            if (enumSUDT5 == EnumSaveUpdateDelete.Save) await context.Set<T5>().AddAsync(entity5);
 
                             if (enumSUDT1 == EnumSaveUpdateDelete.Delete) { context.Set<T1>().Attach(entity1); context.Set<T1>().Remove(entity1); }
                             if (enumSUDT2 == EnumSaveUpdateDelete.Delete) { context.Set<T2>().Attach(entity2); context.Set<T2>().Remove(entity2); }
@@ -395,7 +395,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 }
                             }
 
-                            await Task.Run(()=> {hasil = context.SaveChanges();});
+
+                            hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity1,entity2,entity3,entity4,entity5);
                         }

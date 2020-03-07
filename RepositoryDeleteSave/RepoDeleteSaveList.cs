@@ -44,8 +44,8 @@ namespace EFHelper.RepositoryDeleteSave
                             //for delete will be delete physicallay
 
                             listEntitySave1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(listEntitySave1);
-                            foreach (var item in listDelete) { context.Set<TDelete>().Attach(item); context.Set<TDelete>().Remove(item); }
-                            foreach (var item in listEntitySave1) { context.Set<T1>().Add(item); }
+                            context.Set<TDelete>().AttachRange(listDelete); context.Set<TDelete>().RemoveRange(listDelete);
+                            context.Set<T1>().AddRange(listEntitySave1);
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -82,10 +82,9 @@ namespace EFHelper.RepositoryDeleteSave
                             listEntitySave1 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T1>(listEntitySave1);
                             listEntitySave2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntitySave2);
 
-                            foreach (var item in listDelete) { context.Set<TDelete>().Attach(item); context.Set<TDelete>().Remove(item); }
-                            foreach (var item in listEntitySave1) { context.Set<T1>().Add(item); }
-                            foreach (var item in listEntitySave2) { context.Set<T2>().Add(item); }
- 
+                            context.Set<TDelete>().AttachRange(listDelete); context.Set<TDelete>().RemoveRange(listDelete);
+                            context.Set<T1>().AddRange(listEntitySave1);
+                            context.Set<T2>().AddRange(listEntitySave2);
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, listDelete, listEntitySave1, listEntitySave2);
@@ -123,10 +122,10 @@ namespace EFHelper.RepositoryDeleteSave
                             listEntitySave2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntitySave2);
                             listEntitySave3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(listEntitySave3);
 
-                            foreach (var item in listDelete) { context.Set<TDelete>().Attach(item); context.Set<TDelete>().Remove(item); }
-                            foreach (var item in listEntitySave1) { context.Set<T1>().Add(item); }
-                            foreach (var item in listEntitySave2) { context.Set<T2>().Add(item); }
-                            foreach (var item in listEntitySave3) { context.Set<T3>().Add(item); }
+                            context.Set<TDelete>().AttachRange(listDelete); context.Set<TDelete>().RemoveRange(listDelete);
+                            context.Set<T1>().AddRange(listEntitySave1);
+                            context.Set<T2>().AddRange(listEntitySave2);
+                            context.Set<T3>().AddRange(listEntitySave3);
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -167,11 +166,11 @@ namespace EFHelper.RepositoryDeleteSave
                             listEntitySave3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(listEntitySave3);
                             listEntitySave4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(listEntitySave4);
 
-                            foreach (var item in listDelete) { context.Set<TDelete>().Attach(item); context.Set<TDelete>().Remove(item); }
-                            foreach (var item in listEntitySave1) { context.Set<T1>().Add(item); }
-                            foreach (var item in listEntitySave2) { context.Set<T2>().Add(item); }
-                            foreach (var item in listEntitySave3) { context.Set<T3>().Add(item); }
-                            foreach (var item in listEntitySave4) { context.Set<T4>().Add(item); }
+                            context.Set<TDelete>().AttachRange(listDelete); context.Set<TDelete>().RemoveRange(listDelete);
+                            context.Set<T1>().AddRange(listEntitySave1);
+                            context.Set<T2>().AddRange(listEntitySave2);
+                            context.Set<T3>().AddRange(listEntitySave3);
+                            context.Set<T4>().AddRange(listEntitySave4);
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -212,14 +211,14 @@ namespace EFHelper.RepositoryDeleteSave
                             listEntitySave2 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T2>(listEntitySave2);
                             listEntitySave3 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T3>(listEntitySave3);
                             listEntitySave4 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T4>(listEntitySave4);
-                            listEntitySave5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T5>(listEntitySave5);                                     
+                            listEntitySave5 = EntityPreparationBantuan.GetInstance.DictEntityPreparation["save"].SetPreparationEntity<T5>(listEntitySave5);
 
-                            foreach (var item in listDelete) { context.Set<TDelete>().Attach(item); context.Set<TDelete>().Remove(item); }
-                            foreach (var item in listEntitySave1) { context.Set<T1>().Add(item); }
-                            foreach (var item in listEntitySave2) { context.Set<T2>().Add(item); }
-                            foreach (var item in listEntitySave3) { context.Set<T3>().Add(item); }
-                            foreach (var item in listEntitySave4) { context.Set<T4>().Add(item); }
-                            foreach (var item in listEntitySave5) { context.Set<T5>().Add(item); }
+                            context.Set<TDelete>().AttachRange(listDelete); context.Set<TDelete>().RemoveRange(listDelete);
+                            context.Set<T1>().AddRange(listEntitySave1);
+                            context.Set<T2>().AddRange(listEntitySave2);
+                            context.Set<T3>().AddRange(listEntitySave3);
+                            context.Set<T4>().AddRange(listEntitySave4);
+                            context.Set<T5>().AddRange(listEntitySave5);
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();

@@ -56,7 +56,7 @@ namespace EFHelper.RepositoryList
             }
             else
             {
-                eFReturn = await repoEmpInfoDBCommand.ListDataWithEmpInfoAsync<T, TNoToName>(listTableConvert, listColumnConvert,searchFieldList);
+                eFReturn = await repoEmpInfoDBCommand.ListDataWithEmpInfoAsync<T, TNoToName>(listTableConvert, listColumnConvert,searchFieldList).ConfigureAwait(false);
             }
             return eFReturn;
         }
@@ -77,7 +77,7 @@ namespace EFHelper.RepositoryList
             }
             else
             {
-                eFReturn = await repoEmpInfoDBCommand.ListDataWithEmpInfoAsync<T, TNoToName>(listTableConvert, listColumnConvert, searchFieldList,sortColumn,isAscending,topTake);
+                eFReturn = await repoEmpInfoDBCommand.ListDataWithEmpInfoAsync<T, TNoToName>(listTableConvert, listColumnConvert, searchFieldList,sortColumn,isAscending,topTake).ConfigureAwait(false);
             }
             return eFReturn;
         }
@@ -98,7 +98,7 @@ namespace EFHelper.RepositoryList
             }
             else
             {
-                eFReturn = await repoEmpInfoDBCommand.ListDataWithEmpInfoAsync<TResult, TNoToName>(listTableConvert, listColumnConvert, searchFieldList, sortColumn, isAscending, topTake);
+                eFReturn = await repoEmpInfoDBCommand.ListDataWithEmpInfoAsync<TResult, TNoToName>(listTableConvert, listColumnConvert, searchFieldList, sortColumn, isAscending, topTake).ConfigureAwait(false);
             }
             return eFReturn;
         }

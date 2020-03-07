@@ -91,7 +91,7 @@ namespace EFHelper.TypeHelper
             if (value == null) return true; 
             int nullDatetime = 1;
             DateTime dateTime = (DateTime)value;
-            if (dateTime.Date.Year != nullDatetime)
+            if (dateTime.Date.Year == nullDatetime)
                 return true;
             return false;
         }
