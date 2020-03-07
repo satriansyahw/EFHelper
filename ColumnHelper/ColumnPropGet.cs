@@ -328,7 +328,7 @@ namespace EFHelper.ColumnHelper
                 {
                     if (!string.IsNullOrEmpty(item.Name) & !string.IsNullOrEmpty(item.Operator) & item.Value != null)
                     {
-                        queryOperator = item.Name.ToLower().Trim();
+                        queryOperator = item.Operator.ToLower().Trim();
                         if (queryOperator == "like")
                         {
                             result = true;
