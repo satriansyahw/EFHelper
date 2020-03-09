@@ -68,6 +68,8 @@ namespace EFHelper.Filtering
             object colValue = null;
             bool isNull = false;
             SearchFieldList = SearchFieldList.Distinct().ToList();//clearing SearchFieldList
+            //SearchFieldList.Where(a => a.Operator.Trim().ToLower() == "like").ToList().ForEach(a => a.Value = "%" + a.Value.ToString() + "%");
+            SearchFieldList.Where(a => a.Operator.Trim().ToLower() == "like").Select(a => a.Value = "%" + a.Value.ToString() + "%");
             foreach (SearchField itemSearch in SearchFieldList)
             {
                 e1 = null;
