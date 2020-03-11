@@ -10,7 +10,7 @@
 ## Note
 	1. Problem with boolean datatype , cannot determine is it null or not?
 	2. Please convert bool data type tp char(1) data type, the value between 0,1. 0 means false 1 means true
-
+	3. Solved, booleadn can be used again... but you must add nulable.. so become nullable<boolean>
 ## Project structures in Database context
    1. The folder must Folder => File, Folder refers to schema name, File refers to table name
       ex: user/mtEmployee.cs, user is the schema, mtEmployee.cs is table name

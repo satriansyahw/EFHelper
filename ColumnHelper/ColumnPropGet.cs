@@ -36,7 +36,7 @@ namespace EFHelper.ColumnHelper
                 string fullName = property.PropertyType.FullName.ToLower().Split(',')[0].ToString();
                 string myFieldType = property.PropertyType.Name.ToLower();
                 myFieldType = ColumnProperties.GetInstance.IsNullableField(myFieldType) ? ColumnProperties.GetInstance.ReplaceFieldSystemNullType(fullName) : myFieldType;
-                bool isNull = ColumnProperties.GetInstance.IsNullableField(myFieldType);
+                bool isNull = ColumnProperties.GetInstance.IsNullableField(fullName);
                 if(property.CanWrite)
                 {
                     property.SetValue(entity, TypeBantuan.GetInstance.DictTypes[myFieldType].GetActuallyNullValue(isNull));
