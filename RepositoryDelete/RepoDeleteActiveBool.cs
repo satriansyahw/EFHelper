@@ -45,8 +45,8 @@ namespace EFHelper.RepositoryDelete
                             
                             context.Set<T>().Attach(entity);
                             context.Entry(entity).State = EntityState.Unchanged;
-                            context.Entry(entity).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                            context.Entry(entity).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            if (propUpdateDate != null) context.Entry(entity).Property(propUpdateDate.Name).IsModified = true;
+                            if (propActiveBool != null) context.Entry(entity).Property(propActiveBool.Name).IsModified = true;
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
                             eFReturn = eFReturn.SetEFReturnValue(eFReturn, true, hasil, entity);
@@ -94,10 +94,10 @@ namespace EFHelper.RepositoryDelete
                             var propUpdateDate2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayUpdateDate);
                             var propActiveBool2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayActiveBool);
 
-                            context.Entry(entity1).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                            context.Entry(entity1).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
-                            context.Entry(entity2).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
-                            context.Entry(entity2).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
+                            if (propUpdateDate1 != null) context.Entry(entity1).Property(propUpdateDate1.Name).IsModified = true;
+                            if (propActiveBool1 != null) context.Entry(entity1).Property(propActiveBool1.Name).IsModified = true;
+                            if (propUpdateDate2 != null) context.Entry(entity2).Property(propUpdateDate2.Name).IsModified = true;
+                            if (propActiveBool2 != null) context.Entry(entity2).Property(propActiveBool2.Name).IsModified = true;
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -154,12 +154,12 @@ namespace EFHelper.RepositoryDelete
                             var propUpdateDate3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayUpdateDate);
                             var propActiveBool3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayActiveBool);
 
-                            context.Entry(entity1).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                            context.Entry(entity1).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
-                            context.Entry(entity2).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
-                            context.Entry(entity2).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
-                            context.Entry(entity3).Property(propUpdateDate3.Name).IsModified = propUpdateDate3 != null ? true : false;
-                            context.Entry(entity3).Property(propActiveBool3.Name).IsModified = propActiveBool3 != null ? true : false;
+                            if (propUpdateDate1 != null) context.Entry(entity1).Property(propUpdateDate1.Name).IsModified = true;
+                            if (propActiveBool1 != null) context.Entry(entity1).Property(propActiveBool1.Name).IsModified = true;
+                            if (propUpdateDate2 != null) context.Entry(entity2).Property(propUpdateDate2.Name).IsModified = true;
+                            if (propActiveBool2 != null) context.Entry(entity2).Property(propActiveBool2.Name).IsModified = true;
+                            if (propUpdateDate3 != null) context.Entry(entity3).Property(propUpdateDate3.Name).IsModified = true;
+                            if (propActiveBool3 != null) context.Entry(entity3).Property(propActiveBool3.Name).IsModified = true;
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -225,14 +225,14 @@ namespace EFHelper.RepositoryDelete
                             var propUpdateDate4 = ColumnPropGet.GetInstance.GetColumnProps<T4>(MiscClass.MiscClass.ArrayUpdateDate);
                             var propActiveBool4 = ColumnPropGet.GetInstance.GetColumnProps<T4>(MiscClass.MiscClass.ArrayActiveBool);
 
-                            context.Entry(entity1).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                            context.Entry(entity1).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
-                            context.Entry(entity2).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
-                            context.Entry(entity2).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
-                            context.Entry(entity3).Property(propUpdateDate3.Name).IsModified = propUpdateDate3 != null ? true : false;
-                            context.Entry(entity3).Property(propActiveBool3.Name).IsModified = propActiveBool3 != null ? true : false;
-                            context.Entry(entity4).Property(propUpdateDate4.Name).IsModified = propUpdateDate4 != null ? true : false;
-                            context.Entry(entity4).Property(propActiveBool4.Name).IsModified = propActiveBool4 != null ? true : false;
+                            if (propUpdateDate1 != null) context.Entry(entity1).Property(propUpdateDate1.Name).IsModified = true;
+                            if (propActiveBool1 != null) context.Entry(entity1).Property(propActiveBool1.Name).IsModified = true;
+                            if (propUpdateDate2 != null) context.Entry(entity2).Property(propUpdateDate2.Name).IsModified = true;
+                            if (propActiveBool2 != null) context.Entry(entity2).Property(propActiveBool2.Name).IsModified = true;
+                            if (propUpdateDate3 != null) context.Entry(entity3).Property(propUpdateDate3.Name).IsModified = true;
+                            if (propActiveBool3 != null) context.Entry(entity3).Property(propActiveBool3.Name).IsModified = true;
+                            if (propUpdateDate4 != null) context.Entry(entity4).Property(propUpdateDate4.Name).IsModified = true;
+                            if (propActiveBool4 != null) context.Entry(entity4).Property(propActiveBool4.Name).IsModified = true;
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -308,16 +308,16 @@ namespace EFHelper.RepositoryDelete
                             var propUpdateDate5 = ColumnPropGet.GetInstance.GetColumnProps<T5>(MiscClass.MiscClass.ArrayUpdateDate);
                             var propActiveBool5 = ColumnPropGet.GetInstance.GetColumnProps<T5>(MiscClass.MiscClass.ArrayActiveBool);
 
-                            context.Entry(entity1).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                            context.Entry(entity1).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
-                            context.Entry(entity2).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
-                            context.Entry(entity2).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
-                            context.Entry(entity3).Property(propUpdateDate3.Name).IsModified = propUpdateDate3 != null ? true : false;
-                            context.Entry(entity3).Property(propActiveBool3.Name).IsModified = propActiveBool3 != null ? true : false;
-                            context.Entry(entity4).Property(propUpdateDate4.Name).IsModified = propUpdateDate4 != null ? true : false;
-                            context.Entry(entity4).Property(propActiveBool4.Name).IsModified = propActiveBool4 != null ? true : false;
-                            context.Entry(entity5).Property(propUpdateDate5.Name).IsModified = propUpdateDate5 != null ? true : false;
-                            context.Entry(entity5).Property(propActiveBool5.Name).IsModified = propActiveBool5 != null ? true : false;
+                            if (propUpdateDate1 != null) context.Entry(entity1).Property(propUpdateDate1.Name).IsModified = true;
+                            if (propActiveBool1 != null) context.Entry(entity1).Property(propActiveBool1.Name).IsModified = true;
+                            if (propUpdateDate2 != null) context.Entry(entity2).Property(propUpdateDate2.Name).IsModified = true;
+                            if (propActiveBool2 != null) context.Entry(entity2).Property(propActiveBool2.Name).IsModified = true;
+                            if (propUpdateDate3 != null) context.Entry(entity3).Property(propUpdateDate3.Name).IsModified = true;
+                            if (propActiveBool3 != null) context.Entry(entity3).Property(propActiveBool3.Name).IsModified = true;
+                            if (propUpdateDate4 != null) context.Entry(entity4).Property(propUpdateDate4.Name).IsModified = true;
+                            if (propActiveBool4 != null) context.Entry(entity4).Property(propActiveBool4.Name).IsModified = true;
+                            if (propUpdateDate5 != null) context.Entry(entity5).Property(propUpdateDate5.Name).IsModified = true;
+                            if (propActiveBool5 != null) context.Entry(entity5).Property(propActiveBool5.Name).IsModified = true;
 
 
                             hasil = context.SaveChanges();
@@ -349,8 +349,8 @@ namespace EFHelper.RepositoryDelete
                             context.Set<T>().Attach(entity);
                             context.Entry(entity).State = EntityState.Unchanged;
 
-                            context.Entry(entity).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                            context.Entry(entity).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            if (propUpdateDate != null) context.Entry(entity).Property(propUpdateDate.Name).IsModified = true;
+                            if (propActiveBool != null) context.Entry(entity).Property(propActiveBool.Name).IsModified = true;
 
 
                             hasil = context.SaveChanges();
@@ -391,12 +391,12 @@ namespace EFHelper.RepositoryDelete
                             context.Set<T2>().Attach(entity2);
 
                             context.Entry(entity1).State = EntityState.Unchanged;
-                            context.Entry(entity1).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                            context.Entry(entity1).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
+                            if (propUpdateDate1 != null) context.Entry(entity1).Property(propUpdateDate1.Name).IsModified = true;
+                            if (propActiveBool1 != null) context.Entry(entity1).Property(propActiveBool1.Name).IsModified = true;
 
                             context.Entry(entity2).State = EntityState.Unchanged;
-                            context.Entry(entity2).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
-                            context.Entry(entity2).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
+                            if (propUpdateDate2 != null) context.Entry(entity2).Property(propUpdateDate2.Name).IsModified = true;
+                            if (propActiveBool2 != null) context.Entry(entity2).Property(propActiveBool2.Name).IsModified = true;
 
 
                             hasil = context.SaveChanges();
@@ -441,16 +441,16 @@ namespace EFHelper.RepositoryDelete
                             context.Set<T3>().Attach(entity3);
 
                             context.Entry(entity1).State = EntityState.Unchanged;
-                            context.Entry(entity1).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                            context.Entry(entity1).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
+                            if (propUpdateDate1 != null) context.Entry(entity1).Property(propUpdateDate1.Name).IsModified = true;
+                            if (propActiveBool1 != null) context.Entry(entity1).Property(propActiveBool1.Name).IsModified = true;
 
                             context.Entry(entity2).State = EntityState.Unchanged;
-                            context.Entry(entity2).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
-                            context.Entry(entity2).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
+                            if (propUpdateDate2 != null) context.Entry(entity2).Property(propUpdateDate2.Name).IsModified = true;
+                            if (propActiveBool2 != null) context.Entry(entity2).Property(propActiveBool2.Name).IsModified = true;
 
                             context.Entry(entity3).State = EntityState.Unchanged;
-                            context.Entry(entity3).Property(propUpdateDate3.Name).IsModified = propUpdateDate3 != null ? true : false;
-                            context.Entry(entity3).Property(propActiveBool3.Name).IsModified = propActiveBool3 != null ? true : false;
+                            if (propUpdateDate3 != null) context.Entry(entity3).Property(propUpdateDate3.Name).IsModified = true;
+                            if (propActiveBool3 != null) context.Entry(entity3).Property(propActiveBool3.Name).IsModified = true;
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -499,20 +499,20 @@ namespace EFHelper.RepositoryDelete
                             context.Set<T4>().Attach(entity4);
 
                             context.Entry(entity1).State = EntityState.Unchanged;
-                            context.Entry(entity1).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                            context.Entry(entity1).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
+                            if (propUpdateDate1 != null) context.Entry(entity1).Property(propUpdateDate1.Name).IsModified = true;
+                            if (propActiveBool1 != null) context.Entry(entity1).Property(propActiveBool1.Name).IsModified = true;
 
                             context.Entry(entity2).State = EntityState.Unchanged;
-                            context.Entry(entity2).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
-                            context.Entry(entity2).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
+                            if (propUpdateDate2 != null) context.Entry(entity2).Property(propUpdateDate2.Name).IsModified = true;
+                            if (propActiveBool2 != null) context.Entry(entity2).Property(propActiveBool2.Name).IsModified = true;
 
                             context.Entry(entity3).State = EntityState.Unchanged;
-                            context.Entry(entity3).Property(propUpdateDate3.Name).IsModified = propUpdateDate3 != null ? true : false;
-                            context.Entry(entity3).Property(propActiveBool3.Name).IsModified = propActiveBool3 != null ? true : false;
+                            if (propUpdateDate3 != null) context.Entry(entity3).Property(propUpdateDate3.Name).IsModified = true;
+                            if (propActiveBool3 != null) context.Entry(entity3).Property(propActiveBool3.Name).IsModified = true;
 
                             context.Entry(entity4).State = EntityState.Unchanged;
-                            context.Entry(entity4).Property(propUpdateDate4.Name).IsModified = propUpdateDate4 != null ? true : false;
-                            context.Entry(entity4).Property(propActiveBool4.Name).IsModified = propActiveBool4 != null ? true : false;
+                            if (propUpdateDate4 != null) context.Entry(entity4).Property(propUpdateDate4.Name).IsModified = true;
+                            if (propActiveBool4 != null) context.Entry(entity4).Property(propActiveBool4.Name).IsModified = true;
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();
@@ -566,24 +566,24 @@ namespace EFHelper.RepositoryDelete
                             context.Set<T5>().Attach(entity5);
 
                             context.Entry(entity1).State = EntityState.Unchanged;
-                            context.Entry(entity1).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                            context.Entry(entity1).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
+                            if (propUpdateDate1 != null) context.Entry(entity1).Property(propUpdateDate1.Name).IsModified = true;
+                            if (propActiveBool1 != null) context.Entry(entity1).Property(propActiveBool1.Name).IsModified = true;
 
                             context.Entry(entity2).State = EntityState.Unchanged;
-                            context.Entry(entity2).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
-                            context.Entry(entity2).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
+                            if (propUpdateDate2 != null) context.Entry(entity2).Property(propUpdateDate2.Name).IsModified = true;
+                            if (propActiveBool2 != null) context.Entry(entity2).Property(propActiveBool2.Name).IsModified = true;
 
                             context.Entry(entity3).State = EntityState.Unchanged;
-                            context.Entry(entity3).Property(propUpdateDate3.Name).IsModified = propUpdateDate3 != null ? true : false;
-                            context.Entry(entity3).Property(propActiveBool3.Name).IsModified = propActiveBool3 != null ? true : false;
+                            if (propUpdateDate3 != null) context.Entry(entity3).Property(propUpdateDate3.Name).IsModified = true;
+                            if (propActiveBool3 != null) context.Entry(entity3).Property(propActiveBool3.Name).IsModified = true;
 
                             context.Entry(entity4).State = EntityState.Unchanged;
-                            context.Entry(entity4).Property(propUpdateDate4.Name).IsModified = propUpdateDate4 != null ? true : false;
-                            context.Entry(entity4).Property(propActiveBool4.Name).IsModified = propActiveBool4 != null ? true : false;
+                            if (propUpdateDate4 != null) context.Entry(entity4).Property(propUpdateDate4.Name).IsModified = true;
+                            if (propActiveBool4 != null) context.Entry(entity4).Property(propActiveBool4.Name).IsModified = true;
 
                             context.Entry(entity5).State = EntityState.Unchanged;
-                            context.Entry(entity5).Property(propUpdateDate5.Name).IsModified = propUpdateDate5 != null ? true : false;
-                            context.Entry(entity5).Property(propActiveBool5.Name).IsModified = propActiveBool5 != null ? true : false;
+                            if (propUpdateDate5 != null) context.Entry(entity5).Property(propUpdateDate5.Name).IsModified = true;
+                            if (propActiveBool5 != null) context.Entry(entity5).Property(propActiveBool5.Name).IsModified = true;
 
                             hasil = context.SaveChanges();
                             contextTrans.Commit();

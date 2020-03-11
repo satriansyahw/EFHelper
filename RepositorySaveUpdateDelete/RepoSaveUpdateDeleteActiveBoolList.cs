@@ -47,8 +47,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 foreach (var item in listEntity1)
                                 {
                                     context.Set<T1>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                    context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                    context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                    if (propUpdateDate != null) context.Entry(item).Property(propUpdateDate.Name).IsModified = true;
+                                    if (propActiveBool != null) context.Entry(item).Property(propActiveBool.Name).IsModified = true;
                                 }
 
                             }
@@ -108,8 +108,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 foreach (var item in listEntity1)
                                 {
                                     context.Set<T1>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                    context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                    context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                    if (propUpdateDate != null) context.Entry(item).Property(propUpdateDate.Name).IsModified = true;
+                                    if (propActiveBool != null) context.Entry(item).Property(propActiveBool.Name).IsModified = true;
                                 }
 
                             }
@@ -120,8 +120,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 foreach (var item in listEntity2)
                                 {
                                     context.Set<T2>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                    context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                    context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                    if (propUpdateDate != null) context.Entry(item).Property(propUpdateDate.Name).IsModified = true;
+                                    if (propActiveBool != null) context.Entry(item).Property(propActiveBool.Name).IsModified = true;
                                 }
                             }
 
@@ -197,8 +197,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 foreach (var item in listEntity1)
                                 {
                                     context.Set<T1>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                    context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                    context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                    if (propUpdateDate != null) context.Entry(item).Property(propUpdateDate.Name).IsModified = true;
+                                    if (propActiveBool != null) context.Entry(item).Property(propActiveBool.Name).IsModified = true;
                                 }
 
                             }
@@ -209,8 +209,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 foreach (var item in listEntity2)
                                 {
                                     context.Set<T2>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                    context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                    context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                    if (propUpdateDate != null) context.Entry(item).Property(propUpdateDate.Name).IsModified = true;
+                                    if (propActiveBool != null) context.Entry(item).Property(propActiveBool.Name).IsModified = true;
                                 }
                             }
                             if (enumSUDT3 == EnumSaveUpdateDelete.Delete)
@@ -220,8 +220,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 foreach (var item in listEntity3)
                                 {
                                     context.Set<T3>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                    context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                    context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                    if (propUpdateDate != null) context.Entry(item).Property(propUpdateDate.Name).IsModified = true;
+                                    if (propActiveBool != null) context.Entry(item).Property(propActiveBool.Name).IsModified = true;
                                 }
                             }
 
@@ -319,8 +319,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 foreach (var item in listEntity1)
                                 {
                                     context.Set<T1>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                    context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                    context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                    if (propUpdateDate != null) context.Entry(item).Property(propUpdateDate.Name).IsModified = true;
+                                    if (propActiveBool != null) context.Entry(item).Property(propActiveBool.Name).IsModified = true;
                                 }
 
                             }
@@ -331,8 +331,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 foreach (var item in listEntity2)
                                 {
                                     context.Set<T2>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                    context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                    context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                    if (propUpdateDate != null) context.Entry(item).Property(propUpdateDate.Name).IsModified = true;
+                                    if (propActiveBool != null) context.Entry(item).Property(propActiveBool.Name).IsModified = true;
                                 }
                             }
                             if (enumSUDT3 == EnumSaveUpdateDelete.Delete)
@@ -342,8 +342,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 foreach (var item in listEntity3)
                                 {
                                     context.Set<T3>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                    context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                    context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                    if (propUpdateDate != null) context.Entry(item).Property(propUpdateDate.Name).IsModified = true;
+                                    if (propActiveBool != null) context.Entry(item).Property(propActiveBool.Name).IsModified = true;
                                 }
                             }
                             if (enumSUDT4 == EnumSaveUpdateDelete.Delete)
@@ -353,8 +353,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 foreach (var item in listEntity4)
                                 {
                                     context.Set<T4>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                    context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                    context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                    if (propUpdateDate != null) context.Entry(item).Property(propUpdateDate.Name).IsModified = true;
+                                    if (propActiveBool != null) context.Entry(item).Property(propActiveBool.Name).IsModified = true;
                                 }
                             }
 
@@ -471,8 +471,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 foreach (var item in listEntity1)
                                 {
                                     context.Set<T1>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                    context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                    context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                    if (propUpdateDate != null) context.Entry(item).Property(propUpdateDate.Name).IsModified = true;
+                                    if (propActiveBool != null) context.Entry(item).Property(propActiveBool.Name).IsModified = true;
                                 }
                                
                             }
@@ -483,8 +483,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 foreach (var item in listEntity2)
                                 {
                                     context.Set<T2>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                    context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                    context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                    if (propUpdateDate != null) context.Entry(item).Property(propUpdateDate.Name).IsModified = true;
+                                    if (propActiveBool != null) context.Entry(item).Property(propActiveBool.Name).IsModified = true;
                                 }
                             }
                             if (enumSUDT3 == EnumSaveUpdateDelete.Delete)
@@ -494,8 +494,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 foreach (var item in listEntity3)
                                 {
                                     context.Set<T3>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                    context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                    context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                    if (propUpdateDate != null) context.Entry(item).Property(propUpdateDate.Name).IsModified = true;
+                                    if (propActiveBool != null) context.Entry(item).Property(propActiveBool.Name).IsModified = true;
                                 }
                             }
                             if (enumSUDT4 == EnumSaveUpdateDelete.Delete)
@@ -505,8 +505,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 foreach (var item in listEntity4)
                                 {
                                     context.Set<T4>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                    context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                    context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                    if (propUpdateDate != null) context.Entry(item).Property(propUpdateDate.Name).IsModified = true;
+                                    if (propActiveBool != null) context.Entry(item).Property(propActiveBool.Name).IsModified = true;
                                 }
                             }
                             if (enumSUDT5 == EnumSaveUpdateDelete.Delete)
@@ -516,8 +516,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 foreach (var item in listEntity5)
                                 {
                                     context.Set<T5>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                    context.Entry(item).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                    context.Entry(item).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                    if (propUpdateDate != null) context.Entry(item).Property(propUpdateDate.Name).IsModified = true;
+                                    if (propActiveBool != null) context.Entry(item).Property(propActiveBool.Name).IsModified = true;
                                 }
                             }
 

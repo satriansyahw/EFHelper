@@ -46,8 +46,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T1>().Attach(entity1);
                                 context.Entry(entity1).State = EntityState.Unchanged;
-                                context.Entry(entity1).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                context.Entry(entity1).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                if (propUpdateDate != null) context.Entry(entity1).Property(propUpdateDate.Name).IsModified = true;
+                                if (propActiveBool != null) context.Entry(entity1).Property(propActiveBool.Name).IsModified = true;
                             }
                             
                             if (enumSUDT1 == EnumSaveUpdateDelete.Update)
@@ -100,8 +100,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T1>().Attach(entity1);
                                 context.Entry(entity1).State = EntityState.Unchanged;
-                                context.Entry(entity1).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                context.Entry(entity1).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                if (propUpdateDate != null) context.Entry(entity1).Property(propUpdateDate.Name).IsModified = true;
+                                if (propActiveBool != null) context.Entry(entity1).Property(propActiveBool.Name).IsModified = true;
                             }
                             if (enumSUDT2 == EnumSaveUpdateDelete.Delete)
                             {
@@ -109,8 +109,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T2>().Attach(entity2);
                                 context.Entry(entity2).State = EntityState.Unchanged;
-                                context.Entry(entity2).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                context.Entry(entity2).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                if (propUpdateDate != null) context.Entry(entity2).Property(propUpdateDate.Name).IsModified = true;
+                                if (propActiveBool != null) context.Entry(entity2).Property(propActiveBool.Name).IsModified = true;
                             }
 
                             if (enumSUDT1 == EnumSaveUpdateDelete.Update)
@@ -181,8 +181,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T1>().Attach(entity1);
                                 context.Entry(entity1).State = EntityState.Unchanged;
-                                context.Entry(entity1).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                context.Entry(entity1).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                if (propUpdateDate != null) context.Entry(entity1).Property(propUpdateDate.Name).IsModified = true;
+                                if (propActiveBool != null) context.Entry(entity1).Property(propActiveBool.Name).IsModified = true;
                             }
                             if (enumSUDT2 == EnumSaveUpdateDelete.Delete)
                             {
@@ -190,8 +190,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T2>().Attach(entity2);
                                 context.Entry(entity2).State = EntityState.Unchanged;
-                                context.Entry(entity2).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                context.Entry(entity2).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                if (propUpdateDate != null) context.Entry(entity2).Property(propUpdateDate.Name).IsModified = true;
+                                if (propActiveBool != null) context.Entry(entity2).Property(propActiveBool.Name).IsModified = true;
                             }
                             if (enumSUDT3 == EnumSaveUpdateDelete.Delete)
                             {
@@ -199,8 +199,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T3>().Attach(entity3);
                                 context.Entry(entity3).State = EntityState.Unchanged;
-                                context.Entry(entity3).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                context.Entry(entity3).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                if (propUpdateDate != null) context.Entry(entity3).Property(propUpdateDate.Name).IsModified = true;
+                                if (propActiveBool != null) context.Entry(entity3).Property(propActiveBool.Name).IsModified = true;
                             }
 
                             if (enumSUDT1 == EnumSaveUpdateDelete.Update)
@@ -285,8 +285,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T1>().Attach(entity1);
                                 context.Entry(entity1).State = EntityState.Unchanged;
-                                context.Entry(entity1).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                context.Entry(entity1).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                if (propUpdateDate != null) context.Entry(entity1).Property(propUpdateDate.Name).IsModified = true;
+                                if (propActiveBool != null) context.Entry(entity1).Property(propActiveBool.Name).IsModified = true;
                             }
                             if (enumSUDT2 == EnumSaveUpdateDelete.Delete)
                             {
@@ -294,8 +294,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T2>().Attach(entity2);
                                 context.Entry(entity2).State = EntityState.Unchanged;
-                                context.Entry(entity2).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                context.Entry(entity2).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                if (propUpdateDate != null) context.Entry(entity2).Property(propUpdateDate.Name).IsModified = true;
+                                if (propActiveBool != null) context.Entry(entity2).Property(propActiveBool.Name).IsModified = true;
                             }
                             if (enumSUDT3 == EnumSaveUpdateDelete.Delete)
                             {
@@ -303,8 +303,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T3>().Attach(entity3);
                                 context.Entry(entity3).State = EntityState.Unchanged;
-                                context.Entry(entity3).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                context.Entry(entity3).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                if (propUpdateDate != null) context.Entry(entity3).Property(propUpdateDate.Name).IsModified = true;
+                                if (propActiveBool != null) context.Entry(entity3).Property(propActiveBool.Name).IsModified = true;
                             }
                             if (enumSUDT4 == EnumSaveUpdateDelete.Delete)
                             {
@@ -312,8 +312,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T4>().Attach(entity4);
                                 context.Entry(entity4).State = EntityState.Unchanged;
-                                context.Entry(entity4).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                context.Entry(entity4).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                if (propUpdateDate != null) context.Entry(entity4).Property(propUpdateDate.Name).IsModified = true;
+                                if (propActiveBool != null) context.Entry(entity4).Property(propActiveBool.Name).IsModified = true;
                             }
 
                             if (enumSUDT1 == EnumSaveUpdateDelete.Update)
@@ -415,8 +415,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T1>().Attach(entity1);
                                 context.Entry(entity1).State = EntityState.Unchanged;
-                                context.Entry(entity1).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                context.Entry(entity1).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                if (propUpdateDate != null) context.Entry(entity1).Property(propUpdateDate.Name).IsModified = true;
+                                if (propActiveBool != null) context.Entry(entity1).Property(propActiveBool.Name).IsModified = true;
                             }
                             if (enumSUDT2 == EnumSaveUpdateDelete.Delete)
                             {
@@ -424,8 +424,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T2>().Attach(entity2);
                                 context.Entry(entity2).State = EntityState.Unchanged;
-                                context.Entry(entity2).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                context.Entry(entity2).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                if (propUpdateDate != null) context.Entry(entity2).Property(propUpdateDate.Name).IsModified = true;
+                                if (propActiveBool != null) context.Entry(entity2).Property(propActiveBool.Name).IsModified = true;
                             }
                             if (enumSUDT3 == EnumSaveUpdateDelete.Delete)
                             {
@@ -433,8 +433,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T3>().Attach(entity3);
                                 context.Entry(entity3).State = EntityState.Unchanged;
-                                context.Entry(entity3).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                context.Entry(entity3).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                if (propUpdateDate != null) context.Entry(entity3).Property(propUpdateDate.Name).IsModified = true;
+                                if (propActiveBool != null) context.Entry(entity3).Property(propActiveBool.Name).IsModified = true;
                             }
                             if (enumSUDT4 == EnumSaveUpdateDelete.Delete)
                             {
@@ -442,8 +442,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T4>().Attach(entity4);
                                 context.Entry(entity4).State = EntityState.Unchanged;
-                                context.Entry(entity4).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                context.Entry(entity4).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                if (propUpdateDate != null) context.Entry(entity4).Property(propUpdateDate.Name).IsModified = true;
+                                if (propActiveBool != null) context.Entry(entity4).Property(propActiveBool.Name).IsModified = true;
                             }
                             if (enumSUDT5 == EnumSaveUpdateDelete.Delete)
                             {
@@ -451,8 +451,8 @@ namespace EFHelper.RepositorySaveUpdateDelete
                                 var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T5>().Attach(entity5);
                                 context.Entry(entity5).State = EntityState.Unchanged;
-                                context.Entry(entity5).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                                context.Entry(entity5).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                                if (propUpdateDate != null) context.Entry(entity5).Property(propUpdateDate.Name).IsModified = true;
+                                if (propActiveBool != null) context.Entry(entity5).Property(propActiveBool.Name).IsModified = true;
                             }
 
                             if (enumSUDT1 == EnumSaveUpdateDelete.Update)

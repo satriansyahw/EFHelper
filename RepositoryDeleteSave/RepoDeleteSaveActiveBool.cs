@@ -55,8 +55,8 @@ namespace EFHelper.RepositoryDeleteSave
                             var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
                             context.Set<TDelete>().AttachRange(listDelete);
                             context.Entry(listDelete).State = EntityState.Unchanged;
-                            context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                            context.Entry(listDelete).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            if (propUpdateDate != null) context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = true;
+                            if (propActiveBool != null) context.Entry(listDelete).Property(propActiveBool.Name).IsModified = true;
 
                             context.Set<T1>().Add(entitySave1);
                             
@@ -101,8 +101,8 @@ namespace EFHelper.RepositoryDeleteSave
                             var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
                             context.Set<TDelete>().AttachRange(listDelete);
                             context.Entry(listDelete).State = EntityState.Unchanged;
-                            context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                            context.Entry(listDelete).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            if (propUpdateDate != null) context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = true;
+                            if (propActiveBool != null) context.Entry(listDelete).Property(propActiveBool.Name).IsModified = true;
 
                             context.Set<T1>().Add(entitySave1);
                             context.Set<T2>().Add(entitySave2);
@@ -150,8 +150,8 @@ namespace EFHelper.RepositoryDeleteSave
                             var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
                             context.Set<TDelete>().AttachRange(listDelete);
                             context.Entry(listDelete).State = EntityState.Unchanged;
-                            context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                            context.Entry(listDelete).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            if (propUpdateDate != null) context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = true;
+                            if (propActiveBool != null) context.Entry(listDelete).Property(propActiveBool.Name).IsModified = true;
 
                             context.Set<T1>().Add(entitySave1);
                             context.Set<T2>().Add(entitySave2);
@@ -201,8 +201,8 @@ namespace EFHelper.RepositoryDeleteSave
                             var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
                             context.Set<TDelete>().AttachRange(listDelete);
                             context.Entry(listDelete).State = EntityState.Unchanged;
-                            context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                            context.Entry(listDelete).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            if (propUpdateDate != null) context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = true;
+                            if (propActiveBool != null) context.Entry(listDelete).Property(propActiveBool.Name).IsModified = true;
 
                             context.Set<T1>().Add(entitySave1);
                             context.Set<T2>().Add(entitySave2);
@@ -254,8 +254,8 @@ namespace EFHelper.RepositoryDeleteSave
                             var propActiveBool = ColumnPropGet.GetInstance.GetColumnProps<TDelete>(MiscClass.MiscClass.ArrayActiveBool);
                             context.Set<TDelete>().AttachRange(listDelete);
                             context.Entry(listDelete).State = EntityState.Unchanged;
-                            context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                            context.Entry(listDelete).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            if (propUpdateDate != null) context.Entry(listDelete).Property(propUpdateDate.Name).IsModified = true;
+                            if (propActiveBool != null) context.Entry(listDelete).Property(propActiveBool.Name).IsModified = true;
 
                             context.Set<T1>().Add(entitySave1);
                             context.Set<T2>().Add(entitySave2);

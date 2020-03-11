@@ -55,8 +55,8 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             context.Entry(entity).State = EntityState.Unchanged;
                             context.Entry(listEntity1).State = EntityState.Unchanged;
 
-                            context.Entry(entity).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                            context.Entry(entity).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            if (propUpdateDate != null) context.Entry(entity).Property(propUpdateDate.Name).IsModified = true;
+                            if (propActiveBool != null) context.Entry(entity).Property(propActiveBool.Name).IsModified = true;
                             context.Entry(listEntity1).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
                             context.Entry(listEntity1).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
  
@@ -110,8 +110,8 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             context.Entry(listEntity1).State = EntityState.Unchanged;
                             context.Entry(listEntity2).State = EntityState.Unchanged;
 
-                            context.Entry(entity).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                            context.Entry(entity).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            if (propUpdateDate != null) context.Entry(entity).Property(propUpdateDate.Name).IsModified = true;
+                            if (propActiveBool != null) context.Entry(entity).Property(propActiveBool.Name).IsModified = true;
                             context.Entry(listEntity1).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
                             context.Entry(listEntity1).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
                             context.Entry(listEntity2).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
@@ -173,8 +173,8 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             context.Entry(listEntity2).State = EntityState.Unchanged;
                             context.Entry(listEntity3).State = EntityState.Unchanged;
                             
-                            context.Entry(entity).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                            context.Entry(entity).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            if (propUpdateDate != null) context.Entry(entity).Property(propUpdateDate.Name).IsModified = true;
+                            if (propActiveBool != null) context.Entry(entity).Property(propActiveBool.Name).IsModified = true;
                             context.Entry(listEntity1).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
                             context.Entry(listEntity1).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
                             context.Entry(listEntity2).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
@@ -246,8 +246,8 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             context.Entry(listEntity3).State = EntityState.Unchanged;
                             context.Entry(listEntity4).State = EntityState.Unchanged;
 
-                            context.Entry(entity).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                            context.Entry(entity).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            if (propUpdateDate != null) context.Entry(entity).Property(propUpdateDate.Name).IsModified = true;
+                            if (propActiveBool != null) context.Entry(entity).Property(propActiveBool.Name).IsModified = true;
                             context.Entry(listEntity1).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
                             context.Entry(listEntity1).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
                             context.Entry(listEntity2).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
@@ -328,8 +328,8 @@ namespace EFHelper.RepositoryDeleteHeaderDetail
                             context.Entry(listEntity4).State = EntityState.Unchanged;
                             context.Entry(listEntity5).State = EntityState.Unchanged;
 
-                            context.Entry(entity).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
-                            context.Entry(entity).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
+                            if (propUpdateDate != null) context.Entry(entity).Property(propUpdateDate.Name).IsModified = true;
+                            if (propActiveBool != null) context.Entry(entity).Property(propActiveBool.Name).IsModified = true;
                             context.Entry(listEntity1).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;
                             context.Entry(listEntity1).Property(propActiveBool.Name).IsModified = propActiveBool != null ? true : false;
                             context.Entry(listEntity2).Property(propUpdateDate.Name).IsModified = propUpdateDate != null ? true : false;

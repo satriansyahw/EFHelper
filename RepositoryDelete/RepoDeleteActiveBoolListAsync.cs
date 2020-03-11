@@ -41,8 +41,8 @@ namespace EFHelper.RepositoryDelete
                                 var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
+                                if (propUpdateDate1 != null) context.Entry(item).Property(propUpdateDate1.Name).IsModified = true;
+                                if (propActiveBool1 != null) context.Entry(item).Property(propActiveBool1.Name).IsModified = true;
                             }
                                                         hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
@@ -76,16 +76,16 @@ namespace EFHelper.RepositoryDelete
                                 var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T1>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
+                                if (propUpdateDate1 != null) context.Entry(item).Property(propUpdateDate1.Name).IsModified = true;
+                                if (propActiveBool1 != null) context.Entry(item).Property(propActiveBool1.Name).IsModified = true;
                             }
                             foreach (var item in listEntity2)
                             {
                                 var propUpdateDate2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T2>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
+                                if (propUpdateDate2 != null) context.Entry(item).Property(propUpdateDate2.Name).IsModified = true;
+                                if (propActiveBool2 != null) context.Entry(item).Property(propActiveBool2.Name).IsModified = true;
                             }
                                                         hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
@@ -122,24 +122,24 @@ namespace EFHelper.RepositoryDelete
                                 var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T1>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
+                                if (propUpdateDate1 != null) context.Entry(item).Property(propUpdateDate1.Name).IsModified = true;
+                                if (propActiveBool1 != null) context.Entry(item).Property(propActiveBool1.Name).IsModified = true;
                             }
                             foreach (var item in listEntity2)
                             {
                                 var propUpdateDate2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T2>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
+                                if (propUpdateDate2 != null) context.Entry(item).Property(propUpdateDate2.Name).IsModified = true;
+                                if (propActiveBool2 != null) context.Entry(item).Property(propActiveBool2.Name).IsModified = true;
                             }
                             foreach (var item in listEntity3)
                             {
                                 var propUpdateDate3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T3>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate3.Name).IsModified = propUpdateDate3 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool3.Name).IsModified = propActiveBool3 != null ? true : false;
+                                if (propUpdateDate3 != null) context.Entry(item).Property(propUpdateDate3.Name).IsModified = true;
+                                if (propActiveBool3 != null) context.Entry(item).Property(propActiveBool3.Name).IsModified = true;
                             }
 
                                                         hasil = await context.SaveChangesAsync().ConfigureAwait(false);
@@ -179,32 +179,32 @@ namespace EFHelper.RepositoryDelete
                                 var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T1>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
+                                if (propUpdateDate1 != null) context.Entry(item).Property(propUpdateDate1.Name).IsModified = true;
+                                if (propActiveBool1 != null) context.Entry(item).Property(propActiveBool1.Name).IsModified = true;
                             }
                             foreach (var item in listEntity2)
                             {
                                 var propUpdateDate2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T2>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
+                                if (propUpdateDate2 != null) context.Entry(item).Property(propUpdateDate2.Name).IsModified = true;
+                                if (propActiveBool2 != null) context.Entry(item).Property(propActiveBool2.Name).IsModified = true;
                             }
                             foreach (var item in listEntity3)
                             {
                                 var propUpdateDate3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T3>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate3.Name).IsModified = propUpdateDate3 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool3.Name).IsModified = propActiveBool3 != null ? true : false;
+                                if (propUpdateDate3 != null) context.Entry(item).Property(propUpdateDate3.Name).IsModified = true;
+                                if (propActiveBool3 != null) context.Entry(item).Property(propActiveBool3.Name).IsModified = true;
                             }
                             foreach (var item in listEntity4)
                             {
                                 var propUpdateDate4 = ColumnPropGet.GetInstance.GetColumnProps<T4>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool4 = ColumnPropGet.GetInstance.GetColumnProps<T4>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T4>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate4.Name).IsModified = propUpdateDate4 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool4.Name).IsModified = propActiveBool4 != null ? true : false;
+                                if (propUpdateDate4 != null) context.Entry(item).Property(propUpdateDate4.Name).IsModified = true;
+                                if (propActiveBool4 != null) context.Entry(item).Property(propActiveBool4.Name).IsModified = true;
                             }
                                                         hasil = await context.SaveChangesAsync().ConfigureAwait(false);
                             contextTrans.Commit();
@@ -245,40 +245,40 @@ namespace EFHelper.RepositoryDelete
                                 var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T1>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
+                                if (propUpdateDate1 != null) context.Entry(item).Property(propUpdateDate1.Name).IsModified = true;
+                                if (propActiveBool1 != null) context.Entry(item).Property(propActiveBool1.Name).IsModified = true;
                             }
                             foreach (var item in listEntity2)
                             {
                                 var propUpdateDate2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T2>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
+                                if (propUpdateDate2 != null) context.Entry(item).Property(propUpdateDate2.Name).IsModified = true;
+                                if (propActiveBool2 != null) context.Entry(item).Property(propActiveBool2.Name).IsModified = true;
                             }
                             foreach (var item in listEntity3)
                             {
                                 var propUpdateDate3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T3>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate3.Name).IsModified = propUpdateDate3 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool3.Name).IsModified = propActiveBool3 != null ? true : false;
+                                if (propUpdateDate3 != null) context.Entry(item).Property(propUpdateDate3.Name).IsModified = true;
+                                if (propActiveBool3 != null) context.Entry(item).Property(propActiveBool3.Name).IsModified = true;
                             }
                             foreach (var item in listEntity4)
                             {
                                 var propUpdateDate4 = ColumnPropGet.GetInstance.GetColumnProps<T4>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool4 = ColumnPropGet.GetInstance.GetColumnProps<T4>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T4>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate4.Name).IsModified = propUpdateDate4 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool4.Name).IsModified = propActiveBool4 != null ? true : false;
+                                if (propUpdateDate4 != null) context.Entry(item).Property(propUpdateDate4.Name).IsModified = true;
+                                if (propActiveBool4 != null) context.Entry(item).Property(propActiveBool4.Name).IsModified = true;
                             }
                             foreach (var item in listEntity5)
                             {
                                 var propUpdateDate5 = ColumnPropGet.GetInstance.GetColumnProps<T5>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool5 = ColumnPropGet.GetInstance.GetColumnProps<T5>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T5>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate5.Name).IsModified = propUpdateDate5 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool5.Name).IsModified = propActiveBool5 != null ? true : false;
+                                if (propUpdateDate5 != null) context.Entry(item).Property(propUpdateDate5.Name).IsModified = true;
+                                if (propActiveBool5 != null) context.Entry(item).Property(propActiveBool5.Name).IsModified = true;
                             }
 
                                                         hasil = await context.SaveChangesAsync().ConfigureAwait(false);
@@ -314,8 +314,8 @@ namespace EFHelper.RepositoryDelete
                                 var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
+                                if (propUpdateDate1 != null) context.Entry(item).Property(propUpdateDate1.Name).IsModified = true;
+                                if (propActiveBool1 != null) context.Entry(item).Property(propActiveBool1.Name).IsModified = true;
                             }
 
                                                         hasil = await context.SaveChangesAsync().ConfigureAwait(false);
@@ -354,16 +354,16 @@ namespace EFHelper.RepositoryDelete
                                 var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T1>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
+                                if (propUpdateDate1 != null) context.Entry(item).Property(propUpdateDate1.Name).IsModified = true;
+                                if (propActiveBool1 != null) context.Entry(item).Property(propActiveBool1.Name).IsModified = true;
                             }
                             foreach (var item in listEntity2)
                             {
                                 var propUpdateDate2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T2>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
+                                if (propUpdateDate2 != null) context.Entry(item).Property(propUpdateDate2.Name).IsModified = true;
+                                if (propActiveBool2 != null) context.Entry(item).Property(propActiveBool2.Name).IsModified = true;
                             }
 
 
@@ -406,24 +406,24 @@ namespace EFHelper.RepositoryDelete
                                 var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T1>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
+                                if (propUpdateDate1 != null) context.Entry(item).Property(propUpdateDate1.Name).IsModified = true;
+                                if (propActiveBool1 != null) context.Entry(item).Property(propActiveBool1.Name).IsModified = true;
                             }
                             foreach (var item in listEntity2)
                             {
                                 var propUpdateDate2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T2>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
+                                if (propUpdateDate2 != null) context.Entry(item).Property(propUpdateDate2.Name).IsModified = true;
+                                if (propActiveBool2 != null) context.Entry(item).Property(propActiveBool2.Name).IsModified = true;
                             }
                             foreach (var item in listEntity3)
                             {
                                 var propUpdateDate3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T3>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate3.Name).IsModified = propUpdateDate3 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool3.Name).IsModified = propActiveBool3 != null ? true : false;
+                                if (propUpdateDate3 != null) context.Entry(item).Property(propUpdateDate3.Name).IsModified = true;
+                                if (propActiveBool3 != null) context.Entry(item).Property(propActiveBool3.Name).IsModified = true;
                             }
 
                                                         hasil = await context.SaveChangesAsync().ConfigureAwait(false);
@@ -468,32 +468,32 @@ namespace EFHelper.RepositoryDelete
                                 var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T1>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
+                                if (propUpdateDate1 != null) context.Entry(item).Property(propUpdateDate1.Name).IsModified = true;
+                                if (propActiveBool1 != null) context.Entry(item).Property(propActiveBool1.Name).IsModified = true;
                             }
                             foreach (var item in listEntity2)
                             {
                                 var propUpdateDate2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T2>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
+                                if (propUpdateDate2 != null) context.Entry(item).Property(propUpdateDate2.Name).IsModified = true;
+                                if (propActiveBool2 != null) context.Entry(item).Property(propActiveBool2.Name).IsModified = true;
                             }
                             foreach (var item in listEntity3)
                             {
                                 var propUpdateDate3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T3>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate3.Name).IsModified = propUpdateDate3 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool3.Name).IsModified = propActiveBool3 != null ? true : false;
+                                if (propUpdateDate3 != null) context.Entry(item).Property(propUpdateDate3.Name).IsModified = true;
+                                if (propActiveBool3 != null) context.Entry(item).Property(propActiveBool3.Name).IsModified = true;
                             }
                             foreach (var item in listEntity4)
                             {
                                 var propUpdateDate4 = ColumnPropGet.GetInstance.GetColumnProps<T4>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool4 = ColumnPropGet.GetInstance.GetColumnProps<T4>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T4>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate4.Name).IsModified = propUpdateDate4 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool4.Name).IsModified = propActiveBool4 != null ? true : false;
+                                if (propUpdateDate4 != null) context.Entry(item).Property(propUpdateDate4.Name).IsModified = true;
+                                if (propActiveBool4 != null) context.Entry(item).Property(propActiveBool4.Name).IsModified = true;
                             }
 
 
@@ -542,40 +542,40 @@ namespace EFHelper.RepositoryDelete
                                 var propUpdateDate1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool1 = ColumnPropGet.GetInstance.GetColumnProps<T1>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T1>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate1.Name).IsModified = propUpdateDate1 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool1.Name).IsModified = propActiveBool1 != null ? true : false;
+                                if (propUpdateDate1 != null) context.Entry(item).Property(propUpdateDate1.Name).IsModified = true;
+                                if (propActiveBool1 != null) context.Entry(item).Property(propActiveBool1.Name).IsModified = true;
                             }
                             foreach (var item in listEntity2)
                             {
                                 var propUpdateDate2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool2 = ColumnPropGet.GetInstance.GetColumnProps<T2>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T2>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate2.Name).IsModified = propUpdateDate2 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool2.Name).IsModified = propActiveBool2 != null ? true : false;
+                                if (propUpdateDate2 != null) context.Entry(item).Property(propUpdateDate2.Name).IsModified = true;
+                                if (propActiveBool2 != null) context.Entry(item).Property(propActiveBool2.Name).IsModified = true;
                             }
                             foreach (var item in listEntity3)
                             {
                                 var propUpdateDate3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool3 = ColumnPropGet.GetInstance.GetColumnProps<T3>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T3>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate3.Name).IsModified = propUpdateDate3 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool3.Name).IsModified = propActiveBool3 != null ? true : false;
+                                if (propUpdateDate3 != null) context.Entry(item).Property(propUpdateDate3.Name).IsModified = true;
+                                if (propActiveBool3 != null) context.Entry(item).Property(propActiveBool3.Name).IsModified = true;
                             }
                             foreach (var item in listEntity4)
                             {
                                 var propUpdateDate4 = ColumnPropGet.GetInstance.GetColumnProps<T4>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool4 = ColumnPropGet.GetInstance.GetColumnProps<T4>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T4>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate4.Name).IsModified = propUpdateDate4 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool4.Name).IsModified = propActiveBool4 != null ? true : false;
+                                if (propUpdateDate4 != null) context.Entry(item).Property(propUpdateDate4.Name).IsModified = true;
+                                if (propActiveBool4 != null) context.Entry(item).Property(propActiveBool4.Name).IsModified = true;
                             }
                             foreach (var item in listEntity5)
                             {
                                 var propUpdateDate5 = ColumnPropGet.GetInstance.GetColumnProps<T5>(MiscClass.MiscClass.ArrayUpdateDate);
                                 var propActiveBool5 = ColumnPropGet.GetInstance.GetColumnProps<T5>(MiscClass.MiscClass.ArrayActiveBool);
                                 context.Set<T5>().Attach(item); context.Entry(item).State = EntityState.Unchanged;
-                                context.Entry(item).Property(propUpdateDate5.Name).IsModified = propUpdateDate5 != null ? true : false;
-                                context.Entry(item).Property(propActiveBool5.Name).IsModified = propActiveBool5 != null ? true : false;
+                                if (propUpdateDate5 != null) context.Entry(item).Property(propUpdateDate5.Name).IsModified = true;
+                                if (propActiveBool5 != null) context.Entry(item).Property(propActiveBool5.Name).IsModified = true;
                             }
 
 
