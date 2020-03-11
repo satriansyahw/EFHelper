@@ -6,6 +6,10 @@
    3. Microsoft.EntityFrameworkCore 2.1.8 </br>
    4. Microsoft.EntityFrameworkCore.Relational 2.1.8 </br>
    5. System.Data.SqlClient 4.8.0 </br>
+   
+## Note
+	1. Problem with boolean datatype , cannot determine is it null or not?
+	2. Please convert bool data type tp char(1) data type, the value between 0,1. 0 means false 1 means true
 
 ## Project structures in Database context
    1. The folder must Folder => File, Folder refers to schema name, File refers to table name
