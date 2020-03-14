@@ -23,7 +23,7 @@ namespace EFHelper
         , InterfaceRepoDeleteHeaderDetail, InterfaceRepoDeleteHeaderDetailList, InterfaceRepoDeleteHeaderDetailActiveBool, InterfaceRepoDeleteHeaderDetailActiveBoolList
         , InterfaceRepoList, InterfaceRepoListQueryable, InterfaceRepoDeleteSave, InterfaceRepoDeleteSaveList, InterfaceRepoDeleteSaveActiveBool, InterfaceRepoDeleteSaveActiveBoolList
         , InterfaceRepoSaveUpdateDelete, InterfaceRepoSaveUpdateDeleteList, InterfaceRepoSaveUpdateDeleteActiveBool, InterfaceRepoSaveUpdateDeleteActiveBoolList
-        ,InterfaceRepoListWithEmpInfo,InterfaceRepoListQueryableWithEmpInfo
+        ,InterfaceRepoListWithEmpInfo,InterfaceRepoListQueryableWithEmpInfo,InterfaceEFReturnValue
     {
         private static RepoWrapper instance;
         public new static RepoWrapper GetInstance
@@ -1367,6 +1367,21 @@ namespace EFHelper
         {
             RepoListMiscHelper repoListMisc = new RepoListMiscHelper();
             return repoListMisc.ConvertDataToListEmpInfo<T, TNoToName>(listDataWantToConverted, listTableConvert, listColumnConvert);
+        }
+
+        public List<T> ConvertReturnValueToList<T>(EFReturnValue returnValue) where T : class
+        {
+            return EFReturnValue.GetInstance.ConvertReturnValueToList<T>(returnValue);
+        }
+
+        public T ConvertReturnValueToClass<T>(EFReturnValue returnValue) where T : class
+        {
+            return EFReturnValue.GetInstance.ConvertReturnValueToClass<T>(returnValue);
+        }
+
+        public bool ConvertReturnValueToBool(EFReturnValue returnValue)
+        {
+            return EFReturnValue.GetInstance.ConvertReturnValueToBool(returnValue);
         }
     }
    

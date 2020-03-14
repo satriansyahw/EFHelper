@@ -21,7 +21,7 @@ namespace EFHelper
         , InterfaceRepoDeleteHeaderDetailAsync, InterfaceRepoDeleteHeaderDetailListAsync, InterfaceRepoDeleteHeaderDetailActiveBoolAsync, InterfaceRepoDeleteHeaderDetailActiveBoolListAsync
         , InterfaceRepoListAsync, InterfaceRepoListQueryableAsync, InterfaceRepoDeleteSaveAsync, InterfaceRepoDeleteSaveListAsync, InterfaceRepoDeleteSaveActiveBoolAsync, InterfaceRepoDeleteSaveActiveBoolListAsync
         , InterfaceRepoSaveUpdateDeleteAsync, InterfaceRepoSaveUpdateDeleteListAsync, InterfaceRepoSaveUpdateDeleteActiveBoolAsync, InterfaceRepoSaveUpdateDeleteActiveBoolListAsync
-         , InterfaceRepoListWithEmpInfoAsync, InterfaceRepoListQueryableWithEmpInfoAsync
+         , InterfaceRepoListWithEmpInfoAsync, InterfaceRepoListQueryableWithEmpInfoAsync, InterfaceEFReturnValue
     {
         private static RepoWrapperAsync instance;
         private readonly RepoListMiscHelper repoListMisc = new RepoListMiscHelper();
@@ -1373,6 +1373,20 @@ namespace EFHelper
 
             });
             return result;
+        }
+        public List<T> ConvertReturnValueToList<T>(EFReturnValue returnValue) where T : class
+        {
+            return EFReturnValue.GetInstance.ConvertReturnValueToList<T>(returnValue);
+        }
+
+        public T ConvertReturnValueToClass<T>(EFReturnValue returnValue) where T : class
+        {
+            return EFReturnValue.GetInstance.ConvertReturnValueToClass<T>(returnValue);
+        }
+
+        public bool ConvertReturnValueToBool(EFReturnValue returnValue)
+        {
+            return EFReturnValue.GetInstance.ConvertReturnValueToBool(returnValue);
         }
     }
 }
