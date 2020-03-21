@@ -25,7 +25,7 @@ namespace EFHelper
     {
         private static RepoWrapperAsync instance;
         private readonly RepoListMiscHelper repoListMisc = new RepoListMiscHelper();
-        public  RepoWrapperAsync GetInstance
+        public  new static RepoWrapperAsync GetInstance
         {
             get
             {
